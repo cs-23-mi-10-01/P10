@@ -79,7 +79,7 @@ class SplitDataset:
 
         for i in ["1", "2", "3"]:
             self._split_once(i)
-        self.params.timer.stop("split " + self.base_directory)
+        self.params.timer.stop("split " + self.dataset)
 
     def _add_element(self, element, element_dir):
         if element not in element_dir.keys():
@@ -109,8 +109,8 @@ class SplitDataset:
         rows = copy.copy(self.rows)
         random.shuffle(rows)
 
-        num_valid = len(rows) * self.valid_percentage
-        num_test = len(rows) * self.test_percentage
+        num_valid = int(len(rows) * self.valid_percentage)
+        num_test = int(len(rows) * self.test_percentage)
 
         for row in rows:
             row['split'] = 'train'
@@ -121,7 +121,7 @@ class SplitDataset:
                 print(str(num_valid) + " validation and " + str(num_test) + " test facts remaining before completion.")
             i += 1
 
-            if num_valid == 0 and num_test == 0:
+            if num_valid <= 0 and num_test <= 0:
                 break
 
             if entity_count[row['head']] <= 2 and \

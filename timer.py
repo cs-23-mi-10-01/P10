@@ -17,7 +17,7 @@ class Timer:
     def stop(self, key):
         now = datetime.now()
 
-        time_delta = self.stopwatches[key] - now
+        time_delta = now - self.stopwatches[key]
         current_str = now.strftime("%H:%M:%S")
         delta_str = self._format_timedelta(time_delta)
         print("Stopwatch <" + key + "> stopped at " + current_str + ", time elapsed: " + delta_str)
