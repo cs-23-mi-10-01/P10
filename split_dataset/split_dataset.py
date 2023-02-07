@@ -34,7 +34,7 @@ class SplitDataset:
                 self._add_element(row['tail'], self.entitiy_count)
                 self._add_element(row['timestamp'], self.timestamp_count)
 
-        for i in ["1"]:
+        for i in ["1", "2", "3"]:
             self._split_once(i)
 
     def _add_element(self, element, element_dir):
