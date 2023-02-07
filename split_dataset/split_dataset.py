@@ -13,8 +13,6 @@ class SplitDataset:
         self.dataset = params.dataset
         self.valid_percentage = 0.15
         self.test_percentage = 0.15
-
-        random.seed(100)
         
         self.rows = []
         self.entitiy_count = {}
@@ -22,6 +20,7 @@ class SplitDataset:
         self.timestamp_count = {}
 
     def split(self):
+        random.seed(100)
         dataset_path = os.path.join(self.base_directory, "datasets", self.dataset, "full.txt")
 
         self.rows = []
