@@ -1,4 +1,5 @@
 import os
+from timer import Timer
 
 
 class Parameters:
@@ -9,3 +10,4 @@ class Parameters:
 
         self.base_directory = os.path.abspath(os.path.dirname(__file__))
         self.add_to_result = args.add_to_result
+        self.timer = Timer()
