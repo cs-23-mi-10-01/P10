@@ -3,7 +3,7 @@ import os
 import json
 
 from rank.loader import Loader
-from pathlib import Path
+from scripts import touch
 from rank.de_simple.rank_calculator import RankCalculator as DE_Rank
 from rank.TERO.rank_calculator import RankCalculator as TERO_Rank
 from rank.TFLEX.rank_calculator import RankCalculator as TFLEX_Rank
@@ -41,7 +41,7 @@ class Ranker:
         
         results_path = os.path.join(self.base_directory, "result", self.dataset, "ranked_quads.json")
 
-        Path(results_path).touch(exist_ok=True)
+        touch(results_path)
         out_file = open(results_path, "w", encoding="utf8")
         json.dump(self.ranked_quads, out_file, indent=4)
         out_file.close()

@@ -5,7 +5,7 @@ import copy
 import random
 import re
 
-from pathlib import Path
+from scripts import write
 
 class SplitDataset:
     def __init__(self, params):
@@ -144,7 +144,7 @@ class SplitDataset:
             
             if self.dataset in ['wikidata']:
                 if timestamp_count[row['start_timestamp']] <= 2:
-                   continue
+                    continue
                 if row['end_timestamp'] != "-" and timestamp_count[row['end_timestamp']] <= 2:
                     continue
             
@@ -182,13 +182,8 @@ class SplitDataset:
                 text = text + row['head'] + "\t" + row['relation'] + "\t" + row['tail'] + "\t" + row['start_timestamp'] + "\t" + row['end_timestamp'] + "\n"
         
         path = os.path.join(self.base_directory, "datasets", self.dataset, name, split + ".txt")
-        self._write(path, text)
+        write(path, text)
 
-    def _write(self, path, text):
-        Path(path).touch(exist_ok=True)
-        out_file = open(path, "w", encoding="utf8")
-        out_file.write(text)
-        out_file.close()
 
             
 

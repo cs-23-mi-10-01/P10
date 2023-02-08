@@ -3,7 +3,7 @@ import os
 import json
 import pandas
 
-from pathlib import Path
+from scripts import touch
 from statistics.measure import Measure
 from copy import deepcopy
 
@@ -15,7 +15,7 @@ class Statistics():
         self.zeta = 5
 
     def write_json(self, path, dict):
-        Path(path).touch(exist_ok=True)
+        touch(path)
         out_file = open(path, "w", encoding="utf8")
         json.dump(dict, out_file, indent=4)
         out_file.close()
