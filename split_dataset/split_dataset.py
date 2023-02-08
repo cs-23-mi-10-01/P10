@@ -3,6 +3,7 @@ import os
 import csv
 import copy
 import random
+import re
 
 from pathlib import Path
 
@@ -39,6 +40,9 @@ class SplitDataset:
             if i % 1000 == 0:
                 print("Pre-processing rows " + str(i) + "-" + str(i + 999) + " out of " + str(len(self.rows)) + " rows.")
             i += 1
+
+            if not self._include_row(row):
+                continue
 
             if self.dataset in ['wikidata']:
                 if row['handled']:
@@ -100,6 +104,11 @@ class SplitDataset:
                 row['handled'] == False:
                 return row
         return None
+
+    def _include_row(self, row):
+        if self.dataset in ['wikidata']:
+            tail = row['tail']
+            return re.match('Q[0-9]+', tail)
 
     def _split_once(self, name):
         print("Splitting dataset " + self.dataset + " into train/valid/test set " + name +"...")
