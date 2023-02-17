@@ -1,17 +1,11 @@
 
 import json
-from pathlib import Path
+from scripts import write
 import os
 
 class FormatLatex():
     def __init__(self, params) -> None:
         self.params = params
-
-    def write(self, path, text):
-        Path(path).touch(exist_ok=True)
-        out_file = open(path, "w", encoding="utf8")
-        out_file.write(text)
-        out_file.close()
     
     def read_json(self, path):
         in_file = open(path, "r", encoding="utf8")
@@ -74,7 +68,7 @@ class FormatLatex():
                 result = "\n" + r"\renewcommand{\MinNumber}{" + str(min_val) + r"}%" + "\n" +\
                 r"\renewcommand{\MaxNumber}{" + str(max_val) + r"}%" + "\n" + result
 
-                self.write(output_path, result)
+                write(output_path, result)
 
     def format_embedding(self, embedding):
         if embedding == 'DE_TransE':
@@ -144,7 +138,7 @@ class FormatLatex():
             result = "\n" + r"\renewcommand{\MinNumber}{" + str(min_val) + r"}%" + "\n" +\
             r"\renewcommand{\MaxNumber}{" + str(max_val) + r"}%" + "\n" + result
 
-            self.write(output_path, result)    
+            write(output_path, result)    
 
     def format_hypothesis_3(self):
         for normalized in ["", "_normalized"]:
@@ -195,7 +189,7 @@ class FormatLatex():
             result = "\n" + r"\renewcommand{\MinNumber}{" + str(min_val) + r"}%" + "\n" +\
             r"\renewcommand{\MaxNumber}{" + str(max_val) + r"}%" + "\n" + result
 
-            self.write(output_path, result)
+            write(output_path, result)
 
     def format_no_of_entities(self):
         for element in ["entities", "relations", "timestamps"]:
@@ -220,7 +214,7 @@ class FormatLatex():
             result += r"} ;"
             result = r"% MIN VAL: " + str(min_val) + "\n" + r"% MAX VAL: " + str(max_val) + "\n\n" + result
 
-            self.write(output_path, result)
+            write(output_path, result)
 
     def format(self):
         #self.format_hypothesis_2()
