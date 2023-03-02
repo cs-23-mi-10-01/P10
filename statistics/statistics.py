@@ -322,6 +322,10 @@ class Statistics():
             relations_json.append({"RELATION": key, "COUNT": relations[key]})
         for key in timestamps.keys():
             timestamps_json.append({"TIMESTAMP": key, "COUNT": timestamps[key]})
+
+        print("entitiy count: " + str(len(entities_json)))
+        print("relations count: " + str(len(relations_json)))
+        print("timestamps count: " + str(len(timestamps_json)))
         
         entities_json.sort(key=lambda val: val["COUNT"], reverse=True)
         results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "no_of_elements", "train_entities.json")
@@ -354,7 +358,7 @@ class Statistics():
         ranks_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "ranked_quads.json")
         ranked_quads = self.read_json(ranks_path)
         
-        learn_path = os.path.join(self.params.base_directory, "dataprepare", "corruptedquadruple", self.params.dataset, "train.txt")
+        learn_path = os.path.join(self.params.base_directory, "datasets", self.params.dataset, "original", "train.txt")
         dataset = self.read_csv(learn_path)
 
         #self.calculate_overall_scores(ranked_quads, embeddings)
@@ -365,13 +369,13 @@ class Statistics():
         entities_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2", "entity.json")        
         entity_scores = self.read_json(entities_path)
 
-        entities_top100_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2","top_x_overlap", "entity_top_100_.json")      
-        entities_top50_percentage_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2","top_x_overlap", "entity_top_50_percentage.json")     
+        # entities_top100_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2","top_x_overlap", "entity_top_100_.json")      
+        # entities_top50_percentage_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2","top_x_overlap", "entity_top_50_percentage.json")     
         
-        top = self.read_json(entities_top100_path)
-        top_percentage = self.read_json(entities_top50_percentage_path)
+        # top = self.read_json(entities_top100_path)
+        # top_percentage = self.read_json(entities_top50_percentage_path)
 
-        #self.no_of_elements(dataset)
+        self.no_of_elements(dataset)
         #self.hypothesis_1(ranked_quads, embeddings, overall_scores)
         #self.hypothesis_2(ranked_quads, embeddings, overall_scores)
         #self.hypothesis_2_top_x(embeddings)
