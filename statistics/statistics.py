@@ -6,6 +6,7 @@ import pandas
 from scripts import touch
 from statistics.measure import Measure
 from copy import deepcopy
+from dataset_handler.dataset_handler import DatasetHandler
 
 
 class Statistics():
@@ -351,22 +352,57 @@ class Statistics():
         print (percentage* 100)
         return
 
+    def relation_analysis(self, reader: DatasetHandler):
+        reader.read_full_dataset()
+
+        relations_dict = {}
+
+        print("Analyzing relation types...")
+
+        i = 0
+        for row in reader.rows():
+            if i % 100 == 0:
+                print("Analyzing row " + str(i) + "/" + str(len(reader.rows())))
+            i += 1
+            row_relation = row["relation"]
+
+            if row_relation not in relations_dict.keys():
+                relations_dict[row_relation] = {"relation": row_relation,"total": 0, "symmetric": 0}
+            
+            relations_dict[row_relation]["total"] += 1
+
+            symmetric_relations = reader.find_in_rows(head=row["tail"], relation=row_relation, tail=row["head"], start_timestamp=row["start_timestamp"], end_timestamp=row["end_timestamp"])
+            if len(symmetric_relations) > 0:
+                relations_dict[row_relation]["symmetric"] += 1
+        
+        relations_json = []
+        for key in relations_dict.keys():
+            relations_json.append(relations_dict[key])
+        relations_json.sort(key=lambda val: val["total"], reverse=True)
+
+        results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "relation_types.json")
+        self.write_json(results_path, relations_json)
+
     def run(self):
+        self.params.timer.start("statistics")
+
         embeddings = ["DE_TransE", "DE_SimplE", "DE_DistMult", "TERO", "ATISE", "TFLEX"]
 
-        ranks_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "ranked_quads.json")
-        ranked_quads = self.read_json(ranks_path)
+        #ranks_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "ranked_quads.json")
+        #ranked_quads = self.read_json(ranks_path)
         
         learn_path = os.path.join(self.params.base_directory, "datasets", self.params.dataset, "original", "train.txt")
         dataset = self.read_csv(learn_path)
 
+        dataset_handler = DatasetHandler(self.params)
+
         #self.calculate_overall_scores(ranked_quads, embeddings)
 
-        overall_scores_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "overall_scores.json")        
-        overall_scores = self.read_json(overall_scores_path)
+        #overall_scores_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "overall_scores.json")        
+        #overall_scores = self.read_json(overall_scores_path)
 
-        entities_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2", "entity.json")        
-        entity_scores = self.read_json(entities_path)
+        #entities_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2", "entity.json")        
+        #entity_scores = self.read_json(entities_path)
 
         # entities_top100_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2","top_x_overlap", "entity_top_100_.json")      
         # entities_top50_percentage_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2","top_x_overlap", "entity_top_50_percentage.json")     
@@ -374,6 +410,7 @@ class Statistics():
         # top = self.read_json(entities_top100_path)
         # top_percentage = self.read_json(entities_top50_percentage_path)
 
+        self.relation_analysis(dataset_handler)
         #self.no_of_elements(dataset)
         #self.hypothesis_1(ranked_quads, embeddings, overall_scores)
         #self.hypothesis_2(ranked_quads, embeddings, overall_scores)
@@ -382,3 +419,5 @@ class Statistics():
         #self.find_common_elements(top_percentage)
         #self.hypothesis_3(ranked_quads, embeddings, overall_scores)
         #self.get_Top_5_Elements(entity_scores)
+        
+        self.params.timer.stop("statistics")

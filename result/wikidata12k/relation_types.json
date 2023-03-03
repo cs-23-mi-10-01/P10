@@ -1,0 +1,122 @@
+{
+    "P131": {
+        "relation": "P131",
+        "total": 2926,
+        "symmetric": 0
+    },
+    "P166": {
+        "relation": "P166",
+        "total": 7337,
+        "symmetric": 0
+    },
+    "P17": {
+        "relation": "P17",
+        "total": 772,
+        "symmetric": 1
+    },
+    "P54": {
+        "relation": "P54",
+        "total": 16140,
+        "symmetric": 0
+    },
+    "P31": {
+        "relation": "P31",
+        "total": 1010,
+        "symmetric": 0
+    },
+    "P26": {
+        "relation": "P26",
+        "total": 225,
+        "symmetric": 167
+    },
+    "P463": {
+        "relation": "P463",
+        "total": 792,
+        "symmetric": 1
+    },
+    "P1411": {
+        "relation": "P1411",
+        "total": 5080,
+        "symmetric": 0
+    },
+    "P27": {
+        "relation": "P27",
+        "total": 129,
+        "symmetric": 0
+    },
+    "P512": {
+        "relation": "P512",
+        "total": 96,
+        "symmetric": 0
+    },
+    "P102": {
+        "relation": "P102",
+        "total": 142,
+        "symmetric": 0
+    },
+    "P39": {
+        "relation": "P39",
+        "total": 3518,
+        "symmetric": 0
+    },
+    "P1435": {
+        "relation": "P1435",
+        "total": 319,
+        "symmetric": 0
+    },
+    "P190": {
+        "relation": "P190",
+        "total": 151,
+        "symmetric": 3
+    },
+    "P6": {
+        "relation": "P6",
+        "total": 85,
+        "symmetric": 0
+    },
+    "P108": {
+        "relation": "P108",
+        "total": 187,
+        "symmetric": 0
+    },
+    "P69": {
+        "relation": "P69",
+        "total": 312,
+        "symmetric": 0
+    },
+    "P1346": {
+        "relation": "P1346",
+        "total": 793,
+        "symmetric": 0
+    },
+    "P1376": {
+        "relation": "P1376",
+        "total": 86,
+        "symmetric": 0
+    },
+    "P793": {
+        "relation": "P793",
+        "total": 256,
+        "symmetric": 0
+    },
+    "P551": {
+        "relation": "P551",
+        "total": 80,
+        "symmetric": 0
+    },
+    "P579": {
+        "relation": "P579",
+        "total": 97,
+        "symmetric": 0
+    },
+    "P2962": {
+        "relation": "P2962",
+        "total": 203,
+        "symmetric": 0
+    },
+    "P150": {
+        "relation": "P150",
+        "total": 145,
+        "symmetric": 0
+    }
+}

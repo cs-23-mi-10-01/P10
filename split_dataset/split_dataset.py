@@ -6,7 +6,7 @@ import random
 import re
 
 from scripts import write
-from dataset_reader.dataset_reader import DatasetReader
+from dataset_handler.dataset_handler import DatasetHandler
 
 class SplitDataset:
     def __init__(self, params):
@@ -26,7 +26,7 @@ class SplitDataset:
         random.seed(100)
         print("Pre-processing dataset " + self.dataset + " for train/valid/test sets...")
 
-        reader = DatasetReader(self.params)
+        reader = DatasetHandler(self.params)
         reader.read_full_dataset()
         
         if self.dataset in ['wikidata11k']:
@@ -37,7 +37,7 @@ class SplitDataset:
         i = 0
         for row in reader.rows():
             if i % 1000 == 0:
-                print("Pre-processing rows " + str(i) + "-" + str(i + 999) + " out of " + str(len(self.rows)) + " rows.")
+                print("Pre-processing rows " + str(i) + "-" + str(i + 999) + " out of " + str(len(reader.rows())) + " rows.")
             i += 1
 
             if not self._include_row(row):
@@ -60,7 +60,7 @@ class SplitDataset:
                 reverse_period_indicator_list.remove(row['period_indicator'])
                 reverse_period_indicator = reverse_period_indicator_list[0]
 
-                end_event = self._find_in_rows(reverse_period_indicator, row, self.rows, i)
+                end_event = self._find_in_rows(reverse_period_indicator, row, reader.rows(), i)
                 if end_event is not None:
                     end_event['handled'] = True
                     row['start_timestamp'] = [r for r in [row, end_event] if r['period_indicator'] == 'occurSince'][0]['timestamp']

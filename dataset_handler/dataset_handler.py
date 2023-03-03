@@ -3,7 +3,7 @@ import os
 import csv
 import copy
 
-class DatasetReader:
+class DatasetHandler:
     def __init__(self, params):
         self.params = params
         self.base_directory = params.base_directory
@@ -44,12 +44,29 @@ class DatasetReader:
                     modified_row["head"] = id2entity[row["head"]]
                     modified_row["relation"] = id2relation[row["relation"]]
                     modified_row["tail"] = id2entity[row["tail"]]
-                    if row["time_from"] == "####":
-                        modified_row["time_from"] = "-"
-                    if row["time_to"] == "####":
-                        modified_row["time_to"] = "-"
+                    if row["start_timestamp"] == "####":
+                        modified_row["start_timestamp"] = "-"
+                    if row["end_timestamp"] == "####":
+                        modified_row["end_timestamp"] = "-"
 
                 self._rows.append(modified_row)
+        
+        self._rows.sort(key=lambda row: row["head"]+";"+row["relation"]+";"+row["tail"]+";"+row["start_timestamp"]+";"+row["end_timestamp"], reverse=False)
+
+    def find_in_rows(self, head="*", relation="*", tail="*", start_timestamp="*", end_timestamp="*"):
+        ret_rows = []
+
+        for row in self._rows:
+            if head == "*" or row["head"] == head:
+                if relation == "*" or row["relation"] == relation:
+                    if tail == "*" or row["tail"] == tail:
+                        if start_timestamp == "*" or row["start_timestamp"] == start_timestamp:
+                            if end_timestamp == "*" or row["end_timestamp"] == end_timestamp:
+                                ret_rows.append(row)
+            elif head < row["head"]:
+                break
+        
+        return ret_rows
         
     def rows(self):
         return self._rows
