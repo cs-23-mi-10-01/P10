@@ -367,7 +367,7 @@ class Statistics():
             row_relation = row["relation"]
 
             if row_relation not in relations_dict.keys():
-                relations_dict[row_relation] = {"relation": row_relation, "total": 0, "symmetric": 0, "anti-symmetric": 0, "inverse": {}}
+                relations_dict[row_relation] = {"relation": row_relation, "total": 0, "symmetric": 0, "anti-symmetric": 0, "reflexive": 0, "inverse": {}}
             
             relations_dict[row_relation]["total"] += 1
 
@@ -378,14 +378,17 @@ class Statistics():
                 relations_dict[row_relation]["anti-symmetric"] += 1
             
             inverse_relations = reader.find_in_rows(head=row["tail"], relation="*", tail=row["head"], start_timestamp=row["start_timestamp"], end_timestamp=row["end_timestamp"])
-            possible_inverse = set()
-            for rel in inverse_relations:
-                possible_inverse.add(rel["relation"])
-            for rel in possible_inverse:                
-                if rel not in relations_dict[row_relation]["inverse"].keys():
-                    relations_dict[row_relation]["inverse"][rel] = 0
+            for inv_row in inverse_relations:
+                if inv_row["relation"] == row_relation:
+                    continue
+
+                if inv_row["relation"] not in relations_dict[row_relation]["inverse"].keys():
+                    relations_dict[row_relation]["inverse"][inv_row["relation"]] = 0
                 
-                relations_dict[row_relation]["inverse"][rel] += 1                
+                relations_dict[row_relation]["inverse"][inv_row["relation"]] += 1
+            
+            if row["head"] == row["tail"]:
+                relations_dict[row_relation]["reflexive"] += 1
         
         relations_json = []
         for key in relations_dict.keys():

@@ -4,6 +4,7 @@
         "total": 16140,
         "symmetric": 0,
         "anti-symmetric": 16140,
+        "reflexive": 0,
         "inverse": {}
     },
     {
@@ -11,6 +12,7 @@
         "total": 7337,
         "symmetric": 0,
         "anti-symmetric": 7337,
+        "reflexive": 0,
         "inverse": {
             "P1346": 123
         }
@@ -20,6 +22,7 @@
         "total": 5080,
         "symmetric": 0,
         "anti-symmetric": 5080,
+        "reflexive": 0,
         "inverse": {
             "P1346": 29
         }
@@ -29,6 +32,7 @@
         "total": 3518,
         "symmetric": 0,
         "anti-symmetric": 3518,
+        "reflexive": 0,
         "inverse": {}
     },
     {
@@ -36,6 +40,7 @@
         "total": 2926,
         "symmetric": 0,
         "anti-symmetric": 2926,
+        "reflexive": 0,
         "inverse": {
             "P150": 15
         }
@@ -45,6 +50,7 @@
         "total": 1010,
         "symmetric": 0,
         "anti-symmetric": 1010,
+        "reflexive": 0,
         "inverse": {}
     },
     {
@@ -52,9 +58,10 @@
         "total": 793,
         "symmetric": 0,
         "anti-symmetric": 793,
+        "reflexive": 0,
         "inverse": {
-            "P166": 120,
-            "P1411": 28
+            "P166": 121,
+            "P1411": 29
         }
     },
     {
@@ -62,6 +69,7 @@
         "total": 792,
         "symmetric": 1,
         "anti-symmetric": 791,
+        "reflexive": 1,
         "inverse": {
             "P463": 1
         }
@@ -71,6 +79,7 @@
         "total": 772,
         "symmetric": 1,
         "anti-symmetric": 771,
+        "reflexive": 1,
         "inverse": {
             "P17": 1,
             "P150": 1
@@ -81,6 +90,7 @@
         "total": 319,
         "symmetric": 0,
         "anti-symmetric": 319,
+        "reflexive": 0,
         "inverse": {}
     },
     {
@@ -88,6 +98,7 @@
         "total": 312,
         "symmetric": 0,
         "anti-symmetric": 312,
+        "reflexive": 0,
         "inverse": {}
     },
     {
@@ -95,6 +106,7 @@
         "total": 256,
         "symmetric": 0,
         "anti-symmetric": 256,
+        "reflexive": 0,
         "inverse": {}
     },
     {
@@ -102,8 +114,9 @@
         "total": 225,
         "symmetric": 167,
         "anti-symmetric": 58,
+        "reflexive": 0,
         "inverse": {
-            "P26": 167
+            "P26": 168
         }
     },
     {
@@ -111,6 +124,7 @@
         "total": 203,
         "symmetric": 0,
         "anti-symmetric": 203,
+        "reflexive": 0,
         "inverse": {}
     },
     {
@@ -118,6 +132,7 @@
         "total": 187,
         "symmetric": 0,
         "anti-symmetric": 187,
+        "reflexive": 0,
         "inverse": {}
     },
     {
@@ -125,6 +140,7 @@
         "total": 151,
         "symmetric": 3,
         "anti-symmetric": 148,
+        "reflexive": 0,
         "inverse": {
             "P190": 3
         }
@@ -134,6 +150,7 @@
         "total": 145,
         "symmetric": 0,
         "anti-symmetric": 145,
+        "reflexive": 0,
         "inverse": {
             "P131": 26
         }
@@ -143,6 +160,7 @@
         "total": 142,
         "symmetric": 0,
         "anti-symmetric": 142,
+        "reflexive": 0,
         "inverse": {}
     },
     {
@@ -150,6 +168,7 @@
         "total": 129,
         "symmetric": 0,
         "anti-symmetric": 129,
+        "reflexive": 0,
         "inverse": {}
     },
     {
@@ -157,6 +176,7 @@
         "total": 97,
         "symmetric": 0,
         "anti-symmetric": 97,
+        "reflexive": 0,
         "inverse": {}
     },
     {
@@ -164,6 +184,7 @@
         "total": 96,
         "symmetric": 0,
         "anti-symmetric": 96,
+        "reflexive": 0,
         "inverse": {}
     },
     {
@@ -171,6 +192,7 @@
         "total": 86,
         "symmetric": 0,
         "anti-symmetric": 86,
+        "reflexive": 0,
         "inverse": {}
     },
     {
@@ -178,6 +200,7 @@
         "total": 85,
         "symmetric": 0,
         "anti-symmetric": 85,
+        "reflexive": 0,
         "inverse": {}
     },
     {
@@ -185,6 +208,7 @@
         "total": 80,
         "symmetric": 0,
         "anti-symmetric": 80,
+        "reflexive": 0,
         "inverse": {}
     }
 ]
