@@ -1,4 +1,6 @@
 
+import os
+from pathlib import Path
 
 def remove_unwanted_symbols(dict): 
     while True:
@@ -11,3 +13,15 @@ def remove_unwanted_symbols(dict):
             dict[target_key.replace(' ', ' ')] = dict.pop(target_key)
         else:
             break
+
+def touch(path):
+    dir = os.path.dirname(path)
+    if not os.path.exists(dir):
+        os.makedirs(dir)
+    Path(path).touch(exist_ok=True)
+
+def write(path, text):
+    touch(path)
+    out_file = open(path, "w", encoding="utf8")
+    out_file.write(text)
+    out_file.close()

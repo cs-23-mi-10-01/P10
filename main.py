@@ -3,6 +3,7 @@ import argparse
 
 from parameters import Parameters
 from rank.ranker import Ranker
+from split_dataset.split_dataset import SplitDataset
 
 from statistics.statistics import Statistics
 from formatlatex.formatlatex import FormatLatex
@@ -11,8 +12,8 @@ from formatlatex.formatlatex import FormatLatex
 def main():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('-task', type=str, default='rank', choices=['statistics', 'rank', 'formatlatex'])
-    parser.add_argument('-dataset', type=str, default='icews14', choices=['icews14', 'icews05-15', 'gdelt'])
+    parser.add_argument('-task', type=str, default='statistics', choices=['statistics', 'rank', 'formatlatex', 'split_dataset'])
+    parser.add_argument('-dataset', type=str, default='icews14', choices=['icews14', 'wikidata'])
     parser.add_argument('-embedding', type=str, default='DE_TransE', choices=['all', 'DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE', 'TFLEX','TimePlex'])
     parser.add_argument('-add_to_result', type=bool, default=True)
 
@@ -20,6 +21,10 @@ def main():
     params = Parameters(args)
     
     match params.task:
+        case "split_dataset":
+            split_dataset = SplitDataset(params)
+            split_dataset.split()
+            return 0
         case "rank":
             ranker = Ranker(params)
             ranker.rank()
