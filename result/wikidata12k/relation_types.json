@@ -1,122 +1,190 @@
-{
-    "P131": {
-        "relation": "P131",
-        "total": 2926,
-        "symmetric": 0
-    },
-    "P166": {
-        "relation": "P166",
-        "total": 7337,
-        "symmetric": 0
-    },
-    "P17": {
-        "relation": "P17",
-        "total": 772,
-        "symmetric": 1
-    },
-    "P54": {
+[
+    {
         "relation": "P54",
         "total": 16140,
-        "symmetric": 0
+        "symmetric": 0,
+        "anti-symmetric": 16140,
+        "inverse": {}
     },
-    "P31": {
-        "relation": "P31",
-        "total": 1010,
-        "symmetric": 0
+    {
+        "relation": "P166",
+        "total": 7337,
+        "symmetric": 0,
+        "anti-symmetric": 7337,
+        "inverse": {
+            "P1346": 123
+        }
     },
-    "P26": {
-        "relation": "P26",
-        "total": 225,
-        "symmetric": 167
-    },
-    "P463": {
-        "relation": "P463",
-        "total": 792,
-        "symmetric": 1
-    },
-    "P1411": {
+    {
         "relation": "P1411",
         "total": 5080,
-        "symmetric": 0
+        "symmetric": 0,
+        "anti-symmetric": 5080,
+        "inverse": {
+            "P1346": 29
+        }
     },
-    "P27": {
-        "relation": "P27",
-        "total": 129,
-        "symmetric": 0
-    },
-    "P512": {
-        "relation": "P512",
-        "total": 96,
-        "symmetric": 0
-    },
-    "P102": {
-        "relation": "P102",
-        "total": 142,
-        "symmetric": 0
-    },
-    "P39": {
+    {
         "relation": "P39",
         "total": 3518,
-        "symmetric": 0
+        "symmetric": 0,
+        "anti-symmetric": 3518,
+        "inverse": {}
     },
-    "P1435": {
-        "relation": "P1435",
-        "total": 319,
-        "symmetric": 0
+    {
+        "relation": "P131",
+        "total": 2926,
+        "symmetric": 0,
+        "anti-symmetric": 2926,
+        "inverse": {
+            "P150": 15
+        }
     },
-    "P190": {
-        "relation": "P190",
-        "total": 151,
-        "symmetric": 3
+    {
+        "relation": "P31",
+        "total": 1010,
+        "symmetric": 0,
+        "anti-symmetric": 1010,
+        "inverse": {}
     },
-    "P6": {
-        "relation": "P6",
-        "total": 85,
-        "symmetric": 0
-    },
-    "P108": {
-        "relation": "P108",
-        "total": 187,
-        "symmetric": 0
-    },
-    "P69": {
-        "relation": "P69",
-        "total": 312,
-        "symmetric": 0
-    },
-    "P1346": {
+    {
         "relation": "P1346",
         "total": 793,
-        "symmetric": 0
+        "symmetric": 0,
+        "anti-symmetric": 793,
+        "inverse": {
+            "P166": 120,
+            "P1411": 28
+        }
     },
-    "P1376": {
-        "relation": "P1376",
-        "total": 86,
-        "symmetric": 0
+    {
+        "relation": "P463",
+        "total": 792,
+        "symmetric": 1,
+        "anti-symmetric": 791,
+        "inverse": {
+            "P463": 1
+        }
     },
-    "P793": {
+    {
+        "relation": "P17",
+        "total": 772,
+        "symmetric": 1,
+        "anti-symmetric": 771,
+        "inverse": {
+            "P17": 1,
+            "P150": 1
+        }
+    },
+    {
+        "relation": "P1435",
+        "total": 319,
+        "symmetric": 0,
+        "anti-symmetric": 319,
+        "inverse": {}
+    },
+    {
+        "relation": "P69",
+        "total": 312,
+        "symmetric": 0,
+        "anti-symmetric": 312,
+        "inverse": {}
+    },
+    {
         "relation": "P793",
         "total": 256,
-        "symmetric": 0
+        "symmetric": 0,
+        "anti-symmetric": 256,
+        "inverse": {}
     },
-    "P551": {
-        "relation": "P551",
-        "total": 80,
-        "symmetric": 0
+    {
+        "relation": "P26",
+        "total": 225,
+        "symmetric": 167,
+        "anti-symmetric": 58,
+        "inverse": {
+            "P26": 167
+        }
     },
-    "P579": {
-        "relation": "P579",
-        "total": 97,
-        "symmetric": 0
-    },
-    "P2962": {
+    {
         "relation": "P2962",
         "total": 203,
-        "symmetric": 0
+        "symmetric": 0,
+        "anti-symmetric": 203,
+        "inverse": {}
     },
-    "P150": {
+    {
+        "relation": "P108",
+        "total": 187,
+        "symmetric": 0,
+        "anti-symmetric": 187,
+        "inverse": {}
+    },
+    {
+        "relation": "P190",
+        "total": 151,
+        "symmetric": 3,
+        "anti-symmetric": 148,
+        "inverse": {
+            "P190": 3
+        }
+    },
+    {
         "relation": "P150",
         "total": 145,
-        "symmetric": 0
+        "symmetric": 0,
+        "anti-symmetric": 145,
+        "inverse": {
+            "P131": 26
+        }
+    },
+    {
+        "relation": "P102",
+        "total": 142,
+        "symmetric": 0,
+        "anti-symmetric": 142,
+        "inverse": {}
+    },
+    {
+        "relation": "P27",
+        "total": 129,
+        "symmetric": 0,
+        "anti-symmetric": 129,
+        "inverse": {}
+    },
+    {
+        "relation": "P579",
+        "total": 97,
+        "symmetric": 0,
+        "anti-symmetric": 97,
+        "inverse": {}
+    },
+    {
+        "relation": "P512",
+        "total": 96,
+        "symmetric": 0,
+        "anti-symmetric": 96,
+        "inverse": {}
+    },
+    {
+        "relation": "P1376",
+        "total": 86,
+        "symmetric": 0,
+        "anti-symmetric": 86,
+        "inverse": {}
+    },
+    {
+        "relation": "P6",
+        "total": 85,
+        "symmetric": 0,
+        "anti-symmetric": 85,
+        "inverse": {}
+    },
+    {
+        "relation": "P551",
+        "total": 80,
+        "symmetric": 0,
+        "anti-symmetric": 80,
+        "inverse": {}
     }
-}
+]
