@@ -350,7 +350,6 @@ class Statistics():
         percentage =  len(common_elements) / len(entity_top_100['DE_TransE']['TOP'])
         print (percentage* 100)
         return
-                
 
     def run(self):
         embeddings = ["DE_TransE", "DE_SimplE", "DE_DistMult", "TERO", "ATISE", "TFLEX"]
@@ -375,7 +374,7 @@ class Statistics():
         # top = self.read_json(entities_top100_path)
         # top_percentage = self.read_json(entities_top50_percentage_path)
 
-        self.no_of_elements(dataset)
+        #self.no_of_elements(dataset)
         #self.hypothesis_1(ranked_quads, embeddings, overall_scores)
         #self.hypothesis_2(ranked_quads, embeddings, overall_scores)
         #self.hypothesis_2_top_x(embeddings)
