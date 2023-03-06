@@ -353,21 +353,20 @@ class Statistics():
         return
 
     def relation_analysis(self, reader: DatasetHandler):
-        relations_dict = {}
 
         print("Analyzing relation types...")
 
-        i = 0
-        #for mode in ["timestamps", "no-timestamps"]:
-        for mode in ["no-timestamps"]:
+        for mode in ["timestamps", "no-timestamps"]:
             reader.read_full_dataset()
-            
+            relations_dict = {}
+
             print(mode)
             if mode == "no-timestamps":
                 for row in reader.rows():
                     row["start_timestamp"] = "-"
                     row["end_timestamp"] = "-"
 
+            i = 0
             for row in reader.rows():
                 if i % 100 == 0:
                     print("Analyzing row " + str(i) + "/" + str(len(reader.rows())))
