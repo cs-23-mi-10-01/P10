@@ -6,6 +6,7 @@ import random
 import re
 
 from scripts import write
+from dataset_handler.dataset_handler import DatasetHandler
 
 class SplitDataset:
     def __init__(self, params):
@@ -23,28 +24,26 @@ class SplitDataset:
     def split(self):
         self.params.timer.start("split " + self.dataset)
         random.seed(100)
-        dataset_path = os.path.join(self.base_directory, "datasets", self.dataset, "full.txt")
         print("Pre-processing dataset " + self.dataset + " for train/valid/test sets...")
 
-        self.rows = []
-        with open(dataset_path, encoding='utf-8') as full_dataset:
-            records = csv.DictReader(full_dataset, delimiter='\t')
-            for row in records:
-                if self.dataset in ['wikidata']:
-                    row['handled'] = False
-                self.rows.append(row)
+        reader = DatasetHandler(self.params)
+        reader.read_full_dataset()
         
+        if self.dataset in ['wikidata11k']:
+            for row in reader.rows():
+                row['handled'] = False
+
         processed_rows = []
         i = 0
-        for row in self.rows:
+        for row in reader.rows():
             if i % 1000 == 0:
-                print("Pre-processing rows " + str(i) + "-" + str(i + 999) + " out of " + str(len(self.rows)) + " rows.")
+                print("Pre-processing rows " + str(i) + "-" + str(i + 999) + " out of " + str(len(reader.rows())) + " rows.")
             i += 1
 
             if not self._include_row(row):
                 continue
 
-            if self.dataset in ['wikidata']:
+            if self.dataset in ['wikidata11k']:
                 if row['handled']:
                     continue
 
@@ -55,13 +54,13 @@ class SplitDataset:
             if self.dataset in ['icews14']:
                 self._add_element(row['timestamp'], self.timestamp_count)
 
-            if self.dataset in ['wikidata']:
+            if self.dataset in ['wikidata11k']:
                 row['handled'] = True
                 reverse_period_indicator_list = ['occurSince', 'occurUntil']
                 reverse_period_indicator_list.remove(row['period_indicator'])
                 reverse_period_indicator = reverse_period_indicator_list[0]
 
-                end_event = self._find_in_rows(reverse_period_indicator, row, self.rows, i)
+                end_event = self._find_in_rows(reverse_period_indicator, row, reader.rows(), i)
                 if end_event is not None:
                     end_event['handled'] = True
                     row['start_timestamp'] = [r for r in [row, end_event] if r['period_indicator'] == 'occurSince'][0]['timestamp']
@@ -74,7 +73,7 @@ class SplitDataset:
             
             processed_rows.append(row)
 
-        if self.dataset in ['wikidata']:
+        if self.dataset in ['wikidata11k']:
             for row in processed_rows:
                 row.pop('timestamp')
                 row.pop('handled')
@@ -106,7 +105,7 @@ class SplitDataset:
         return None
 
     def _include_row(self, row):
-        if self.dataset in ['wikidata']:
+        if self.dataset in ['wikidata11k']:
             tail = row['tail']
             return re.match('Q[0-9]+', tail)
 
@@ -142,7 +141,7 @@ class SplitDataset:
                 if timestamp_count[row['timestamp']] <= 1:
                     continue
             
-            if self.dataset in ['wikidata']:
+            if self.dataset in ['wikidata11k']:
                 if timestamp_count[row['start_timestamp']] <= 2:
                     continue
                 if row['end_timestamp'] != "-" and timestamp_count[row['end_timestamp']] <= 2:
@@ -154,7 +153,7 @@ class SplitDataset:
 
             if self.dataset in ['icews14']:
                 self._subtract_element(row['timestamp'], timestamp_count)
-            elif self.dataset in ['wikidata']:
+            elif self.dataset in ['wikidata11k']:
                 self._subtract_element(row['start_timestamp'], timestamp_count)
                 if row['end_timestamp'] != "-":
                     self._subtract_element(row['end_timestamp'], timestamp_count)
@@ -178,7 +177,7 @@ class SplitDataset:
         for row in [row for row in rows if row['split'] is split]:
             if self.dataset in ['icews14']:
                 text = text + row['head'] + "\t" + row['relation'] + "\t" + row['tail'] + "\t" + row['timestamp'] + "\n"
-            if self.dataset in ['wikidata']:
+            if self.dataset in ['wikidata11k']:
                 text = text + row['head'] + "\t" + row['relation'] + "\t" + row['tail'] + "\t" + row['start_timestamp'] + "\t" + row['end_timestamp'] + "\n"
         
         path = os.path.join(self.base_directory, "datasets", self.dataset, name, split + ".txt")

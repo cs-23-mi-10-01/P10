@@ -13,7 +13,7 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('-task', type=str, default='statistics', choices=['statistics', 'rank', 'formatlatex', 'split_dataset'])
-    parser.add_argument('-dataset', type=str, default='icews14', choices=['icews14', 'wikidata'])
+    parser.add_argument('-dataset', type=str, default='wikidata12k', choices=['icews14', 'wikidata11k', 'wikidata12k'])
     parser.add_argument('-embedding', type=str, default='DE_TransE', choices=['all', 'DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE', 'TFLEX','TimePlex'])
     parser.add_argument('-add_to_result', type=bool, default=True)
 
