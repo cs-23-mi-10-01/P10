@@ -353,50 +353,58 @@ class Statistics():
         return
 
     def relation_analysis(self, reader: DatasetHandler):
-        reader.read_full_dataset()
-
         relations_dict = {}
 
         print("Analyzing relation types...")
 
         i = 0
-        for row in reader.rows():
-            if i % 100 == 0:
-                print("Analyzing row " + str(i) + "/" + str(len(reader.rows())))
-            i += 1
-            row_relation = row["relation"]
-
-            if row_relation not in relations_dict.keys():
-                relations_dict[row_relation] = {"relation": row_relation, "total": 0, "symmetric": 0, "anti-symmetric": 0, "reflexive": 0, "inverse": {}}
+        #for mode in ["timestamps", "no-timestamps"]:
+        for mode in ["no-timestamps"]:
+            reader.read_full_dataset()
             
-            relations_dict[row_relation]["total"] += 1
+            print(mode)
+            if mode == "no-timestamps":
+                for row in reader.rows():
+                    row["start_timestamp"] = "-"
+                    row["end_timestamp"] = "-"
 
-            symmetric_relations = reader.find_in_rows(head=row["tail"], relation=row_relation, tail=row["head"], start_timestamp=row["start_timestamp"], end_timestamp=row["end_timestamp"])
-            if len(symmetric_relations) > 0:
-                relations_dict[row_relation]["symmetric"] += 1
-            else:
-                relations_dict[row_relation]["anti-symmetric"] += 1
-            
-            inverse_relations = reader.find_in_rows(head=row["tail"], relation="*", tail=row["head"], start_timestamp=row["start_timestamp"], end_timestamp=row["end_timestamp"])
-            for inv_row in inverse_relations:
-                if inv_row["relation"] == row_relation:
-                    continue
+            for row in reader.rows():
+                if i % 100 == 0:
+                    print("Analyzing row " + str(i) + "/" + str(len(reader.rows())))
+                i += 1
+                row_relation = row["relation"]
 
-                if inv_row["relation"] not in relations_dict[row_relation]["inverse"].keys():
-                    relations_dict[row_relation]["inverse"][inv_row["relation"]] = 0
+                if row_relation not in relations_dict.keys():
+                    relations_dict[row_relation] = {"relation": row_relation, "total": 0, "symmetric": 0, "anti-symmetric": 0, "reflexive": 0, "inverse": {}}
                 
-                relations_dict[row_relation]["inverse"][inv_row["relation"]] += 1
-            
-            if row["head"] == row["tail"]:
-                relations_dict[row_relation]["reflexive"] += 1
-        
-        relations_json = []
-        for key in relations_dict.keys():
-            relations_json.append(relations_dict[key])
-        relations_json.sort(key=lambda val: val["total"], reverse=True)
+                relations_dict[row_relation]["total"] += 1
 
-        results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "relation_types.json")
-        self.write_json(results_path, relations_json)
+                symmetric_relations = reader.find_in_rows(head=row["tail"], relation=row_relation, tail=row["head"], start_timestamp=row["start_timestamp"], end_timestamp=row["end_timestamp"])
+                if len(symmetric_relations) > 0:
+                    relations_dict[row_relation]["symmetric"] += 1
+                else:
+                    relations_dict[row_relation]["anti-symmetric"] += 1
+                
+                inverse_relations = reader.find_in_rows(head=row["tail"], relation="*", tail=row["head"], start_timestamp=row["start_timestamp"], end_timestamp=row["end_timestamp"])
+                for inv_row in inverse_relations:
+                    if inv_row["relation"] == row_relation:
+                        continue
+
+                    if inv_row["relation"] not in relations_dict[row_relation]["inverse"].keys():
+                        relations_dict[row_relation]["inverse"][inv_row["relation"]] = 0
+                    
+                    relations_dict[row_relation]["inverse"][inv_row["relation"]] += 1
+                
+                if row["head"] == row["tail"]:
+                    relations_dict[row_relation]["reflexive"] += 1
+            
+            relations_json = []
+            for key in relations_dict.keys():
+                relations_json.append(relations_dict[key])
+            relations_json.sort(key=lambda val: val["total"], reverse=True)
+
+            results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "relation_analysis", "relation_types_"+mode+".json")
+            self.write_json(results_path, relations_json)
 
     def run(self):
         self.params.timer.start("statistics")
