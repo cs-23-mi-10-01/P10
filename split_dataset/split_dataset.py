@@ -71,6 +71,10 @@ class SplitDataset:
                     row['end_timestamp'] = "-"
                 self._add_element(row['start_timestamp'], self.timestamp_count)
             
+            if self.dataset in ['wikidata12k']:
+                self._add_element(row['start_timestamp'], self.timestamp_count)
+                self._add_element(row['end_timestamp'], self.timestamp_count)
+            
             processed_rows.append(row)
 
         if self.dataset in ['wikidata11k']:
