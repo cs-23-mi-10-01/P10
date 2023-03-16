@@ -112,6 +112,7 @@ class SplitDataset:
         if self.dataset in ['wikidata11k']:
             tail = row['tail']
             return re.match('Q[0-9]+', tail)
+        return True
 
     def _split_once(self, name):
         print("Splitting dataset " + self.dataset + " into train/valid/test set " + name +"...")
@@ -145,10 +146,10 @@ class SplitDataset:
                 if timestamp_count[row['timestamp']] <= 1:
                     continue
             
-            if self.dataset in ['wikidata11k']:
+            if self.dataset in ['wikidata11k', 'wikidata12k']:
                 if timestamp_count[row['start_timestamp']] <= 2:
                     continue
-                if row['end_timestamp'] != "-" and timestamp_count[row['end_timestamp']] <= 2:
+                if timestamp_count[row['end_timestamp']] <= 2:
                     continue
             
             self._subtract_element(row['head'], entity_count)
@@ -157,10 +158,9 @@ class SplitDataset:
 
             if self.dataset in ['icews14']:
                 self._subtract_element(row['timestamp'], timestamp_count)
-            elif self.dataset in ['wikidata11k']:
+            elif self.dataset in ['wikidata11k', 'wikidata12k']:
                 self._subtract_element(row['start_timestamp'], timestamp_count)
-                if row['end_timestamp'] != "-":
-                    self._subtract_element(row['end_timestamp'], timestamp_count)
+                self._subtract_element(row['end_timestamp'], timestamp_count)
 
             if num_valid > 0:
                 row['split'] = 'valid'
@@ -181,7 +181,7 @@ class SplitDataset:
         for row in [row for row in rows if row['split'] is split]:
             if self.dataset in ['icews14']:
                 text = text + row['head'] + "\t" + row['relation'] + "\t" + row['tail'] + "\t" + row['timestamp'] + "\n"
-            if self.dataset in ['wikidata11k']:
+            if self.dataset in ['wikidata11k', 'wikidata12k']:
                 text = text + row['head'] + "\t" + row['relation'] + "\t" + row['tail'] + "\t" + row['start_timestamp'] + "\t" + row['end_timestamp'] + "\n"
         
         path = os.path.join(self.base_directory, "datasets", self.dataset, name, split + ".txt")
