@@ -1,4 +1,3 @@
-relation	id	relation_name	types
 P1376	0	capital of	assymetric;transitive
 P512	4	academic degree	
 P579	3	IMA status and/or rank	

@@ -71,7 +71,7 @@ class SplitDataset:
                     row['end_timestamp'] = "-"
                 self._add_element(row['start_timestamp'], self.timestamp_count)
             
-            if self.dataset in ['wikidata12k']:
+            if self.dataset in ['wikidata12k', 'yago11k']:
                 self._add_element(row['start_timestamp'], self.timestamp_count)
                 self._add_element(row['end_timestamp'], self.timestamp_count)
             
@@ -88,7 +88,7 @@ class SplitDataset:
             self._split_once(i)
         self.params.timer.stop("split " + self.dataset)
 
-        if self.dataset in ["wikidata12k"]:
+        if self.dataset in ["wikidata12k", "yago11k"]:
             self._format_original_split(reader)
 
     def _add_element(self, element, element_dir):
@@ -149,7 +149,7 @@ class SplitDataset:
                 if timestamp_count[row['timestamp']] <= 1:
                     continue
             
-            if self.dataset in ['wikidata11k', 'wikidata12k']:
+            if self.dataset in ['wikidata11k', 'wikidata12k', 'yago11k']:
                 if timestamp_count[row['start_timestamp']] <= 2:
                     continue
                 if timestamp_count[row['end_timestamp']] <= 2:
@@ -161,7 +161,7 @@ class SplitDataset:
 
             if self.dataset in ['icews14']:
                 self._subtract_element(row['timestamp'], timestamp_count)
-            elif self.dataset in ['wikidata11k', 'wikidata12k']:
+            elif self.dataset in ['wikidata11k', 'wikidata12k', 'yago11k']:
                 self._subtract_element(row['start_timestamp'], timestamp_count)
                 self._subtract_element(row['end_timestamp'], timestamp_count)
 
@@ -207,7 +207,7 @@ class SplitDataset:
         for row in [row for row in rows if row['split'] is split]:
             if self.dataset in ['icews14']:
                 text = text + row['head'] + "\t" + row['relation'] + "\t" + row['tail'] + "\t" + row['timestamp'] + "\n"
-            if self.dataset in ['wikidata11k', 'wikidata12k']:
+            if self.dataset in ['wikidata11k', 'wikidata12k', 'yago11k']:
                 text = text + row['head'] + "\t" + row['relation'] + "\t" + row['tail'] + "\t" + row['start_timestamp'] + "\t" + row['end_timestamp'] + "\n"
         
         path = os.path.join(self.base_directory, "datasets", self.dataset, name, split + ".txt")

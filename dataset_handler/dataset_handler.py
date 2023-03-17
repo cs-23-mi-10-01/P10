@@ -13,23 +13,23 @@ class DatasetHandler:
         self._id2entity = {}
         self._id2relation = {}
 
-        if self.dataset in ["wikidata12k"]:
+        if self.dataset in ["wikidata12k", "yago11k"]:
             entity2id_path = os.path.join(self.base_directory, "datasets", self.dataset, "entity2id.txt")
             with open(entity2id_path, encoding='utf-8') as identifiers:
-                records = csv.DictReader(identifiers, delimiter='\t')
+                records = csv.DictReader(identifiers, fieldnames=['entity', 'id'], delimiter='\t')
                 for row in records:
                     self._id2entity[row["id"]] = row["entity"]
 
             relation2id_path = os.path.join(self.base_directory, "datasets", self.dataset, "relation2id.txt")
             with open(relation2id_path, encoding='utf-8') as identifiers:
-                records = csv.DictReader(identifiers, delimiter='\t')
+                records = csv.DictReader(identifiers, fieldnames=['relation', 'id', 'relation_name', 'types'], delimiter='\t')
                 for row in records:
                     self._id2relation[row["id"]] = row["relation"]
     
     def read_full_dataset(self):
         self._rows = []
 
-        if self.dataset in ["wikidata12k"]:
+        if self.dataset in ["wikidata12k", "yago11k"]:
             full_filename = "triple2id.txt"
         else:
             full_filename = "full.txt"
@@ -76,14 +76,14 @@ class DatasetHandler:
         with open(path, encoding='utf-8') as full_dataset:
             if self.dataset in ['icews14']:
                 fieldnames=['head', 'relation', 'tail', 'timestamp']
-            elif self.dataset in ['wikidata12k']:
+            elif self.dataset in ['wikidata12k', 'yago11k']:
                 fieldnames=['head', 'relation', 'tail', 'start_timestamp', 'end_timestamp']
             
             records = csv.DictReader(full_dataset, fieldnames=fieldnames, delimiter='\t')
             for row in records:
                 modified_row = copy.copy(row)
 
-                if self.dataset in ["wikidata12k"]:
+                if self.dataset in ["wikidata12k", "yago11k"]:
                     modified_row["head"] = self._id2entity[row["head"]]
                     modified_row["relation"] = self._id2relation[row["relation"]]
                     modified_row["tail"] = self._id2entity[row["tail"]]
