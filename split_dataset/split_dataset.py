@@ -88,6 +88,9 @@ class SplitDataset:
             self._split_once(i)
         self.params.timer.stop("split " + self.dataset)
 
+        if self.dataset in ["wikidata12k"]:
+            self._format_original_split(reader)
+
     def _add_element(self, element, element_dir):
         if element not in element_dir.keys():
             element_dir[element] = 1
@@ -174,6 +177,29 @@ class SplitDataset:
         self._write_csv(rows, name, 'train')
         self._write_csv(rows, name, 'valid')
         self._write_csv(rows, name, 'test')
+    
+    def _format_original_split(self, reader):        
+        reader.read_original_splits()
+
+        for row in reader.rows():
+            sliced_date = row['start_timestamp'].split('-')
+            year, month, day = sliced_date[:3]
+            if year == '####':
+                row['start_timestamp'] = '-'
+            else:
+                row['start_timestamp'] = year
+
+            sliced_date = row['end_timestamp'].split('-')
+            year, month, day = sliced_date[:3]
+            if year == '####':
+                row['end_timestamp'] = '-'
+            else:
+                row['end_timestamp'] = year
+
+        self._write_csv(reader.rows(), 'original_formatted', 'test')
+        self._write_csv(reader.rows(), 'original_formatted', 'train')
+        self._write_csv(reader.rows(), 'original_formatted', 'valid')
+            
 
     def _write_csv(self, rows, name, split):
         text = ""
