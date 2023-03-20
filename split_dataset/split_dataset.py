@@ -86,10 +86,11 @@ class SplitDataset:
 
         for i in ["1", "2", "3"]:
             self._split_once(i, reader)
-        self.params.timer.stop("split " + self.dataset)
 
         if self.dataset in ["wikidata12k", "yago11k"]:
             self._format_original_split(reader)
+        
+        self.params.timer.stop("split " + self.dataset)
 
     def _add_element(self, element, element_dir):
         if element not in element_dir.keys():
