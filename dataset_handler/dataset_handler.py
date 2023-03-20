@@ -83,14 +83,40 @@ class DatasetHandler:
             for row in records:
                 modified_row = copy.copy(row)
 
-                if self.dataset in ["wikidata12k", "yago11k"]:
+                if self.dataset in ["wikidata12k"]:
                     modified_row["head"] = self._id2entity[row["head"]]
                     modified_row["relation"] = self._id2relation[row["relation"]]
                     modified_row["tail"] = self._id2entity[row["tail"]]
+                    
                     if row["start_timestamp"] == "####":
                         modified_row["start_timestamp"] = "-"
                     if row["end_timestamp"] == "####":
                         modified_row["end_timestamp"] = "-"
+                
+                if self.dataset in ["yago11k"]:
+                    modified_row["head"] = self._id2entity[row["head"]]
+                    modified_row["relation"] = self._id2relation[row["relation"]]
+                    modified_row["tail"] = self._id2entity[row["tail"]]
+
+                    start_timestap = row["start_timestamp"]
+                    if start_timestap == '':
+                        modified_row["start_timestamp"] = "-"
+                    else:
+                        year = start_timestap.split('-')[0]
+                        if year == "####":
+                            modified_row["start_timestamp"] = "-"
+                        else:
+                            modified_row["start_timestamp"] = year
+
+                    end_timestap = row["end_timestamp"]
+                    if end_timestap == '':
+                        modified_row["end_timestamp"] = "-"
+                    else:
+                        year = end_timestap.split('-')[0]
+                        if year == "####":
+                            modified_row["end_timestamp"] = "-"
+                        else:
+                            modified_row["end_timestamp"] = year
 
                 new_rows.append(modified_row)
                 self._rows.append(modified_row)
