@@ -2805,7 +2805,7 @@
 <J._J._Thomson>	<hasWonPrize>	<Franklin_Medal>	1922	-
 <Edythe_Chapman>	<isMarriedTo>	<James_Neill>	1897	1931
 <Dean_Devlin>	<wasBornIn>	<New_York_City>	1962	1962
-<Richard_Upjohn>	<created>	<Mandeville_House>	19##	-
+<Richard_Upjohn>	<created>	<Mandeville_House>	-	-
 <Raúl_Martins>	<playsFor>	<Associação_Naval_1º_de_Maio>	2012	2013
 <Anne_Holton>	<isMarriedTo>	<Tim_Kaine>	1984	-
 <Permira>	<owns>	<Ancestry.com>	1999	-

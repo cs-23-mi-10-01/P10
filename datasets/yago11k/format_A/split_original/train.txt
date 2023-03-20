@@ -264,7 +264,7 @@
 <Eric_Burhop>	<diedIn>	<London_Borough_of_Camden>	1980	1980
 <Zhang_Jin>	<isMarriedTo>	<Ada_Choi>	2008	-
 <George_Henderson_(architect)>	<created>	<Corstorphine_Old_Parish_Church>	1903	1905
-<Karl_Friedrich_Schinkel>	<created>	<Ehrenburg_Palace>	19##	-
+<Karl_Friedrich_Schinkel>	<created>	<Ehrenburg_Palace>	-	-
 <Discovery_Communications>	<owns>	<XXP>	2006	-
 <Bobby_Driscoll>	<created>	<Peter_Pan_(1953_film)>	1953	-
 <William_Gaddis>	<created>	<A_Frolic_of_His_Own>	1994	-
@@ -419,7 +419,7 @@
 <Tom_Frame_(bishop)>	<worksAt>	<University_of_New_South_Wales>	2014	-
 <Robert_Longo>	<isMarriedTo>	<Barbara_Sukowa>	1994	-
 <Seth_Raynor>	<created>	<Maidstone_Club>	1921	-
-<William_Burn>	<created>	<Balcarres_House>	19##	-
+<William_Burn>	<created>	<Balcarres_House>	-	-
 <Gordon_Allen_Newkirk,_Jr.>	<wasBornIn>	<Orange,_New_Jersey>	1928	1928
 <George_Robotham>	<isMarriedTo>	<Karin_Dor>	1988	2007
 <Westinghouse_Broadcasting>	<owns>	<WMAQ_(AM)>	1988	1994
@@ -1004,7 +1004,7 @@
 <Ralph_Recto>	<isAffiliatedTo>	<Nacionalista_Party>	2003	2007
 <Seiichi_Tanabe>	<isMarriedTo>	<Nene_Otsuka>	2002	-
 <Archibald_Leitch>	<created>	<Old_Trafford>	1909	-
-<Ernst_Anschütz>	<created>	<O_Tannenbaum>	16##	-
+<Ernst_Anschütz>	<created>	<O_Tannenbaum>	-	-
 <Roger_B._Chaffee>	<wasBornIn>	<Grand_Rapids,_Michigan>	1935	1935
 <Nico_Mirallegro>	<created>	<Hollyoaks>	2007	2010
 <Alan_Howard>	<isMarriedTo>	<Sally_Beauman>	2004	2015
@@ -1642,7 +1642,7 @@
 <Williamson_Evers>	<isAffiliatedTo>	<Libertarian_Party_(United_States)>	2000	-
 <Ben_Bernanke>	<wasBornIn>	<Augusta,_Georgia>	1953	1953
 <Vermin_Supreme>	<isAffiliatedTo>	<Independent_politician>	1988	2004
-<George_Gilbert_Scott>	<created>	<St_David's_Cathedral>	19##	-
+<George_Gilbert_Scott>	<created>	<St_David's_Cathedral>	-	-
 <Pannalal_Patel>	<created>	<Malela_Jeev>	1941	-
 <Martha_Gellhorn>	<diedIn>	<London>	1998	1998
 <Henri_Anier>	<playsFor>	<Hibernian_F.C.>	2015	2016
@@ -2572,7 +2572,7 @@
 <Herbert_Payne>	<isAffiliatedTo>	<Nationalist_Party_of_Australia>	1920	-
 <Betty_Warren_(artist)>	<isMarriedTo>	<Stuart_Lancaster_(actor)>	1949	1960
 <Marc_Richards>	<playsFor>	<Crewe_Alexandra_F.C.>	2001	-
-<Tylman_van_Gameren>	<created>	<Brühl_Palace,_Warsaw>	17##	18##
+<Tylman_van_Gameren>	<created>	<Brühl_Palace,_Warsaw>	-	-
 <Joseph_Larmor>	<hasWonPrize>	<Copley_Medal>	1921	-
 <Media_Nusantara_Citra>	<owns>	<SinemArt>	2003	2017
 <Kevin_Sharp_(footballer)>	<playsFor>	<Shrewsbury_Town_F.C.>	2005	2006
@@ -8494,7 +8494,7 @@
 <Richard_Axel>	<hasWonPrize>	<Fellow_of_the_Royal_Society>	2014	-
 <Ricardo_Lancaster-Jones_y_Verea>	<created>	<Haciendas_de_Jalisco_y_Aledaños_(1506–1821)>	1947	1948
 <Darryl_Rouson>	<wasBornIn>	<New_Orleans>	1954	1954
-<Philippe_Cannissié>	<created>	<Saint-Maurice,_Lille>	19##	-
+<Philippe_Cannissié>	<created>	<Saint-Maurice,_Lille>	-	-
 <João_Paulo_Pinto_Ribeiro>	<playsFor>	<Varzim_S.C.>	2002	2003
 <Eurípedes_Amoreirinha>	<playsFor>	<G.D._Estoril_Praia>	2005	-
 <Stuart_Ross_Taylor>	<hasWonPrize>	<V._M._Goldschmidt_Award>	1993	-
@@ -8762,7 +8762,7 @@
 <Marvin_Humes>	<wasBornIn>	<Greenwich>	1985	1985
 <Iván_Pérez_Muñoz>	<playsFor>	<CF_Extremadura>	1996	1997
 <Laurie_Halse_Anderson>	<created>	<Catalyst_(novel)>	2002	-
-<Arthur_Blomfield>	<created>	<St_Mary_Magdalene,_Richmond>	20##	-
+<Arthur_Blomfield>	<created>	<St_Mary_Magdalene,_Richmond>	-	-
 <Jean_Simmons>	<isMarriedTo>	<Richard_Brooks>	1960	-
 <Frank_Westheimer>	<wasBornIn>	<Baltimore>	1912	1912
 <Carole_Keeton_Strayhorn>	<wasBornIn>	<Austin,_Texas>	1939	1939
@@ -9588,7 +9588,7 @@
 <Simon_Vestdijk>	<created>	<De_kellner_en_de_levenden>	1934	1960
 <Robert_Hayden>	<wasBornIn>	<Detroit>	1913	1913
 <Henry_Eyring_(chemist)>	<hasWonPrize>	<Irving_Langmuir_Award>	1968	-
-<George_Webster_(architect)>	<created>	<Ingmire_Hall>	19##	-
+<George_Webster_(architect)>	<created>	<Ingmire_Hall>	-	-
 <John_Ambrose_Fleming>	<hasWonPrize>	<Hughes_Medal>	1910	-
 <Adrianne_Wadewitz>	<graduatedFrom>	<Columbia_University>	1999	-
 <Southern_Region_of_British_Railways>	<owns>	<Dunsbear_Halt_railway_station>	1948	1965
@@ -9739,7 +9739,7 @@
 <Frank_Stack>	<hasWonPrize>	<Inkpot_Award>	2011	-
 <Jim_Boeheim>	<hasWonPrize>	<NABC_Coach_of_the_Year>	2010	-
 <Henri_Anier>	<playsFor>	<Motherwell_F.C.>	2013	2014
-<Richard_Upjohn>	<created>	<Mandeville_House>	19##	-
+<Richard_Upjohn>	<created>	<Mandeville_House>	-	-
 <Raven-Symoné>	<created>	<Under_the_Sea>	2005	-
 <Diogo_Viana>	<playsFor>	<Gil_Vicente_F.C.>	2013	2015
 <Moses_Chan>	<isMarriedTo>	<Aimee_Chan>	2013	-
@@ -10539,7 +10539,7 @@
 <Nikolaas_Tinbergen>	<diedIn>	<Oxford>	1988	1988
 <Hicri_Fişek>	<diedIn>	<Turkey>	2002	2002
 <Marc_Crosas>	<playsFor>	<CD_Tenerife>	2016	2017
-<John_Nash_(architect)>	<created>	<St_David's_Cathedral>	18##	-
+<John_Nash_(architect)>	<created>	<St_David's_Cathedral>	-	-
 <Alex_Campbell_(golfer)>	<created>	<The_Country_Club>	1902	-
 <Lew_Grade>	<owns>	<AP_Films>	1962	-
 <Robert_Hastie>	<diedIn>	<Hawthorn,_Victoria>	1914	1914
@@ -10566,7 +10566,7 @@
 <John_Maynard_Smith>	<hasWonPrize>	<Frink_Medal>	1990	-
 <Lloyd_Carr>	<hasWonPrize>	<Bobby_Dodd_Coach_of_the_Year_Award>	2007	-
 <Edward_Norris>	<isMarriedTo>	<Ann_Sheridan>	1942	1943
-<Yue_Fei>	<created>	<Xing_Yi_Quan>	12##	19##
+<Yue_Fei>	<created>	<Xing_Yi_Quan>	-	-
 <Radio_New_Zealand>	<owns>	<Radio_Taranaki>	1996	-
 <Alfred_L._Kroeber>	<hasWonPrize>	<Viking_Fund_Medal>	1946	-
 <Dean_Parrett>	<playsFor>	<England_national_under-16_football_team>	2006	2007
@@ -15859,7 +15859,7 @@
 <João_Moreira_(footballer,_born_1986)>	<playsFor>	<Rayo_Vallecano>	2005	2006
 <Stan_Collymore>	<playsFor>	<Bradford_City_A.F.C.>	2000	2001
 <Neville_Southall>	<playsFor>	<Port_Vale_F.C.>	1983	-
-<Peter_Andreas_Blix>	<created>	<Hopperstad_Stave_Church>	19##	-
+<Peter_Andreas_Blix>	<created>	<Hopperstad_Stave_Church>	-	-
 <George_Pearce>	<isAffiliatedTo>	<United_Australia_Party>	1931	-
 <Rafi_Muhammad_Chaudhry>	<hasWonPrize>	<Nishan-e-Imtiaz>	1998	-
 <Southern_Region_of_British_Railways>	<owns>	<Yarde_Halt_railway_station>	1948	1965

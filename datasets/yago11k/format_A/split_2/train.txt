@@ -2,7 +2,6 @@
 <Fininvest>	<owns>	<Mediaset>	795	-
 <François_Marcela-Froideval>	<created>	<Black_Moon_Chronicles>	666	-
 <Jon_Vitti>	<created>	<Another_Simpsons_Clip_Show>	1997	151
-<Arthur_Blomfield>	<created>	<St_Mary_Magdalene,_Richmond>	20##	-
 <Alan_Walker_(music_producer)>	<created>	<Le_Beck_International>	391	-
 <Eggers_&_Higgins>	<created>	<Our_Lady_of_Victory_Church_(Manhattan)>	542	-
 <Baldassare_Peruzzi>	<created>	<Palazzo_Parisio_(Valletta)>	2016	1536
@@ -52,6 +51,7 @@
 <Nevil_Maskelyne>	<wasBornIn>	<London>	1732	1732
 <John_Simpson_(artist)>	<created>	<The_Captive_Slave>	1827	-
 <Olfert_Dapper>	<wasBornIn>	<Amsterdam>	1636	1636
+<Hansjürgen_Matthies>	<diedIn>	<Magdeburg>	2008	2008
 <Hicri_Fişek>	<diedIn>	<Turkey>	2002	2002
 <Bill_Cosby>	<isMarriedTo>	<Camille_Cosby>	1964	-
 <Louis_E._Brus>	<hasWonPrize>	<Kavli_Prize>	2008	-
@@ -1667,7 +1667,7 @@
 <Javi_Moreno>	<playsFor>	<Spain_national_football_team>	2001	-
 <W._V._D._Hodge>	<hasWonPrize>	<Royal_Medal>	1957	-
 <Chris_Kettings>	<playsFor>	<Oldham_Athletic_A.F.C.>	2016	-
-<George_Gilbert_Scott>	<created>	<St_David's_Cathedral>	19##	-
+<George_Gilbert_Scott>	<created>	<St_David's_Cathedral>	-	-
 <Aristophanes>	<created>	<The_Clouds>	-423	-
 <Charles_Barry>	<hasWonPrize>	<Royal_Gold_Medal>	1850	-
 <Ernst_Rolf>	<diedIn>	<Stockholm>	1932	1932
@@ -3331,7 +3331,7 @@
 <Manley_Laurence_Power>	<hasWonPrize>	<Legion_of_Merit>	1946	-
 <Min_Aung_Myat>	<isMarriedTo>	<Narapatisithu>	1174	1185
 <Nathaniel_P._Banks>	<diedIn>	<Waltham,_Massachusetts>	1894	1894
-<Ernst_Anschütz>	<created>	<O_Tannenbaum>	16##	-
+<Ernst_Anschütz>	<created>	<O_Tannenbaum>	-	-
 <Andrey_Chernyshov>	<playsFor>	<Royal_Antwerp_F.C.>	1998	-
 <Johanna_Reiss>	<created>	<The_Upstairs_Room>	1972	-
 <Fei-Fei_Li>	<hasWonPrize>	<Sloan_Fellowship>	2011	2014
@@ -3436,7 +3436,7 @@
 <Júlio_César_(football_goalkeeper,_born_1979)>	<playsFor>	<Queens_Park_Rangers_F.C.>	2012	2014
 <Georgia_Benkart>	<graduatedFrom>	<Ohio_State_University>	1970	-
 <Gerald_P._Carr>	<graduatedFrom>	<Princeton_University>	1962	-
-<William_Burn>	<created>	<Balcarres_House>	19##	-
+<William_Burn>	<created>	<Balcarres_House>	-	-
 <Nick_Holonyak>	<hasWonPrize>	<National_Medal_of_Science>	1990	-
 <Andrey_Kolmogorov>	<hasWonPrize>	<Lenin_Prize>	1965	-
 <Henry_Taube>	<hasWonPrize>	<National_Medal_of_Science>	1976	-
@@ -4655,7 +4655,7 @@
 <Transmission_Games>	<created>	<AFL_(video_game_series)>	2001	2007
 <Angelino_Alfano>	<wasBornIn>	<Agrigento>	1970	1970
 <João_Duarte_Pereira>	<playsFor>	<Portugal_national_under-17_football_team>	2006	2007
-<Peter_Andreas_Blix>	<created>	<Hopperstad_Stave_Church>	19##	-
+<Peter_Andreas_Blix>	<created>	<Hopperstad_Stave_Church>	-	-
 <Clive_King>	<created>	<Stig_of_the_Dump>	1963	-
 <Darryl_Rouson>	<isAffiliatedTo>	<Independent_politician>	1999	2005
 <Peter_Crouch>	<playsFor>	<Portsmouth_F.C.>	2008	2009
@@ -4857,7 +4857,7 @@
 <John_G._Thompson>	<hasWonPrize>	<National_Medal_of_Science>	2000	-
 <Yul_Kwon>	<graduatedFrom>	<Yale_Law_School>	2000	-
 <Luís_Lourenço>	<playsFor>	<C.F._Os_Belenenses>	2004	2005
-<John_Nash_(architect)>	<created>	<St_David's_Cathedral>	18##	-
+<John_Nash_(architect)>	<created>	<St_David's_Cathedral>	-	-
 <David_Kelly_(association_footballer)>	<playsFor>	<Leicester_City_F.C.>	1990	1991
 <Roy_Clarke>	<created>	<Young_Hyacinth>	2016	-
 <Frédéric_Piquionne>	<playsFor>	<Stade_Rennais_F.C.>	2001	2004
@@ -7225,7 +7225,7 @@
 <Harris_Yulin>	<isMarriedTo>	<Gwen_Welles>	1975	1993
 <Marie-Hélène_de_Rothschild>	<isMarriedTo>	<Guy_de_Rothschild>	1957	-
 <News_Corporation>	<owns>	<Fox_Interactive>	1994	2003
-<Philippe_Cannissié>	<created>	<Saint-Maurice,_Lille>	19##	-
+<Philippe_Cannissié>	<created>	<Saint-Maurice,_Lille>	-	-
 <Robert_Langlands>	<hasWonPrize>	<Wolf_Prize>	1995	-
 <Vladimir_Arnold>	<wasBornIn>	<Odessa>	1937	1937
 <Roald_Hoffmann>	<hasWonPrize>	<Priestley_Medal>	1990	-
@@ -10322,7 +10322,7 @@
 <William_Shockley>	<hasWonPrize>	<Nobel_Prize_in_Physics>	1956	-
 <Rupert_Ryan>	<isAffiliatedTo>	<Liberal_Party_of_Australia>	1945	-
 <Ralph_Recto>	<wasBornIn>	<Quezon_City>	1964	1964
-<Yue_Fei>	<created>	<Xing_Yi_Quan>	12##	19##
+<Yue_Fei>	<created>	<Xing_Yi_Quan>	-	-
 <Vladimir_Nabokov>	<created>	<The_Gift_(Nabokov_novel)>	1938	-
 <Alípio>	<wasBornIn>	<Brazil>	1992	1992
 <Sacyr_Vallehermoso>	<owns>	<Torre_PwC>	2011	-
@@ -12011,7 +12011,7 @@
 <Sam_Schulman>	<graduatedFrom>	<New_York_University>	1932	-
 <Lee_Morris_(footballer)>	<playsFor>	<England_national_under-21_football_team>	1999	-
 <British_Land>	<owns>	<Drake_Circus_Shopping_Centre>	2011	-
-<Tylman_van_Gameren>	<created>	<Brühl_Palace,_Warsaw>	17##	18##
+<Tylman_van_Gameren>	<created>	<Brühl_Palace,_Warsaw>	-	-
 <Oliver_Wolcott_Jr.>	<isAffiliatedTo>	<Federalist_Party>	1816	-
 <Tutta_Rolf>	<diedIn>	<Los_Angeles>	1994	1994
 <André_Weil>	<worksAt>	<University_of_Chicago>	1947	-

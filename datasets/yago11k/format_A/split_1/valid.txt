@@ -1920,6 +1920,7 @@
 <Brian_Josephson>	<hasWonPrize>	<Nobel_Prize_in_Physics>	1973	-
 <Theodore_Freeman>	<graduatedFrom>	<University_of_Michigan>	1960	-
 <Peter_Cochrane>	<worksAt>	<University_of_Sydney>	1982	-
+<Arthur_Blomfield>	<created>	<St_Mary_Magdalene,_Richmond>	-	-
 <Luciano_Violante>	<isAffiliatedTo>	<Democratic_Party_of_the_Left>	1991	1998
 <Raoul_Bott>	<hasWonPrize>	<Oswald_Veblen_Prize_in_Geometry>	1964	-
 <Stanford_White>	<diedIn>	<Manhattan>	1906	1906
@@ -2461,7 +2462,7 @@
 <Ian_Carnell>	<isMarriedTo>	<Kate_Carnell>	1977	1997
 <Sidney_Drell>	<hasWonPrize>	<Ernest_Orlando_Lawrence_Award>	1972	-
 <Gene_Chizik>	<hasWonPrize>	<Home_Depot_Coach_of_the_Year_Award>	2010	-
-<William_Burn>	<created>	<Balcarres_House>	19##	-
+<William_Burn>	<created>	<Balcarres_House>	-	-
 <Scott_Albert_(writer)>	<created>	<Below_the_Line>	2002	-
 <Chad_Michael_Murray>	<isMarriedTo>	<Sarah_Roemer>	2015	-
 <David_Fox_(footballer)>	<playsFor>	<Norwich_City_F.C.>	2010	2014
@@ -2897,6 +2898,7 @@
 <Rob_Kiernan>	<playsFor>	<Brentford_F.C.>	2012	2013
 <Terry_Bowden>	<hasWonPrize>	<Paul_\u0022Bear\u0022_Bryant_Award>	1993	-
 <Jon_Lucas>	<created>	<The_Change-Up>	2011	-
+<Tylman_van_Gameren>	<created>	<Brühl_Palace,_Warsaw>	-	-
 <William_Mann_(Australian_politician)>	<wasBornIn>	<Ballarat>	1875	1875
 <Simon_Walton>	<playsFor>	<Hull_City_A.F.C.>	2008	-
 <Richard_Hamming>	<wasBornIn>	<Chicago>	1915	1915
@@ -3072,5 +3074,3 @@
 <Lorna_Gray>	<isMarriedTo>	<David_Brian>	1949	1993
 <Robert_Weinberg>	<hasWonPrize>	<Keio_Medical_Science_Prize>	1997	-
 <Hal_Mohr>	<wasBornIn>	<San_Francisco>	1894	1894
-<John_Nolan_(British_actor)>	<isMarriedTo>	<Kim_Hartman>	1975	-
-<Roberto_Merino>	<playsFor>	<Ciudad_de_Murcia>	2005	-

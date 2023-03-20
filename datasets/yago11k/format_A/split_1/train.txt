@@ -13,7 +13,6 @@
 <Henry_Clay>	<isAffiliatedTo>	<Democratic-Republican_Party>	1803	1825
 <Qatar_Investment_Authority>	<owns>	<Sainsbury's>	999	-
 <Anthony_Watsham>	<created>	<Scelionidae>	123	-
-<Arthur_Blomfield>	<created>	<St_Mary_Magdalene,_Richmond>	20##	-
 <Chubu_Electric_Power>	<owns>	<Gorgon_gas_project>	417	-
 <Henry_VIII_of_England>	<created>	<King's_Ely>	1541	-
 <Francisco_Tito_Yupanqui>	<created>	<Virgen_de_Copacabana>	1583	-
@@ -25,13 +24,11 @@
 <Rembrandt>	<diedIn>	<Amsterdam>	1669	1669
 <Benjamin_Constant>	<wasBornIn>	<Lausanne>	1767	1767
 <Mary_II_of_England>	<diedIn>	<Kensington_Palace>	1694	1694
-<Tylman_van_Gameren>	<created>	<Brühl_Palace,_Warsaw>	17##	18##
 <William_Edmond_Logan>	<wasBornIn>	<Montreal>	1798	1798
 <David_Howell_(jurist)>	<wasBornIn>	<Morristown,_New_Jersey>	1747	1747
 <Euripides>	<created>	<The_Bacchae>	-405	-
 <George_Crabbe>	<created>	<The_Village_(poem)>	1783	-
 <Bernt_Michael_Holmboe>	<worksAt>	<University_of_Oslo>	1826	1850
-<Ernst_Anschütz>	<created>	<O_Tannenbaum>	16##	-
 <RAI>	<owns>	<Rai_Way>	184	-
 <Pierre_L._van_den_Berghe>	<worksAt>	<University_of_Washington>	1989	158
 <Ira_Condict>	<wasBornIn>	<Orange,_New_Jersey>	1764	1764
@@ -53,6 +50,9 @@
 <Unipol>	<owns>	<UnipolSai>	142	-
 <Shenyang_Aircraft_Design_Institute>	<created>	<SYAC_UAV>	601	-
 <Antonio_Caballero_y_Góngora>	<created>	<San_Mateo,_Boyacá>	1773	-
+<Oh_Yeon-soo>	<isMarriedTo>	<Son_Ji-chang>	1998	-
+<William_Hawks>	<isMarriedTo>	<Bessie_Love>	1929	1936
+<Kay_Davies>	<hasWonPrize>	<Fellow_of_the_Royal_Society>	2003	-
 <Edd_Kalehoff>	<created>	<Dream_House_(game_show)>	1983	-
 <William_Shockley>	<hasWonPrize>	<IEEE_Medal_of_Honor>	1980	-
 <Antonio_Puche>	<playsFor>	<Spain_national_under-20_football_team>	1990	-
@@ -790,7 +790,7 @@
 <Jack_Duncan-Hughes>	<isAffiliatedTo>	<Liberal_Party_(1922)>	1922	-
 <Kristiania_Kommunale_Sporveie>	<owns>	<Vippetangen_Line>	1900	-
 <CRRC_Corporation>	<owns>	<Zhuzhou_Electric_Locomotive_Works>	100	-
-<John_Nash_(architect)>	<created>	<St_David's_Cathedral>	18##	-
+<John_Nash_(architect)>	<created>	<St_David's_Cathedral>	-	-
 <William_C._Boyd>	<graduatedFrom>	<Boston_University>	1930	-
 <Mia_Malkova>	<isMarriedTo>	<Danny_Mountain>	2014	-
 <Irene_Wellington>	<created>	<London_County_Council>	1952	-
@@ -3403,7 +3403,7 @@
 <Maryam_Mirzakhani>	<wasBornIn>	<Tehran>	1977	1977
 <Linus_Pauling>	<hasWonPrize>	<Lomonosov_Gold_Medal>	1977	-
 <Manley_Laurence_Power>	<hasWonPrize>	<Distinguished_Service_Order>	1945	-
-<Yue_Fei>	<created>	<Xing_Yi_Quan>	12##	19##
+<Yue_Fei>	<created>	<Xing_Yi_Quan>	-	-
 <Matthew_Reid_(politician)>	<isAffiliatedTo>	<Australian_Labor_Party>	1893	1909
 <Rashid_Ahmed_Khan_Tahirkheli>	<worksAt>	<Gandhara_University>	1999	2014
 <Yeung_Sum>	<isAffiliatedTo>	<United_Democrats_of_Hong_Kong>	1990	-
@@ -7109,7 +7109,7 @@
 <Brenda_Benet>	<diedIn>	<Los_Angeles>	1982	1982
 <Aleix_Vidal>	<playsFor>	<FC_Barcelona>	2015	2002
 <Rubén_Iván_Martínez>	<playsFor>	<Rayo_Vallecano>	2012	2013
-<Peter_Andreas_Blix>	<created>	<Hopperstad_Stave_Church>	19##	-
+<Peter_Andreas_Blix>	<created>	<Hopperstad_Stave_Church>	-	-
 <Ramesh_Parekh>	<hasWonPrize>	<Uma-Snehrashmi_Prize>	1978	-
 <Aram_Khachaturian>	<isAffiliatedTo>	<Communist_Party_of_the_Soviet_Union>	1943	-
 <Ezell_Lee>	<isAffiliatedTo>	<Republican_Party_(United_States)>	2011	-
@@ -7680,7 +7680,7 @@
 <Emmanuel_Duah>	<playsFor>	<A.D._Ovarense>	2004	-
 <Paul_Snider>	<wasBornIn>	<Vancouver>	1951	1951
 <Arno_Allan_Penzias>	<hasWonPrize>	<Henry_Draper_Medal>	1977	-
-<Karl_Friedrich_Schinkel>	<created>	<Ehrenburg_Palace>	19##	-
+<Karl_Friedrich_Schinkel>	<created>	<Ehrenburg_Palace>	-	-
 <Frederick_Reines>	<hasWonPrize>	<Nobel_Prize_in_Physics>	1995	-
 <Roy_W._Hill>	<diedIn>	<Rancho_Mirage,_California>	1986	1986
 <Jesús_Cabrero>	<playsFor>	<Spain_national_under-18_football_team>	1999	-
@@ -7870,7 +7870,7 @@
 <Whit_Stillman>	<wasBornIn>	<Washington,_D.C.>	1952	1952
 <Bruno_Vale>	<playsFor>	<Portugal_national_under-17_football_team>	2000	-
 <Kim_Källström>	<playsFor>	<Djurgårdens_IF_Fotboll>	2002	2003
-<Philippe_Cannissié>	<created>	<Saint-Maurice,_Lille>	19##	-
+<Philippe_Cannissié>	<created>	<Saint-Maurice,_Lille>	-	-
 <John_D._Roberts>	<hasWonPrize>	<ACS_Award_in_Pure_Chemistry>	1954	-
 <Margarita_Cedeño_de_Fernández>	<isMarriedTo>	<Leonel_Fernández>	2003	-
 <Arne_Henriksen>	<created>	<Slependen_Station>	1993	-
@@ -10436,7 +10436,7 @@
 <Alexander_R._Todd>	<hasWonPrize>	<Paul_Karrer_Gold_Medal>	1963	-
 <Reg_Turnbull>	<diedIn>	<Melbourne>	2006	2006
 <Noel_Blanc>	<wasBornIn>	<Los_Angeles>	1938	1938
-<George_Webster_(architect)>	<created>	<Ingmire_Hall>	19##	-
+<George_Webster_(architect)>	<created>	<Ingmire_Hall>	-	-
 <James_McNulty_(footballer)>	<playsFor>	<Stockport_County_F.C.>	2008	2009
 <Adam_Eckersley>	<playsFor>	<Heart_of_Midlothian_F.C.>	2014	2015
 <John_G._Thompson>	<hasWonPrize>	<Abel_Prize>	2008	-
@@ -10607,7 +10607,7 @@
 <Cândido_Costa>	<playsFor>	<Portugal_national_under-21_football_team>	2000	2004
 <Fabio_Bazzani>	<playsFor>	<S.S._Lazio>	2005	-
 <Chris_Baird>	<playsFor>	<Reading_F.C.>	2013	2014
-<George_Gilbert_Scott>	<created>	<St_David's_Cathedral>	19##	-
+<George_Gilbert_Scott>	<created>	<St_David's_Cathedral>	-	-
 <Kiyoshi_Oka>	<hasWonPrize>	<Japan_Academy_Prize_(academics)>	1951	-
 <Enzo_Maresca>	<playsFor>	<Málaga_CF>	2011	2012
 <George_Gaylord_Simpson>	<diedIn>	<Fresno,_California>	1984	1984

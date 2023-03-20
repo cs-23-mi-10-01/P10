@@ -659,7 +659,7 @@
 <Val_Avery>	<wasBornIn>	<Philadelphia>	1924	1924
 <Doris_Roberts>	<wasBornIn>	<St._Louis>	1925	1925
 <Daniel_Kahneman>	<worksAt>	<Center_for_Advanced_Study_in_the_Behavioral_Sciences>	1972	-
-<John_Nash_(architect)>	<created>	<St_David's_Cathedral>	18##	-
+<John_Nash_(architect)>	<created>	<St_David's_Cathedral>	-	-
 <Lee_Morris_(footballer)>	<playsFor>	<Mansfield_Town_F.C.>	2009	2010
 <Dani_García_(footballer,_born_1974)>	<playsFor>	<Spain_national_under-16_football_team>	1991	-
 <Syed_Ishtiaq_Ahmed>	<diedIn>	<Dhaka>	2003	2003
@@ -694,7 +694,7 @@
 <Stephen_Mann_(chemist)>	<hasWonPrize>	<Davy_Medal>	2016	-
 <Conor_Wilkinson>	<playsFor>	<Torquay_United_F.C.>	2014	-
 <Dennis_Sullivan>	<hasWonPrize>	<Wolf_Prize_in_Mathematics>	2010	-
-<Arthur_Blomfield>	<created>	<St_Mary_Magdalene,_Richmond>	20##	-
+<Arthur_Blomfield>	<created>	<St_Mary_Magdalene,_Richmond>	-	-
 <Walter_Liberty_Vernon>	<created>	<Central_railway_station,_Sydney>	1901	-
 <Raven_Software>	<created>	<Soldier_of_Fortune_(series)>	2000	2002
 <Claude_Lévi-Strauss>	<graduatedFrom>	<University_of_Paris>	1948	-
@@ -753,7 +753,7 @@
 <Joseph_Chamberlain>	<isAffiliatedTo>	<Liberal_Party_(UK)>	1866	1886
 <Laurent_Wauquiez>	<isAffiliatedTo>	<Union_for_a_Popular_Movement>	2015	-
 <Gary_Roberts_(footballer,_born_1987)>	<playsFor>	<Mansfield_Town_F.C.>	2012	2013
-<William_Burn>	<created>	<Balcarres_House>	19##	-
+<William_Burn>	<created>	<Balcarres_House>	-	-
 <Gennifer_Flowers>	<wasBornIn>	<Oklahoma_City>	1950	1950
 <Archibald_Leitch>	<created>	<Stamford_Bridge_(stadium)>	1887	-
 <Hayden_Foxe>	<playsFor>	<Perth_Glory_FC>	2007	2009
@@ -2748,7 +2748,7 @@
 <Francis_Ley>	<owns>	<Baseball_Ground>	1924	-
 <Grover_Krantz>	<worksAt>	<Washington_State_University>	1968	1998
 <James_Carson_Gardner>	<owns>	<Carolina_Cougars>	1969	-
-<Karl_Friedrich_Schinkel>	<created>	<Ehrenburg_Palace>	19##	-
+<Karl_Friedrich_Schinkel>	<created>	<Ehrenburg_Palace>	-	-
 <Zoltán_Stieber>	<playsFor>	<1._FC_Nürnberg>	2016	-
 <Rudolf_Klein-Rogge>	<isMarriedTo>	<Thea_von_Harbou>	1914	1920
 <Graham_Roberts>	<playsFor>	<Stevenage_F.C.>	1994	1995
@@ -4092,7 +4092,7 @@
 <Manjul_Bhargava>	<hasWonPrize>	<Fields_Medal>	2014	-
 <Ladislaus_Bortkiewicz>	<graduatedFrom>	<University_of_Göttingen>	1892	-
 <Gordon_Carroll>	<diedIn>	<Los_Angeles>	2005	2005
-<Yue_Fei>	<created>	<Xing_Yi_Quan>	12##	19##
+<Yue_Fei>	<created>	<Xing_Yi_Quan>	-	-
 <Alexandre_Pato>	<playsFor>	<Sport_Club_Corinthians_Paulista>	2013	2016
 <Weston_Bate>	<worksAt>	<University_of_Melbourne>	1952	-
 <Populous_(company)>	<created>	<Hard_Rock_Stadium>	2016	-
@@ -4926,7 +4926,7 @@
 <Warner_Bros._Records>	<created>	<Kidsongs>	1985	-
 <Jan_Rubeš>	<diedIn>	<Toronto>	2009	2009
 <Samuel_Butler_(poet)>	<created>	<Hudibras>	1663	1678
-<George_Webster_(architect)>	<created>	<Ingmire_Hall>	19##	-
+<George_Webster_(architect)>	<created>	<Ingmire_Hall>	-	-
 <Astro_de_Ogum>	<isAffiliatedTo>	<Brazilian_Democratic_Movement_Party>	1986	1993
 <Peter_Debye>	<hasWonPrize>	<Priestley_Medal>	1963	-
 <Lily_Safra>	<isMarriedTo>	<Edmond_Safra>	1976	1999
@@ -7791,7 +7791,7 @@
 <Hermann_Emil_Fischer>	<hasWonPrize>	<Davy_Medal>	1890	-
 <Danny_Chan_Kwok-kwan>	<wasBornIn>	<Hong_Kong>	1975	1975
 <Iván_Amaya>	<playsFor>	<Ciudad_de_Murcia>	2005	2007
-<Tylman_van_Gameren>	<created>	<Brühl_Palace,_Warsaw>	17##	18##
+<Tylman_van_Gameren>	<created>	<Brühl_Palace,_Warsaw>	-	-
 <NBCUniversal>	<owns>	<Das_Vierte>	2005	2008
 <Gruppo_Editoriale_L'Espresso>	<owns>	<DeeJay_TV>	2002	2015
 <Werner_Klemperer>	<diedIn>	<Manhattan>	2000	2000
@@ -10405,7 +10405,7 @@
 <EA_Sports>	<created>	<AFL_(video_game_series)>	1997	1998
 <Birkan_Sokullu>	<wasBornIn>	<Turkey>	1985	1985
 <B._V._Radha>	<wasBornIn>	<Bangalore>	1948	1948
-<Peter_Andreas_Blix>	<created>	<Hopperstad_Stave_Church>	19##	-
+<Peter_Andreas_Blix>	<created>	<Hopperstad_Stave_Church>	-	-
 <John_Marsden_(footballer)>	<playsFor>	<Wrexham_A.F.C.>	2000	2004
 <Jeremiah_P._Ostriker>	<hasWonPrize>	<James_Craig_Watson_Medal>	2012	-
 <Evi_Quaid>	<wasBornIn>	<New_Jersey>	1963	1963
@@ -12042,7 +12042,7 @@
 <Leo_Bertos>	<playsFor>	<Chester_City_F.C.>	2005	-
 <Prince_Alfonso_of_Hohenlohe-Langenburg>	<wasBornIn>	<Madrid>	1924	1924
 <Alessio_Cerci>	<playsFor>	<Brescia_Calcio>	2006	2007
-<Philippe_Cannissié>	<created>	<Saint-Maurice,_Lille>	19##	-
+<Philippe_Cannissié>	<created>	<Saint-Maurice,_Lille>	-	-
 <Thea_von_Harbou>	<diedIn>	<Berlin>	1954	1954
 <Fernando_de_Abreu_Ferreira>	<playsFor>	<Racing_de_Santander_B>	2003	2007
 <Oleg_Strakhanovich>	<playsFor>	<FBK_Kaunas>	2007	-
@@ -12841,7 +12841,7 @@
 <Gerardo_Berodia>	<playsFor>	<Zamora_CF>	2008	2009
 <John_E._Walker>	<hasWonPrize>	<Fellow_of_the_Royal_Society>	1995	-
 <Nicole_Kidman>	<isMarriedTo>	<Tom_Cruise>	1990	2001
-<George_Gilbert_Scott>	<created>	<St_David's_Cathedral>	19##	-
+<George_Gilbert_Scott>	<created>	<St_David's_Cathedral>	-	-
 <Peter_Ustinov>	<wasBornIn>	<London>	1921	1921
 <Michael_Levine_(biologist)>	<graduatedFrom>	<Yale_University>	1981	-
 <Liam_Miller>	<playsFor>	<Queens_Park_Rangers_F.C.>	2009	-
@@ -13588,7 +13588,7 @@
 <Steve_Allen>	<isMarriedTo>	<Jayne_Meadows>	1943	1952
 <DJ_Antoine>	<created>	<Welcome_to_St._Tropez>	2015	-
 <Jack_Kent_Cooke>	<diedIn>	<Washington,_D.C.>	1997	1997
-<Ernst_Anschütz>	<created>	<O_Tannenbaum>	16##	-
+<Ernst_Anschütz>	<created>	<O_Tannenbaum>	-	-
 <Diego_Olivera>	<isMarriedTo>	<Mónica_Ayos>	2001	-
 <Suchitra_Krishnamoorthi>	<isMarriedTo>	<Shekhar_Kapur>	1999	2007
 <Orlando_Sá>	<playsFor>	<AEL_Limassol>	2012	2014

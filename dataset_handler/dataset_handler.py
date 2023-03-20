@@ -110,7 +110,7 @@ class DatasetHandler:
                         modified_row["start_timestamp"] = "-" + start_timestap.split('-')[1]
                     else:
                         year = start_timestap.split('-')[0]
-                        if year == "####":
+                        if year[2] == '#':
                             modified_row["start_timestamp"] = "-"
                         else:
                             modified_row["start_timestamp"] = year
@@ -120,7 +120,7 @@ class DatasetHandler:
                         modified_row["end_timestamp"] = "-" + end_timestap.split('-')[1]
                     else:
                         year = end_timestap.split('-')[0]
-                        if year == "####":
+                        if year[2] == '#':
                             modified_row["end_timestamp"] = "-"
                         else:
                             modified_row["end_timestamp"] = year

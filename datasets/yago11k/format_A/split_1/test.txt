@@ -1,3 +1,5 @@
+<John_Nolan_(British_actor)>	<isMarriedTo>	<Kim_Hartman>	1975	-
+<Roberto_Merino>	<playsFor>	<Ciudad_de_Murcia>	2005	-
 <Paoli_Dam>	<created>	<Kaalbela>	2009	-
 <Jaime_Bergman>	<isMarriedTo>	<David_Boreanaz>	2001	-
 <Frederick_Vine>	<hasWonPrize>	<Arthur_L._Day_Medal>	1968	-
@@ -582,6 +584,7 @@
 <Alan_Alda>	<isMarriedTo>	<Arlene_Alda>	1957	-
 <Donald_Lynden-Bell>	<hasWonPrize>	<Karl_Schwarzschild_Medal>	1983	-
 <Lars_Hörmander>	<hasWonPrize>	<Fields_Medal>	1962	-
+<Ernst_Anschütz>	<created>	<O_Tannenbaum>	-	-
 <Harry_B._Gray>	<hasWonPrize>	<Othmer_Gold_Medal>	2013	-
 <Andrew_Peter_Mackenzie>	<hasWonPrize>	<Fellow_of_the_Institute_of_Physics>	2017	-
 <Dickie_Moore_(actor)>	<isMarriedTo>	<Jane_Powell>	1988	2015
@@ -1878,7 +1881,7 @@
 <Werner_Scheler>	<isAffiliatedTo>	<Nazi_Party>	1941	1945
 <Jean_Bourgain>	<hasWonPrize>	<Shaw_Prize>	2010	-
 <David_Lack>	<hasWonPrize>	<Fellow_of_the_Royal_Society>	1951	-
-<Richard_Upjohn>	<created>	<Mandeville_House>	19##	-
+<Richard_Upjohn>	<created>	<Mandeville_House>	-	-
 <Ernesto_Maceda>	<isAffiliatedTo>	<Nationalist_People's_Coalition>	1992	2013
 <C._V._Raman>	<diedIn>	<Bangalore>	1970	1970
 <Dean_Kamen>	<hasWonPrize>	<ASME_Medal>	2007	-
@@ -3071,6 +3074,3 @@
 <Elías_Molina>	<playsFor>	<FC_Cartagena>	2005	2007
 <Emil_Leon_Post>	<diedIn>	<New_York_City>	1954	1954
 <William_Anders>	<graduatedFrom>	<United_States_Naval_Academy>	1955	-
-<Oh_Yeon-soo>	<isMarriedTo>	<Son_Ji-chang>	1998	-
-<William_Hawks>	<isMarriedTo>	<Bessie_Love>	1929	1936
-<Kay_Davies>	<hasWonPrize>	<Fellow_of_the_Royal_Society>	2003	-

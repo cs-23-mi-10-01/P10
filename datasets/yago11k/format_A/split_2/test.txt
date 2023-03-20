@@ -1,3 +1,4 @@
+<Xavier_Roca>	<wasBornIn>	<Barcelona>	1974	1974
 <Cindy_Adams>	<isMarriedTo>	<Joey_Adams>	1952	1999
 <Nuno_Afonso>	<playsFor>	<Portugal_national_under-18_football_team>	1990	1993
 <Jordan_Spence>	<playsFor>	<West_Ham_United_F.C.>	2007	2014
@@ -2251,7 +2252,7 @@
 <Juanlu_(footballer,_born_1984)>	<playsFor>	<Spain_national_under-19_football_team>	2002	2003
 <Barbara_Minty>	<wasBornIn>	<Seattle>	1953	1953
 <Gai_Assulin>	<playsFor>	<Israel_national_football_team>	2008	-
-<Karl_Friedrich_Schinkel>	<created>	<Ehrenburg_Palace>	19##	-
+<Karl_Friedrich_Schinkel>	<created>	<Ehrenburg_Palace>	-	-
 <J_Mays>	<created>	<Ford_Taurus_(fifth_generation)>	2005	-
 <Freddy_Adu>	<playsFor>	<Philadelphia_Union>	2011	2013
 <Suresh_Joshi>	<created>	<Chhinnapatra>	1965	-
@@ -3073,4 +3074,3 @@
 <Eveline_Herfkens>	<wasBornIn>	<The_Hague>	1952	1952
 <Andrey_Yeshchenko>	<playsFor>	<FC_Arsenal_Kyiv>	2009	2011
 <Peter_Scholze>	<wasBornIn>	<Dresden>	1987	1987
-<Hansjürgen_Matthies>	<diedIn>	<Magdeburg>	2008	2008

@@ -367,6 +367,7 @@
 <David_Chatters>	<isAffiliatedTo>	<Reform_Party_of_Canada>	1993	2000
 <Media_Nusantara_Citra>	<owns>	<RCTI>	1989	2003
 <Evelyn_Venable>	<isMarriedTo>	<Hal_Mohr>	1934	1974
+<Arthur_Blomfield>	<created>	<St_Mary_Magdalene,_Richmond>	-	-
 <Hrvatski_Telekom>	<owns>	<Combis>	100	-
 <Leonel_Fernández>	<wasBornIn>	<Santo_Domingo>	1953	1953
 <Lucie_Aubrac>	<wasBornIn>	<Paris>	1912	1912
@@ -647,7 +648,7 @@
 <Thornton_Wilder>	<wasBornIn>	<Madison,_Wisconsin>	1897	1897
 <Henry_Lee_Junior>	<wasBornIn>	<British_Hong_Kong>	1958	1958
 <Mick_Kennedy>	<playsFor>	<Wigan_Athletic_F.C.>	1993	1994
-<Richard_Upjohn>	<created>	<Mandeville_House>	19##	-
+<Richard_Upjohn>	<created>	<Mandeville_House>	-	-
 <Peter_Zoller>	<hasWonPrize>	<Max_Planck_Medal>	2005	-
 <Lachlan_Macleay>	<wasBornIn>	<St._Louis>	1931	1931
 <Anthony_James_Leggett>	<wasBornIn>	<Camberwell>	1938	1938
@@ -1460,7 +1461,7 @@
 <Joe_Kubert>	<hasWonPrize>	<Inkwell_Awards>	2015	-
 <Daniel_Nathans>	<hasWonPrize>	<National_Medal_of_Science>	1993	-
 <Ludwig_von_Bogdandy>	<worksAt>	<Voestalpine>	1988	1992
-<George_Webster_(architect)>	<created>	<Ingmire_Hall>	19##	-
+<George_Webster_(architect)>	<created>	<Ingmire_Hall>	-	-
 <Gerd_Binnig>	<hasWonPrize>	<Kavli_Prize>	2016	-
 <Peter_G._Levine>	<worksAt>	<Ohio_State_University>	2011	-
 <Daniel_Fernandes_(footballer)>	<playsFor>	<FC_Porto_B>	2001	2002
@@ -3073,4 +3074,3 @@
 <Rainbow_Studios>	<created>	<Cars_(video_game)>	360	-
 <Philippe_Douste-Blazy>	<isAffiliatedTo>	<Union_for_a_Popular_Movement>	2002	2015
 <William_Halsey_Wood>	<created>	<Carnegie_Free_Library_of_Braddock>	1888	1893
-<Xavier_Roca>	<wasBornIn>	<Barcelona>	1974	1974
