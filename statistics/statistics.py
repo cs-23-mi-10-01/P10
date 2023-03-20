@@ -361,11 +361,14 @@ class Statistics():
             relations_dict = {}
 
             print(mode)
-            if mode == "no-timestamps":
-                for row in reader.rows():
+            for row in reader.rows():
+                if self.params.dataset in ["icews14"]:
+                    row["start_timestamp"] = row["timestamp"]
+                    row["end_timestamp"] = "-"
+                if mode == "no-timestamps":
                     row["start_timestamp"] = "-"
                     row["end_timestamp"] = "-"
-
+            
             i = 0
             for row in reader.rows():
                 if i % 100 == 0:
