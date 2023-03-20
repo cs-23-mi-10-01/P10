@@ -18,9 +18,12 @@
 <Ryoichi_Kimizuka>	<created>	<Parasite_Eve_(film)>	2008	398
 <Kaohsiung_City_Government>	<owns>	<Kaohsiung_Mass_Rapid_Transit>	2037	-
 <Brett_Gurewitz>	<created>	<Sorrow_(Bad_Religion_song)>	168	-
+<Euripides>	<created>	<The_Trojan_Women>	-415	-
 <Finsoe>	<owns>	<Unipol>	404	614
+<Aristophanes>	<created>	<Thesmophoriazusae>	-411	-
 <Moby>	<created>	<Alice_(Moby_song)>	419	-
 <Vladimir_the_Great>	<created>	<Russian_Orthodox_Church>	988	-
+<Aristophanes>	<created>	<The_Birds_(play)>	-414	-
 <Agoraphobic_Nosebleed>	<created>	<Domestic_Powerviolence>	213	-
 <Nevil_Maskelyne>	<worksAt>	<Royal_Society_of_Edinburgh>	1784	-
 <David_Howell_(jurist)>	<graduatedFrom>	<Brown_University>	1769	-
@@ -42,16 +45,13 @@
 <James_Brown_Lord>	<created>	<St._Nicholas_Historic_District>	138	-
 <Min_Aung_Myat>	<isMarriedTo>	<Narapatisithu>	1174	1185
 <Giacomo_Quarenghi>	<created>	<Alexander_Palace>	2007	287
+<Aristophanes>	<created>	<The_Wasps>	-422	-
 <Tylman_van_Gameren>	<wasBornIn>	<Utrecht>	1632	1632
 <Eggers_&_Higgins>	<created>	<Immaculate_Conception_Church_(Manhattan)>	542	1945
 <Banca_Tercas>	<owns>	<Banca_Caripe>	979	-
 <Nicholas_Serracino>	<created>	<St._Mark_the_Evangelist's_Church_(New_York_City)>	1170	-
 <Naratheinkha>	<isMarriedTo>	<Min_Aung_Myat>	1171	-
 <Arthur_Davenport_(engineer)>	<created>	<Westland_IV>	1991	176
-<Dan_Castellaneta>	<wasBornIn>	<Oak_Park,_Illinois>	1957	1957
-<Gautam_Kaul>	<worksAt>	<University_of_Chicago>	1984	-
-<Ouida_Bergère>	<isMarriedTo>	<Basil_Rathbone>	1926	1967
-<José_de_la_Cuadra>	<created>	<Los_Sangurimas>	1932	1934
 <José_Fonte>	<playsFor>	<Southampton_F.C.>	2010	2017
 <Luke_Rhinehart>	<wasBornIn>	<Albany,_New_York>	1932	1932
 <Telltale_Games>	<created>	<Monkey_Island_(series)>	2009	-
@@ -1116,7 +1116,7 @@
 <Ann_Turkel>	<wasBornIn>	<New_York_City>	1946	1946
 <Pamela_Silva_Conde>	<wasBornIn>	<Lima>	1981	1981
 <Richard_Friend>	<worksAt>	<National_University_of_Singapore>	2013	-
-<Euripides>	<created>	<Hippolytus_(play)>		-
+<Euripides>	<created>	<Hippolytus_(play)>	-428	-
 <Ben_Gordon_(footballer,_born_1991)>	<playsFor>	<Leeds_United_F.C.>	2005	2007
 <Electricity_Trust_of_South_Australia>	<owns>	<Telford_Cut>	1948	-
 <Lady_Blossom>	<isMarriedTo>	<Stone_Cold_Steve_Austin>	1993	1999
@@ -3456,7 +3456,7 @@
 <Kenan_Doğulu>	<wasBornIn>	<Turkey>	1974	1974
 <Elena_Varzi>	<wasBornIn>	<Rome>	1926	1926
 <Raymond_Barre>	<isAffiliatedTo>	<Independent_politician>	1981	2007
-<Aristophanes>	<created>	<The_Clouds>		-
+<Aristophanes>	<created>	<The_Clouds>	-423	-
 <James_Clerk_Maxwell>	<hasWonPrize>	<Smith's_Prize>	1854	-
 <Matthew_Upson>	<playsFor>	<Birmingham_City_F.C.>	2003	2007
 <Jóan_Símun_Edmundsson>	<playsFor>	<Newcastle_United_F.C.>	2010	2012
@@ -8231,7 +8231,7 @@
 <Valéry_Giscard_d'Estaing>	<isMarriedTo>	<Anne-Aymone_Giscard_d'Estaing>	1952	-
 <John_C._Slater>	<hasWonPrize>	<Irving_Langmuir_Award>	1967	-
 <Richard_A._Anthes>	<worksAt>	<Pennsylvania_State_University>	1971	1977
-<Euripides>	<created>	<The_Bacchae>		-
+<Euripides>	<created>	<The_Bacchae>	-405	-
 <Paddy_McCourt>	<playsFor>	<Celtic_F.C.>	2008	2013
 <Carl_Gustav_Jacob_Jacobi>	<diedIn>	<Berlin>	1851	1851
 <Paul_Konchesky>	<playsFor>	<Fulham_F.C.>	2007	2010
@@ -8809,7 +8809,7 @@
 <Seagram>	<owns>	<Propaganda_Films>	1998	2000
 <Manley_Laurence_Power>	<hasWonPrize>	<Distinguished_Service_Order>	1945	-
 <Keno_Davis>	<hasWonPrize>	<Henry_Iba_Award>	2008	-
-<Aristophanes>	<created>	<The_Frogs>		-
+<Aristophanes>	<created>	<The_Frogs>	-405	-
 <Stuart_Taylor_(footballer,_born_1980)>	<playsFor>	<Cardiff_City_F.C.>	2009	-
 <Jason_Brown_(footballer)>	<playsFor>	<Wales_national_football_team>	2006	2012
 <Stefan_Nikolić>	<playsFor>	<PFC_CSKA_Sofia>	2015	-
@@ -10037,7 +10037,7 @@
 <Rosie_Perez>	<wasBornIn>	<Brooklyn>	1964	1964
 <Michele_Lee>	<wasBornIn>	<Los_Angeles>	1942	1942
 <Greg_Orman>	<isAffiliatedTo>	<Independent_politician>	2009	-
-<Euripides>	<created>	<Medea_(play)>		-
+<Euripides>	<created>	<Medea_(play)>	-431	-
 <Claude_Chirac>	<isMarriedTo>	<Frédéric_Salat-Baroux>	2011	-
 <Renee_Young>	<isMarriedTo>	<Dean_Ambrose>	2017	-
 <Aloysio_Nunes>	<isAffiliatedTo>	<Brazilian_Democratic_Movement>	1974	1980
@@ -12889,7 +12889,7 @@
 <Dmitri_Bulykin>	<playsFor>	<AFC_Ajax>	2011	2012
 <Studs_Terkel>	<graduatedFrom>	<University_of_Chicago>	1932	1934
 <Esperanza_Aguirre>	<isAffiliatedTo>	<People's_Party_(Spain)>	1989	-
-<Aristophanes>	<created>	<Lysistrata>		-
+<Aristophanes>	<created>	<Lysistrata>	-411	-
 <Billy_Zeoli>	<created>	<How_Should_We_Then_Live?>	1977	-
 <Cormac_McCarthy>	<created>	<Suttree>	1979	-
 <Danilo_Arrieta>	<playsFor>	<Valencia_CF_Mestalla>	2002	2004

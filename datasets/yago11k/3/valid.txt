@@ -2538,7 +2538,6 @@
 <Harry_F._Byrd_Jr.>	<wasBornIn>	<Winchester,_Virginia>	1914	1914
 <Thomas_W._Reps>	<worksAt>	<GrammaTech>	1988	-
 <Jan_Åge_Fjørtoft>	<playsFor>	<Lillestrøm_SK>	1988	1989
-<Euripides>	<created>	<The_Trojan_Women>		-
 <Jeffrey_Hunter>	<isMarriedTo>	<Emily_McLaughlin>	1969	1969
 <Derek_Asamoah>	<playsFor>	<Hamilton_Academical_F.C.>	2009	-
 <Edwin_Sherin>	<isMarriedTo>	<Jane_Alexander>	1975	2017
@@ -2746,7 +2745,6 @@
 <Stanley_B._Prusiner>	<hasWonPrize>	<Lasker_Award>	1994	-
 <Lyman_Spitzer>	<wasBornIn>	<Toledo,_Ohio>	1914	1914
 <Greg_Wise>	<isMarriedTo>	<Emma_Thompson>	2003	-
-<Aristophanes>	<created>	<Thesmophoriazusae>		-
 <Paulo_Santos_(Portuguese_footballer)>	<playsFor>	<Sporting_Clube_de_Portugal>	1984	1989
 <Joan_Verdú>	<playsFor>	<RCD_Espanyol>	2009	2013
 <Lewis_Price>	<playsFor>	<Sheffield_Wednesday_F.C.>	2015	2016
@@ -2855,7 +2853,6 @@
 <Luís_Zambujo>	<playsFor>	<C.D._Olivais_e_Moscavide>	2006	2007
 <Louise_Troy>	<isMarriedTo>	<Werner_Klemperer>	1969	1975
 <Tomasz_Zdebel>	<playsFor>	<Fortuna_Düsseldorf>	1988	1990
-<Aristophanes>	<created>	<The_Birds_(play)>		-
 <Eros_Djarot>	<created>	<Tjoet_Nja'_Dhien>	1988	-
 <Zoltán_Stieber>	<playsFor>	<Yeovil_Town_F.C.>	2007	2008
 <Lev_Landau>	<hasWonPrize>	<Nobel_Prize_in_Physics>	1962	-
@@ -3074,3 +3071,6 @@
 <Conrail>	<owns>	<Mon_Line>	1999	-
 <Alexander_Markovich_Polyakov>	<hasWonPrize>	<Dannie_Heineman_Prize_for_Mathematical_Physics>	1986	-
 <Schuyler_Merritt>	<graduatedFrom>	<Columbia_Law_School>	1876	-
+<Isaac_Cuenca>	<playsFor>	<CF_Reus_Deportiu>	2007	-
+<Dan_McKenzie_(geophysicist)>	<hasWonPrize>	<Crafoord_Prize>	2002	-
+<Nico_Mirallegro>	<created>	<Hollyoaks>	2007	2010

@@ -20,7 +20,7 @@
 <Defy_Media>	<owns>	<Shut_Up!_Cartoons>	2014	-
 <Robert_Townsend_(actor)>	<created>	<The_Parent_'Hood>	1995	1999
 <Horton_Foote>	<created>	<To_Kill_a_Mockingbird_(film)>	1962	-
-<Aristophanes>	<created>	<The_Frogs>		-
+<Aristophanes>	<created>	<The_Frogs>	-405	-
 <Martha_Graham>	<hasWonPrize>	<Presidential_Medal_of_Freedom>	1976	-
 <Samuel_Hoffenstein>	<created>	<Enchanted_April_(1935_film)>	1922	-
 <Lorna_Gray>	<diedIn>	<Sherman_Oaks,_Los_Angeles>	2017	2017
@@ -553,7 +553,7 @@
 <Margaret_McNamara>	<wasBornIn>	<Spokane,_Washington>	1915	1915
 <Ushnas>	<created>	<Trun_No_Grah>	1964	-
 <Margaret_McNamara>	<hasWonPrize>	<Presidential_Medal_of_Freedom>	1981	-
-<Euripides>	<created>	<Medea_(play)>		-
+<Euripides>	<created>	<Medea_(play)>	-431	-
 <Janice_Filmon>	<wasBornIn>	<Winnipeg>	1943	1943
 <Yitzhak_Rabin>	<wasBornIn>	<Jerusalem>	1922	1922
 <Ian_Graham_Gass>	<worksAt>	<Open_University>	1969	-
@@ -4056,7 +4056,7 @@
 <Sunil_Dutt>	<diedIn>	<Mumbai>	2005	2005
 <Shinji_Sasaoka>	<hasWonPrize>	<Eiji_Sawamura_Award>	1991	-
 <John_Rogers_(baseball)>	<wasBornIn>	<Philadelphia>	1844	1844
-<Euripides>	<created>	<Hippolytus_(play)>		-
+<Euripides>	<created>	<Hippolytus_(play)>	-428	-
 <Vincent_Poor>	<hasWonPrize>	<IEEE_Alexander_Graham_Bell_Medal>	2017	-
 <Karl_von_Vincent>	<hasWonPrize>	<Order_of_Leopold_(Austria)>	1809	1815
 <Charles_Boyer>	<isMarriedTo>	<Pat_Paterson>	1934	1978
@@ -4234,7 +4234,7 @@
 <Mary_Ann_Mobley>	<diedIn>	<Beverly_Hills,_California>	2014	2014
 <Prince_Alfonso_of_Hohenlohe-Langenburg>	<wasBornIn>	<Madrid>	1924	1924
 <Daniel_Kearns_(footballer)>	<playsFor>	<Chesterfield_F.C.>	2014	-
-<Aristophanes>	<created>	<The_Wasps>		-
+<Aristophanes>	<created>	<The_Wasps>	-422	-
 <Gus_Trikonis>	<isMarriedTo>	<Goldie_Hawn>	1969	1976
 <George_Ganchev>	<isAffiliatedTo>	<Independent_politician>	2001	-
 <Emmanuel_Duah>	<playsFor>	<Standard_Liège>	1993	1994
@@ -6330,7 +6330,7 @@
 <Gerry_Day>	<hasWonPrize>	<Hugo_Award>	1980	-
 <Christian_Tiffert>	<playsFor>	<VfL_Bochum>	2013	2014
 <Roger_Adams>	<hasWonPrize>	<Perkin_Medal>	1954	-
-<Aristophanes>	<created>	<The_Birds_(play)>		-
+<Aristophanes>	<created>	<The_Birds_(play)>	-414	-
 <George_Thomson,_Baron_Thomson_of_Monifieth>	<isAffiliatedTo>	<Labour_Party_(UK)>	1981	-
 <Cass_Canfield>	<graduatedFrom>	<Harvard_University>	1919	-
 <Cícero_Semedo>	<playsFor>	<Vitória_S.C.>	2009	2010
@@ -8824,7 +8824,7 @@
 <Ricky_Ortiz>	<wasBornIn>	<Phoenix,_Arizona>	1975	1975
 <José_Manuel_Casado>	<playsFor>	<Recreativo_de_Huelva>	2008	2009
 <Robert_Lee_Moore>	<wasBornIn>	<Dallas>	1882	1882
-<Aristophanes>	<created>	<The_Clouds>		-
+<Aristophanes>	<created>	<The_Clouds>	-423	-
 <Hugo_Almeida>	<playsFor>	<FC_Porto>	2003	2007
 <Linda_Partridge>	<wasBornIn>	<United_Kingdom>	1950	1950
 <Chris_Cagle_(American_football)>	<owns>	<Brooklyn_Dodgers_(NFL)>	1910	1986
@@ -10900,7 +10900,7 @@
 <Florent_Sinama_Pongolle>	<playsFor>	<Real_Zaragoza>	2010	2011
 <Peter_Ustinov>	<isMarriedTo>	<Suzanne_Cloutier>	1940	1950
 <Terence_Tao>	<hasWonPrize>	<Sloan_Fellowship>	2006	-
-<Aristophanes>	<created>	<Thesmophoriazusae>		-
+<Aristophanes>	<created>	<Thesmophoriazusae>	-411	-
 <Kristen_Cloke>	<isMarriedTo>	<Glen_Morgan>	1998	-
 <Teresa_Palmer>	<wasBornIn>	<Adelaide>	1986	1986
 <Jack_Donohue_(director)>	<isMarriedTo>	<Tutta_Rolf>	1936	1950
@@ -11293,7 +11293,7 @@
 <Albert_Watson_(South_Carolina)>	<isAffiliatedTo>	<Republican_Party_(United_States)>	1965	1994
 <Fei-Fei_Li>	<wasBornIn>	<China>	1976	1976
 <Eric_Villency>	<wasBornIn>	<New_York_City>	1975	1975
-<Euripides>	<created>	<The_Bacchae>		-
+<Euripides>	<created>	<The_Bacchae>	-405	-
 <Jay_Wright_Forrester>	<worksAt>	<MIT_Sloan_School_of_Management>	1956	-
 <Simon_Church>	<playsFor>	<Reading_F.C.>	2007	2013
 <London_Passenger_Transport_Board>	<owns>	<Chesham_branch>	1933	1948
@@ -12575,7 +12575,7 @@
 <Rembrandt>	<wasBornIn>	<Leiden>	1606	1606
 <John_Rawlings_Rees>	<wasBornIn>	<Leicester>	1890	1890
 <Norman_Maclean>	<graduatedFrom>	<Dartmouth_College>	1924	-
-<Aristophanes>	<created>	<Lysistrata>		-
+<Aristophanes>	<created>	<Lysistrata>	-411	-
 <Gaetano_Monachello>	<playsFor>	<Italy_national_under-17_football_team>	2010	2011
 <Nikola_Vujadinović>	<wasBornIn>	<Belgrade>	1986	1986
 <Xu_Lai_(actress)>	<wasBornIn>	<Shanghai>	1909	1909
@@ -14442,7 +14442,7 @@
 <Mário_Felgueiras>	<playsFor>	<Portimonense_S.C.>	2007	2008
 <Marc_Bernaus>	<playsFor>	<UD_Las_Palmas>	2002	2003
 <José_Luis_Loreto>	<playsFor>	<Córdoba_CF>	1993	1994
-<Euripides>	<created>	<The_Trojan_Women>		-
+<Euripides>	<created>	<The_Trojan_Women>	-415	-
 <Terry_Rhoads>	<diedIn>	<Los_Angeles>	2013	2013
 <William_III_of_England>	<diedIn>	<Kensington_Palace>	1702	1702
 <2929_Entertainment>	<owns>	<Rysher_Entertainment>	2001	2006

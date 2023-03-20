@@ -1638,7 +1638,7 @@
 <Pinky_Lai>	<created>	<BMW_3_Series_(E36)>	1987	-
 <David_Sánchez_Parrilla>	<playsFor>	<Spain_national_under-17_football_team>	1995	-
 <Bab_Christensen>	<isMarriedTo>	<Lasse_Kolstad>	1957	2012
-<Euripides>	<created>	<Hippolytus_(play)>		-
+<Euripides>	<created>	<Hippolytus_(play)>	-428	-
 <Suman_Shah>	<hasWonPrize>	<Sahitya_Gaurav_Puraskar>	2014	-
 <Bruce_Weber_(basketball)>	<hasWonPrize>	<Henry_Iba_Award>	2005	-
 <Kenix_Kwok>	<wasBornIn>	<Hong_Kong>	1970	1970
@@ -1668,7 +1668,7 @@
 <W._V._D._Hodge>	<hasWonPrize>	<Royal_Medal>	1957	-
 <Chris_Kettings>	<playsFor>	<Oldham_Athletic_A.F.C.>	2016	-
 <George_Gilbert_Scott>	<created>	<St_David's_Cathedral>	19##	-
-<Aristophanes>	<created>	<The_Clouds>		-
+<Aristophanes>	<created>	<The_Clouds>	-423	-
 <Charles_Barry>	<hasWonPrize>	<Royal_Gold_Medal>	1850	-
 <Ernst_Rolf>	<diedIn>	<Stockholm>	1932	1932
 <Osborn_Engineering>	<created>	<Yankee_Stadium_(1923)>	1923	-
@@ -4528,7 +4528,7 @@
 <Kieth_Merrill>	<created>	<Amazon_(1997_film)>	1997	-
 <Fausto_Bertinotti>	<isAffiliatedTo>	<Italian_Communist_Party>	1972	1991
 <Alex_Rodman>	<playsFor>	<England_national_football_C_team>	2010	-
-<Euripides>	<created>	<The_Bacchae>		-
+<Euripides>	<created>	<The_Bacchae>	-405	-
 <Joseph_Slepian>	<wasBornIn>	<Boston>	1891	1891
 <Thomas_Wynford_Rees>	<hasWonPrize>	<Order_of_the_Bath>	1945	-
 <Anthony_Grant_(footballer)>	<playsFor>	<Stevenage_F.C.>	2012	2013
@@ -5097,7 +5097,7 @@
 <Jesús_Cabrero>	<playsFor>	<Recreativo_de_Huelva>	2012	2014
 <James_Rothman>	<hasWonPrize>	<Heinrich_Wieland_Prize>	1990	-
 <Riazuddin_(physicist)>	<hasWonPrize>	<Nishan-e-Imtiaz>	1998	-
-<Euripides>	<created>	<The_Trojan_Women>		-
+<Euripides>	<created>	<The_Trojan_Women>	-415	-
 <Bill_Waller>	<diedIn>	<Jackson,_Mississippi>	2011	2011
 <Vincent_Wong_(Hong_Kong_actor)>	<isMarriedTo>	<Yoyo_Chen>	2011	-
 <Kim_Källström>	<playsFor>	<FC_Spartak_Moscow>	2012	2015
@@ -5597,7 +5597,7 @@
 <Aguinaldo_Policarpo_Mendes_Veiga>	<playsFor>	<Gil_Vicente_F.C.>	2017	-
 <Manuel_Diego_Tello>	<playsFor>	<Spain_national_under-16_football_team>	2000	2001
 <Vonetta_McGee>	<isMarriedTo>	<Carl_Lumbly>	1987	2010
-<Aristophanes>	<created>	<Thesmophoriazusae>		-
+<Aristophanes>	<created>	<Thesmophoriazusae>	-411	-
 <Mauricio_Aspe>	<wasBornIn>	<Mexico_City>	1975	1975
 <Roy_Clarke>	<created>	<The_Magnificent_Evans>	1984	-
 <Hanna_Scheuring>	<created>	<Lüthi_und_Blanc>	2000	2002
@@ -7566,7 +7566,7 @@
 <Tracy_Wright>	<wasBornIn>	<Toronto>	1959	1959
 <Armand_Hammer>	<graduatedFrom>	<Columbia_University>	1919	1921
 <Stuart_Ross_Taylor>	<hasWonPrize>	<V._M._Goldschmidt_Award>	1993	-
-<Aristophanes>	<created>	<The_Wasps>		-
+<Aristophanes>	<created>	<The_Wasps>	-422	-
 <Manuel_José_Vieira>	<playsFor>	<Associação_Académica_de_Coimbra_–_O.A.F.>	2003	-
 <Martin_Indyk>	<graduatedFrom>	<University_of_Sydney>	1972	-
 <Allan_Dwan>	<isMarriedTo>	<Pauline_Bush_(actress)>	1915	1919
@@ -8125,7 +8125,7 @@
 <C._V._Raman>	<hasWonPrize>	<Hughes_Medal>	1930	-
 <Tom_Kilburn>	<diedIn>	<Manchester>	2001	2001
 <Bryan_Greenberg>	<isMarriedTo>	<Jamie_Chung>	2015	-
-<Aristophanes>	<created>	<The_Birds_(play)>		-
+<Aristophanes>	<created>	<The_Birds_(play)>	-414	-
 <Gaetano_Monachello>	<playsFor>	<Italy_national_under-17_football_team>	2010	2011
 <Jack_Donohue_(director)>	<isMarriedTo>	<Tutta_Rolf>	1936	1950
 <Buster_Keaton>	<isMarriedTo>	<Natalie_Talmadge>	1921	1932
@@ -11625,7 +11625,7 @@
 <Charles_David_Allis>	<worksAt>	<Rockefeller_University>	2003	-
 <Albert_Einstein>	<hasWonPrize>	<Matteucci_Medal>	1921	-
 <Bill_Pickering_(rocket_scientist)>	<hasWonPrize>	<National_Medal_of_Science>	1975	-
-<Aristophanes>	<created>	<Lysistrata>		-
+<Aristophanes>	<created>	<Lysistrata>	-411	-
 <Zachary_Scott>	<isMarriedTo>	<Ruth_Ford_(actress)>	1952	1965
 <Anne-Marie_Martin>	<isMarriedTo>	<Michael_Crichton>	1987	2003
 <Ben_Lyon>	<wasBornIn>	<Atlanta>	1901	1901
@@ -13546,7 +13546,7 @@
 <Saira_Shah>	<created>	<Death_in_Gaza>	2004	-
 <Margaret_Mazzantini>	<isMarriedTo>	<Sergio_Castellitto>	1987	-
 <Mao_Zedong>	<diedIn>	<China>	1976	1976
-<Euripides>	<created>	<Medea_(play)>		-
+<Euripides>	<created>	<Medea_(play)>	-431	-
 <Sinan_Tuzcu>	<isMarriedTo>	<Dolunay_Soysert>	2006	-
 <John_Marsden_(footballer)>	<playsFor>	<Celtic_F.C.>	2009	2011
 <Isadore_Singer>	<hasWonPrize>	<Abel_Prize>	2004	-
@@ -13800,7 +13800,7 @@
 <Alexandra_Barreto>	<wasBornIn>	<Staten_Island>	1975	1975
 <Görel_Crona>	<isMarriedTo>	<Rafael_Edholm>	1997	2006
 <Julian_Russell_Story>	<diedIn>	<Philadelphia>	1919	1919
-<Aristophanes>	<created>	<The_Frogs>		-
+<Aristophanes>	<created>	<The_Frogs>	-405	-
 <Marilyn_Quayle>	<isMarriedTo>	<Dan_Quayle>	1972	-
 <Marc_Bernaus>	<playsFor>	<Gimnàstic_de_Tarragona>	2000	2002
 <Ricky_Hyslop>	<created>	<Canada_98>	100	-

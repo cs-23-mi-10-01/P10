@@ -3,6 +3,7 @@
 <Karl_Friedrich_Schinkel>	<created>	<Friedrichswerder_Church>	1699	1701
 <Suryavarman_I>	<created>	<Phnom_Chisor>	1010	1050
 <Alexander_von_Humboldt>	<graduatedFrom>	<Humboldt_University_of_Berlin>	2008	116
+<Aristophanes>	<created>	<The_Wasps>	-422	-
 <G._V._Prakash_Kumar>	<created>	<Chellamay>	720	845
 <Olfert_Dapper>	<wasBornIn>	<Amsterdam>	1636	1636
 <Moby>	<created>	<Alice_(Moby_song)>	419	-
@@ -27,6 +28,7 @@
 <Tylman_van_Gameren>	<created>	<Brühl_Palace,_Warsaw>	17##	18##
 <William_Edmond_Logan>	<wasBornIn>	<Montreal>	1798	1798
 <David_Howell_(jurist)>	<wasBornIn>	<Morristown,_New_Jersey>	1747	1747
+<Euripides>	<created>	<The_Bacchae>	-405	-
 <George_Crabbe>	<created>	<The_Village_(poem)>	1783	-
 <Bernt_Michael_Holmboe>	<worksAt>	<University_of_Oslo>	1826	1850
 <Ernst_Anschütz>	<created>	<O_Tannenbaum>	16##	-
@@ -51,8 +53,6 @@
 <Unipol>	<owns>	<UnipolSai>	142	-
 <Shenyang_Aircraft_Design_Institute>	<created>	<SYAC_UAV>	601	-
 <Antonio_Caballero_y_Góngora>	<created>	<San_Mateo,_Boyacá>	1773	-
-<William_Hawks>	<isMarriedTo>	<Bessie_Love>	1929	1936
-<Kay_Davies>	<hasWonPrize>	<Fellow_of_the_Royal_Society>	2003	-
 <Edd_Kalehoff>	<created>	<Dream_House_(game_show)>	1983	-
 <William_Shockley>	<hasWonPrize>	<IEEE_Medal_of_Honor>	1980	-
 <Antonio_Puche>	<playsFor>	<Spain_national_under-20_football_team>	1990	-
@@ -1364,7 +1364,7 @@
 <Fred_Williamson>	<created>	<Black_Caesar_(film)>	1973	1973
 <Jenny_Platt>	<wasBornIn>	<Ipswich>	1979	1979
 <Berthold_Viertel>	<wasBornIn>	<Vienna>	1885	1885
-<Aristophanes>	<created>	<The_Frogs>		-
+<Aristophanes>	<created>	<The_Frogs>	-405	-
 <Juliette_Lewis>	<wasBornIn>	<Los_Angeles>	1973	1973
 <William_Howard_Taft>	<wasBornIn>	<Cincinnati>	1857	1857
 <Oleg_Strakhanovich>	<playsFor>	<FC_Neman_Grodno>	2011	-
@@ -2966,7 +2966,7 @@
 <Frédéric_Joliot-Curie>	<hasWonPrize>	<Fellow_of_the_Royal_Society>	1946	-
 <Gavin_Gunning>	<playsFor>	<Motherwell_F.C.>	2011	-
 <Nélson_Marcos>	<playsFor>	<Portugal_national_under-21_football_team>	2006	-
-<Aristophanes>	<created>	<Thesmophoriazusae>		-
+<Aristophanes>	<created>	<Thesmophoriazusae>	-411	-
 <Sebastián_Herrera>	<playsFor>	<CD_Logroñés>	1999	2000
 <Cindy_Williams>	<wasBornIn>	<Van_Nuys>	1947	1947
 <Orlando_Sá>	<playsFor>	<FC_Porto>	2009	2011
@@ -3271,7 +3271,7 @@
 <Hans_Adolf_Krebs>	<diedIn>	<Oxford>	1981	1981
 <Ryan_Howard>	<hasWonPrize>	<Hank_Aaron_Award>	2006	-
 <Georg_Wittig>	<hasWonPrize>	<Otto_Hahn_Prize>	1967	-
-<Euripides>	<created>	<Hippolytus_(play)>		-
+<Euripides>	<created>	<Hippolytus_(play)>	-428	-
 <Edward_B._Lewis>	<hasWonPrize>	<Albert_Lasker_Award_for_Basic_Medical_Research>	1991	-
 <Roberto_Freire>	<isAffiliatedTo>	<Brazilian_Communist_Party>	1985	1992
 <Ian_Reddington>	<created>	<Vernon_Tomlin>	2005	2008
@@ -3303,7 +3303,7 @@
 <Hannah_Storm>	<isMarriedTo>	<Dan_Hicks_(sportscaster)>	1994	-
 <Domingo_Martinez_(author)>	<created>	<My_Heart_Is_a_Drunken_Compass>	2014	-
 <Alain_Connes>	<hasWonPrize>	<Fields_Medal>	1982	-
-<Aristophanes>	<created>	<Lysistrata>		-
+<Aristophanes>	<created>	<Lysistrata>	-411	-
 <Vasco_M._Tanner>	<graduatedFrom>	<University_of_Utah>	1920	-
 <John_Douglas_Simon>	<wasBornIn>	<Cincinnati>	1957	1957
 <Dean_Parrett>	<playsFor>	<Aldershot_Town_F.C.>	2009	-
@@ -7712,7 +7712,7 @@
 <Judy_Garland>	<diedIn>	<Chelsea,_London>	1969	1969
 <Héctor_Font>	<playsFor>	<Spain_national_under-16_football_team>	2000	-
 <Yossi_Benayoun>	<playsFor>	<Queens_Park_Rangers_F.C.>	2013	2014
-<Aristophanes>	<created>	<The_Clouds>		-
+<Aristophanes>	<created>	<The_Clouds>	-423	-
 <Saunders_Mac_Lane>	<hasWonPrize>	<Chauvenet_Prize>	1941	-
 <Andrew_Adonis,_Baron_Adonis>	<isAffiliatedTo>	<Labour_Party_(UK)>	1995	2015
 <John_Wilson_Moore>	<worksAt>	<Duke_University>	1961	-
@@ -7865,7 +7865,7 @@
 <David_Caiado>	<playsFor>	<Portugal_national_under-20_football_team>	2006	2007
 <Archibald_Hill>	<wasBornIn>	<Bristol>	1886	1886
 <Will_Haining>	<playsFor>	<St_Mirren_F.C.>	2007	2009
-<Euripides>	<created>	<The_Trojan_Women>		-
+<Euripides>	<created>	<The_Trojan_Women>	-415	-
 <Richard_Feynman>	<diedIn>	<Los_Angeles>	1988	1988
 <Whit_Stillman>	<wasBornIn>	<Washington,_D.C.>	1952	1952
 <Bruno_Vale>	<playsFor>	<Portugal_national_under-17_football_team>	2000	-
@@ -9385,7 +9385,7 @@
 <Tim_Berners-Lee>	<wasBornIn>	<London>	1955	1955
 <Elaine_Joyce>	<wasBornIn>	<Kansas_City,_Missouri>	1945	1945
 <Margarita_Magaña>	<isMarriedTo>	<Mauricio_Aspe>	1999	2004
-<Aristophanes>	<created>	<The_Birds_(play)>		-
+<Aristophanes>	<created>	<The_Birds_(play)>	-414	-
 <Tom_Noonan>	<wasBornIn>	<Greenwich,_Connecticut>	1951	1951
 <James_Morrison_(American_football)>	<graduatedFrom>	<University_of_Virginia>	1898	-
 <Darren_Randolph>	<playsFor>	<West_Ham_United_F.C.>	2015	-
@@ -10837,7 +10837,7 @@
 <Issey_Nakajima-Farran>	<playsFor>	<AC_Horsens>	2009	2011
 <Howard_Martin_Temin>	<diedIn>	<Madison,_Wisconsin>	1994	1994
 <Károly_Nóti>	<created>	<Three_Days_Confined_to_Barracks_(1955_film)>	1930	-
-<Euripides>	<created>	<Medea_(play)>		-
+<Euripides>	<created>	<Medea_(play)>	-431	-
 <Joseph_Rotblat>	<wasBornIn>	<Warsaw>	1908	1908
 <Moses_Ashikodi>	<playsFor>	<England_national_under-17_football_team>	2002	2003
 <Muhammad_Raziuddin_Siddiqui>	<hasWonPrize>	<Nishan-e-Imtiaz>	1998	-

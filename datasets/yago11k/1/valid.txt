@@ -893,7 +893,6 @@
 <Xavier_Roca>	<playsFor>	<Rayo_Vallecano>	2003	2004
 <Ursulines>	<created>	<St._Ursula_Academy_(Toledo,_Ohio)>	1854	-
 <Elinor_Kershaw>	<diedIn>	<Hollywood>	1971	1971
-<Aristophanes>	<created>	<The_Wasps>		-
 <Steven_Vitória>	<playsFor>	<Canada_men's_national_soccer_team>	2016	-
 <Jiang_Ying_(musician)>	<diedIn>	<China>	2012	2012
 <Fernando_de_Abreu_Ferreira>	<playsFor>	<São_Paulo_FC>	1996	2001
@@ -3074,3 +3073,4 @@
 <Robert_Weinberg>	<hasWonPrize>	<Keio_Medical_Science_Prize>	1997	-
 <Hal_Mohr>	<wasBornIn>	<San_Francisco>	1894	1894
 <John_Nolan_(British_actor)>	<isMarriedTo>	<Kim_Hartman>	1975	-
+<Roberto_Merino>	<playsFor>	<Ciudad_de_Murcia>	2005	-

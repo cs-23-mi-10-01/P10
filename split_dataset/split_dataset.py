@@ -182,19 +182,20 @@ class SplitDataset:
         reader.read_original_splits()
 
         for row in reader.rows():
-            sliced_date = row['start_timestamp'].split('-')
-            year, month, day = sliced_date[:3]
-            if year == '####':
-                row['start_timestamp'] = '-'
-            else:
-                row['start_timestamp'] = year
+            if self.dataset in ['wikidata12k']:
+                sliced_date = row['start_timestamp'].split('-')
+                year, month, day = sliced_date[:3]
+                if year == '####':
+                    row['start_timestamp'] = '-'
+                else:
+                    row['start_timestamp'] = year
 
-            sliced_date = row['end_timestamp'].split('-')
-            year, month, day = sliced_date[:3]
-            if year == '####':
-                row['end_timestamp'] = '-'
-            else:
-                row['end_timestamp'] = year
+                sliced_date = row['end_timestamp'].split('-')
+                year, month, day = sliced_date[:3]
+                if year == '####':
+                    row['end_timestamp'] = '-'
+                else:
+                    row['end_timestamp'] = year
 
         self._write_csv(reader.rows(), 'original_formatted', 'test')
         self._write_csv(reader.rows(), 'original_formatted', 'train')

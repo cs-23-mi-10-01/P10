@@ -99,8 +99,8 @@ class DatasetHandler:
                     modified_row["tail"] = self._id2entity[row["tail"]]
 
                     start_timestap = row["start_timestamp"]
-                    if start_timestap == '':
-                        modified_row["start_timestamp"] = "-"
+                    if start_timestap[0] == '-':
+                        modified_row["start_timestamp"] = "-" + start_timestap.split('-')[1]
                     else:
                         year = start_timestap.split('-')[0]
                         if year == "####":
@@ -109,8 +109,8 @@ class DatasetHandler:
                             modified_row["start_timestamp"] = year
 
                     end_timestap = row["end_timestamp"]
-                    if end_timestap == '':
-                        modified_row["end_timestamp"] = "-"
+                    if end_timestap[0] == '-':
+                        modified_row["end_timestamp"] = "-" + end_timestap.split('-')[1]
                     else:
                         year = end_timestap.split('-')[0]
                         if year == "####":
