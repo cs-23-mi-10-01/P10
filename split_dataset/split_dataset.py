@@ -219,6 +219,10 @@ class SplitDataset:
                     
                 if formatting == "B":
                     if self.dataset in ['wikidata11k', 'wikidata12k', 'yago11k']:
+                        start_year = row['start_timestamp']
+                        if start_year == "-":
+                            start_year = "####"
+
                         end_year = row['end_timestamp']
                         if end_year == "-":
                             end_year = "####"
@@ -226,7 +230,7 @@ class SplitDataset:
                         text = text + reader.entity2id(row['head']) + "\t" \
                             + reader.relation2id(row['relation']) + "\t" \
                             + reader.entity2id(row['tail']) + "\t" \
-                            + row['start_timestamp'] + "-##-##" \
+                            + start_year + "-##-##" \
                             + "\t" + end_year + "-##-##" + "\n"
             
             path = os.path.join(self.base_directory, "datasets", self.dataset, "format_" + formatting, "split_" + split, dataset + ".txt")
