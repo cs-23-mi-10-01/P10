@@ -12,6 +12,8 @@ class DatasetHandler:
         self._rows = []
         self._id2entity = {}
         self._id2relation = {}
+        self._entity2id = {}
+        self._relation2id = {}
 
         if self.dataset in ["wikidata12k", "yago11k"]:
             entity2id_path = os.path.join(self.base_directory, "datasets", self.dataset, "entity2id.txt")
@@ -19,12 +21,14 @@ class DatasetHandler:
                 records = csv.DictReader(identifiers, fieldnames=['entity', 'id'], delimiter='\t')
                 for row in records:
                     self._id2entity[row["id"]] = row["entity"]
+                    self._entity2id[row["entity"]] = row["id"]
 
             relation2id_path = os.path.join(self.base_directory, "datasets", self.dataset, "relation2id.txt")
             with open(relation2id_path, encoding='utf-8') as identifiers:
                 records = csv.DictReader(identifiers, fieldnames=['relation', 'id', 'relation_name', 'types'], delimiter='\t')
                 for row in records:
                     self._id2relation[row["id"]] = row["relation"]
+                    self._relation2id[row["relation"]] = row["id"]
     
     def read_full_dataset(self):
         self._rows = []
@@ -38,7 +42,10 @@ class DatasetHandler:
 
         self._read_file(dataset_path)
         
-        self._rows.sort(key=lambda row: row["head"]+";"+row["relation"]+";"+row["tail"]+";"+row["start_timestamp"]+";"+row["end_timestamp"], reverse=False)
+        if self.dataset in ["wikidata12k", "yago11k"]:
+            self._rows.sort(key=lambda row: row["head"]+";"+row["relation"]+";"+row["tail"]+";"+row["start_timestamp"]+";"+row["end_timestamp"], reverse=False)
+        elif self.dataset in ["icews14"]:
+            self._rows.sort(key=lambda row: row["head"]+";"+row["relation"]+";"+row["tail"]+";"+row["timestamp"], reverse=False)
 
     def find_in_rows(self, head="*", relation="*", tail="*", start_timestamp="*", end_timestamp="*"):
         ret_rows = []
@@ -125,4 +132,16 @@ class DatasetHandler:
         
     def rows(self):
         return self._rows
+    
+    def id2entity(self, id):
+        return self._id2entity[id]
+    
+    def id2relation(self, id):
+        return self._id2relation[id]
+    
+    def entity2id(self, entity):
+        return self._entity2id[entity]
+    
+    def relation2id(self, relation):
+        return self._relation2id[relation]
 

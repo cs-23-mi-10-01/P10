@@ -85,7 +85,7 @@ class SplitDataset:
         self.rows = processed_rows
 
         for i in ["1", "2", "3"]:
-            self._split_once(i)
+            self._split_once(i, reader)
         self.params.timer.stop("split " + self.dataset)
 
         if self.dataset in ["wikidata12k", "yago11k"]:
@@ -117,7 +117,7 @@ class SplitDataset:
             return re.match('Q[0-9]+', tail)
         return True
 
-    def _split_once(self, name):
+    def _split_once(self, name, reader):
         print("Splitting dataset " + self.dataset + " into train/valid/test set " + name +"...")
         entity_count = copy.copy(self.entitiy_count)
         relation_count = copy.copy(self.relation_count)
@@ -174,9 +174,9 @@ class SplitDataset:
                 num_test -= 1
                 continue
         
-        self._write_csv(rows, name, 'train')
-        self._write_csv(rows, name, 'valid')
-        self._write_csv(rows, name, 'test')
+        self._write_csv(rows, name, 'train', reader)
+        self._write_csv(rows, name, 'valid', reader)
+        self._write_csv(rows, name, 'test', reader)
     
     def _format_original_split(self, reader):        
         reader.read_original_splits()
@@ -197,22 +197,39 @@ class SplitDataset:
                 else:
                     row['end_timestamp'] = year
 
-        self._write_csv(reader.rows(), 'original_formatted', 'test')
-        self._write_csv(reader.rows(), 'original_formatted', 'train')
-        self._write_csv(reader.rows(), 'original_formatted', 'valid')
+        self._write_csv(reader.rows(), 'original', 'test', reader)
+        self._write_csv(reader.rows(), 'original', 'train', reader)
+        self._write_csv(reader.rows(), 'original', 'valid', reader)
             
 
-    def _write_csv(self, rows, name, split):
-        text = ""
+    def _write_csv(self, rows, split, dataset, reader):
+        for formatting in ["A", "B"]:
+            text = ""
 
-        for row in [row for row in rows if row['split'] is split]:
-            if self.dataset in ['icews14']:
-                text = text + row['head'] + "\t" + row['relation'] + "\t" + row['tail'] + "\t" + row['timestamp'] + "\n"
-            if self.dataset in ['wikidata11k', 'wikidata12k', 'yago11k']:
-                text = text + row['head'] + "\t" + row['relation'] + "\t" + row['tail'] + "\t" + row['start_timestamp'] + "\t" + row['end_timestamp'] + "\n"
-        
-        path = os.path.join(self.base_directory, "datasets", self.dataset, name, split + ".txt")
-        write(path, text)
+            if formatting == "B" and self.dataset in ['icews14']:
+                continue
+
+            for row in [row for row in rows if row['split'] is dataset]:
+                if formatting == "A":
+                    if self.dataset in ['icews14']:
+                        text = text + row['head'] + "\t" + row['relation'] + "\t" + row['tail'] + "\t" + row['timestamp'] + "\n"
+                    if self.dataset in ['wikidata11k', 'wikidata12k', 'yago11k']:
+                        text = text + row['head'] + "\t" + row['relation'] + "\t" + row['tail'] + "\t" + row['start_timestamp'] + "\t" + row['end_timestamp'] + "\n"
+                    
+                if formatting == "B":
+                    if self.dataset in ['wikidata11k', 'wikidata12k', 'yago11k']:
+                        end_year = row['end_timestamp']
+                        if end_year == "-":
+                            end_year = "####"
+                        
+                        text = text + reader.entity2id(row['head']) + "\t" \
+                            + reader.relation2id(row['relation']) + "\t" \
+                            + reader.entity2id(row['tail']) + "\t" \
+                            + row['start_timestamp'] + "-##-##" \
+                            + "\t" + end_year + "-##-##" + "\n"
+            
+            path = os.path.join(self.base_directory, "datasets", self.dataset, "format_" + formatting, "split_" + split, dataset + ".txt")
+            write(path, text)
 
 
             
