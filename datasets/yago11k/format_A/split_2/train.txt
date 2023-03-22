@@ -40,7 +40,6 @@
 <Ole_Nilsen_Weierholt>	<created>	<Tromøy_Church>	1748	-
 <Ken_Keeler>	<created>	<Two_Bad_Neighbors>	1997	194
 <Carl_von_Gontard>	<diedIn>	<Wrocław>	1791	1791
-<Michael_Houghton_(virologist)>	<wasBornIn>	<United_Kingdom>	195#	195#
 <Thomas_Dwight_(politician)>	<graduatedFrom>	<Harvard_College>	1778	-
 <Ilo_Mitkë_Qafëzezi>	<created>	<New_Academy_(Moscopole)>	1718	1719
 <Qatar_Investment_Authority>	<owns>	<Sainsbury's>	999	-
@@ -51,6 +50,7 @@
 <Nevil_Maskelyne>	<wasBornIn>	<London>	1732	1732
 <John_Simpson_(artist)>	<created>	<The_Captive_Slave>	1827	-
 <Olfert_Dapper>	<wasBornIn>	<Amsterdam>	1636	1636
+<Peter_Scholze>	<wasBornIn>	<Dresden>	1987	1987
 <Hansjürgen_Matthies>	<diedIn>	<Magdeburg>	2008	2008
 <Hicri_Fişek>	<diedIn>	<Turkey>	2002	2002
 <Bill_Cosby>	<isMarriedTo>	<Camille_Cosby>	1964	-
