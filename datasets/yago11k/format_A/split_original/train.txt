@@ -4194,7 +4194,7 @@
 <Jonathan_Jackson_(Continental_Congress)>	<diedIn>	<Massachusetts>	1810	1810
 <Gaetano_Monachello>	<playsFor>	<Atalanta_B.C.>	2015	-
 <William_W._Church>	<wasBornIn>	<Chicago>	1874	1874
-<Michael_Houghton_(virologist)>	<wasBornIn>	<United_Kingdom>	195#	195#
+<Michael_Houghton_(virologist)>	<wasBornIn>	<United_Kingdom>	-	-
 <Martin_Green_(professor)>	<hasWonPrize>	<Fellow_of_the_Royal_Society>	2013	-
 <Kathryn_Adams_Doty>	<diedIn>	<Mankato,_Minnesota>	2016	2016
 <Shigeru_Miyamoto>	<created>	<Glass_Joe>	1984	-

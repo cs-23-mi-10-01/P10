@@ -1061,7 +1061,7 @@
 <Jair_Bolsonaro>	<wasBornIn>	<Brazil>	1955	1955
 <Jordon_Mutch>	<playsFor>	<Doncaster_Rovers_F.C.>	2010	-
 <Savings_Deposit_Insurance_Fund_of_Turkey>	<owns>	<ATV_(Turkey)>	2007	-
-<Michael_Houghton_(virologist)>	<wasBornIn>	<United_Kingdom>	195#	195#
+<Michael_Houghton_(virologist)>	<wasBornIn>	<United_Kingdom>	-	-
 <Joaquín_Moso>	<playsFor>	<Spain_national_under-17_football_team>	1995	-
 <Francisco_Javier_Jusué>	<playsFor>	<Spain_national_under-17_football_team>	1997	-
 <Margaret_Johnston>	<wasBornIn>	<Sydney>	1914	1914

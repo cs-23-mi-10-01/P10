@@ -4115,7 +4115,7 @@
 <Sisinio_González_Martínez>	<playsFor>	<Recreativo_de_Huelva>	2008	2009
 <IBM>	<created>	<Java_Card_OpenPlatform>	2007	-
 <Nina_Wang>	<diedIn>	<Hong_Kong>	2007	2007
-<Michael_Houghton_(virologist)>	<wasBornIn>	<United_Kingdom>	195#	195#
+<Michael_Houghton_(virologist)>	<wasBornIn>	<United_Kingdom>	-	-
 <Evgeny_Paton>	<hasWonPrize>	<USSR_State_Prize>	1941	-
 <Richard_Dalitz>	<hasWonPrize>	<Hughes_Medal>	1975	-
 <Philip_Bourneuf>	<diedIn>	<Santa_Monica,_California>	1979	1979

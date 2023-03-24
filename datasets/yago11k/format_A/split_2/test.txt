@@ -1871,6 +1871,7 @@
 <Catherine_Fulop>	<isMarriedTo>	<Fernando_Carrillo>	1990	-
 <Annie_Yi>	<wasBornIn>	<Taipei>	1969	1969
 <Sun_Capital_Partners>	<owns>	<Mervyn's>	2004	2008
+<Michael_Houghton_(virologist)>	<wasBornIn>	<United_Kingdom>	-	-
 <Jennifer_Doudna>	<hasWonPrize>	<Fellow_of_the_Royal_Society>	2016	-
 <Ulish_Booker>	<playsFor>	<St_Mirren_F.C.>	2009	2010
 <Kenwa_Mabuni>	<created>	<Shitō-ryū>	1889	1952
@@ -3073,4 +3074,3 @@
 <William_Wilks_(Australian_politician)>	<wasBornIn>	<Sydney>	1863	1863
 <Eveline_Herfkens>	<wasBornIn>	<The_Hague>	1952	1952
 <Andrey_Yeshchenko>	<playsFor>	<FC_Arsenal_Kyiv>	2009	2011
-<Peter_Scholze>	<wasBornIn>	<Dresden>	1987	1987
