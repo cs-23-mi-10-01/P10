@@ -12,6 +12,7 @@ from queries.generate_queries import GenerateQueries
 def main():
     parser = argparse.ArgumentParser()
 
+    #python -task rank -dataset icews14 -embedding DE_TransE -split all
     parser.add_argument('-task', type=str, default='rank', choices=['statistics', 'rank', 'formatlatex', 'split_dataset', 'generate_quads'])
     parser.add_argument('-dataset', type=str, default='all', choices=['all', 'icews14', 'wikidata11k', 'wikidata12k', 'yago11k'])
     parser.add_argument('-split', type=str, default='all', choices=['all', 'original', '1', '2', '3'])
@@ -28,7 +29,7 @@ def main():
     if params.datasets == ['all']:
         params.datasets = ['icews14']
     if params.splits == ['all']:
-        params.splits = ['1', '2', '3']
+        params.splits = ['original', '1', '2', '3']
     
     match params.task:
         case "split_dataset":

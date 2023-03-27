@@ -56,3 +56,10 @@ From: ubuntu:18.04
 
 # TO CREATE THE IMAGE ON THE CLOUD:
 srun singularity build --nv --fakeroot --sandbox p10-image Singularity.def
+
+# TO RUN THE IMAGE:
+srun -w i256-a40-01.srv.aau.dk singularity shell --pwd /app/ --nv --writable p10-image
+
+# TO EVALUATE:
+python -task rank -dataset icews14 -embedding DE_TransE -split all
+
