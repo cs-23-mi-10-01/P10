@@ -356,7 +356,7 @@ class Statistics():
         print (percentage* 100)
         return
 
-    def relation_analysis(self, reader: DatasetHandler):
+    def relation_analysis(self, reader: DatasetHandler, dataset):
 
         print("Analyzing relation types...")
 
@@ -366,7 +366,7 @@ class Statistics():
 
             print(mode)
             for row in reader.rows():
-                if self.params.dataset in ["icews14"]:
+                if dataset in ["icews14"]:
                     row["start_timestamp"] = row["timestamp"]
                     row["end_timestamp"] = "-"
                 if mode == "no-timestamps":
@@ -409,31 +409,31 @@ class Statistics():
                 relations_json.append(relations_dict[key])
             relations_json.sort(key=lambda val: val["total"], reverse=True)
 
-            results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "relation_analysis", "relation_types_"+mode+".json")
+            results_path = os.path.join(self.params.base_directory, "result", dataset, "relation_analysis", "relation_types_"+mode+".json")
             self.write_json(results_path, relations_json)
 
     def run(self):
         self.params.timer.start("statistics")
-
-        dataset_handler = DatasetHandler(self.params)
-
-        entities_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2", "entity.json")        
-        entity_scores = self.read_json(entities_path)
-
-        entities_top100_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2","top_x_overlap", "entity_top_100_.json")      
-        entities_top50_percentage_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2","top_x_overlap", "entity_top_50_percentage.json")     
-        
-        top = self.read_json(entities_top100_path)
-        top_percentage = self.read_json(entities_top50_percentage_path)
-
-        self.relation_analysis(dataset_handler)
-        self.find_common_elements(top)
-        self.find_common_elements(top_percentage)
-        # self.get_Top_5_Elements(entity_scores)
         
         embeddings = self.params.embeddings
 
-        for dataset in self.params.datasets:
+        for dataset in self.params.datasets:            
+            # entities_path = os.path.join(self.params.base_directory, "result", dataset, "hypothesis_2", "entity.json")        
+            # entity_scores = self.read_json(entities_path)
+            # self.get_Top_5_Elements(entity_scores)
+
+            # entities_top100_path = os.path.join(self.params.base_directory, "result", dataset, "hypothesis_2","top_x_overlap", "entity_top_100_.json")      
+            # entities_top50_percentage_path = os.path.join(self.params.base_directory, "result", dataset, "hypothesis_2","top_x_overlap", "entity_top_50_percentage.json")     
+            
+            # top = self.read_json(entities_top100_path)
+            # top_percentage = self.read_json(entities_top50_percentage_path)
+
+            # self.find_common_elements(top)
+            # self.find_common_elements(top_percentage)
+
+            dataset_handler = DatasetHandler(self.params, dataset)
+            self.relation_analysis(dataset_handler, dataset)
+
             learn_path = os.path.join(self.params.base_directory, "datasets", dataset, "format_A", "split_original", "train.txt")
             no_of_elements_dataset = self.read_csv(learn_path)
             self.no_of_elements(no_of_elements_dataset)
