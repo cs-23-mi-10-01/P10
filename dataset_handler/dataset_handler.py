@@ -4,10 +4,10 @@ import csv
 import copy
 
 class DatasetHandler:
-    def __init__(self, params):
+    def __init__(self, params, dataset):
         self.params = params
         self.base_directory = params.base_directory
-        self.dataset = params.dataset
+        self.dataset = dataset
 
         self._rows = []
         self._id2entity = {}
@@ -65,7 +65,7 @@ class DatasetHandler:
     def read_original_splits(self):
         self._rows = []
 
-        original_path = os.path.join(self.base_directory, "datasets", self.dataset, "original")
+        original_path = os.path.join(self.base_directory, "datasets", self.dataset, "format_A", "split_original")
         test_path = os.path.join(original_path, "test.txt")
         train_path = os.path.join(original_path, "train.txt")
         valid_path = os.path.join(original_path, "valid.txt")

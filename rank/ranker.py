@@ -21,10 +21,7 @@ class Ranker:
         else:
             self.quads_path = os.path.join(self.base_directory, "result", self.dataset, "ranked_quads.json")
         
-        if self.params.embedding == "all":
-            self.embeddings = ["DE_TransE", "DE_SimplE", "DE_DistMult", 'TERO', 'ATISE', 'TFLEX']
-        else:
-            self.embeddings = [self.params.embedding]
+        self.embeddings = self.params.embeddings
 
     def rank(self):
         in_file = open(self.quads_path, "r", encoding="utf8")

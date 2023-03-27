@@ -89,7 +89,7 @@
     },
     {
         "ENTITY": "Benjamin Netanyahu",
-        "COUNT": 1023
+        "COUNT": 1022
     },
     {
         "ENTITY": "Vietnam",
@@ -10652,10 +10652,6 @@
         "COUNT": 6
     },
     {
-        "ENTITY": "10 Downing Street",
-        "COUNT": 5
-    },
-    {
         "ENTITY": "A.K. Singh",
         "COUNT": 5
     },
@@ -12058,6 +12054,10 @@
     {
         "ENTITY": "Social Democratic Union",
         "COUNT": 5
+    },
+    {
+        "ENTITY": "10 Downing Street",
+        "COUNT": 4
     },
     {
         "ENTITY": "Sajjan Kumar",
