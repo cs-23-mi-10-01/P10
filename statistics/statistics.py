@@ -432,8 +432,11 @@ class Statistics():
             # dataset_handler = DatasetHandler(self.params, dataset)
             # self.relation_analysis(dataset_handler, dataset)
 
-            learn_path = os.path.join(self.params.base_directory, "datasets", dataset, "format_A", "split_original", "train.txt")
-            no_of_elements_dataset = self.read_csv(learn_path)
+            if dataset in ['icews14']:
+                no_of_elements_path = os.path.join(self.params.base_directory, "datasets", dataset, "full.txt")
+            else:
+                no_of_elements_path = os.path.join(self.params.base_directory, "datasets", dataset, "triple2id.txt")
+            no_of_elements_dataset = self.read_csv(no_of_elements_path)
             self.no_of_elements(no_of_elements_dataset, dataset)
 
             for split in self.params.splits:
