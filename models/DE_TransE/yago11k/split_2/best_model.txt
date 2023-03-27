@@ -1,0 +1,65 @@
+
+Starting test.                                                                                                                                   Model: models/DE_TransE/yago/500_512_0.001_0.0_36_500_0.4_64_20_0.36_100.chkpnt
+Evaluating facts 0-1000
+Evaluating facts 1000-2000
+Evaluating facts 2000-3000
+Evaluating facts 3000-4000
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0                                                                                                                                      Hit@10 = 0.0                                                                                                                                     MR = 0.0                                                                                                                                         MRR = 0.0                                                                                                                                                                                                                                                                                 Fil setting:
+        Hit@1 = 160.0
+        Hit@3 = 968.0
+        Hit@10 = 1542.0
+        MR = 10196791.0
+        MRR = 696.3614128236622
+
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 0.02600780234070221
+        Hit@3 = 0.15734720416124837
+        Hit@10 = 0.25065019505851754
+        MR = 1657.4757802340703
+        MRR = 0.11319268739006214
+
+Best epoch: 100
+Starting test.
+Model: models/DE_TransE/yago/500_512_0.001_0.0_36_500_0.4_64_20_0.36_100.chkpnt
+Evaluating facts 0-1000
+Evaluating facts 1000-2000
+Evaluating facts 2000-3000
+Evaluating facts 3000-4000
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 151.0
+        Hit@3 = 920.0
+        Hit@10 = 1544.0
+        MR = 9876732.0
+        MRR = 680.8809953054829
+
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 0.02454486345903771
+        Hit@3 = 0.14954486345903772
+        Hit@10 = 0.25097529258777634
+        MR = 1605.4505851755528
+        MRR = 0.11067636464653494
