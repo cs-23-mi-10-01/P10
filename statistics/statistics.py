@@ -16,18 +16,21 @@ class Statistics():
         self.zeta = 5
 
     def write_json(self, path, dict):
+        print("Writing to file " + path + "...")
         touch(path)
         out_file = open(path, "w", encoding="utf8")
         json.dump(dict, out_file, indent=4)
         out_file.close()
     
     def read_json(self, path):
+        print("Reading from file " + path + "...")
         in_file = open(path, "r", encoding="utf8")
         dict = json.load(in_file)
         in_file.close()
         return dict
     
     def read_csv(self, path):
+        print("Reading from file " + path + "...")
         in_file = open(path, "r", encoding="utf8")
         csv = pandas.read_csv(in_file, delimiter='\t')
         in_file.close()
@@ -195,12 +198,12 @@ class Statistics():
                     })
 
             results_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_2", 
-                                        "top_" + str(top_num) + "%" if percentage else "" + "_overlap", str(element).lower()+"_top_"+str(element_split)+".json")
+                                        "top_x_overlap", str(element).lower()+"_top_" + str(top_num) + "pct" if percentage else "" + ".json")
             self.write_json(results_path, json_top)
             
-            results_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_2", 
-                                        "top_x_overlap", str(element).lower()+"_top_"+str(element_split)+"_overlap.json")
-            self.write_json(results_path, json_overlap)
+            overlap_results_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_2", 
+                                        "top_x_overlap", str(element).lower()+"_top_" + str(top_num) + "pct" if percentage else "" + "_overlap.json")
+            self.write_json(overlap_results_path, json_overlap)
                 
     def semester_9_hypothesis_3(self, ranked_quads, embeddings, dataset, split, normalization_scores = None):        
         entity_measures = {}
@@ -290,19 +293,16 @@ class Statistics():
         
         results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2", "top_5_entities.json")
         self.write_json(results_path, Top5_Dict)
-                
-
-
         
         return
 
 
-    def no_of_elements(self, dataset):
+    def no_of_elements(self, no_of_elements_dataset, dataset):
         entities = {}
         relations = {}
         timestamps = {}
 
-        for line in dataset.values:
+        for line in no_of_elements_dataset.values:
             if line[0] not in entities.keys():
                 entities[line[0]] = 0
             if line[1] not in relations.keys():
@@ -333,15 +333,15 @@ class Statistics():
         print("timestamps count: " + str(len(timestamps_json)))
         
         entities_json.sort(key=lambda val: val["COUNT"], reverse=True)
-        results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "no_of_elements", "train_entities.json")
+        results_path = os.path.join(self.params.base_directory, "result", dataset, "no_of_elements", "train_entities.json")
         self.write_json(results_path, entities_json)
 
         relations_json.sort(key=lambda val: val["COUNT"], reverse=True)
-        results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "no_of_elements", "train_relations.json")
+        results_path = os.path.join(self.params.base_directory, "result", dataset, "no_of_elements", "train_relations.json")
         self.write_json(results_path, relations_json)
 
         timestamps_json.sort(key=lambda val: val["COUNT"], reverse=True)
-        results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "no_of_elements", "train_timestamps.json")
+        results_path = os.path.join(self.params.base_directory, "result", dataset, "no_of_elements", "train_timestamps.json")
         self.write_json(results_path, timestamps_json)
 
     def find_common_elements(self, entity_top_100):
@@ -375,7 +375,7 @@ class Statistics():
             
             i = 0
             for row in reader.rows():
-                if i % 100 == 0:
+                if i % 10000 == 0:
                     print("Analyzing row " + str(i) + "/" + str(len(reader.rows())))
                 i += 1
                 row_relation = row["relation"]
@@ -412,31 +412,29 @@ class Statistics():
             results_path = os.path.join(self.params.base_directory, "result", dataset, "relation_analysis", "relation_types_"+mode+".json")
             self.write_json(results_path, relations_json)
 
-    def run(self):
-        self.params.timer.start("statistics")
-        
+    def run(self):        
         embeddings = self.params.embeddings
 
         for dataset in self.params.datasets:            
-            # entities_path = os.path.join(self.params.base_directory, "result", dataset, "hypothesis_2", "entity.json")        
-            # entity_scores = self.read_json(entities_path)
-            # self.get_Top_5_Elements(entity_scores)
+            # # entities_path = os.path.join(self.params.base_directory, "result", dataset, "hypothesis_2", "entity.json")        
+            # # entity_scores = self.read_json(entities_path)
+            # # self.get_Top_5_Elements(entity_scores)
 
-            # entities_top100_path = os.path.join(self.params.base_directory, "result", dataset, "hypothesis_2","top_x_overlap", "entity_top_100_.json")      
-            # entities_top50_percentage_path = os.path.join(self.params.base_directory, "result", dataset, "hypothesis_2","top_x_overlap", "entity_top_50_percentage.json")     
+            # # entities_top100_path = os.path.join(self.params.base_directory, "result", dataset, "hypothesis_2","top_x_overlap", "entity_top_100_.json")      
+            # # entities_top50_percentage_path = os.path.join(self.params.base_directory, "result", dataset, "hypothesis_2","top_x_overlap", "entity_top_50_percentage.json")     
             
-            # top = self.read_json(entities_top100_path)
-            # top_percentage = self.read_json(entities_top50_percentage_path)
+            # # top = self.read_json(entities_top100_path)
+            # # top_percentage = self.read_json(entities_top50_percentage_path)
 
-            # self.find_common_elements(top)
-            # self.find_common_elements(top_percentage)
+            # # self.find_common_elements(top)
+            # # self.find_common_elements(top_percentage)
 
-            dataset_handler = DatasetHandler(self.params, dataset)
-            self.relation_analysis(dataset_handler, dataset)
+            # dataset_handler = DatasetHandler(self.params, dataset)
+            # self.relation_analysis(dataset_handler, dataset)
 
             learn_path = os.path.join(self.params.base_directory, "datasets", dataset, "format_A", "split_original", "train.txt")
             no_of_elements_dataset = self.read_csv(learn_path)
-            self.no_of_elements(no_of_elements_dataset)
+            self.no_of_elements(no_of_elements_dataset, dataset)
 
             for split in self.params.splits:
 
@@ -455,5 +453,3 @@ class Statistics():
                 self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=20)
                 self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=100)
                 self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=50, percentage=True)
-        
-        self.params.timer.stop("statistics")
