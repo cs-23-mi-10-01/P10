@@ -198,11 +198,11 @@ class Statistics():
                     })
 
             results_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_2", 
-                                        "top_x_overlap", str(element).lower()+"_top_" + str(top_num) + "pct" if percentage else "" + ".json")
+                                        "top_x_overlap", str(element).lower()+"_top_" + str(top_num) + ("pct" if percentage else "") + ".json")
             self.write_json(results_path, json_top)
             
             overlap_results_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_2", 
-                                        "top_x_overlap", str(element).lower()+"_top_" + str(top_num) + "pct" if percentage else "" + "_overlap.json")
+                                        "top_x_overlap", str(element).lower()+"_top_" + str(top_num) + ("pct" if percentage else "") + "_overlap.json")
             self.write_json(overlap_results_path, json_overlap)
                 
     def semester_9_hypothesis_3(self, ranked_quads, embeddings, dataset, split, normalization_scores = None):        
