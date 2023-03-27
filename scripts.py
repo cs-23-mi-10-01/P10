@@ -2,6 +2,9 @@
 import os
 from pathlib import Path
 
+def remove_unwanted_symbols_from_str(str):
+    return str.replace(' ', ' ')
+
 def remove_unwanted_symbols(dict): 
     while True:
         target_key = None
@@ -10,7 +13,7 @@ def remove_unwanted_symbols(dict):
                 target_key = key
                 break
         if target_key is not None:
-            dict[target_key.replace(' ', ' ')] = dict.pop(target_key)
+            dict[remove_unwanted_symbols_from_str(target_key)] = dict.pop(target_key)
         else:
             break
 

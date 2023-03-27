@@ -14,34 +14,34 @@ class Ranker:
         self.params = params
         self.ranked_quads = []
         self.base_directory = params.base_directory
-        self.dataset = params.dataset
-
-        if not self.params.add_to_result:
-            self.quads_path = os.path.join(self.base_directory, "queries", self.dataset, "corrupted_quads.json")
-        else:
-            self.quads_path = os.path.join(self.base_directory, "result", self.dataset, "ranked_quads.json")
-        
-        self.embeddings = self.params.embeddings
 
     def rank(self):
-        in_file = open(self.quads_path, "r", encoding="utf8")
-        self.ranked_quads = json.load(in_file)
-        in_file.close()         
+        for dataset in self.params.datasets:
+            for split in self.params.splits:
+                if not self.params.add_to_result:
+                    quads_path = os.path.join(self.base_directory, "queries", dataset, "split_" + split, "test_quads.json")
+                else:
+                    quads_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
 
-        for embedding_name in self.embeddings:
-            model_path = os.path.join(self.base_directory, "models", embedding_name, self.dataset, "Model.model")
-            loader = Loader(self.params, model_path, embedding_name)
-            model = loader.load()
-            model.eval()
+                in_file = open(quads_path, "r", encoding="utf8")
+                self.ranked_quads = json.load(in_file)
+                in_file.close()
 
-            self.ranked_quads = self._generate_ranked_quads(model, embedding_name)
-        
-        results_path = os.path.join(self.base_directory, "result", self.dataset, "ranked_quads.json")
+                for embedding_name in self.params.embeddings:
+                    model_path = os.path.join(self.base_directory, "models", embedding_name, dataset, "split_" + split, "Model.model")
+                    loader = Loader(self.params, model_path, embedding_name)
+                    model = loader.load()
+                    model.eval()
 
-        touch(results_path)
-        out_file = open(results_path, "w", encoding="utf8")
-        json.dump(self.ranked_quads, out_file, indent=4)
-        out_file.close()
+                    self.ranked_quads = self._generate_ranked_quads(model, embedding_name)
+                
+                results_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
+
+                touch(results_path)
+                out_file = open(results_path, "w", encoding="utf8")
+                print("Writing to file " + str(results_path) + "...")
+                json.dump(self.ranked_quads, out_file, indent=4)
+                out_file.close()
 
     def _generate_ranked_quads(self, model, embedding_name):
         ranked_quads = []
@@ -56,8 +56,8 @@ class Ranker:
             rank_calculator = TimePlex_Rank(self.params, model)
 
         for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
-            if i % 100 == 0:
-                print("Ranking fact " + str(i) + "-" + str(i + 99) + " (total number: " + str(len(self.ranked_quads)) + ") with embedding " + embedding_name)
+            if i % 1000 == 0:
+                print("Ranking fact " + str(i) + "-" + str(i + 999) + " (total number: " + str(len(self.ranked_quads)) + ") with embedding " + embedding_name)
 
             if embedding_name in ["TFLEX"]:
                 if not (quad["TAIL"] == "0" or quad["TIME"] == "0"):

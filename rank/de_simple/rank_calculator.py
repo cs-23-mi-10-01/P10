@@ -2,6 +2,7 @@ import numpy as np
 import torch
 import datetime
 from datetime import date
+from scripts import remove_unwanted_symbols_from_str
 
 
 class RankCalculator:
@@ -31,13 +32,13 @@ class RankCalculator:
         return heads, rels, tails, years, months, days
 
     def get_ent_id(self, entity):
-        entity_id = self.dataset.getEntID(entity)
+        entity_id = self.dataset.getEntID(remove_unwanted_symbols_from_str(entity))
         if entity_id >= self.num_of_ent:
             raise Exception("Fact contains an entity that is not seen in the training set (" + str(entity) + ")")
         return entity_id
 
     def get_rel_id(self, relation):
-        rel_id = self.dataset.getRelID(relation)
+        rel_id = self.dataset.getRelID(remove_unwanted_symbols_from_str(relation))
         if rel_id >= self.num_of_rel:
             raise Exception("Fact contains a relation that is not seen in the training set (" + str(relation) + ")")
         return rel_id
