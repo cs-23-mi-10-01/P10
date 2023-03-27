@@ -33,7 +33,7 @@ class Statistics():
         in_file.close()
         return csv
     
-    def calculate_overall_scores(self, ranked_quads, embeddings):
+    def calculate_overall_scores(self, ranked_quads, embeddings, dataset, split):
         print("Rank of all question tuples:")
         
         measure = Measure()
@@ -54,10 +54,10 @@ class Statistics():
         measure.normalize()
         measure.print()
 
-        results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "overall_scores.json")
+        results_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")
         self.write_json(results_path, measure.as_dict())
 
-    def hypothesis_1(self, ranked_quads, embeddings, normalization_scores = None):
+    def semester_9_hypothesis_1(self, ranked_quads, embeddings, dataset, split, normalization_scores = None):
         for element_type in ["HEAD", "RELATION", "TAIL", "TIME"]:
             print("Rank of question tuples when " + str(element_type) + " is the answer element:")
             
@@ -79,15 +79,15 @@ class Statistics():
             measure.print()
             measure.normalize()
 
-            results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_1", str(element_type).lower()+".json")
+            results_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_1", str(element_type).lower()+".json")
             self.write_json(results_path, measure.as_dict())
 
             if normalization_scores is not None:
                 measure.normalize_to(normalization_scores)
-                results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_1", str(element_type).lower()+"_normalized.json")
+                results_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_1", str(element_type).lower()+"_normalized.json")
                 self.write_json(results_path, measure.as_dict())
 
-    def hypothesis_2(self, ranked_quads, embeddings, normalization_scores = None):
+    def semester_9_hypothesis_2(self, ranked_quads, embeddings, dataset, split, normalization_scores = None):
         for element in ["ENTITY", "RELATION", "TIME"]:
             print("Testing hypothesis 2 on " + str(element) + "s:")
             element_measures = {}
@@ -138,11 +138,11 @@ class Statistics():
             if normalization_scores is not None:
                 json_output_normalized.sort(key=lambda val: val["NUM_FACTS"], reverse=True)
 
-            results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2", str(element).lower()+".json")
+            results_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_2", str(element).lower()+".json")
             self.write_json(results_path, json_output)
             
             if normalization_scores is not None:
-                results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2", str(element).lower()+"_normalized.json")
+                results_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_2", str(element).lower()+"_normalized.json")
                 self.write_json(results_path, json_output_normalized)
 
     def calc_overlap(self, arr_x, arr_y):
@@ -158,17 +158,21 @@ class Statistics():
             return 0
         return shared_vals/total_vals
 
-    def hypothesis_2_top_x(self, embeddings):
+    def semester_9_hypothesis_2_top_x(self, embeddings, dataset, split, top_num = 20, percentage = False):
         for element in ["ENTITY", "RELATION", "TIME"]:
             print("Testing hypothesis 2 top X percent on " + str(element) + "s:")
 
-            input_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2", str(element).lower()+".json")
+            input_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_2", str(element).lower()+".json")
             json_input = self.read_json(input_path)
 
-            top_percentage = 0.5
             no_of_elements = len(json_input)
-            #element_split = int(no_of_elements * top_percentage)
-            element_split = 20
+
+            if percentage:
+                top_percentage = float(top_num) / 100.0
+                element_split = int(no_of_elements * top_percentage)
+            else:
+                element_split = top_num
+
             json_top = {}
 
             for embedding in embeddings:
@@ -190,15 +194,15 @@ class Statistics():
                         "OVERLAP_TOP": self.calc_overlap(json_top[embedding_n]["TOP"], json_top[embedding_m]["TOP"])
                     })
 
-            results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2", 
-                                        "top_x_overlap", str(element).lower()+"_top_"+str(element_split)+".json")
+            results_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_2", 
+                                        "top_" + str(top_num) + "%" if percentage else "" + "_overlap", str(element).lower()+"_top_"+str(element_split)+".json")
             self.write_json(results_path, json_top)
             
-            results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2", 
+            results_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_2", 
                                         "top_x_overlap", str(element).lower()+"_top_"+str(element_split)+"_overlap.json")
             self.write_json(results_path, json_overlap)
                 
-    def hypothesis_3(self, ranked_quads, embeddings, normalization_scores = None):        
+    def semester_9_hypothesis_3(self, ranked_quads, embeddings, dataset, split, normalization_scores = None):        
         entity_measures = {}
         print("Testing hypothesis 3.")
 
@@ -260,12 +264,12 @@ class Statistics():
                 json_output_normalized[i]["RANK"] = json_output_normalized[i]["RANK"].as_dict()
 
         json_output.sort(key=lambda val: val["FACTS"], reverse=True)
-        results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_3", "hypothesis_3.json")
+        results_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_3", "hypothesis_3.json")
         self.write_json(results_path, json_output)
 
         if normalization_scores is not None:
             json_output_normalized.sort(key=lambda val: val["FACTS"], reverse=True)
-            results_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_3", "hypothesis_3_normalized.json")
+            results_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_3", "hypothesis_3_normalized.json")
             self.write_json(results_path, json_output_normalized)
     
     def entity_MRR_Sort(self, entity_scores, method_name):
@@ -411,38 +415,45 @@ class Statistics():
     def run(self):
         self.params.timer.start("statistics")
 
-        embeddings = ["DE_TransE", "DE_SimplE", "DE_DistMult", "TERO", "ATISE", "TFLEX"]
-
-        #ranks_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "ranked_quads.json")
-        #ranked_quads = self.read_json(ranks_path)
-        
-        learn_path = os.path.join(self.params.base_directory, "datasets", self.params.dataset, "original", "train.txt")
-        dataset = self.read_csv(learn_path)
-
         dataset_handler = DatasetHandler(self.params)
 
-        #self.calculate_overall_scores(ranked_quads, embeddings)
+        entities_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2", "entity.json")        
+        entity_scores = self.read_json(entities_path)
 
-        #overall_scores_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "overall_scores.json")        
-        #overall_scores = self.read_json(overall_scores_path)
-
-        #entities_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2", "entity.json")        
-        #entity_scores = self.read_json(entities_path)
-
-        # entities_top100_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2","top_x_overlap", "entity_top_100_.json")      
-        # entities_top50_percentage_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2","top_x_overlap", "entity_top_50_percentage.json")     
+        entities_top100_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2","top_x_overlap", "entity_top_100_.json")      
+        entities_top50_percentage_path = os.path.join(self.params.base_directory, "result", self.params.dataset, "hypothesis_2","top_x_overlap", "entity_top_50_percentage.json")     
         
-        # top = self.read_json(entities_top100_path)
-        # top_percentage = self.read_json(entities_top50_percentage_path)
+        top = self.read_json(entities_top100_path)
+        top_percentage = self.read_json(entities_top50_percentage_path)
 
         self.relation_analysis(dataset_handler)
-        #self.no_of_elements(dataset)
-        #self.hypothesis_1(ranked_quads, embeddings, overall_scores)
-        #self.hypothesis_2(ranked_quads, embeddings, overall_scores)
-        #self.hypothesis_2_top_x(embeddings)
-        #self.find_common_elements(top)
-        #self.find_common_elements(top_percentage)
-        #self.hypothesis_3(ranked_quads, embeddings, overall_scores)
-        #self.get_Top_5_Elements(entity_scores)
+        self.find_common_elements(top)
+        self.find_common_elements(top_percentage)
+        # self.get_Top_5_Elements(entity_scores)
+        
+        embeddings = self.params.embeddings
+
+        for dataset in self.params.datasets:
+            learn_path = os.path.join(self.params.base_directory, "datasets", dataset, "format_A", "split_original", "train.txt")
+            no_of_elements_dataset = self.read_csv(learn_path)
+            self.no_of_elements(no_of_elements_dataset)
+
+            for split in self.params.splits:
+
+                ranks_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
+                ranked_quads = self.read_json(ranks_path)
+
+                self.calculate_overall_scores(ranked_quads, embeddings, dataset, split)
+
+                overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")        
+                overall_scores = self.read_json(overall_scores_path)
+
+                self.semester_9_hypothesis_1(ranked_quads, embeddings, dataset, split)
+                self.semester_9_hypothesis_2(ranked_quads, embeddings, dataset, split)
+                self.semester_9_hypothesis_3(ranked_quads, embeddings, dataset, split)
+                self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=10)
+                self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=20)
+                self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=100)
+                self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=50, percentage=True)
         
         self.params.timer.stop("statistics")
