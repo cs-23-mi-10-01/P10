@@ -55,7 +55,7 @@ From: ubuntu:18.04
 
 
 # TO CREATE THE IMAGE ON THE CLOUD:
-srun singularity build --nv --fakeroot --sandbox p10-image Singularity.def
+srun singularity build --nv --fakeroot --sandbox p10-image singularity.def
 
 # TO RUN THE IMAGE:
 srun -w i256-a40-01.srv.aau.dk singularity shell --pwd /app/ --nv --writable p10-image
