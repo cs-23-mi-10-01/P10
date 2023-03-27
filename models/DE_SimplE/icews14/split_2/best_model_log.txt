@@ -1,0 +1,83 @@
+Model: models/DE_SimplE/icews14/500_512_0.001_0.0_68_500_0.4_32_20_0.68_500.chkpnt
+Evaluating facts 0-1000     
+Evaluating facts 1000-2000  
+Evaluating facts 2000-3000  
+Evaluating facts 3000-4000  
+Evaluating facts 4000-5000  
+Evaluating facts 5000-6000  
+Evaluating facts 6000-7000  
+Evaluating facts 7000-8000  
+Evaluating facts 8000-9000  
+Evaluating facts 9000-10000 
+Evaluating facts 10000-11000
+Evaluating facts 11000-12000
+Evaluating facts 12000-13000
+Evaluating facts 13000-14000
+Raw setting:                                                                                                            Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+Fil setting:                                                                                                            Hit@1 = 11231.0
+        Hit@3 = 16071.0
+        Hit@10 = 19832.0
+        MR = 4791768.0
+        MRR = 14253.956967481845
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+Fil setting:
+        Hit@1 = 0.41260102865540044
+        Hit@3 = 0.5904114621601764
+        Hit@10 = 0.7285819250551065
+        MR = 176.0385011021308
+        MRR = 0.5236574932947041
+
+Best epoch: 500
+Model: models/DE_SimplE/icews14/500_512_0.001_0.0_68_500_0.4_32_20_0.68_500.chkpnt
+Evaluating facts 0-1000
+Evaluating facts 1000-2000
+Evaluating facts 2000-3000
+Evaluating facts 3000-4000
+Evaluating facts 4000-5000
+Evaluating facts 5000-6000
+Evaluating facts 6000-7000
+Evaluating facts 7000-8000
+Evaluating facts 8000-9000
+Evaluating facts 9000-10000
+Evaluating facts 10000-11000
+Evaluating facts 11000-12000
+Evaluating facts 12000-13000
+Evaluating facts 13000-14000
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 11123.0
+        Hit@3 = 15990.0
+        Hit@10 = 19712.0
+        MR = 4617970.0
+        MRR = 14142.312695145254
+
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 0.4086333578251286
+        Hit@3 = 0.5874357090374724
+        Hit@10 = 0.7241734019103601
+        MR = 169.65356355620867
+        MRR = 0.5195559403065854

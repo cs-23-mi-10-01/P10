@@ -1,0 +1,67 @@
+
+Starting test.
+Model: models/DE_SimplE/yago/500_512_0.001_0.0_68_500_0.4_32_20_0.68_120.chkpnt
+
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+Fil setting:
+        Hit@1 = 509.0
+        Hit@3 = 737.0
+        Hit@10 = 1154.0
+        MR = 16443488.0
+        MRR = 729.7276945255065
+
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 0.0827373211963589
+        Hit@3 = 0.11979843953185956
+        Hit@10 = 0.1875812743823147
+        MR = 2672.8686605981793
+        MRR = 0.11861633526097311
+
+Best epoch: 120
+Starting test.
+Model: models/DE_SimplE/yago/500_512_0.001_0.0_68_500_0.4_32_20_0.68_120.chkpnt
+Evaluating facts 0-1000
+Evaluating facts 1000-2000
+Evaluating facts 2000-3000
+Evaluating facts 3000-4000
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 504.0
+        Hit@3 = 738.0
+        Hit@10 = 1171.0
+        MR = 16383650.0
+        MRR = 729.9683087224615
+
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 0.08192457737321196
+        Hit@3 = 0.11996098829648895
+        Hit@10 = 0.1903446033810143
+        MR = 2663.142067620286
+        MRR = 0.11865544680144043
