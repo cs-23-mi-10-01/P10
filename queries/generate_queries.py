@@ -4,6 +4,7 @@ import csv
 import re
 import json
 import os
+from scripts import touch
 
 class GenerateQueries():
     def __init__(self, params):
@@ -95,7 +96,9 @@ class GenerateQueries():
                 input_path = os.path.join(self.params.base_directory, "datasets", dataset, "format_A", "split_" + split, 'test.txt')
                 temp_csv_path = os.path.join(self.params.base_directory, "queries", 'temp.csv')
                 temp_test_quads_csv_path = os.path.join(self.params.base_directory, "queries", 'temp_test_quads.csv')
-                test_quads_path = os.path.join(self.params.base_directory, "queries", "icews14", "split_" + split, 'test_quads.json')
+                test_quads_path = os.path.join(self.params.base_directory, "queries", dataset, "split_" + split, 'test_quads.json')
+
+                touch(test_quads_path)
 
                 self._txt_to_csv(input_path, temp_csv_path)
                 self._generate_corrupted_quadruple(temp_csv_path, temp_test_quads_csv_path)
