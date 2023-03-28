@@ -6,10 +6,11 @@ from scripts import remove_unwanted_symbols_from_str
 
 
 class RankCalculator:
-    def __init__(self, params, model):
+    def __init__(self, params, model, dataset_name):
         self.params = params
         self.dataset = model.module.dataset
         self.model = model
+        self.dataset_name = dataset_name
 
         self.num_of_ent = self.dataset.numEnt()
         self.num_of_rel = self.dataset.numRel()
@@ -18,7 +19,17 @@ class RankCalculator:
         return (sim_scores > sim_scores[0]).sum() + 1
 
     def split_timestamp(self, element):
-        dt = date.fromisoformat(element)
+        if self.dataset_name in ['wikidata12k']:
+            year = element
+            if year == '-':
+                year = "0001"
+            while len(year) < 4:
+                year = "0" + year
+            modified_date = year + "-01-01"
+        else:
+            modified_date = element
+
+        dt = date.fromisoformat(modified_date)
         return dt.year, dt.month, dt.day
 
     def shred_facts(self, facts): #takes a batch of facts and shreds it into its columns

@@ -3,7 +3,7 @@ import os
 import json
 
 from rank.loader import Loader
-from scripts import touch
+from scripts import touch, exists
 from rank.de_simple.rank_calculator import RankCalculator as DE_Rank
 from rank.TERO.rank_calculator import RankCalculator as TERO_Rank
 from rank.TFLEX.rank_calculator import RankCalculator as TFLEX_Rank
@@ -18,10 +18,11 @@ class Ranker:
     def rank(self):
         for dataset in self.params.datasets:
             for split in self.params.splits:
-                if not self.params.add_to_result:
-                    quads_path = os.path.join(self.base_directory, "queries", dataset, "split_" + split, "test_quads.json")
+                result_quads = os.path.join(self.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
+                if exists(result_quads):
+                    quads_path = result_quads
                 else:
-                    quads_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
+                    quads_path = os.path.join(self.base_directory, "queries", dataset, "split_" + split, "test_quads.json")
 
                 in_file = open(quads_path, "r", encoding="utf8")
                 self.ranked_quads = json.load(in_file)
@@ -33,7 +34,7 @@ class Ranker:
                     model = loader.load()
                     model.eval()
 
-                    self.ranked_quads = self._generate_ranked_quads(model, embedding_name)
+                    self.ranked_quads = self._generate_ranked_quads(model, embedding_name, dataset)
                 
                 results_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
 
@@ -43,11 +44,11 @@ class Ranker:
                 json.dump(self.ranked_quads, out_file, indent=4)
                 out_file.close()
 
-    def _generate_ranked_quads(self, model, embedding_name):
+    def _generate_ranked_quads(self, model, embedding_name, dataset):
         ranked_quads = []
         
         if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
-            rank_calculator = DE_Rank(self.params, model)
+            rank_calculator = DE_Rank(self.params, model, dataset)
         if embedding_name in ["TERO", "ATISE"]:
             rank_calculator = TERO_Rank(self.params, model)
         if embedding_name in ["TFLEX"]:

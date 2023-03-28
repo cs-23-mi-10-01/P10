@@ -28,3 +28,6 @@ def write(path, text):
     out_file = open(path, "w", encoding="utf8")
     out_file.write(text)
     out_file.close()
+
+def exists(path):
+    return os.path.exists(path)
