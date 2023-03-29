@@ -2,7 +2,7 @@ import numpy as np
 import torch
 import datetime
 from datetime import date
-from scripts import remove_unwanted_symbols_from_str
+from scripts import remove_unwanted_symbols_from_str, year_to_iso_format
 
 
 class RankCalculator:
@@ -15,17 +15,26 @@ class RankCalculator:
         self.num_of_ent = self.dataset.numEnt()
         self.num_of_rel = self.dataset.numRel()
 
+        if self.dataset_name in ['icews14']:
+            self.start_sim_date = date(2014, 1, 1)
+            self.end_sim_date = date(2015, 1, 1)
+            self.delta_sim_date = datetime.timedelta(days=1)
+        elif self.dataset_name in ['wikidata12k']:
+            self.start_sim_date = date(1, 1, 1)
+            self.end_sim_date = date(2021, 1, 1)
+            self.delta_sim_date = datetime.timedelta(years=1)
+        elif self.dataset_name in ['yago11k']:
+            self.start_sim_date = date(-431, 1, 1)
+            self.end_sim_date = date(2845, 1, 1)
+            self.delta_sim_date = datetime.timedelta(years=1)
+
+
     def get_rank(self, sim_scores):  # assuming the test fact is the first one
         return (sim_scores > sim_scores[0]).sum() + 1
 
     def split_timestamp(self, element):
-        if self.dataset_name in ['wikidata12k']:
-            year = element
-            if year == '-':
-                year = "0001"
-            while len(year) < 4:
-                year = "0" + year
-            modified_date = year + "-01-01"
+        if self.dataset_name in ['wikidata12k', 'yago11k']:
+            modified_date = year_to_iso_format(element)
         else:
             modified_date = element
 
@@ -76,13 +85,13 @@ class RankCalculator:
                 sim_facts = [(head, relation, self.get_ent_id(answer), year, month, day)] + sim_facts
             case "T":
                 sim_facts = []
-                sim_date = date(2014, 1, 1)
-                while sim_date != date(2015, 1, 1):
+                sim_date = self.start_sim_date
+                while sim_date != self.end_sim_date:
                     year = sim_date.year
                     month = sim_date.month
                     day = sim_date.day
                     sim_facts.append((head, relation, tail, year, month, day))
-                    sim_date = sim_date + datetime.timedelta(days=1)
+                    sim_date = sim_date + self.delta_sim_date
 
                 year, month, day = self.split_timestamp(answer)
                 sim_facts = [(head, relation, tail, year, month, day)] + sim_facts

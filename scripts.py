@@ -29,5 +29,13 @@ def write(path, text):
     out_file.write(text)
     out_file.close()
 
+def year_to_iso_format(year):
+    modified_year = year
+    if modified_year == '-' or modified_year == '####':
+        modified_year = "0001"
+    while len(modified_year) < 4:
+        modified_year = "0" + modified_year
+    return modified_year + "-01-01"
+
 def exists(path):
     return os.path.exists(path)

@@ -61,7 +61,11 @@ class Ranker:
                 print("Ranking fact " + str(i) + "-" + str(i + 999) + " (total number: " + str(len(self.ranked_quads)) + ") with embedding " + embedding_name)
 
             if embedding_name in ["TFLEX"]:
-                if not (quad["TAIL"] == "0" or quad["TIME"] == "0"):
+                if not (quad["TAIL"] == "0" or quad["TIME_FROM"] == "0"):
+                    ranked_quads.append(quad)
+                    continue
+            if embedding_name in ['DE_TransE', 'DE_SimplE', 'DE_DistMult']:
+                if quad["TIME_TO"] == "0":
                     ranked_quads.append(quad)
                     continue
 

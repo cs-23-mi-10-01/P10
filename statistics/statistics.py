@@ -3,7 +3,7 @@ import os
 import json
 import pandas
 
-from scripts import touch
+from scripts import touch, year_to_iso_format
 from statistics.measure import Measure
 from copy import deepcopy
 from dataset_handler.dataset_handler import DatasetHandler
@@ -311,11 +311,17 @@ class Statistics():
                 entities[line[2]] = 0
             if line[3] not in timestamps.keys():
                 timestamps[line[3]] = 0
+            if dataset in ['wikidata12k', 'yago11k']:
+                if line[4] not in timestamps.keys():
+                    timestamps[line[4]] = 0
+
 
             entities[line[0]] += 1
             relations[line[1]] += 1
             entities[line[2]] += 1
             timestamps[line[3]] += 1
+            if dataset in ['wikidata12k', 'yago11k']:
+                timestamps[line[4]] += 1
         
         entities_json = []
         relations_json = []
@@ -326,22 +332,40 @@ class Statistics():
         for key in relations.keys():
             relations_json.append({"RELATION": key, "COUNT": relations[key]})
         for key in timestamps.keys():
-            timestamps_json.append({"TIMESTAMP": key, "COUNT": timestamps[key]})
+            if dataset in ['icews14']:
+                sortable = key 
+            elif dataset in ['wikidata12k']:
+                if key == "####":
+                    sortable = -10000
+                else:
+                    sortable = int(key)
+            elif dataset in ['yago11k']:
+                spli = key.split('-')
+                if spli[0] == '':
+                    sortable = [-int(spli[1].replace('#', '0'))]
+                else:
+                    sortable = [int(spli[0].replace('#', '0'))]
+                sortable += [int(spli[-2].replace('#', '0'))]
+                sortable += [int(spli[-1].replace('#', '0'))]
+                sortable = tuple(sortable)
+            timestamps_json.append({"TIMESTAMP": key, "COUNT": timestamps[key], "SORTABLE": sortable})
 
         print("entitiy count: " + str(len(entities_json)))
         print("relations count: " + str(len(relations_json)))
         print("timestamps count: " + str(len(timestamps_json)))
         
         entities_json.sort(key=lambda val: val["COUNT"], reverse=True)
-        results_path = os.path.join(self.params.base_directory, "result", dataset, "no_of_elements", "train_entities.json")
+        results_path = os.path.join(self.params.base_directory, "result", dataset, "no_of_elements", "full_entities.json")
         self.write_json(results_path, entities_json)
 
         relations_json.sort(key=lambda val: val["COUNT"], reverse=True)
-        results_path = os.path.join(self.params.base_directory, "result", dataset, "no_of_elements", "train_relations.json")
+        results_path = os.path.join(self.params.base_directory, "result", dataset, "no_of_elements", "full_relations.json")
         self.write_json(results_path, relations_json)
 
-        timestamps_json.sort(key=lambda val: val["COUNT"], reverse=True)
-        results_path = os.path.join(self.params.base_directory, "result", dataset, "no_of_elements", "train_timestamps.json")
+        timestamps_json.sort(key=lambda val: val["SORTABLE"], reverse=False)
+        for t in timestamps_json:
+            t.pop("SORTABLE")
+        results_path = os.path.join(self.params.base_directory, "result", dataset, "no_of_elements", "full_timestamps.json")
         self.write_json(results_path, timestamps_json)
 
     def find_common_elements(self, entity_top_100):
@@ -439,20 +463,20 @@ class Statistics():
             no_of_elements_dataset = self.read_csv(no_of_elements_path)
             self.no_of_elements(no_of_elements_dataset, dataset)
 
-            for split in self.params.splits:
+            # for split in self.params.splits:
 
-                ranks_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
-                ranked_quads = self.read_json(ranks_path)
+            #     ranks_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
+            #     ranked_quads = self.read_json(ranks_path)
 
-                self.calculate_overall_scores(ranked_quads, embeddings, dataset, split)
+            #     self.calculate_overall_scores(ranked_quads, embeddings, dataset, split)
 
-                overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")        
-                overall_scores = self.read_json(overall_scores_path)
+            #     overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")        
+            #     overall_scores = self.read_json(overall_scores_path)
 
-                self.semester_9_hypothesis_1(ranked_quads, embeddings, dataset, split)
-                self.semester_9_hypothesis_2(ranked_quads, embeddings, dataset, split)
-                self.semester_9_hypothesis_3(ranked_quads, embeddings, dataset, split)
-                self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=10)
-                self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=20)
-                self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=100)
-                self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=50, percentage=True)
+            #     self.semester_9_hypothesis_1(ranked_quads, embeddings, dataset, split)
+            #     self.semester_9_hypothesis_2(ranked_quads, embeddings, dataset, split)
+            #     self.semester_9_hypothesis_3(ranked_quads, embeddings, dataset, split)
+            #     self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=10)
+            #     self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=20)
+            #     self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=100)
+            #     self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=50, percentage=True)

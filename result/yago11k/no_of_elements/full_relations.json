@@ -1,0 +1,42 @@
+[
+    {
+        "RELATION": 2,
+        "COUNT": 4787
+    },
+    {
+        "RELATION": 0,
+        "COUNT": 3340
+    },
+    {
+        "RELATION": 3,
+        "COUNT": 3307
+    },
+    {
+        "RELATION": 4,
+        "COUNT": 2312
+    },
+    {
+        "RELATION": 9,
+        "COUNT": 1943
+    },
+    {
+        "RELATION": 7,
+        "COUNT": 1643
+    },
+    {
+        "RELATION": 8,
+        "COUNT": 1388
+    },
+    {
+        "RELATION": 5,
+        "COUNT": 750
+    },
+    {
+        "RELATION": 6,
+        "COUNT": 630
+    },
+    {
+        "RELATION": 1,
+        "COUNT": 408
+    }
+]
