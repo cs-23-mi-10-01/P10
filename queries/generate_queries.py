@@ -56,13 +56,14 @@ class GenerateQueries():
 
 
     # add ID for each fact
-    def _add_fact_id(self, filename):
+    def _add_fact_id(self, filename, dataset):
         data = pd.read_csv(filename, sep='\t', encoding='utf-8')
         fact_column = []
         num1 = 0
         num2 = 0
+        mod = 4 if dataset in ['icews14'] else 5
         for index, row in data.iterrows():
-            if index % 4 == 0:
+            if index % mod == 0:
                 num1 += 1
                 num2 = 0
             else:
@@ -103,7 +104,7 @@ class GenerateQueries():
 
                 self._txt_to_csv(input_path, temp_csv_path)
                 self._generate_corrupted_quadruple(temp_csv_path, temp_test_quads_csv_path, dataset)
-                self._add_fact_id(temp_test_quads_csv_path)
+                self._add_fact_id(temp_test_quads_csv_path, dataset)
                 self._csv_to_json(temp_test_quads_csv_path, test_quads_path)
 
                 os.remove(temp_csv_path)
