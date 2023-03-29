@@ -6,7 +6,7 @@ From: ubuntu:18.04
 
 %files
     ./environment.yml /app/environment.yml
-    ./* /app/
+    ./image_folder/* /app/
 
 %post
     # Set working dir

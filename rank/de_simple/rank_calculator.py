@@ -3,6 +3,7 @@ import torch
 import datetime
 from datetime import date
 from scripts import remove_unwanted_symbols_from_str, year_to_iso_format
+from dateutil.relativedelta import relativedelta
 
 
 class RankCalculator:
@@ -22,11 +23,11 @@ class RankCalculator:
         elif self.dataset_name in ['wikidata12k']:
             self.start_sim_date = date(1, 1, 1)
             self.end_sim_date = date(2021, 1, 1)
-            self.delta_sim_date = datetime.timedelta(years=1)
+            self.delta_sim_date = relativedelta(years=1)
         elif self.dataset_name in ['yago11k']:
-            self.start_sim_date = date(-431, 1, 1)
+            self.start_sim_date = date(1, 1, 1)
             self.end_sim_date = date(2845, 1, 1)
-            self.delta_sim_date = datetime.timedelta(years=1)
+            self.delta_sim_date = relativedelta(years=1)
 
 
     def get_rank(self, sim_scores):  # assuming the test fact is the first one

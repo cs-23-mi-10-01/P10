@@ -18,33 +18,32 @@ class Ranker:
     def rank(self):
         for dataset in self.params.datasets:
             for split in self.params.splits:
-                result_quads = os.path.join(self.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
-                if exists(result_quads):
-                    quads_path = result_quads
-                else:
-                    quads_path = os.path.join(self.base_directory, "queries", dataset, "split_" + split, "test_quads.json")
-
-                in_file = open(quads_path, "r", encoding="utf8")
-                self.ranked_quads = json.load(in_file)
-                in_file.close()
-
                 for embedding_name in self.params.embeddings:
+                    results_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
+                    if exists(results_path):
+                        quads_path = results_path
+                    else:
+                        quads_path = os.path.join(self.base_directory, "queries", dataset, "split_" + split, "test_quads.json")
+
+                    in_file = open(quads_path, "r", encoding="utf8")
+                    print("Reading from file " + str(quads_path) + "...")
+                    self.ranked_quads = json.load(in_file)
+                    in_file.close()
+
                     model_path = os.path.join(self.base_directory, "models", embedding_name, dataset, "split_" + split, "Model.model")
                     loader = Loader(self.params, model_path, embedding_name)
                     model = loader.load()
                     model.eval()
 
-                    self.ranked_quads = self._generate_ranked_quads(model, embedding_name, dataset)
-                
-                results_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
+                    self.ranked_quads = self._generate_ranked_quads(model, embedding_name, dataset, split)
 
-                touch(results_path)
-                out_file = open(results_path, "w", encoding="utf8")
-                print("Writing to file " + str(results_path) + "...")
-                json.dump(self.ranked_quads, out_file, indent=4)
-                out_file.close()
+                    touch(results_path)
+                    out_file = open(results_path, "w", encoding="utf8")
+                    print("Writing to file " + str(results_path) + "...")
+                    json.dump(self.ranked_quads, out_file, indent=4)
+                    out_file.close()
 
-    def _generate_ranked_quads(self, model, embedding_name, dataset):
+    def _generate_ranked_quads(self, model, embedding_name, dataset, split):
         ranked_quads = []
         
         if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
@@ -58,7 +57,8 @@ class Ranker:
 
         for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
             if i % 1000 == 0:
-                print("Ranking fact " + str(i) + "-" + str(i + 999) + " (total number: " + str(len(self.ranked_quads)) + ") with embedding " + embedding_name)
+                print("Ranking fact " + str(i) + "-" + str(i + 999) + " (total number: " + str(len(self.ranked_quads)) + ") " \
+                      + " on dataset " + dataset + ", split " + split + " with embedding " + embedding_name)
 
             if embedding_name in ["TFLEX"]:
                 if not (quad["TAIL"] == "0" or quad["TIME_FROM"] == "0"):
