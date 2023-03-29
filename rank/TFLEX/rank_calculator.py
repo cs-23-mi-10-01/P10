@@ -50,21 +50,21 @@ class RankCalculator:
         
         return torch.tensor([answers])
 
-    def get_rank_of(self, head, relation, tail, time, answer):
+    def get_rank_of(self, head, relation, tail_from, tail_to, time, answer):
         target = "?"
         query_structure = "?"
         if head == "0":
             target = "h"
         elif relation == "0":
             target = "r"
-        elif tail == "0":
+        elif tail_from == "0":
             target = "t"
             query_structure = "Pe"
         elif time == "0":
             target = "T"
             query_structure = "Pt"
 
-        query = self.simulate_query(head, relation, tail, time, target)
+        query = self.simulate_query(head, relation, tail_from, time, target)
         candidate_answers = self.simulate_answers(target, answer)
         sim_scores = self.model.forward_predict(query_structure, query, candidate_answers)
         rank = self.get_rank(sim_scores[0])

@@ -70,8 +70,8 @@ class Ranker:
                 ranked_quad["RANK"] = {}
 
             ranked_quad["RANK"][embedding_name] = str(rank_calculator.get_rank_of(quad["HEAD"], quad["RELATION"],
-                                                                                       quad["TAIL"], quad["TIME"],
-                                                                                       quad["ANSWER"]))
+                                                                                quad["TAIL"], quad["TIME_FROM"],
+                                                                                quad["TIME_TO"], quad["ANSWER"]))
             ranked_quads.append(ranked_quad)
 
         return ranked_quads
