@@ -11,12 +11,12 @@ def main():
     for i, file in enumerate(all_files):
         all_files[i] = os.path.join(base_dir, file)
 
-    ignore_files = ("singularity.def", "environment.yml", "requirements.txt", "prepare_singularity.py", ".git")
+    ignore_files = ("singularity.def", "environment.yml", "requirements.txt", "prepare_singularity.py", ".git", ".gitignore")
     move_files = [file for file in all_files if not file.endswith(ignore_files)]
 
     os.mkdir(move_dir)
     for file in move_files:
-        shutil.move(file, move_dir)    
+        shutil.move(file, move_dir)
 
 
 if __name__ == '__main__':
