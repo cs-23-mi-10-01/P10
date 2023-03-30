@@ -13,6 +13,7 @@ def main():
 
     ignore_files = ("singularity.def", "environment.yml", "requirements.txt", "prepare_singularity.py")
     move_files = [file for file in all_files if not file.endswith(ignore_files)]
+    move_files = [file for file in move_files if ".git" not in file]
 
     os.mkdir(move_dir)
     for file in move_files:
