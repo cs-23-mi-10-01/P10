@@ -1,0 +1,22 @@
+[
+    {
+        "EMBEDDING_N": "DE_TransE",
+        "EMBEDDING_M": "DE_TransE",
+        "OVERLAP_TOP": 1.0
+    },
+    {
+        "EMBEDDING_N": "DE_TransE",
+        "EMBEDDING_M": "DE_SimplE",
+        "OVERLAP_TOP": 0.8771929824561403
+    },
+    {
+        "EMBEDDING_N": "DE_SimplE",
+        "EMBEDDING_M": "DE_TransE",
+        "OVERLAP_TOP": 0.8771929824561403
+    },
+    {
+        "EMBEDDING_N": "DE_SimplE",
+        "EMBEDDING_M": "DE_SimplE",
+        "OVERLAP_TOP": 1.0
+    }
+]

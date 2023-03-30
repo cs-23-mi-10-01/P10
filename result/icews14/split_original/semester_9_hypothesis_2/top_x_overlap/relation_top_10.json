@@ -1,0 +1,30 @@
+{
+    "DE_TransE": {
+        "TOP": [
+            "Use tactics of violent repression",
+            "Protest violently, riot",
+            "Increase military alert status",
+            "Coerce",
+            "Ease administrative sanctions",
+            "Demonstrate or rally",
+            "Conduct suicide, car, or other non-military bombing",
+            "Confiscate property",
+            "Reduce or break diplomatic relations",
+            "Defy norms, law"
+        ]
+    },
+    "DE_SimplE": {
+        "TOP": [
+            "Use tactics of violent repression",
+            "Ease administrative sanctions",
+            "Express intent to release persons or property",
+            "Appeal for release of persons or property",
+            "Sexually assault",
+            "Protest violently, riot",
+            "Discuss by telephone",
+            "Conduct suicide, car, or other non-military bombing",
+            "Coerce",
+            "Engage in negotiation"
+        ]
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "DE_TransE": {
+        "TOP": [
+            "<isMarriedTo>",
+            "<isAffiliatedTo>",
+            "<diedIn>",
+            "<wasBornIn>",
+            "<hasWonPrize>"
+        ]
+    },
+    "DE_SimplE": {
+        "TOP": [
+            "<isMarriedTo>",
+            "<isAffiliatedTo>",
+            "<hasWonPrize>",
+            "<diedIn>",
+            "<playsFor>"
+        ]
+    }
+}

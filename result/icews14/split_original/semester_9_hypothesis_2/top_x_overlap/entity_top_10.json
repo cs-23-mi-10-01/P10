@@ -1,0 +1,30 @@
+{
+    "DE_TransE": {
+        "TOP": [
+            "Victoria Nuland",
+            "Mainland Affairs Council",
+            "Naval (Sri Lanka)",
+            "Curacao",
+            "Men (Indonesia)",
+            "Elizabeth II",
+            "Armed Gang (Egypt)",
+            "Protester (Egypt)",
+            "Armed Rebel (Mali)",
+            "Criminal (Somalia)"
+        ]
+    },
+    "DE_SimplE": {
+        "TOP": [
+            "Ri Su Yong",
+            "Head of Government (Tajikistan)",
+            "Victoria Nuland",
+            "Elizabeth II",
+            "Lawmaker (Hong Kong)",
+            "Defense / Security Ministry (United States)",
+            "Jacob J. Lew",
+            "Akitaka Saiki",
+            "Foreign Affairs (Czech Republic)",
+            "Detainee (South Sudan)"
+        ]
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "DE_TransE": {
+        "TOP": [
+            "Curacao",
+            "Men (France)",
+            "Customs Official (India)",
+            "Protester (Egypt)",
+            "Envoy (Qatar)",
+            "Jack Straw",
+            "Terrorist Leader (Pakistan)",
+            "Legislature (Libya)",
+            "Attacker (Afghanistan)",
+            "Abdolreza Rahmani-Fazli"
+        ]
+    },
+    "DE_SimplE": {
+        "TOP": [
+            "Jean Qahwaji",
+            "B\u00f8rge Brende",
+            "Envoy (Qatar)",
+            "Foreign Affairs (Rwanda)",
+            "Head of Government (Turkmenistan)",
+            "Mark Simmonds",
+            "Isaias Afewerki",
+            "Ibrahim Boubacar Ke\u00efta",
+            "Joe Natuman",
+            "Mar\u00eda \u00c1ngela Holgu\u00edn"
+        ]
+    }
+}

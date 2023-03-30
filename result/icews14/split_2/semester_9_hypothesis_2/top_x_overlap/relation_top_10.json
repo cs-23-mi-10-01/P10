@@ -1,0 +1,30 @@
+{
+    "DE_TransE": {
+        "TOP": [
+            "Increase police alert status",
+            "Protest violently, riot",
+            "Use tactics of violent repression",
+            "Obstruct passage, block",
+            "Impose blockade, restrict movement",
+            "Carry out suicide bombing",
+            "Increase military alert status",
+            "Mobilize or increase police power",
+            "Demonstrate or rally",
+            "Demonstrate for leadership change"
+        ]
+    },
+    "DE_SimplE": {
+        "TOP": [
+            "Obstruct passage, block",
+            "Increase police alert status",
+            "Use tactics of violent repression",
+            "Protest violently, riot",
+            "Express intent to settle dispute",
+            "Engage in negotiation",
+            "Discuss by telephone",
+            "Ease administrative sanctions",
+            "Threaten with military force",
+            "Occupy territory"
+        ]
+    }
+}

@@ -1,0 +1,50 @@
+{
+    "DE_TransE": {
+        "TOP": [
+            "Increase police alert status",
+            "Protest violently, riot",
+            "Use tactics of violent repression",
+            "Obstruct passage, block",
+            "Impose blockade, restrict movement",
+            "Carry out suicide bombing",
+            "Increase military alert status",
+            "Mobilize or increase police power",
+            "Demonstrate or rally",
+            "Demonstrate for leadership change",
+            "Conduct suicide, car, or other non-military bombing",
+            "Occupy territory",
+            "Arrest, detain, or charge with legal action",
+            "Confiscate property",
+            "Give ultimatum",
+            "Receive deployment of peacekeepers",
+            "Ease administrative sanctions",
+            "Impose embargo, boycott, or sanctions",
+            "Investigate",
+            "Host a visit"
+        ]
+    },
+    "DE_SimplE": {
+        "TOP": [
+            "Obstruct passage, block",
+            "Increase police alert status",
+            "Use tactics of violent repression",
+            "Protest violently, riot",
+            "Express intent to settle dispute",
+            "Engage in negotiation",
+            "Discuss by telephone",
+            "Ease administrative sanctions",
+            "Threaten with military force",
+            "Occupy territory",
+            "Conduct suicide, car, or other non-military bombing",
+            "Express intent to release persons or property",
+            "Carry out suicide bombing",
+            "Host a visit",
+            "Sign formal agreement",
+            "Meet at a 'third' location",
+            "Demonstrate or rally",
+            "Mobilize or increase police power",
+            "Consult",
+            "Make a visit"
+        ]
+    }
+}

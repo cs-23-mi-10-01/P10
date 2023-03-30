@@ -48,7 +48,10 @@ class Statistics():
             ranks = {}
             for embedding in embeddings:
                 if embedding == "TFLEX":
-                    if not (quad["TAIL"] == "0" or quad["TIME"] == "0"):
+                    if not (quad["TAIL"] == "0" or quad["TIME_FROM"] == "0"):
+                        continue
+                if embedding in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
+                    if quad["TIME_TO"] == "0":
                         continue
                 
                 ranks[embedding] = int(float(quad["RANK"][embedding]))
@@ -61,7 +64,7 @@ class Statistics():
         self.write_json(results_path, measure.as_dict())
 
     def semester_9_hypothesis_1(self, ranked_quads, embeddings, dataset, split, normalization_scores = None):
-        for element_type in ["HEAD", "RELATION", "TAIL", "TIME"]:
+        for element_type in ["HEAD", "RELATION", "TAIL", "TIME_FROM"]:
             print("Rank of question tuples when " + str(element_type) + " is the answer element:")
             
             measure = Measure()
@@ -73,7 +76,10 @@ class Statistics():
                 ranks = {}
                 for embedding in embeddings:
                     if embedding == "TFLEX":
-                        if element_type not in ["TAIL", "TIME"]:
+                        if element_type not in ["TAIL", "TIME_FROM"]:
+                            continue
+                    if embedding in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
+                        if quad["TIME_TO"] == "0":
                             continue
                     
                     ranks[embedding] = int(float(quad["RANK"][embedding]))
@@ -99,6 +105,8 @@ class Statistics():
 
             if element is "ENTITY":
                 target_parts = ["HEAD", "TAIL"]
+            elif element is "TIME":
+                target_parts = ["TIME_FROM", "TIME_TO"]
             else:
                 target_parts = [element]
 
@@ -113,7 +121,10 @@ class Statistics():
                     ranks = {}
                     for embedding in embeddings:
                         if embedding == "TFLEX":
-                            if not (quad["TAIL"] == "0" or quad["TIME"] == "0"):
+                            if not (quad["TAIL"] == "0" or quad["TIME_FROM"] == "0"):
+                                continue
+                        if embedding in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
+                            if quad["TIME_TO"] == "0":
                                 continue
 
                         ranks[embedding] = int(float(quad["RANK"][embedding]))
@@ -223,9 +234,12 @@ class Statistics():
             ranks = {}
             for embedding in embeddings:
                 if embedding == "TFLEX":
-                    if not (quad["TAIL"] == "0" or quad["TIME"] == "0"):
+                    if not (quad["TAIL"] == "0" or quad["TIME_FROM"] == "0"):
                         continue
-                
+                if embedding in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
+                    if quad["TIME_TO"] == "0":
+                        continue
+
                 ranks[embedding] = int(float(quad["RANK"][embedding]))
             entity_measures[key]["RANK"].update(ranks)
             entity_measures[key]["FACTS"] += 1
@@ -456,27 +470,27 @@ class Statistics():
             # dataset_handler = DatasetHandler(self.params, dataset)
             # self.relation_analysis(dataset_handler, dataset)
 
-            if dataset in ['icews14']:
-                no_of_elements_path = os.path.join(self.params.base_directory, "datasets", dataset, "full.txt")
-            else:
-                no_of_elements_path = os.path.join(self.params.base_directory, "datasets", dataset, "triple2id.txt")
-            no_of_elements_dataset = self.read_csv(no_of_elements_path)
-            self.no_of_elements(no_of_elements_dataset, dataset)
+            # if dataset in ['icews14']:
+            #     no_of_elements_path = os.path.join(self.params.base_directory, "datasets", dataset, "full.txt")
+            # else:
+            #     no_of_elements_path = os.path.join(self.params.base_directory, "datasets", dataset, "triple2id.txt")
+            # no_of_elements_dataset = self.read_csv(no_of_elements_path)
+            # self.no_of_elements(no_of_elements_dataset, dataset)
 
-            # for split in self.params.splits:
+            for split in self.params.splits:
 
-            #     ranks_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
-            #     ranked_quads = self.read_json(ranks_path)
+                ranks_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
+                ranked_quads = self.read_json(ranks_path)
 
-            #     self.calculate_overall_scores(ranked_quads, embeddings, dataset, split)
+                self.calculate_overall_scores(ranked_quads, embeddings, dataset, split)
 
-            #     overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")        
-            #     overall_scores = self.read_json(overall_scores_path)
+                overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")        
+                overall_scores = self.read_json(overall_scores_path)
 
-            #     self.semester_9_hypothesis_1(ranked_quads, embeddings, dataset, split)
-            #     self.semester_9_hypothesis_2(ranked_quads, embeddings, dataset, split)
-            #     self.semester_9_hypothesis_3(ranked_quads, embeddings, dataset, split)
-            #     self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=10)
-            #     self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=20)
-            #     self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=100)
-            #     self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=50, percentage=True)
+                self.semester_9_hypothesis_1(ranked_quads, embeddings, dataset, split, normalization_scores=overall_scores)
+                self.semester_9_hypothesis_2(ranked_quads, embeddings, dataset, split, normalization_scores=overall_scores)
+                self.semester_9_hypothesis_3(ranked_quads, embeddings, dataset, split, normalization_scores=overall_scores)
+                self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=10)
+                self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=20)
+                self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=100)
+                self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=50, percentage=True)

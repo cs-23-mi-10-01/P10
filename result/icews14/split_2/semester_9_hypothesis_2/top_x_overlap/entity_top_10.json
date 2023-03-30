@@ -1,0 +1,30 @@
+{
+    "DE_TransE": {
+        "TOP": [
+            "Curacao",
+            "Criminal (Argentina)",
+            "Men (Indonesia)",
+            "Yoshitaka Shindo",
+            "Terrorist (Boko Haram)",
+            "Customs Official (India)",
+            "Naval (Sri Lanka)",
+            "Micky Rosenfeld",
+            "Le Hong Anh",
+            "Islamic Rebel (Philippines)"
+        ]
+    },
+    "DE_SimplE": {
+        "TOP": [
+            "Wendy Sherman",
+            "Mar\u00eda \u00c1ngela Holgu\u00edn",
+            "Martin Lidegaard",
+            "Irakli Alasania",
+            "Militant (Philippines)",
+            "Yoshitaka Shindo",
+            "Cape Verde",
+            "Sebastian Kurz",
+            "Michel Sapin",
+            "Ali Tayyebnia"
+        ]
+    }
+}
