@@ -28,7 +28,7 @@ def main():
     if params.datasets == ['all']:
         params.datasets = ['icews14']
     if params.splits == ['all']:
-        params.splits = ['original', '1', '2', '3']
+        params.splits = ['original',]
     
     match params.task:
         case "split_dataset":
