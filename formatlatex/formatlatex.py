@@ -12,6 +12,12 @@ class FormatLatex():
         dict = json.load(in_file)
         in_file.close()
         return dict
+    
+    def read_text(self, path):
+        in_file = open(path, "r", encoding="utf8")
+        text = in_file.read()
+        in_file.close()
+        return text
 
     def get_entity(self, measure):
         if "ENTITY" in measure.keys():
@@ -27,6 +33,12 @@ class FormatLatex():
     def format_semester_9_hypothesis_1(self):
         embeddings = self.params.embeddings
         metric = "MRR"
+
+        prefix_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_9_hypothesis_1_prefix.txt")
+        suffix_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_9_hypothesis_1_suffix.txt")
+
+        prefix_text = self.read_text(prefix_path)
+        suffix_text = self.read_text(suffix_path)
 
         for dataset in self.params.datasets:
             for split in self.params.splits:
@@ -56,8 +68,11 @@ class FormatLatex():
                         text += f"({float(i) + 0.5}, {overall_scores[embedding][metric]})" + "\n"
                     text += r"} ;" + "\n"
                     
-                    output_path = os.path.join(self.params.base_directory, "formatlatex", "result", dataset, "split_" + split, "semester_9_hypothesis_1"+normalized+".tex")
-                    write(output_path, text)
+                    mod_prefix_text = prefix_text.replace("%1", f"""{embeddings.join(",")}""")
+                    mod_suffix_text = suffix_text.replace("%1", f"{dataset}, {split} split").replace("%2", f"{dataset}_{split}")
+
+                    output_path = os.path.join(self.params.base_directory, "formatlatex", "result", dataset, "split_" + split, "semester_9_hypothesis_1"+normalized, dataset+"_"+split+".tex")
+                    write(output_path, mod_prefix_text + text + mod_suffix_text)
 
     def format_hypothesis_2(self):
         for normalized in ["", "_normalized"]:
