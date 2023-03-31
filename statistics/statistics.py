@@ -482,15 +482,15 @@ class Statistics():
                 ranks_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
                 ranked_quads = self.read_json(ranks_path)
 
-                self.calculate_overall_scores(ranked_quads, embeddings, dataset, split)
+                # self.calculate_overall_scores(ranked_quads, embeddings, dataset, split)
 
                 overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")        
                 overall_scores = self.read_json(overall_scores_path)
 
                 self.semester_9_hypothesis_1(ranked_quads, embeddings, dataset, split, normalization_scores=overall_scores)
-                self.semester_9_hypothesis_2(ranked_quads, embeddings, dataset, split, normalization_scores=overall_scores)
-                self.semester_9_hypothesis_3(ranked_quads, embeddings, dataset, split, normalization_scores=overall_scores)
-                self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=10)
-                self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=20)
-                self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=100)
-                self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=50, percentage=True)
+                # self.semester_9_hypothesis_2(ranked_quads, embeddings, dataset, split, normalization_scores=overall_scores)
+                # self.semester_9_hypothesis_3(ranked_quads, embeddings, dataset, split, normalization_scores=overall_scores)
+                # self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=10)
+                # self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=20)
+                # self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=100)
+                # self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=50, percentage=True)

@@ -23,6 +23,41 @@ class FormatLatex():
     
     def round(self, val):
         return round(val, 1)
+    
+    def format_semester_9_hypothesis_1(self):
+        embeddings = self.params.embeddings
+        metric = "MRR"
+
+        for dataset in self.params.datasets:
+            for split in self.params.splits:
+                overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")
+
+                overall_scores = self.read_json(overall_scores_path)
+
+                for normalized in ["", "_normalized"]:
+                    if normalized == "_normalized":
+                        continue
+
+                    text = ""
+
+                    for prediction_target in ["head", "relation", "tail", "time_from"]:
+                        scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_1", prediction_target + normalized + ".json")
+
+                        scores = self.read_json(scores_path)
+
+                        text += r"\addplot coordinates { %" + prediction_target + "\n"
+                        for i, embedding in enumerate(embeddings):
+                            text += f"({i}, {scores[embedding][metric]}) %{embedding}" + "\n"
+                        text += r"} ;" + "\n"
+                    
+                    text += r"\addplot[black,sharp plot,update limits=false,] coordinates { %" + embedding + "\n"
+                    for i, embedding in enumerate(embeddings):
+                        text += f"({float(i) - 0.5}, {overall_scores[embedding][metric]})" + "\n"
+                        text += f"({float(i) + 0.5}, {overall_scores[embedding][metric]})" + "\n"
+                    text += r"} ;" + "\n"
+                    
+                    output_path = os.path.join(self.params.base_directory, "formatlatex", "result", dataset, "split_" + split, "semester_9_hypothesis_1"+normalized+".tex")
+                    write(output_path, text)
 
     def format_hypothesis_2(self):
         for normalized in ["", "_normalized"]:
@@ -220,4 +255,5 @@ class FormatLatex():
         #self.format_hypothesis_2()
         #self.format_hypothesis_3()
         #self.format_no_of_entities()
-        self.format_hypothesis_2_overlap()
+        # self.format_hypothesis_2_overlap()
+        self.format_semester_9_hypothesis_1()

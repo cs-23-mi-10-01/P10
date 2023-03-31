@@ -68,6 +68,10 @@ class Ranker:
                 if quad["TIME_TO"] == "0":
                     ranked_quads.append(quad)
                     continue
+            if dataset in ['icews14'] and embedding_name in ['DE_TransE', 'DE_SimplE', 'DE_DistMult']:
+                if quad["TIME_TO"] == "0":
+                    ranked_quads.append(quad)
+                    continue
 
             ranked_quad = quad
             if "RANK" not in ranked_quad.keys():
