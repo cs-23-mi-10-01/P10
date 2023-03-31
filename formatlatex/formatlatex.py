@@ -36,9 +36,11 @@ class FormatLatex():
 
         prefix_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_9_hypothesis_1_prefix.txt")
         suffix_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_9_hypothesis_1_suffix.txt")
+        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "method_shorthand.json")
 
         prefix_text = self.read_text(prefix_path)
         suffix_text = self.read_text(suffix_path)
+        shorthand = self.read_json(shorthand_path)
 
         for dataset in self.params.datasets:
             for split in self.params.splits:
@@ -62,13 +64,13 @@ class FormatLatex():
                             text += f"({i}, {scores[embedding][metric]}) %{embedding}" + "\n"
                         text += r"} ;" + "\n"
                     
-                    text += r"\addplot[black,sharp plot,update limits=false,] coordinates { %" + embedding + "\n"
                     for i, embedding in enumerate(embeddings):
-                        text += f"({float(i) - 0.5}, {overall_scores[embedding][metric]})" + "\n"
-                        text += f"({float(i) + 0.5}, {overall_scores[embedding][metric]})" + "\n"
-                    text += r"} ;" + "\n"
+                        text += r"\addplot[black,sharp plot,update limits=false,] coordinates { %" + embedding + "\n" + \
+                        f"({float(i) - 0.5}, {overall_scores[embedding][metric]})" + "\n" + \
+                        f"({float(i) + 0.5}, {overall_scores[embedding][metric]})" + "\n" + \
+                        r"} ;" + "\n"
                     
-                    mod_prefix_text = prefix_text.replace("%1", f"""{",".join(embeddings)}""")
+                    mod_prefix_text = prefix_text.replace("%1", f"""{",".join([shorthand[e] for e in embeddings])}""")
                     mod_suffix_text = suffix_text.replace("%1", f"{dataset}, {split} split").replace("%2", f"{dataset}_{split}")
 
                     output_path = os.path.join(self.params.base_directory, "formatlatex", "result", dataset, "split_" + split, "semester_9_hypothesis_1"+normalized, dataset+"_"+split+".tex")
