@@ -53,6 +53,7 @@ class FormatLatex():
                         continue
 
                     text = ""
+                    highest_score = 0
 
                     for prediction_target in ["head", "relation", "tail", "time_from"]:
                         scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_1", prediction_target + normalized + ".json")
@@ -63,6 +64,8 @@ class FormatLatex():
                         for i, embedding in enumerate(embeddings):
                             score = scores[embedding][metric] if embedding in scores.keys() else 0
                             text += f"({i}, {score}) %{embedding}" + "\n"
+                            if score > highest_score:
+                                highest_score = score
                         text += r"} ;" + "\n"
                     
                     for i, embedding in enumerate(embeddings):
@@ -71,11 +74,17 @@ class FormatLatex():
                         f"({float(i) - 0.5}, {overall_score})" + "\n" + \
                         f"({float(i) + 0.5}, {overall_score})" + "\n" + \
                         r"} ;" + "\n"
-                    
-                    mod_prefix_text = prefix_text.replace("%1", f"""{",".join([shorthand[e] for e in embeddings])}""")
-                    mod_suffix_text = suffix_text.replace("%1", f"{dataset}, {split} split").replace("%2", f"{dataset}_{split}")
 
-                    output_path = os.path.join(self.params.base_directory, "formatlatex", "result", dataset, "semester_9_hypothesis_1"+normalized, dataset+"_"+split+".tex")
+                    max_y = min(highest_score*1.2, 1.0)
+                    
+                    mod_prefix_text = prefix_text.replace(
+                        "%1", f"""{",".join([shorthand[e] for e in embeddings])}""").replace(
+                        "%2", max_y)
+                    mod_suffix_text = suffix_text.replace(
+                        "%1", f"{dataset}, split {split}").replace(
+                        "%2", f"{dataset}_{split}")
+
+                    output_path = os.path.join(self.params.base_directory, "formatlatex", "result", "semester_9_hypothesis_1", dataset+"_"+split+normalized+".tex")
                     write(output_path, mod_prefix_text + text + mod_suffix_text)
 
     def format_hypothesis_2(self):
