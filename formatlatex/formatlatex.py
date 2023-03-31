@@ -79,7 +79,7 @@ class FormatLatex():
                     
                     mod_prefix_text = prefix_text.replace(
                         "%1", f"""{",".join([shorthand[e] for e in embeddings])}""").replace(
-                        "%2", max_y)
+                        "%2", str(max_y))
                     mod_suffix_text = suffix_text.replace(
                         "%1", f"{dataset}, split {split}").replace(
                         "%2", f"{dataset}_{split}")
