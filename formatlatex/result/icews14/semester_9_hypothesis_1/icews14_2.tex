@@ -1,0 +1,85 @@
+\begin{figure*}[ht]
+\centering
+\begin{minipage}{0.9\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=8pt,
+    xticklabels={x,DE-T,DE-D,DE-S,ATiSE,TeRo,TFLEX},
+    ymin=0,
+    ymax=0.65,
+    ylabel={MRR score},
+    height=8cm,
+    width=12cm,
+    legend style={
+        at={(0.5,1.0)},
+        anchor=north,
+        legend columns=-1
+    },
+    legend image code/.code={
+        \draw [#1] (0cm,-0.1cm) rectangle (0.2cm,0.25cm); },
+    ]
+\addplot coordinates { %head
+(0, 0.30216451910382897) %DE_TransE
+(1, 0) %DE_DistMult
+(2, 0.47975397629017363) %DE_SimplE
+(3, 0) %ATISE
+(4, 0) %TERO
+(5, 0) %TFLEX
+} ;
+\addplot coordinates { %relation
+(0, 0.20561360677141266) %DE_TransE
+(1, 0) %DE_DistMult
+(2, 0.2870517171097706) %DE_SimplE
+(3, 0) %ATISE
+(4, 0) %TERO
+(5, 0) %TFLEX
+} ;
+\addplot coordinates { %tail
+(0, 0.32552183746961566) %DE_TransE
+(1, 0) %DE_DistMult
+(2, 0.5155838483952053) %DE_SimplE
+(3, 0) %ATISE
+(4, 0) %TERO
+(5, 0) %TFLEX
+} ;
+\addplot coordinates { %time_from
+(0, 0.097430832145382) %DE_TransE
+(1, 0) %DE_DistMult
+(2, 0.08117405573647266) %DE_SimplE
+(3, 0) %ATISE
+(4, 0) %TERO
+(5, 0) %TFLEX
+} ;
+\addplot[black,sharp plot,update limits=false,] coordinates { %DE_TransE
+(-0.5, 0.23268269887258053)
+(0.5, 0.23268269887258053)
+} ;
+\addplot[black,sharp plot,update limits=false,] coordinates { %DE_DistMult
+(0.5, 0)
+(1.5, 0)
+} ;
+\addplot[black,sharp plot,update limits=false,] coordinates { %DE_SimplE
+(1.5, 0.3408908993829318)
+(2.5, 0.3408908993829318)
+} ;
+\addplot[black,sharp plot,update limits=false,] coordinates { %ATISE
+(2.5, 0)
+(3.5, 0)
+} ;
+\addplot[black,sharp plot,update limits=false,] coordinates { %TERO
+(3.5, 0)
+(4.5, 0)
+} ;
+\addplot[black,sharp plot,update limits=false,] coordinates { %TFLEX
+(4.5, 0)
+(5.5, 0)
+} ;
+\legend{Head,Relation,Tail,Time}
+\end{axis}
+\end{tikzpicture}
+\caption{icews14, 2 split}
+\label{fig:compare_icews14_2}
+\end{minipage}
+\end{figure*}

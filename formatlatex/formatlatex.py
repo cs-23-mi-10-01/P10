@@ -61,19 +61,21 @@ class FormatLatex():
 
                         text += r"\addplot coordinates { %" + prediction_target + "\n"
                         for i, embedding in enumerate(embeddings):
-                            text += f"({i}, {scores[embedding][metric]}) %{embedding}" + "\n"
+                            score = scores[embedding][metric] if embedding in scores.keys() else 0
+                            text += f"({i}, {score}) %{embedding}" + "\n"
                         text += r"} ;" + "\n"
                     
                     for i, embedding in enumerate(embeddings):
+                        overall_score = overall_scores[embedding][metric] if embedding in overall_scores.keys() else 0
                         text += r"\addplot[black,sharp plot,update limits=false,] coordinates { %" + embedding + "\n" + \
-                        f"({float(i) - 0.5}, {overall_scores[embedding][metric]})" + "\n" + \
-                        f"({float(i) + 0.5}, {overall_scores[embedding][metric]})" + "\n" + \
+                        f"({float(i) - 0.5}, {overall_score})" + "\n" + \
+                        f"({float(i) + 0.5}, {overall_score})" + "\n" + \
                         r"} ;" + "\n"
                     
                     mod_prefix_text = prefix_text.replace("%1", f"""{",".join([shorthand[e] for e in embeddings])}""")
                     mod_suffix_text = suffix_text.replace("%1", f"{dataset}, {split} split").replace("%2", f"{dataset}_{split}")
 
-                    output_path = os.path.join(self.params.base_directory, "formatlatex", "result", dataset, "split_" + split, "semester_9_hypothesis_1"+normalized, dataset+"_"+split+".tex")
+                    output_path = os.path.join(self.params.base_directory, "formatlatex", "result", dataset, "semester_9_hypothesis_1"+normalized, dataset+"_"+split+".tex")
                     write(output_path, mod_prefix_text + text + mod_suffix_text)
 
     def format_hypothesis_2(self):
