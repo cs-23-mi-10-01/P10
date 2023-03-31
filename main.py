@@ -24,7 +24,7 @@ def main():
     params.timer.start("main")
 
     if params.embeddings == ['all']:
-        params.embeddings = ['TFLEX']
+        params.embeddings = ['DE_DistMult']
     if params.datasets == ['all']:
         params.datasets = ['icews14']
     if params.splits == ['all']:
