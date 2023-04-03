@@ -2,22 +2,44 @@ import numpy as np
 import torch
 import datetime
 from datetime import date
+from scripts import remove_unwanted_symbols_from_str, year_to_iso_format
+from dateutil.relativedelta import relativedelta
 
 
 class RankCalculator:
-    def __init__(self, params, model):
+    def __init__(self, params, model, dataset_name):
         self.params = params
         self.dataset = model.module.dataset
         self.model = model
+        self.dataset_name = dataset_name
 
         self.num_of_ent = self.dataset.numEnt()
         self.num_of_rel = self.dataset.numRel()
+
+        if self.dataset_name in ['icews14']:
+            self.start_sim_date = date(2014, 1, 1)
+            self.end_sim_date = date(2015, 1, 1)
+            self.delta_sim_date = datetime.timedelta(days=1)
+        elif self.dataset_name in ['wikidata12k']:
+            self.start_sim_date = date(1, 1, 1)
+            self.end_sim_date = date(2021, 1, 1)
+            self.delta_sim_date = relativedelta(years=1)
+        elif self.dataset_name in ['yago11k']:
+            self.start_sim_date = date(1, 1, 1)
+            self.end_sim_date = date(2845, 1, 1)
+            self.delta_sim_date = relativedelta(years=1)
+
 
     def get_rank(self, sim_scores):  # assuming the test fact is the first one
         return (sim_scores > sim_scores[0]).sum() + 1
 
     def split_timestamp(self, element):
-        dt = date.fromisoformat(element)
+        if self.dataset_name in ['wikidata12k', 'yago11k']:
+            modified_date = year_to_iso_format(element)
+        else:
+            modified_date = element
+
+        dt = date.fromisoformat(modified_date)
         return dt.year, dt.month, dt.day
 
     def shred_facts(self, facts): #takes a batch of facts and shreds it into its columns
@@ -31,13 +53,13 @@ class RankCalculator:
         return heads, rels, tails, years, months, days
 
     def get_ent_id(self, entity):
-        entity_id = self.dataset.getEntID(entity)
+        entity_id = self.dataset.getEntID(remove_unwanted_symbols_from_str(entity))
         if entity_id >= self.num_of_ent:
             raise Exception("Fact contains an entity that is not seen in the training set (" + str(entity) + ")")
         return entity_id
 
     def get_rel_id(self, relation):
-        rel_id = self.dataset.getRelID(relation)
+        rel_id = self.dataset.getRelID(remove_unwanted_symbols_from_str(relation))
         if rel_id >= self.num_of_rel:
             raise Exception("Fact contains a relation that is not seen in the training set (" + str(relation) + ")")
         return rel_id
@@ -64,13 +86,13 @@ class RankCalculator:
                 sim_facts = [(head, relation, self.get_ent_id(answer), year, month, day)] + sim_facts
             case "T":
                 sim_facts = []
-                sim_date = date(2014, 1, 1)
-                while sim_date != date(2015, 1, 1):
+                sim_date = self.start_sim_date
+                while sim_date != self.end_sim_date:
                     year = sim_date.year
                     month = sim_date.month
                     day = sim_date.day
                     sim_facts.append((head, relation, tail, year, month, day))
-                    sim_date = sim_date + datetime.timedelta(days=1)
+                    sim_date = sim_date + self.delta_sim_date
 
                 year, month, day = self.split_timestamp(answer)
                 sim_facts = [(head, relation, tail, year, month, day)] + sim_facts
@@ -79,7 +101,7 @@ class RankCalculator:
 
         return self.shred_facts(np.array(sim_facts))
 
-    def get_rank_of(self, head, relation, tail, time, answer):
+    def get_rank_of(self, head, relation, tail, time_from, time_to, answer):
         target = "?"
         if head == "0":
             target = "h"
@@ -87,10 +109,10 @@ class RankCalculator:
             target = "r"
         elif tail == "0":
             target = "t"
-        elif time == "0":
+        elif time_from == "0":
             target = "T"
 
-        heads, rels, tails, years, months, days = self.simulate_facts(head, relation, tail, time, target, answer)
+        heads, rels, tails, years, months, days = self.simulate_facts(head, relation, tail, time_from, target, answer)
         sim_scores = self.model.module(heads, rels, tails, years, months, days).cpu().data.numpy()
         rank = self.get_rank(sim_scores)
 

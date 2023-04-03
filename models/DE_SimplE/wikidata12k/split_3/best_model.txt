@@ -1,0 +1,77 @@
+
+Model: models/DE_SimplE/wikidata/500_512_0.001_0.0_68_500_0.4_32_20_0.68_20.chkpnt
+Evaluating facts 0-1000
+Evaluating facts 1000-2000
+Evaluating facts 2000-3000
+Evaluating facts 3000-4000
+Evaluating facts 4000-5000
+Evaluating facts 5000-6000
+Evaluating facts 6000-7000
+Raw setting:
+    Hit@1 = 0.0
+    Hit@3 = 0.0
+    Hit@10 = 0.0
+    MR = 0.0
+    MRR = 0.0
+
+Fil setting:
+    Hit@1 = 1617.0
+    Hit@3 = 3075.0
+    Hit@10 = 4836.0
+    MR = 13090116.0
+    MRR = 2700.4709940694443
+
+~~~~~~~~~~~~~
+Raw setting:
+    Hit@1 = 0.0
+    Hit@3 = 0.0
+    Hit@10 = 0.0
+    MR = 0.0
+    MRR = 0.0
+
+Fil setting:
+    Hit@1 = 0.13184931506849315
+    Hit@3 = 0.25073385518590996
+    Hit@10 = 0.3943248532289628
+    MR = 1067.3610567514677
+    MRR = 0.2201949603774824
+
+
+Best epoch: 20
+Starting test.
+Model: models/DE_SimplE/wikidata/500_512_0.001_0.0_68_500_0.4_32_20_0.68_20.chkpnt
+Evaluating facts 0-1000
+Evaluating facts 1000-2000
+Evaluating facts 2000-3000
+Evaluating facts 3000-4000
+Evaluating facts 4000-5000
+Evaluating facts 5000-6000
+Evaluating facts 6000-7000
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 1633.0
+        Hit@3 = 3149.0
+        Hit@10 = 4957.0
+        MR = 12801032.0
+        MRR = 2752.9602263947245
+
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 0.1331539465101109
+        Hit@3 = 0.25676777560339203
+        Hit@10 = 0.404191128506197
+        MR = 1043.7893020221788
+        MRR = 0.2244749043048536

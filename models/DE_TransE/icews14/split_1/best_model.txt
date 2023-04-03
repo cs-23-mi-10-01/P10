@@ -1,0 +1,64 @@
+de-transe-icews14-split1
+
+Starting test.
+Model: models/DE_TransE/icews14/500_512_0.001_0.0_36_500_0.4_64_20_0.36_500.chkpnt
+
+Fil setting:
+        Hit@1 = 2947.0
+        Hit@3 = 13113.0
+        Hit@10 = 19065.0
+        MR = 2863489.0
+        MRR = 8840.196027984302
+
+Fil setting:
+        Hit@1 = 0.1082659808963997
+        Hit@3 = 0.4817413666421749
+        Hit@10 = 0.7004041146216018
+        MR = 105.19797942689199
+        MRR = 0.324768406612208
+
+Best epoch: 500
+Starting test.
+Model: models/DE_TransE/icews14/500_512_0.001_0.0_36_500_0.4_64_20_0.36_500.chkpnt
+Evaluating facts 0-1000
+Evaluating facts 1000-2000
+Evaluating facts 2000-3000
+Evaluating facts 3000-4000
+Evaluating facts 4000-5000
+Evaluating facts 5000-6000
+Evaluating facts 6000-7000
+Evaluating facts 7000-8000
+Evaluating facts 8000-9000
+Evaluating facts 9000-10000
+Evaluating facts 10000-11000
+Evaluating facts 11000-12000
+Evaluating facts 12000-13000
+Evaluating facts 13000-14000
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 2933.0
+        Hit@3 = 13149.0
+        Hit@10 = 19286.0
+        MR = 2751615.0
+        MRR = 8877.387484833209
+
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 0.10775165319617928
+        Hit@3 = 0.4830639235855988
+        Hit@10 = 0.7085231447465099
+        MR = 101.08798677443056
+        MRR = 0.3261347349314184

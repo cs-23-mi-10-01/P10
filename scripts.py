@@ -2,6 +2,9 @@
 import os
 from pathlib import Path
 
+def remove_unwanted_symbols_from_str(str):
+    return str.replace(' ', ' ')
+
 def remove_unwanted_symbols(dict): 
     while True:
         target_key = None
@@ -10,7 +13,7 @@ def remove_unwanted_symbols(dict):
                 target_key = key
                 break
         if target_key is not None:
-            dict[target_key.replace(' ', ' ')] = dict.pop(target_key)
+            dict[remove_unwanted_symbols_from_str(target_key)] = dict.pop(target_key)
         else:
             break
 
@@ -25,3 +28,14 @@ def write(path, text):
     out_file = open(path, "w", encoding="utf8")
     out_file.write(text)
     out_file.close()
+
+def year_to_iso_format(year):
+    modified_year = year
+    if modified_year == '-' or modified_year == '####':
+        modified_year = "0001"
+    while len(modified_year) < 4:
+        modified_year = "0" + modified_year
+    return modified_year + "-01-01"
+
+def exists(path):
+    return os.path.exists(path)

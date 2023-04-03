@@ -1,0 +1,65 @@
+Bootstrap: docker
+From: ubuntu:18.04
+
+%setup
+    #mkdir /app/
+
+%files
+    ./environment.yml /app/environment.yml
+    ./image_folder/* /app/
+
+%post
+    # Set working dir
+    cd /app/
+    
+    # Gitignore the new container
+    echo "*" > /.gitignore
+
+    # Pre-requisite installs
+    apt-get -y update
+    apt-get -y install wget
+
+    # miniconda3: get miniconda3
+    wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.12.0-Linux-x86_64.sh -O miniconda.sh
+
+    # install conda
+    bash miniconda.sh -b -p /opt/miniconda
+    export PATH="/opt/miniconda/bin:$PATH"
+
+    # install conda environment.yml file
+    echo ". /opt/miniconda/etc/profile.d/conda.sh" >> $SINGULARITY_ENVIRONMENT
+    echo "conda activate $(head -1 environment.yml | cut -d' ' -f2)" >> $SINGULARITY_ENVIRONMENT
+    /opt/miniconda/bin/conda env create -f environment.yml
+
+    # Activate conda env
+    . /opt/miniconda/bin/activate env
+
+    # Test
+    echo "PWD and contents:"
+    pwd
+    ls
+
+%runscript
+    echo "--- Start run ---"
+    echo "executing $@"
+    exec "$@"
+
+%test
+    echo "Test script"
+
+%labels
+    Author jwli21@student.aau.dk
+    Version v0.0.2
+
+
+
+
+# TO CREATE THE IMAGE ON THE CLOUD:
+srun singularity build --nv --fakeroot --sandbox p10-image singularity.def
+
+# TO RUN THE IMAGE:
+srun --pty singularity shell --pwd /app/ --nv --writable p10-image
+
+# TO EVALUATE:
+python -task rank -dataset icews14 -embedding DE_TransE -split all
+

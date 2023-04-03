@@ -61,7 +61,7 @@ class RankCalculator:
 
         return np.array(sim_facts, dtype='float64')
 
-    def get_rank_of(self, head, relation, tail, time, answer):
+    def get_rank_of(self, head, relation, tail, time_from, time_to, answer):
         target = "?"
         if head == "0":
             target = "h"
@@ -69,10 +69,10 @@ class RankCalculator:
             target = "r"
         elif tail == "0":
             target = "t"
-        elif time == "0":
+        elif time_from == "0":
             target = "T"
 
-        facts = self.simulate_facts(head, relation, tail, time, target, answer)
+        facts = self.simulate_facts(head, relation, tail, time_from, target, answer)
         scores = self.model.forward(facts)
         rank = self.get_rank(scores)
 

@@ -12,11 +12,11 @@ from queries.generate_queries import GenerateQueries
 def main():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('-task', type=str, default='statistics', choices=['statistics', 'rank', 'formatlatex', 'split_dataset', 'generate_quads'])
+    #python -task rank -dataset icews14 -embedding DE_TransE -split all
+    parser.add_argument('-task', type=str, default='formatlatex', choices=['statistics', 'rank', 'formatlatex', 'split_dataset', 'generate_quads'])
     parser.add_argument('-dataset', type=str, default='all', choices=['all', 'icews14', 'wikidata11k', 'wikidata12k', 'yago11k'])
     parser.add_argument('-split', type=str, default='all', choices=['all', 'original', '1', '2', '3'])
     parser.add_argument('-embedding', type=str, default='all', choices=['all', 'DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE', 'TFLEX','TimePlex'])
-    parser.add_argument('-add_to_result', type=bool, default=True)
 
     args = parser.parse_args()
     params = Parameters(args)
@@ -24,11 +24,11 @@ def main():
     params.timer.start("main")
 
     if params.embeddings == ['all']:
-        params.embeddings = ['DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE']
+        params.embeddings = ['DE_TransE',  'DE_DistMult', 'DE_SimplE', 'ATISE', 'TERO', 'TFLEX']
     if params.datasets == ['all']:
-        params.datasets = ['icews14']
+        params.datasets = ['icews14', 'wikidata12k', 'yago11k']
     if params.splits == ['all']:
-        params.splits = ['original']
+        params.splits = ['original', '1', '2', '3']
     
     match params.task:
         case "split_dataset":

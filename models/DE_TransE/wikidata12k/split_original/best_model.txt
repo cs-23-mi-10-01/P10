@@ -1,0 +1,69 @@
+
+
+Starting test.
+Model: models/DE_TransE/wikidata/500_512_0.001_0.0_36_500_0.4_64_20_0.36_140.chkpnt                                                              Evaluating facts 0-1000                                                                                                                          Evaluating facts 1000-2000
+Evaluating facts 2000-3000                                                                                                                       Evaluating facts 3000-4000
+Evaluating facts 4000-5000
+
+
+
+
+Raw setting:                                                                                                                                             Hit@1 = 0.0
+        Hit@3 = 0.0                                                                                                                                      Hit@10 = 0.0                                                                                                                                     MR = 0.0                                                                                                                                         MRR = 0.0                                                                                                                                                                                                                                                                                 Fil setting:
+        Hit@1 = 1148.0                                                                                                                                   Hit@3 = 2177.0
+        Hit@10 = 3775.0
+        MR = 1337686.0
+        MRR = 1983.4102833002707
+
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 0.1413096996553422
+        Hit@3 = 0.26797144263909406
+        Hit@10 = 0.46467257508616444
+        MR = 164.6585425898572
+        MRR = 0.24414208312411015
+
+
+Best epoch: 140
+Starting test.
+Model: models/DE_TransE/wikidata/500_512_0.001_0.0_36_500_0.4_64_20_0.36_140.chkpnt
+Evaluating facts 0-1000
+Evaluating facts 1000-2000
+Evaluating facts 2000-3000
+Evaluating facts 3000-4000
+Evaluating facts 4000-5000
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 1089.0
+        Hit@3 = 2085.0
+        Hit@10 = 3718.0
+        MR = 1418107.0
+        MRR = 1917.926662457613
+
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 0.13404726735598227
+        Hit@3 = 0.2566469719350074
+        Hit@10 = 0.45765632693254554
+        MR = 174.55773018217627
+        MRR = 0.23608156849552106
