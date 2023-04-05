@@ -1,6 +1,6 @@
 import os
 import shutil
-from scripts import write
+from scripts import write, exists
 
 
 def main():
@@ -14,7 +14,9 @@ def main():
     ignore_files = ("singularity.def", "environment.yml", "requirements.txt", "prepare_singularity.py", ".git", ".gitignore")
     move_files = [file for file in all_files if not file.endswith(ignore_files)]
 
-    os.mkdir(move_dir)
+    if not exists(move_dir):
+        os.mkdir(move_dir)
+    
     for file in move_files:
         shutil.move(file, move_dir)
 

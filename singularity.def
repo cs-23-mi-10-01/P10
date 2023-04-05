@@ -61,5 +61,7 @@ srun singularity build --nv --fakeroot --sandbox p10-image singularity.def
 srun --pty singularity shell --pwd /app/ --nv --writable p10-image
 
 # TO EVALUATE:
-python -task rank -dataset icews14 -embedding DE_TransE -split all
+python main.py -task rank -dataset wikidata12k -embedding DE_DistMult -split original
+python main.py -task rank -dataset yago11k -embedding DE_DistMult -split original
+
 
