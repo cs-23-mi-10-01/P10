@@ -1,0 +1,22 @@
+\begin{figure*}[ht]
+\centering
+\begin{minipage}{0.9\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=8pt,
+    xticklabels={x,%1},
+    ymin=0,
+    ymax=%2,
+    ylabel={MRR score},
+    height=8cm,
+    width=12cm,
+    legend style={
+        at={(0.5,1.0)},
+        anchor=north,
+        legend columns=-1
+    },
+    legend image code/.code={
+        \draw [#1] (0cm,-0.1cm) rectangle (0.2cm,0.25cm); },
+    ]

@@ -1,0 +1,58 @@
+de-transe-wikidata-split3
+
+Starting test.
+Model: models/DE_TransE/wikidata/500_512_0.001_0.0_36_500_0.4_64_20_0.36_80.chkpnt
+
+Fil setting:
+		Hit@1 = 1652.0
+		Hit@3 = 3216.0
+		Hit@10 = 5126.0
+        MR = 9071075.0
+        MRR = 2826.0643310083656
+
+Fil setting:
+        Hit@1 = 0.13470319634703196
+        Hit@3 = 0.2622309197651663
+        Hit@10 = 0.41797129810828443
+        MR = 739.6506033920417
+        MRR = 0.2304357738917454
+
+
+Best epoch: 80
+Starting test.
+Model: models/DE_TransE/wikidata/500_512_0.001_0.0_36_500_0.4_64_20_0.36_80.chkpnt
+Evaluating facts 0-1000
+Evaluating facts 1000-2000
+Evaluating facts 2000-3000
+Evaluating facts 3000-4000
+Evaluating facts 4000-5000
+Evaluating facts 5000-6000
+Evaluating facts 6000-7000
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 1641.0
+        Hit@3 = 3283.0
+        Hit@10 = 5268.0
+        MR = 9274105.0
+        MRR = 2869.695050488343
+
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 0.13380626223091976
+        Hit@3 = 0.2676940639269406
+        Hit@10 = 0.4295499021526419
+        MR = 756.2055609915199
+        MRR = 0.2339933994201193

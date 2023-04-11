@@ -1,0 +1,88 @@
+Model: models/DE_SimplE/icews14/500_512_0.001_0.0_68_500_0.4_32_20_0.68_500.chkpnt
+Evaluating facts 0-1000     
+Evaluating facts 1000-2000  
+Evaluating facts 2000-3000  
+Evaluating facts 3000-4000  
+Evaluating facts 4000-5000  
+Evaluating facts 5000-6000  
+Evaluating facts 6000-7000  
+Evaluating facts 7000-8000  
+Evaluating facts 8000-9000  
+Evaluating facts 9000-10000 
+Evaluating facts 10000-11000
+Evaluating facts 11000-12000
+Evaluating facts 12000-13000
+Evaluating facts 13000-14000
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+Fil setting:
+        Hit@1 = 11277.0
+        Hit@3 = 16147.0
+        Hit@10 = 19827.0
+        MR = 4421975.0
+        MRR = 14273.555768156099
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 0.41429096252755326
+        Hit@3 = 0.5932035268185158
+        Hit@10 = 0.7283982365907421
+        MR = 162.45315944158708
+        MRR = 0.5243775080145517
+
+
+Best epoch: 500
+Starting test.
+Model: models/DE_SimplE/icews14/500_512_0.001_0.0_68_500_0.4_32_20_0.68_500.chkpnt
+Evaluating facts 0-1000
+Evaluating facts 1000-2000
+Evaluating facts 2000-3000
+Evaluating facts 3000-4000
+Evaluating facts 4000-5000
+Evaluating facts 5000-6000
+Evaluating facts 6000-7000
+Evaluating facts 7000-8000
+Evaluating facts 8000-9000
+Evaluating facts 9000-10000
+Evaluating facts 10000-11000
+Evaluating facts 11000-12000
+Evaluating facts 12000-13000
+Evaluating facts 13000-14000
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 11151.0
+        Hit@3 = 15968.0
+        Hit@10 = 19699.0
+        MR = 4432652.0
+        MRR = 14138.691207136602
+
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 0.40966201322556944
+        Hit@3 = 0.5866274797942689
+        Hit@10 = 0.7236958119030125
+        MR = 162.8454077883909
+        MRR = 0.5194228951923807

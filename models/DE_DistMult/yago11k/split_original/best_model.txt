@@ -1,0 +1,50 @@
+Model: models/DE_DistMult/yago/500_512_0.001_0.0_36_500_0.4_64_20_0.36_60.chkpnt
+Fil setting:
+        Hit@1 = 483.0
+        Hit@3 = 643.0
+        Hit@10 = 978.0
+        MR = 7438343.0
+        MRR = 647.5200817115006 
+
+Fil setting:
+        Hit@1 = 0.11780487804878048
+        Hit@3 = 0.15682926829268293
+        Hit@10 = 0.23853658536585365
+        MR = 1814.23
+        MRR = 0.15793172724670745
+
+
+
+
+Model: models/DE_DistMult/yago/500_512_0.001_0.0_36_500_0.4_64_20_0.36_60.chkpnt
+Evaluating facts 0-1000
+Evaluating facts 1000-2000
+Evaluating facts 2000-3000
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 347.0
+        Hit@3 = 505.0
+        Hit@10 = 870.0
+        MR = 7219399.0
+        MRR = 513.8378885486461
+
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 0.08459288152120917
+        Hit@3 = 0.12311067771818625
+        Hit@10 = 0.21209166260360798
+        MR = 1759.9705021940517
+        MRR = 0.12526520930001123

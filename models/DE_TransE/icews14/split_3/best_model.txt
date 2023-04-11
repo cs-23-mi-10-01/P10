@@ -1,0 +1,89 @@
+de-transe-icews14-split3
+Starting test.
+Model: models/DE_TransE/icews14/500_512_0.001_0.0_36_500_0.4_64_20_0.36_480.chkpnt                                                               Evaluating facts 0-1000
+Evaluating facts 1000-2000
+Evaluating facts 2000-3000
+Evaluating facts 3000-4000
+Evaluating facts 4000-5000
+Evaluating facts 5000-6000
+Evaluating facts 6000-7000
+Evaluating facts 7000-8000
+Evaluating facts 8000-9000
+Evaluating facts 9000-10000
+Evaluating facts 10000-11000
+Evaluating facts 11000-12000
+Evaluating facts 12000-13000
+Evaluating facts 13000-14000
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 3026.0
+        Hit@3 = 13157.0
+        Hit@10 = 19222.0
+        MR = 2853199.0
+        MRR = 8926.776273907912
+
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 0.11116825863335783
+        Hit@3 = 0.48335782512858194
+        Hit@10 = 0.7061719324026451
+        MR = 104.81994856722997
+        MRR = 0.3279491650958087
+
+Starting test.
+Model: models/DE_TransE/icews14/500_512_0.001_0.0_36_500_0.4_64_20_0.36_480.chkpnt
+Evaluating facts 0-1000
+Evaluating facts 1000-2000
+Evaluating facts 2000-3000
+Evaluating facts 3000-4000
+Evaluating facts 4000-5000
+Evaluating facts 5000-6000
+Evaluating facts 6000-7000
+Evaluating facts 7000-8000
+Evaluating facts 8000-9000
+Evaluating facts 9000-10000
+Evaluating facts 10000-11000
+Evaluating facts 11000-12000
+Evaluating facts 12000-13000
+Evaluating facts 13000-14000
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 2777.0
+        Hit@3 = 12901.0
+        Hit@10 = 19038.0
+        MR = 2800823.0
+        MRR = 8698.751132111822
+
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 0.10202057310800881
+        Hit@3 = 0.47395297575312273
+        Hit@10 = 0.6994121969140338
+        MR = 102.89577516531962
+        MRR = 0.31957204746920725

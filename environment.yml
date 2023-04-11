@@ -1,0 +1,11 @@
+name: env
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - numpy
+  - pandas
+  - pytorch=1.12.1
+  - cudatoolkit=11.3.1
+

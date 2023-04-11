@@ -1,23 +1,23 @@
 
 import json
-from pathlib import Path
+from scripts import write
 import os
 
 class FormatLatex():
     def __init__(self, params) -> None:
         self.params = params
-
-    def write(self, path, text):
-        Path(path).touch(exist_ok=True)
-        out_file = open(path, "w", encoding="utf8")
-        out_file.write(text)
-        out_file.close()
     
     def read_json(self, path):
         in_file = open(path, "r", encoding="utf8")
         dict = json.load(in_file)
         in_file.close()
         return dict
+    
+    def read_text(self, path):
+        in_file = open(path, "r", encoding="utf8")
+        text = in_file.read()
+        in_file.close()
+        return text
 
     def get_entity(self, measure):
         if "ENTITY" in measure.keys():
@@ -29,6 +29,63 @@ class FormatLatex():
     
     def round(self, val):
         return round(val, 1)
+    
+    def format_semester_9_hypothesis_1(self):
+        embeddings = self.params.embeddings
+        metric = "MRR"
+
+        prefix_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_9_hypothesis_1_prefix.txt")
+        suffix_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_9_hypothesis_1_suffix.txt")
+        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "method_shorthand.json")
+
+        prefix_text = self.read_text(prefix_path)
+        suffix_text = self.read_text(suffix_path)
+        shorthand = self.read_json(shorthand_path)
+
+        for dataset in self.params.datasets:
+            for split in self.params.splits:
+                overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")
+
+                overall_scores = self.read_json(overall_scores_path)
+
+                for normalized in ["", "_normalized"]:
+                    if normalized == "_normalized":
+                        continue
+
+                    text = ""
+                    highest_score = 0
+
+                    for prediction_target in ["head", "relation", "tail", "time_from"]:
+                        scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_1", prediction_target + normalized + ".json")
+
+                        scores = self.read_json(scores_path)
+
+                        text += r"\addplot coordinates { %" + prediction_target + "\n"
+                        for i, embedding in enumerate(embeddings):
+                            score = scores[embedding][metric] if embedding in scores.keys() else 0
+                            text += f"({i}, {score}) %{embedding}" + "\n"
+                            if score > highest_score:
+                                highest_score = score
+                        text += r"} ;" + "\n"
+                    
+                    for i, embedding in enumerate(embeddings):
+                        overall_score = overall_scores[embedding][metric] if embedding in overall_scores.keys() else 0
+                        text += r"\addplot[black,sharp plot,update limits=false,] coordinates { %" + embedding + "\n" + \
+                        f"({float(i) - 0.5}, {overall_score})" + "\n" + \
+                        f"({float(i) + 0.5}, {overall_score})" + "\n" + \
+                        r"} ;" + "\n"
+
+                    max_y = min(highest_score*1.2, 1.0)
+                    
+                    mod_prefix_text = prefix_text.replace(
+                        "%1", f"""{",".join([shorthand[e] for e in embeddings])}""").replace(
+                        "%2", str(max_y))
+                    mod_suffix_text = suffix_text.replace(
+                        "%1", f"{dataset}, split {split}").replace(
+                        "%2", f"{dataset}_{split}")
+
+                    output_path = os.path.join(self.params.base_directory, "formatlatex", "result", "semester_9_hypothesis_1", dataset+"_"+split+normalized+".tex")
+                    write(output_path, mod_prefix_text + text + mod_suffix_text)
 
     def format_hypothesis_2(self):
         for normalized in ["", "_normalized"]:
@@ -74,7 +131,7 @@ class FormatLatex():
                 result = "\n" + r"\renewcommand{\MinNumber}{" + str(min_val) + r"}%" + "\n" +\
                 r"\renewcommand{\MaxNumber}{" + str(max_val) + r"}%" + "\n" + result
 
-                self.write(output_path, result)
+                write(output_path, result)
 
     def format_embedding(self, embedding):
         if embedding == 'DE_TransE':
@@ -144,7 +201,7 @@ class FormatLatex():
             result = "\n" + r"\renewcommand{\MinNumber}{" + str(min_val) + r"}%" + "\n" +\
             r"\renewcommand{\MaxNumber}{" + str(max_val) + r"}%" + "\n" + result
 
-            self.write(output_path, result)    
+            write(output_path, result)    
 
     def format_hypothesis_3(self):
         for normalized in ["", "_normalized"]:
@@ -195,7 +252,7 @@ class FormatLatex():
             result = "\n" + r"\renewcommand{\MinNumber}{" + str(min_val) + r"}%" + "\n" +\
             r"\renewcommand{\MaxNumber}{" + str(max_val) + r"}%" + "\n" + result
 
-            self.write(output_path, result)
+            write(output_path, result)
 
     def format_no_of_entities(self):
         for element in ["entities", "relations", "timestamps"]:
@@ -220,10 +277,11 @@ class FormatLatex():
             result += r"} ;"
             result = r"% MIN VAL: " + str(min_val) + "\n" + r"% MAX VAL: " + str(max_val) + "\n\n" + result
 
-            self.write(output_path, result)
+            write(output_path, result)
 
     def format(self):
         #self.format_hypothesis_2()
         #self.format_hypothesis_3()
         #self.format_no_of_entities()
-        self.format_hypothesis_2_overlap()
+        # self.format_hypothesis_2_overlap()
+        self.format_semester_9_hypothesis_1()

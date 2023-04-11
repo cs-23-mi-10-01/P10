@@ -1,0 +1,71 @@
+
+
+Model: models/DE_SimplE/wikidata/500_512_0.001_0.0_68_500_0.4_32_20_0.68_20.chkpnt                                      Evaluating facts 0-1000                                                                                                 Evaluating facts 1000-2000                                                                                              Evaluating facts 2000-3000                                                                                              Evaluating facts 3000-4000                                                                                              Evaluating facts 4000-5000                                                                                              Evaluating facts 5000-6000
+Evaluating facts 6000-7000
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 1675.0
+        Hit@3 = 3132.0
+        Hit@10 = 4956.0
+        MR = 12180237.0
+        MRR = 2773.1765741591544
+
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 0.13657860404435748
+        Hit@3 = 0.2553816046966732
+        Hit@10 = 0.4041095890410959
+        MR = 993.1700097847358
+        MRR = 0.2261233344878632
+
+Best epoch: 20
+Starting test.
+Model: models/DE_SimplE/wikidata/500_512_0.001_0.0_68_500_0.4_32_20_0.68_20.chkpnt
+Evaluating facts 0-1000
+Evaluating facts 1000-2000
+Evaluating facts 2000-3000
+Evaluating facts 3000-4000
+Evaluating facts 4000-5000
+Evaluating facts 5000-6000
+Evaluating facts 6000-7000
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 1596.0
+        Hit@3 = 3007.0
+        Hit@10 = 4888.0
+        MR = 13179447.0
+        MRR = 2681.5284648229367
+
+~~~~~~~~~~~~~
+Raw setting:
+        Hit@1 = 0.0
+        Hit@3 = 0.0
+        Hit@10 = 0.0
+        MR = 0.0
+        MRR = 0.0
+
+Fil setting:
+        Hit@1 = 0.13013698630136986
+        Hit@3 = 0.24518917155903458
+        Hit@10 = 0.39856490541422046
+        MR = 1074.6450587084148
+        MRR = 0.21865039667506006
