@@ -25,7 +25,7 @@ class TimeDensityHypothesis():
             self.delta_date = relativedelta(years=1)
 
     def _include_quad(self, quad):
-        if self.dataset in ["wikidata12k"]:
+        if self.dataset in ["wikidata12k", "yago11k"]:
             if quad["TIME_FROM"] == "-":
                 return False
         
@@ -44,7 +44,7 @@ class TimeDensityHypothesis():
         return x <= y
     
     def _parse_start_date(self, date):
-        if self.dataset in ["wikidata12k"]:
+        if self.dataset in ["wikidata12k", "yago11k"]:
             return f"""{int(date):04d}-01-01"""
         else:
             return date

@@ -5699,12 +5699,12 @@
         {
             "start_date": "1140-01-01",
             "end_date": "1141-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1141-01-01",
             "end_date": "1142-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 4
         },
         {
             "start_date": "1142-01-01",
@@ -8379,12 +8379,12 @@
         {
             "start_date": "1676-01-01",
             "end_date": "1677-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1677-01-01",
             "end_date": "1678-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 4
         },
         {
             "start_date": "1678-01-01",
@@ -8649,12 +8649,12 @@
         {
             "start_date": "1730-01-01",
             "end_date": "1731-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1731-01-01",
             "end_date": "1732-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 4
         },
         {
             "start_date": "1732-01-01",
@@ -8699,12 +8699,12 @@
         {
             "start_date": "1740-01-01",
             "end_date": "1741-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1741-01-01",
             "end_date": "1742-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 4
         },
         {
             "start_date": "1742-01-01",
@@ -8774,12 +8774,12 @@
         {
             "start_date": "1755-01-01",
             "end_date": "1756-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1756-01-01",
             "end_date": "1757-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 4
         },
         {
             "start_date": "1757-01-01",
@@ -8954,22 +8954,22 @@
         {
             "start_date": "1791-01-01",
             "end_date": "1792-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1792-01-01",
             "end_date": "1793-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 4
         },
         {
             "start_date": "1793-01-01",
             "end_date": "1794-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 0
         },
         {
             "start_date": "1794-01-01",
             "end_date": "1795-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 8
         },
         {
             "start_date": "1795-01-01",
@@ -8989,12 +8989,12 @@
         {
             "start_date": "1798-01-01",
             "end_date": "1799-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1799-01-01",
             "end_date": "1800-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 4
         },
         {
             "start_date": "1800-01-01",
@@ -9059,17 +9059,17 @@
         {
             "start_date": "1812-01-01",
             "end_date": "1813-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1813-01-01",
             "end_date": "1814-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 4
         },
         {
             "start_date": "1814-01-01",
             "end_date": "1815-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1815-01-01",
@@ -9079,7 +9079,7 @@
         {
             "start_date": "1816-01-01",
             "end_date": "1817-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 4
         },
         {
             "start_date": "1817-01-01",
@@ -9094,12 +9094,12 @@
         {
             "start_date": "1819-01-01",
             "end_date": "1820-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1820-01-01",
             "end_date": "1821-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 4
         },
         {
             "start_date": "1821-01-01",
@@ -9114,17 +9114,17 @@
         {
             "start_date": "1823-01-01",
             "end_date": "1824-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 0
         },
         {
             "start_date": "1824-01-01",
             "end_date": "1825-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 8
         },
         {
             "start_date": "1825-01-01",
             "end_date": "1826-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 4
         },
         {
             "start_date": "1826-01-01",
@@ -9134,17 +9134,17 @@
         {
             "start_date": "1827-01-01",
             "end_date": "1828-01-01",
-            "no_of_facts": 20
+            "no_of_facts": 0
         },
         {
             "start_date": "1828-01-01",
             "end_date": "1829-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 20
         },
         {
             "start_date": "1829-01-01",
             "end_date": "1830-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1830-01-01",
@@ -9154,12 +9154,12 @@
         {
             "start_date": "1831-01-01",
             "end_date": "1832-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 4
         },
         {
             "start_date": "1832-01-01",
             "end_date": "1833-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1833-01-01",
@@ -9179,17 +9179,17 @@
         {
             "start_date": "1836-01-01",
             "end_date": "1837-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 4
         },
         {
             "start_date": "1837-01-01",
             "end_date": "1838-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 8
         },
         {
             "start_date": "1838-01-01",
             "end_date": "1839-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1839-01-01",
@@ -9199,7 +9199,7 @@
         {
             "start_date": "1840-01-01",
             "end_date": "1841-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 4
         },
         {
             "start_date": "1841-01-01",
@@ -9209,17 +9209,17 @@
         {
             "start_date": "1842-01-01",
             "end_date": "1843-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1843-01-01",
             "end_date": "1844-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 4
         },
         {
             "start_date": "1844-01-01",
             "end_date": "1845-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 8
         },
         {
             "start_date": "1845-01-01",
@@ -9234,12 +9234,12 @@
         {
             "start_date": "1847-01-01",
             "end_date": "1848-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 0
         },
         {
             "start_date": "1848-01-01",
             "end_date": "1849-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 8
         },
         {
             "start_date": "1849-01-01",
@@ -9249,17 +9249,17 @@
         {
             "start_date": "1850-01-01",
             "end_date": "1851-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 4
         },
         {
             "start_date": "1851-01-01",
             "end_date": "1852-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 8
         },
         {
             "start_date": "1852-01-01",
             "end_date": "1853-01-01",
-            "no_of_facts": 12
+            "no_of_facts": 0
         },
         {
             "start_date": "1853-01-01",
@@ -9269,12 +9269,12 @@
         {
             "start_date": "1854-01-01",
             "end_date": "1855-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 12
         },
         {
             "start_date": "1855-01-01",
             "end_date": "1856-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 4
         },
         {
             "start_date": "1856-01-01",
@@ -9284,27 +9284,27 @@
         {
             "start_date": "1857-01-01",
             "end_date": "1858-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1858-01-01",
             "end_date": "1859-01-01",
-            "no_of_facts": 12
+            "no_of_facts": 4
         },
         {
             "start_date": "1859-01-01",
             "end_date": "1860-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 12
         },
         {
             "start_date": "1860-01-01",
             "end_date": "1861-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1861-01-01",
             "end_date": "1862-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 4
         },
         {
             "start_date": "1862-01-01",
@@ -9314,22 +9314,22 @@
         {
             "start_date": "1863-01-01",
             "end_date": "1864-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 0
         },
         {
             "start_date": "1864-01-01",
             "end_date": "1865-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 8
         },
         {
             "start_date": "1865-01-01",
             "end_date": "1866-01-01",
-            "no_of_facts": 12
+            "no_of_facts": 4
         },
         {
             "start_date": "1866-01-01",
             "end_date": "1867-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 12
         },
         {
             "start_date": "1867-01-01",
@@ -9339,12 +9339,12 @@
         {
             "start_date": "1868-01-01",
             "end_date": "1869-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 8
         },
         {
             "start_date": "1869-01-01",
             "end_date": "1870-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 4
         },
         {
             "start_date": "1870-01-01",
@@ -9354,22 +9354,22 @@
         {
             "start_date": "1871-01-01",
             "end_date": "1872-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 0
         },
         {
             "start_date": "1872-01-01",
             "end_date": "1873-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 8
         },
         {
             "start_date": "1873-01-01",
             "end_date": "1874-01-01",
-            "no_of_facts": 16
+            "no_of_facts": 0
         },
         {
             "start_date": "1874-01-01",
             "end_date": "1875-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 16
         },
         {
             "start_date": "1875-01-01",
@@ -9379,7 +9379,7 @@
         {
             "start_date": "1876-01-01",
             "end_date": "1877-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 8
         },
         {
             "start_date": "1877-01-01",
@@ -9389,77 +9389,77 @@
         {
             "start_date": "1878-01-01",
             "end_date": "1879-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 4
         },
         {
             "start_date": "1879-01-01",
             "end_date": "1880-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 0
         },
         {
             "start_date": "1880-01-01",
             "end_date": "1881-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 8
         },
         {
             "start_date": "1881-01-01",
             "end_date": "1882-01-01",
-            "no_of_facts": 12
+            "no_of_facts": 0
         },
         {
             "start_date": "1882-01-01",
             "end_date": "1883-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 12
         },
         {
             "start_date": "1883-01-01",
             "end_date": "1884-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1884-01-01",
             "end_date": "1885-01-01",
-            "no_of_facts": 16
+            "no_of_facts": 4
         },
         {
             "start_date": "1885-01-01",
             "end_date": "1886-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 16
         },
         {
             "start_date": "1886-01-01",
             "end_date": "1887-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 0
         },
         {
             "start_date": "1887-01-01",
             "end_date": "1888-01-01",
-            "no_of_facts": 12
+            "no_of_facts": 4
         },
         {
             "start_date": "1888-01-01",
             "end_date": "1889-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 12
         },
         {
             "start_date": "1889-01-01",
             "end_date": "1890-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 4
         },
         {
             "start_date": "1890-01-01",
             "end_date": "1891-01-01",
-            "no_of_facts": 16
+            "no_of_facts": 8
         },
         {
             "start_date": "1891-01-01",
             "end_date": "1892-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 16
         },
         {
             "start_date": "1892-01-01",
             "end_date": "1893-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 8
         },
         {
             "start_date": "1893-01-01",
@@ -9469,17 +9469,17 @@
         {
             "start_date": "1894-01-01",
             "end_date": "1895-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 4
         },
         {
             "start_date": "1895-01-01",
             "end_date": "1896-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 8
         },
         {
             "start_date": "1896-01-01",
             "end_date": "1897-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 4
         },
         {
             "start_date": "1897-01-01",
@@ -9489,352 +9489,352 @@
         {
             "start_date": "1898-01-01",
             "end_date": "1899-01-01",
-            "no_of_facts": 20
+            "no_of_facts": 8
         },
         {
             "start_date": "1899-01-01",
             "end_date": "1900-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 20
         },
         {
             "start_date": "1900-01-01",
             "end_date": "1901-01-01",
-            "no_of_facts": 32
+            "no_of_facts": 4
         },
         {
             "start_date": "1901-01-01",
             "end_date": "1902-01-01",
-            "no_of_facts": 12
+            "no_of_facts": 32
         },
         {
             "start_date": "1902-01-01",
             "end_date": "1903-01-01",
-            "no_of_facts": 20
+            "no_of_facts": 12
         },
         {
             "start_date": "1903-01-01",
             "end_date": "1904-01-01",
-            "no_of_facts": 16
+            "no_of_facts": 20
         },
         {
             "start_date": "1904-01-01",
             "end_date": "1905-01-01",
-            "no_of_facts": 12
+            "no_of_facts": 16
         },
         {
             "start_date": "1905-01-01",
             "end_date": "1906-01-01",
-            "no_of_facts": 24
+            "no_of_facts": 12
         },
         {
             "start_date": "1906-01-01",
             "end_date": "1907-01-01",
-            "no_of_facts": 12
+            "no_of_facts": 24
         },
         {
             "start_date": "1907-01-01",
             "end_date": "1908-01-01",
-            "no_of_facts": 16
+            "no_of_facts": 12
         },
         {
             "start_date": "1908-01-01",
             "end_date": "1909-01-01",
-            "no_of_facts": 24
+            "no_of_facts": 16
         },
         {
             "start_date": "1909-01-01",
             "end_date": "1910-01-01",
-            "no_of_facts": 16
+            "no_of_facts": 24
         },
         {
             "start_date": "1910-01-01",
             "end_date": "1911-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 16
         },
         {
             "start_date": "1911-01-01",
             "end_date": "1912-01-01",
-            "no_of_facts": 20
+            "no_of_facts": 8
         },
         {
             "start_date": "1912-01-01",
             "end_date": "1913-01-01",
-            "no_of_facts": 24
+            "no_of_facts": 20
         },
         {
             "start_date": "1913-01-01",
             "end_date": "1914-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 24
         },
         {
             "start_date": "1914-01-01",
             "end_date": "1915-01-01",
-            "no_of_facts": 12
+            "no_of_facts": 4
         },
         {
             "start_date": "1915-01-01",
             "end_date": "1916-01-01",
-            "no_of_facts": 44
+            "no_of_facts": 12
         },
         {
             "start_date": "1916-01-01",
             "end_date": "1917-01-01",
-            "no_of_facts": 52
+            "no_of_facts": 44
         },
         {
             "start_date": "1917-01-01",
             "end_date": "1918-01-01",
-            "no_of_facts": 32
+            "no_of_facts": 52
         },
         {
             "start_date": "1918-01-01",
             "end_date": "1919-01-01",
-            "no_of_facts": 24
+            "no_of_facts": 32
         },
         {
             "start_date": "1919-01-01",
             "end_date": "1920-01-01",
-            "no_of_facts": 48
+            "no_of_facts": 24
         },
         {
             "start_date": "1920-01-01",
             "end_date": "1921-01-01",
-            "no_of_facts": 32
+            "no_of_facts": 48
         },
         {
             "start_date": "1921-01-01",
             "end_date": "1922-01-01",
-            "no_of_facts": 16
+            "no_of_facts": 32
         },
         {
             "start_date": "1922-01-01",
             "end_date": "1923-01-01",
-            "no_of_facts": 24
+            "no_of_facts": 16
         },
         {
             "start_date": "1923-01-01",
             "end_date": "1924-01-01",
-            "no_of_facts": 32
+            "no_of_facts": 24
         },
         {
             "start_date": "1924-01-01",
             "end_date": "1925-01-01",
-            "no_of_facts": 40
+            "no_of_facts": 32
         },
         {
             "start_date": "1925-01-01",
             "end_date": "1926-01-01",
-            "no_of_facts": 36
+            "no_of_facts": 40
         },
         {
             "start_date": "1926-01-01",
             "end_date": "1927-01-01",
-            "no_of_facts": 28
+            "no_of_facts": 36
         },
         {
             "start_date": "1927-01-01",
             "end_date": "1928-01-01",
-            "no_of_facts": 48
+            "no_of_facts": 28
         },
         {
             "start_date": "1928-01-01",
             "end_date": "1929-01-01",
-            "no_of_facts": 52
+            "no_of_facts": 48
         },
         {
             "start_date": "1929-01-01",
             "end_date": "1930-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 52
         },
         {
             "start_date": "1930-01-01",
             "end_date": "1931-01-01",
-            "no_of_facts": 60
+            "no_of_facts": 8
         },
         {
             "start_date": "1931-01-01",
             "end_date": "1932-01-01",
-            "no_of_facts": 36
+            "no_of_facts": 60
         },
         {
             "start_date": "1932-01-01",
             "end_date": "1933-01-01",
-            "no_of_facts": 24
+            "no_of_facts": 36
         },
         {
             "start_date": "1933-01-01",
             "end_date": "1934-01-01",
-            "no_of_facts": 28
+            "no_of_facts": 24
         },
         {
             "start_date": "1934-01-01",
             "end_date": "1935-01-01",
-            "no_of_facts": 4
+            "no_of_facts": 28
         },
         {
             "start_date": "1935-01-01",
             "end_date": "1936-01-01",
-            "no_of_facts": 24
+            "no_of_facts": 4
         },
         {
             "start_date": "1936-01-01",
             "end_date": "1937-01-01",
-            "no_of_facts": 56
+            "no_of_facts": 24
         },
         {
             "start_date": "1937-01-01",
             "end_date": "1938-01-01",
-            "no_of_facts": 28
+            "no_of_facts": 56
         },
         {
             "start_date": "1938-01-01",
             "end_date": "1939-01-01",
-            "no_of_facts": 36
+            "no_of_facts": 28
         },
         {
             "start_date": "1939-01-01",
             "end_date": "1940-01-01",
-            "no_of_facts": 44
+            "no_of_facts": 36
         },
         {
             "start_date": "1940-01-01",
             "end_date": "1941-01-01",
-            "no_of_facts": 8
+            "no_of_facts": 44
         },
         {
             "start_date": "1941-01-01",
             "end_date": "1942-01-01",
-            "no_of_facts": 48
+            "no_of_facts": 8
         },
         {
             "start_date": "1942-01-01",
             "end_date": "1943-01-01",
-            "no_of_facts": 52
+            "no_of_facts": 48
         },
         {
             "start_date": "1943-01-01",
             "end_date": "1944-01-01",
-            "no_of_facts": 28
+            "no_of_facts": 52
         },
         {
             "start_date": "1944-01-01",
             "end_date": "1945-01-01",
-            "no_of_facts": 36
+            "no_of_facts": 28
         },
         {
             "start_date": "1945-01-01",
             "end_date": "1946-01-01",
-            "no_of_facts": 60
+            "no_of_facts": 36
         },
         {
             "start_date": "1946-01-01",
             "end_date": "1947-01-01",
-            "no_of_facts": 44
+            "no_of_facts": 60
         },
         {
             "start_date": "1947-01-01",
             "end_date": "1948-01-01",
-            "no_of_facts": 28
+            "no_of_facts": 44
         },
         {
             "start_date": "1948-01-01",
             "end_date": "1949-01-01",
-            "no_of_facts": 32
+            "no_of_facts": 28
         },
         {
             "start_date": "1949-01-01",
             "end_date": "1950-01-01",
-            "no_of_facts": 68
+            "no_of_facts": 32
         },
         {
             "start_date": "1950-01-01",
             "end_date": "1951-01-01",
-            "no_of_facts": 20
+            "no_of_facts": 68
         },
         {
             "start_date": "1951-01-01",
             "end_date": "1952-01-01",
-            "no_of_facts": 36
+            "no_of_facts": 20
         },
         {
             "start_date": "1952-01-01",
             "end_date": "1953-01-01",
-            "no_of_facts": 32
+            "no_of_facts": 36
         },
         {
             "start_date": "1953-01-01",
             "end_date": "1954-01-01",
-            "no_of_facts": 40
+            "no_of_facts": 32
         },
         {
             "start_date": "1954-01-01",
             "end_date": "1955-01-01",
-            "no_of_facts": 64
+            "no_of_facts": 40
         },
         {
             "start_date": "1955-01-01",
             "end_date": "1956-01-01",
-            "no_of_facts": 20
+            "no_of_facts": 64
         },
         {
             "start_date": "1956-01-01",
             "end_date": "1957-01-01",
-            "no_of_facts": 40
+            "no_of_facts": 20
         },
         {
             "start_date": "1957-01-01",
             "end_date": "1958-01-01",
-            "no_of_facts": 36
+            "no_of_facts": 40
         },
         {
             "start_date": "1958-01-01",
             "end_date": "1959-01-01",
-            "no_of_facts": 76
+            "no_of_facts": 36
         },
         {
             "start_date": "1959-01-01",
             "end_date": "1960-01-01",
-            "no_of_facts": 32
+            "no_of_facts": 76
         },
         {
             "start_date": "1960-01-01",
             "end_date": "1961-01-01",
-            "no_of_facts": 68
+            "no_of_facts": 32
         },
         {
             "start_date": "1961-01-01",
             "end_date": "1962-01-01",
-            "no_of_facts": 52
+            "no_of_facts": 68
         },
         {
             "start_date": "1962-01-01",
             "end_date": "1963-01-01",
-            "no_of_facts": 64
+            "no_of_facts": 52
         },
         {
             "start_date": "1963-01-01",
             "end_date": "1964-01-01",
-            "no_of_facts": 32
+            "no_of_facts": 64
         },
         {
             "start_date": "1964-01-01",
             "end_date": "1965-01-01",
-            "no_of_facts": 44
+            "no_of_facts": 32
         },
         {
             "start_date": "1965-01-01",
             "end_date": "1966-01-01",
-            "no_of_facts": 60
+            "no_of_facts": 44
         },
         {
             "start_date": "1966-01-01",
             "end_date": "1967-01-01",
-            "no_of_facts": 56
+            "no_of_facts": 60
         },
         {
             "start_date": "1967-01-01",
             "end_date": "1968-01-01",
-            "no_of_facts": 36
+            "no_of_facts": 56
         },
         {
             "start_date": "1968-01-01",
@@ -9844,47 +9844,47 @@
         {
             "start_date": "1969-01-01",
             "end_date": "1970-01-01",
-            "no_of_facts": 40
+            "no_of_facts": 36
         },
         {
             "start_date": "1970-01-01",
             "end_date": "1971-01-01",
-            "no_of_facts": 64
+            "no_of_facts": 40
         },
         {
             "start_date": "1971-01-01",
             "end_date": "1972-01-01",
-            "no_of_facts": 36
+            "no_of_facts": 64
         },
         {
             "start_date": "1972-01-01",
             "end_date": "1973-01-01",
-            "no_of_facts": 64
+            "no_of_facts": 36
         },
         {
             "start_date": "1973-01-01",
             "end_date": "1974-01-01",
-            "no_of_facts": 80
+            "no_of_facts": 64
         },
         {
             "start_date": "1974-01-01",
             "end_date": "1975-01-01",
-            "no_of_facts": 44
+            "no_of_facts": 80
         },
         {
             "start_date": "1975-01-01",
             "end_date": "1976-01-01",
-            "no_of_facts": 52
+            "no_of_facts": 44
         },
         {
             "start_date": "1976-01-01",
             "end_date": "1977-01-01",
-            "no_of_facts": 76
+            "no_of_facts": 52
         },
         {
             "start_date": "1977-01-01",
             "end_date": "1978-01-01",
-            "no_of_facts": 48
+            "no_of_facts": 76
         },
         {
             "start_date": "1978-01-01",
@@ -9894,197 +9894,197 @@
         {
             "start_date": "1979-01-01",
             "end_date": "1980-01-01",
-            "no_of_facts": 84
+            "no_of_facts": 48
         },
         {
             "start_date": "1980-01-01",
             "end_date": "1981-01-01",
-            "no_of_facts": 68
+            "no_of_facts": 84
         },
         {
             "start_date": "1981-01-01",
             "end_date": "1982-01-01",
-            "no_of_facts": 72
+            "no_of_facts": 68
         },
         {
             "start_date": "1982-01-01",
             "end_date": "1983-01-01",
-            "no_of_facts": 56
+            "no_of_facts": 72
         },
         {
             "start_date": "1983-01-01",
             "end_date": "1984-01-01",
-            "no_of_facts": 72
+            "no_of_facts": 56
         },
         {
             "start_date": "1984-01-01",
             "end_date": "1985-01-01",
-            "no_of_facts": 76
+            "no_of_facts": 72
         },
         {
             "start_date": "1985-01-01",
             "end_date": "1986-01-01",
-            "no_of_facts": 36
+            "no_of_facts": 76
         },
         {
             "start_date": "1986-01-01",
             "end_date": "1987-01-01",
-            "no_of_facts": 72
+            "no_of_facts": 36
         },
         {
             "start_date": "1987-01-01",
             "end_date": "1988-01-01",
-            "no_of_facts": 116
+            "no_of_facts": 72
         },
         {
             "start_date": "1988-01-01",
             "end_date": "1989-01-01",
-            "no_of_facts": 84
+            "no_of_facts": 116
         },
         {
             "start_date": "1989-01-01",
             "end_date": "1990-01-01",
-            "no_of_facts": 92
+            "no_of_facts": 84
         },
         {
             "start_date": "1990-01-01",
             "end_date": "1991-01-01",
-            "no_of_facts": 76
+            "no_of_facts": 92
         },
         {
             "start_date": "1991-01-01",
             "end_date": "1992-01-01",
-            "no_of_facts": 88
+            "no_of_facts": 76
         },
         {
             "start_date": "1992-01-01",
             "end_date": "1993-01-01",
-            "no_of_facts": 92
+            "no_of_facts": 88
         },
         {
             "start_date": "1993-01-01",
             "end_date": "1994-01-01",
-            "no_of_facts": 72
+            "no_of_facts": 92
         },
         {
             "start_date": "1994-01-01",
             "end_date": "1995-01-01",
-            "no_of_facts": 112
+            "no_of_facts": 72
         },
         {
             "start_date": "1995-01-01",
             "end_date": "1996-01-01",
-            "no_of_facts": 100
+            "no_of_facts": 112
         },
         {
             "start_date": "1996-01-01",
             "end_date": "1997-01-01",
-            "no_of_facts": 124
+            "no_of_facts": 100
         },
         {
             "start_date": "1997-01-01",
             "end_date": "1998-01-01",
-            "no_of_facts": 144
+            "no_of_facts": 124
         },
         {
             "start_date": "1998-01-01",
             "end_date": "1999-01-01",
-            "no_of_facts": 124
+            "no_of_facts": 144
         },
         {
             "start_date": "1999-01-01",
             "end_date": "2000-01-01",
-            "no_of_facts": 160
+            "no_of_facts": 124
         },
         {
             "start_date": "2000-01-01",
             "end_date": "2001-01-01",
-            "no_of_facts": 184
+            "no_of_facts": 160
         },
         {
             "start_date": "2001-01-01",
             "end_date": "2002-01-01",
-            "no_of_facts": 156
+            "no_of_facts": 184
         },
         {
             "start_date": "2002-01-01",
             "end_date": "2003-01-01",
-            "no_of_facts": 192
+            "no_of_facts": 156
         },
         {
             "start_date": "2003-01-01",
             "end_date": "2004-01-01",
-            "no_of_facts": 176
+            "no_of_facts": 192
         },
         {
             "start_date": "2004-01-01",
             "end_date": "2005-01-01",
-            "no_of_facts": 244
+            "no_of_facts": 176
         },
         {
             "start_date": "2005-01-01",
             "end_date": "2006-01-01",
-            "no_of_facts": 212
+            "no_of_facts": 244
         },
         {
             "start_date": "2006-01-01",
             "end_date": "2007-01-01",
-            "no_of_facts": 200
+            "no_of_facts": 212
         },
         {
             "start_date": "2007-01-01",
             "end_date": "2008-01-01",
-            "no_of_facts": 212
+            "no_of_facts": 200
         },
         {
             "start_date": "2008-01-01",
             "end_date": "2009-01-01",
-            "no_of_facts": 248
+            "no_of_facts": 212
         },
         {
             "start_date": "2009-01-01",
             "end_date": "2010-01-01",
-            "no_of_facts": 168
+            "no_of_facts": 248
         },
         {
             "start_date": "2010-01-01",
             "end_date": "2011-01-01",
-            "no_of_facts": 212
+            "no_of_facts": 168
         },
         {
             "start_date": "2011-01-01",
             "end_date": "2012-01-01",
-            "no_of_facts": 188
+            "no_of_facts": 212
         },
         {
             "start_date": "2012-01-01",
             "end_date": "2013-01-01",
-            "no_of_facts": 152
+            "no_of_facts": 188
         },
         {
             "start_date": "2013-01-01",
             "end_date": "2014-01-01",
-            "no_of_facts": 160
+            "no_of_facts": 152
         },
         {
             "start_date": "2014-01-01",
             "end_date": "2015-01-01",
-            "no_of_facts": 120
+            "no_of_facts": 160
         },
         {
             "start_date": "2015-01-01",
             "end_date": "2016-01-01",
-            "no_of_facts": 80
+            "no_of_facts": 120
         },
         {
             "start_date": "2016-01-01",
             "end_date": "2017-01-01",
-            "no_of_facts": 20
+            "no_of_facts": 80
         },
         {
             "start_date": "2017-01-01",
             "end_date": "2018-01-01",
-            "no_of_facts": 0
+            "no_of_facts": 20
         },
         {
             "start_date": "2018-01-01",
