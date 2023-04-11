@@ -1,0 +1,1830 @@
+{
+    "median": 84,
+    "no_of_facts": [
+        {
+            "start_date": "2014-01-01",
+            "end_date": "2014-01-02",
+            "no_of_facts": 63
+        },
+        {
+            "start_date": "2014-01-02",
+            "end_date": "2014-01-03",
+            "no_of_facts": 27
+        },
+        {
+            "start_date": "2014-01-03",
+            "end_date": "2014-01-04",
+            "no_of_facts": 33
+        },
+        {
+            "start_date": "2014-01-04",
+            "end_date": "2014-01-05",
+            "no_of_facts": 30
+        },
+        {
+            "start_date": "2014-01-05",
+            "end_date": "2014-01-06",
+            "no_of_facts": 57
+        },
+        {
+            "start_date": "2014-01-06",
+            "end_date": "2014-01-07",
+            "no_of_facts": 60
+        },
+        {
+            "start_date": "2014-01-07",
+            "end_date": "2014-01-08",
+            "no_of_facts": 78
+        },
+        {
+            "start_date": "2014-01-08",
+            "end_date": "2014-01-09",
+            "no_of_facts": 54
+        },
+        {
+            "start_date": "2014-01-09",
+            "end_date": "2014-01-10",
+            "no_of_facts": 75
+        },
+        {
+            "start_date": "2014-01-10",
+            "end_date": "2014-01-11",
+            "no_of_facts": 24
+        },
+        {
+            "start_date": "2014-01-11",
+            "end_date": "2014-01-12",
+            "no_of_facts": 30
+        },
+        {
+            "start_date": "2014-01-12",
+            "end_date": "2014-01-13",
+            "no_of_facts": 102
+        },
+        {
+            "start_date": "2014-01-13",
+            "end_date": "2014-01-14",
+            "no_of_facts": 45
+        },
+        {
+            "start_date": "2014-01-14",
+            "end_date": "2014-01-15",
+            "no_of_facts": 105
+        },
+        {
+            "start_date": "2014-01-15",
+            "end_date": "2014-01-16",
+            "no_of_facts": 66
+        },
+        {
+            "start_date": "2014-01-16",
+            "end_date": "2014-01-17",
+            "no_of_facts": 69
+        },
+        {
+            "start_date": "2014-01-17",
+            "end_date": "2014-01-18",
+            "no_of_facts": 57
+        },
+        {
+            "start_date": "2014-01-18",
+            "end_date": "2014-01-19",
+            "no_of_facts": 21
+        },
+        {
+            "start_date": "2014-01-19",
+            "end_date": "2014-01-20",
+            "no_of_facts": 90
+        },
+        {
+            "start_date": "2014-01-20",
+            "end_date": "2014-01-21",
+            "no_of_facts": 72
+        },
+        {
+            "start_date": "2014-01-21",
+            "end_date": "2014-01-22",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-01-22",
+            "end_date": "2014-01-23",
+            "no_of_facts": 75
+        },
+        {
+            "start_date": "2014-01-23",
+            "end_date": "2014-01-24",
+            "no_of_facts": 72
+        },
+        {
+            "start_date": "2014-01-24",
+            "end_date": "2014-01-25",
+            "no_of_facts": 39
+        },
+        {
+            "start_date": "2014-01-25",
+            "end_date": "2014-01-26",
+            "no_of_facts": 57
+        },
+        {
+            "start_date": "2014-01-26",
+            "end_date": "2014-01-27",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-01-27",
+            "end_date": "2014-01-28",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-01-28",
+            "end_date": "2014-01-29",
+            "no_of_facts": 72
+        },
+        {
+            "start_date": "2014-01-29",
+            "end_date": "2014-01-30",
+            "no_of_facts": 63
+        },
+        {
+            "start_date": "2014-01-30",
+            "end_date": "2014-01-31",
+            "no_of_facts": 69
+        },
+        {
+            "start_date": "2014-01-31",
+            "end_date": "2014-02-01",
+            "no_of_facts": 54
+        },
+        {
+            "start_date": "2014-02-01",
+            "end_date": "2014-02-02",
+            "no_of_facts": 30
+        },
+        {
+            "start_date": "2014-02-02",
+            "end_date": "2014-02-03",
+            "no_of_facts": 99
+        },
+        {
+            "start_date": "2014-02-03",
+            "end_date": "2014-02-04",
+            "no_of_facts": 93
+        },
+        {
+            "start_date": "2014-02-04",
+            "end_date": "2014-02-05",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-02-05",
+            "end_date": "2014-02-06",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-02-06",
+            "end_date": "2014-02-07",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-02-07",
+            "end_date": "2014-02-08",
+            "no_of_facts": 36
+        },
+        {
+            "start_date": "2014-02-08",
+            "end_date": "2014-02-09",
+            "no_of_facts": 18
+        },
+        {
+            "start_date": "2014-02-09",
+            "end_date": "2014-02-10",
+            "no_of_facts": 78
+        },
+        {
+            "start_date": "2014-02-10",
+            "end_date": "2014-02-11",
+            "no_of_facts": 99
+        },
+        {
+            "start_date": "2014-02-11",
+            "end_date": "2014-02-12",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-02-12",
+            "end_date": "2014-02-13",
+            "no_of_facts": 66
+        },
+        {
+            "start_date": "2014-02-13",
+            "end_date": "2014-02-14",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-02-14",
+            "end_date": "2014-02-15",
+            "no_of_facts": 57
+        },
+        {
+            "start_date": "2014-02-15",
+            "end_date": "2014-02-16",
+            "no_of_facts": 30
+        },
+        {
+            "start_date": "2014-02-16",
+            "end_date": "2014-02-17",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-02-17",
+            "end_date": "2014-02-18",
+            "no_of_facts": 129
+        },
+        {
+            "start_date": "2014-02-18",
+            "end_date": "2014-02-19",
+            "no_of_facts": 90
+        },
+        {
+            "start_date": "2014-02-19",
+            "end_date": "2014-02-20",
+            "no_of_facts": 108
+        },
+        {
+            "start_date": "2014-02-20",
+            "end_date": "2014-02-21",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-02-21",
+            "end_date": "2014-02-22",
+            "no_of_facts": 39
+        },
+        {
+            "start_date": "2014-02-22",
+            "end_date": "2014-02-23",
+            "no_of_facts": 36
+        },
+        {
+            "start_date": "2014-02-23",
+            "end_date": "2014-02-24",
+            "no_of_facts": 69
+        },
+        {
+            "start_date": "2014-02-24",
+            "end_date": "2014-02-25",
+            "no_of_facts": 75
+        },
+        {
+            "start_date": "2014-02-25",
+            "end_date": "2014-02-26",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-02-26",
+            "end_date": "2014-02-27",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-02-27",
+            "end_date": "2014-02-28",
+            "no_of_facts": 57
+        },
+        {
+            "start_date": "2014-02-28",
+            "end_date": "2014-03-01",
+            "no_of_facts": 63
+        },
+        {
+            "start_date": "2014-03-01",
+            "end_date": "2014-03-02",
+            "no_of_facts": 48
+        },
+        {
+            "start_date": "2014-03-02",
+            "end_date": "2014-03-03",
+            "no_of_facts": 57
+        },
+        {
+            "start_date": "2014-03-03",
+            "end_date": "2014-03-04",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-03-04",
+            "end_date": "2014-03-05",
+            "no_of_facts": 78
+        },
+        {
+            "start_date": "2014-03-05",
+            "end_date": "2014-03-06",
+            "no_of_facts": 63
+        },
+        {
+            "start_date": "2014-03-06",
+            "end_date": "2014-03-07",
+            "no_of_facts": 66
+        },
+        {
+            "start_date": "2014-03-07",
+            "end_date": "2014-03-08",
+            "no_of_facts": 39
+        },
+        {
+            "start_date": "2014-03-08",
+            "end_date": "2014-03-09",
+            "no_of_facts": 48
+        },
+        {
+            "start_date": "2014-03-09",
+            "end_date": "2014-03-10",
+            "no_of_facts": 60
+        },
+        {
+            "start_date": "2014-03-10",
+            "end_date": "2014-03-11",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-03-11",
+            "end_date": "2014-03-12",
+            "no_of_facts": 102
+        },
+        {
+            "start_date": "2014-03-12",
+            "end_date": "2014-03-13",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-03-13",
+            "end_date": "2014-03-14",
+            "no_of_facts": 60
+        },
+        {
+            "start_date": "2014-03-14",
+            "end_date": "2014-03-15",
+            "no_of_facts": 57
+        },
+        {
+            "start_date": "2014-03-15",
+            "end_date": "2014-03-16",
+            "no_of_facts": 51
+        },
+        {
+            "start_date": "2014-03-16",
+            "end_date": "2014-03-17",
+            "no_of_facts": 93
+        },
+        {
+            "start_date": "2014-03-17",
+            "end_date": "2014-03-18",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-03-18",
+            "end_date": "2014-03-19",
+            "no_of_facts": 99
+        },
+        {
+            "start_date": "2014-03-19",
+            "end_date": "2014-03-20",
+            "no_of_facts": 90
+        },
+        {
+            "start_date": "2014-03-20",
+            "end_date": "2014-03-21",
+            "no_of_facts": 57
+        },
+        {
+            "start_date": "2014-03-21",
+            "end_date": "2014-03-22",
+            "no_of_facts": 21
+        },
+        {
+            "start_date": "2014-03-22",
+            "end_date": "2014-03-23",
+            "no_of_facts": 45
+        },
+        {
+            "start_date": "2014-03-23",
+            "end_date": "2014-03-24",
+            "no_of_facts": 90
+        },
+        {
+            "start_date": "2014-03-24",
+            "end_date": "2014-03-25",
+            "no_of_facts": 93
+        },
+        {
+            "start_date": "2014-03-25",
+            "end_date": "2014-03-26",
+            "no_of_facts": 72
+        },
+        {
+            "start_date": "2014-03-26",
+            "end_date": "2014-03-27",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-03-27",
+            "end_date": "2014-03-28",
+            "no_of_facts": 99
+        },
+        {
+            "start_date": "2014-03-28",
+            "end_date": "2014-03-29",
+            "no_of_facts": 57
+        },
+        {
+            "start_date": "2014-03-29",
+            "end_date": "2014-03-30",
+            "no_of_facts": 24
+        },
+        {
+            "start_date": "2014-03-30",
+            "end_date": "2014-03-31",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-03-31",
+            "end_date": "2014-04-01",
+            "no_of_facts": 66
+        },
+        {
+            "start_date": "2014-04-01",
+            "end_date": "2014-04-02",
+            "no_of_facts": 69
+        },
+        {
+            "start_date": "2014-04-02",
+            "end_date": "2014-04-03",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-04-03",
+            "end_date": "2014-04-04",
+            "no_of_facts": 69
+        },
+        {
+            "start_date": "2014-04-04",
+            "end_date": "2014-04-05",
+            "no_of_facts": 30
+        },
+        {
+            "start_date": "2014-04-05",
+            "end_date": "2014-04-06",
+            "no_of_facts": 45
+        },
+        {
+            "start_date": "2014-04-06",
+            "end_date": "2014-04-07",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-04-07",
+            "end_date": "2014-04-08",
+            "no_of_facts": 105
+        },
+        {
+            "start_date": "2014-04-08",
+            "end_date": "2014-04-09",
+            "no_of_facts": 69
+        },
+        {
+            "start_date": "2014-04-09",
+            "end_date": "2014-04-10",
+            "no_of_facts": 69
+        },
+        {
+            "start_date": "2014-04-10",
+            "end_date": "2014-04-11",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-04-11",
+            "end_date": "2014-04-12",
+            "no_of_facts": 30
+        },
+        {
+            "start_date": "2014-04-12",
+            "end_date": "2014-04-13",
+            "no_of_facts": 39
+        },
+        {
+            "start_date": "2014-04-13",
+            "end_date": "2014-04-14",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-04-14",
+            "end_date": "2014-04-15",
+            "no_of_facts": 93
+        },
+        {
+            "start_date": "2014-04-15",
+            "end_date": "2014-04-16",
+            "no_of_facts": 63
+        },
+        {
+            "start_date": "2014-04-16",
+            "end_date": "2014-04-17",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-04-17",
+            "end_date": "2014-04-18",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-04-18",
+            "end_date": "2014-04-19",
+            "no_of_facts": 30
+        },
+        {
+            "start_date": "2014-04-19",
+            "end_date": "2014-04-20",
+            "no_of_facts": 33
+        },
+        {
+            "start_date": "2014-04-20",
+            "end_date": "2014-04-21",
+            "no_of_facts": 66
+        },
+        {
+            "start_date": "2014-04-21",
+            "end_date": "2014-04-22",
+            "no_of_facts": 72
+        },
+        {
+            "start_date": "2014-04-22",
+            "end_date": "2014-04-23",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-04-23",
+            "end_date": "2014-04-24",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-04-24",
+            "end_date": "2014-04-25",
+            "no_of_facts": 51
+        },
+        {
+            "start_date": "2014-04-25",
+            "end_date": "2014-04-26",
+            "no_of_facts": 57
+        },
+        {
+            "start_date": "2014-04-26",
+            "end_date": "2014-04-27",
+            "no_of_facts": 48
+        },
+        {
+            "start_date": "2014-04-27",
+            "end_date": "2014-04-28",
+            "no_of_facts": 75
+        },
+        {
+            "start_date": "2014-04-28",
+            "end_date": "2014-04-29",
+            "no_of_facts": 99
+        },
+        {
+            "start_date": "2014-04-29",
+            "end_date": "2014-04-30",
+            "no_of_facts": 90
+        },
+        {
+            "start_date": "2014-04-30",
+            "end_date": "2014-05-01",
+            "no_of_facts": 57
+        },
+        {
+            "start_date": "2014-05-01",
+            "end_date": "2014-05-02",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-05-02",
+            "end_date": "2014-05-03",
+            "no_of_facts": 33
+        },
+        {
+            "start_date": "2014-05-03",
+            "end_date": "2014-05-04",
+            "no_of_facts": 42
+        },
+        {
+            "start_date": "2014-05-04",
+            "end_date": "2014-05-05",
+            "no_of_facts": 99
+        },
+        {
+            "start_date": "2014-05-05",
+            "end_date": "2014-05-06",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-05-06",
+            "end_date": "2014-05-07",
+            "no_of_facts": 108
+        },
+        {
+            "start_date": "2014-05-07",
+            "end_date": "2014-05-08",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-05-08",
+            "end_date": "2014-05-09",
+            "no_of_facts": 93
+        },
+        {
+            "start_date": "2014-05-09",
+            "end_date": "2014-05-10",
+            "no_of_facts": 36
+        },
+        {
+            "start_date": "2014-05-10",
+            "end_date": "2014-05-11",
+            "no_of_facts": 60
+        },
+        {
+            "start_date": "2014-05-11",
+            "end_date": "2014-05-12",
+            "no_of_facts": 102
+        },
+        {
+            "start_date": "2014-05-12",
+            "end_date": "2014-05-13",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-05-13",
+            "end_date": "2014-05-14",
+            "no_of_facts": 69
+        },
+        {
+            "start_date": "2014-05-14",
+            "end_date": "2014-05-15",
+            "no_of_facts": 105
+        },
+        {
+            "start_date": "2014-05-15",
+            "end_date": "2014-05-16",
+            "no_of_facts": 117
+        },
+        {
+            "start_date": "2014-05-16",
+            "end_date": "2014-05-17",
+            "no_of_facts": 39
+        },
+        {
+            "start_date": "2014-05-17",
+            "end_date": "2014-05-18",
+            "no_of_facts": 48
+        },
+        {
+            "start_date": "2014-05-18",
+            "end_date": "2014-05-19",
+            "no_of_facts": 69
+        },
+        {
+            "start_date": "2014-05-19",
+            "end_date": "2014-05-20",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-05-20",
+            "end_date": "2014-05-21",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-05-21",
+            "end_date": "2014-05-22",
+            "no_of_facts": 102
+        },
+        {
+            "start_date": "2014-05-22",
+            "end_date": "2014-05-23",
+            "no_of_facts": 75
+        },
+        {
+            "start_date": "2014-05-23",
+            "end_date": "2014-05-24",
+            "no_of_facts": 45
+        },
+        {
+            "start_date": "2014-05-24",
+            "end_date": "2014-05-25",
+            "no_of_facts": 63
+        },
+        {
+            "start_date": "2014-05-25",
+            "end_date": "2014-05-26",
+            "no_of_facts": 75
+        },
+        {
+            "start_date": "2014-05-26",
+            "end_date": "2014-05-27",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-05-27",
+            "end_date": "2014-05-28",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-05-28",
+            "end_date": "2014-05-29",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-05-29",
+            "end_date": "2014-05-30",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-05-30",
+            "end_date": "2014-05-31",
+            "no_of_facts": 51
+        },
+        {
+            "start_date": "2014-05-31",
+            "end_date": "2014-06-01",
+            "no_of_facts": 42
+        },
+        {
+            "start_date": "2014-06-01",
+            "end_date": "2014-06-02",
+            "no_of_facts": 111
+        },
+        {
+            "start_date": "2014-06-02",
+            "end_date": "2014-06-03",
+            "no_of_facts": 102
+        },
+        {
+            "start_date": "2014-06-03",
+            "end_date": "2014-06-04",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-06-04",
+            "end_date": "2014-06-05",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-06-05",
+            "end_date": "2014-06-06",
+            "no_of_facts": 66
+        },
+        {
+            "start_date": "2014-06-06",
+            "end_date": "2014-06-07",
+            "no_of_facts": 48
+        },
+        {
+            "start_date": "2014-06-07",
+            "end_date": "2014-06-08",
+            "no_of_facts": 15
+        },
+        {
+            "start_date": "2014-06-08",
+            "end_date": "2014-06-09",
+            "no_of_facts": 102
+        },
+        {
+            "start_date": "2014-06-09",
+            "end_date": "2014-06-10",
+            "no_of_facts": 78
+        },
+        {
+            "start_date": "2014-06-10",
+            "end_date": "2014-06-11",
+            "no_of_facts": 78
+        },
+        {
+            "start_date": "2014-06-11",
+            "end_date": "2014-06-12",
+            "no_of_facts": 72
+        },
+        {
+            "start_date": "2014-06-12",
+            "end_date": "2014-06-13",
+            "no_of_facts": 93
+        },
+        {
+            "start_date": "2014-06-13",
+            "end_date": "2014-06-14",
+            "no_of_facts": 24
+        },
+        {
+            "start_date": "2014-06-14",
+            "end_date": "2014-06-15",
+            "no_of_facts": 27
+        },
+        {
+            "start_date": "2014-06-15",
+            "end_date": "2014-06-16",
+            "no_of_facts": 99
+        },
+        {
+            "start_date": "2014-06-16",
+            "end_date": "2014-06-17",
+            "no_of_facts": 99
+        },
+        {
+            "start_date": "2014-06-17",
+            "end_date": "2014-06-18",
+            "no_of_facts": 129
+        },
+        {
+            "start_date": "2014-06-18",
+            "end_date": "2014-06-19",
+            "no_of_facts": 108
+        },
+        {
+            "start_date": "2014-06-19",
+            "end_date": "2014-06-20",
+            "no_of_facts": 99
+        },
+        {
+            "start_date": "2014-06-20",
+            "end_date": "2014-06-21",
+            "no_of_facts": 33
+        },
+        {
+            "start_date": "2014-06-21",
+            "end_date": "2014-06-22",
+            "no_of_facts": 54
+        },
+        {
+            "start_date": "2014-06-22",
+            "end_date": "2014-06-23",
+            "no_of_facts": 132
+        },
+        {
+            "start_date": "2014-06-23",
+            "end_date": "2014-06-24",
+            "no_of_facts": 78
+        },
+        {
+            "start_date": "2014-06-24",
+            "end_date": "2014-06-25",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-06-25",
+            "end_date": "2014-06-26",
+            "no_of_facts": 90
+        },
+        {
+            "start_date": "2014-06-26",
+            "end_date": "2014-06-27",
+            "no_of_facts": 93
+        },
+        {
+            "start_date": "2014-06-27",
+            "end_date": "2014-06-28",
+            "no_of_facts": 60
+        },
+        {
+            "start_date": "2014-06-28",
+            "end_date": "2014-06-29",
+            "no_of_facts": 39
+        },
+        {
+            "start_date": "2014-06-29",
+            "end_date": "2014-06-30",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-06-30",
+            "end_date": "2014-07-01",
+            "no_of_facts": 63
+        },
+        {
+            "start_date": "2014-07-01",
+            "end_date": "2014-07-02",
+            "no_of_facts": 108
+        },
+        {
+            "start_date": "2014-07-02",
+            "end_date": "2014-07-03",
+            "no_of_facts": 117
+        },
+        {
+            "start_date": "2014-07-03",
+            "end_date": "2014-07-04",
+            "no_of_facts": 108
+        },
+        {
+            "start_date": "2014-07-04",
+            "end_date": "2014-07-05",
+            "no_of_facts": 57
+        },
+        {
+            "start_date": "2014-07-05",
+            "end_date": "2014-07-06",
+            "no_of_facts": 36
+        },
+        {
+            "start_date": "2014-07-06",
+            "end_date": "2014-07-07",
+            "no_of_facts": 63
+        },
+        {
+            "start_date": "2014-07-07",
+            "end_date": "2014-07-08",
+            "no_of_facts": 105
+        },
+        {
+            "start_date": "2014-07-08",
+            "end_date": "2014-07-09",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-07-09",
+            "end_date": "2014-07-10",
+            "no_of_facts": 72
+        },
+        {
+            "start_date": "2014-07-10",
+            "end_date": "2014-07-11",
+            "no_of_facts": 54
+        },
+        {
+            "start_date": "2014-07-11",
+            "end_date": "2014-07-12",
+            "no_of_facts": 45
+        },
+        {
+            "start_date": "2014-07-12",
+            "end_date": "2014-07-13",
+            "no_of_facts": 60
+        },
+        {
+            "start_date": "2014-07-13",
+            "end_date": "2014-07-14",
+            "no_of_facts": 99
+        },
+        {
+            "start_date": "2014-07-14",
+            "end_date": "2014-07-15",
+            "no_of_facts": 105
+        },
+        {
+            "start_date": "2014-07-15",
+            "end_date": "2014-07-16",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-07-16",
+            "end_date": "2014-07-17",
+            "no_of_facts": 63
+        },
+        {
+            "start_date": "2014-07-17",
+            "end_date": "2014-07-18",
+            "no_of_facts": 93
+        },
+        {
+            "start_date": "2014-07-18",
+            "end_date": "2014-07-19",
+            "no_of_facts": 33
+        },
+        {
+            "start_date": "2014-07-19",
+            "end_date": "2014-07-20",
+            "no_of_facts": 51
+        },
+        {
+            "start_date": "2014-07-20",
+            "end_date": "2014-07-21",
+            "no_of_facts": 63
+        },
+        {
+            "start_date": "2014-07-21",
+            "end_date": "2014-07-22",
+            "no_of_facts": 66
+        },
+        {
+            "start_date": "2014-07-22",
+            "end_date": "2014-07-23",
+            "no_of_facts": 105
+        },
+        {
+            "start_date": "2014-07-23",
+            "end_date": "2014-07-24",
+            "no_of_facts": 75
+        },
+        {
+            "start_date": "2014-07-24",
+            "end_date": "2014-07-25",
+            "no_of_facts": 69
+        },
+        {
+            "start_date": "2014-07-25",
+            "end_date": "2014-07-26",
+            "no_of_facts": 45
+        },
+        {
+            "start_date": "2014-07-26",
+            "end_date": "2014-07-27",
+            "no_of_facts": 57
+        },
+        {
+            "start_date": "2014-07-27",
+            "end_date": "2014-07-28",
+            "no_of_facts": 51
+        },
+        {
+            "start_date": "2014-07-28",
+            "end_date": "2014-07-29",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-07-29",
+            "end_date": "2014-07-30",
+            "no_of_facts": 57
+        },
+        {
+            "start_date": "2014-07-30",
+            "end_date": "2014-07-31",
+            "no_of_facts": 66
+        },
+        {
+            "start_date": "2014-07-31",
+            "end_date": "2014-08-01",
+            "no_of_facts": 63
+        },
+        {
+            "start_date": "2014-08-01",
+            "end_date": "2014-08-02",
+            "no_of_facts": 45
+        },
+        {
+            "start_date": "2014-08-02",
+            "end_date": "2014-08-03",
+            "no_of_facts": 27
+        },
+        {
+            "start_date": "2014-08-03",
+            "end_date": "2014-08-04",
+            "no_of_facts": 90
+        },
+        {
+            "start_date": "2014-08-04",
+            "end_date": "2014-08-05",
+            "no_of_facts": 102
+        },
+        {
+            "start_date": "2014-08-05",
+            "end_date": "2014-08-06",
+            "no_of_facts": 51
+        },
+        {
+            "start_date": "2014-08-06",
+            "end_date": "2014-08-07",
+            "no_of_facts": 72
+        },
+        {
+            "start_date": "2014-08-07",
+            "end_date": "2014-08-08",
+            "no_of_facts": 54
+        },
+        {
+            "start_date": "2014-08-08",
+            "end_date": "2014-08-09",
+            "no_of_facts": 48
+        },
+        {
+            "start_date": "2014-08-09",
+            "end_date": "2014-08-10",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-08-10",
+            "end_date": "2014-08-11",
+            "no_of_facts": 135
+        },
+        {
+            "start_date": "2014-08-11",
+            "end_date": "2014-08-12",
+            "no_of_facts": 108
+        },
+        {
+            "start_date": "2014-08-12",
+            "end_date": "2014-08-13",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-08-13",
+            "end_date": "2014-08-14",
+            "no_of_facts": 93
+        },
+        {
+            "start_date": "2014-08-14",
+            "end_date": "2014-08-15",
+            "no_of_facts": 51
+        },
+        {
+            "start_date": "2014-08-15",
+            "end_date": "2014-08-16",
+            "no_of_facts": 39
+        },
+        {
+            "start_date": "2014-08-16",
+            "end_date": "2014-08-17",
+            "no_of_facts": 33
+        },
+        {
+            "start_date": "2014-08-17",
+            "end_date": "2014-08-18",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-08-18",
+            "end_date": "2014-08-19",
+            "no_of_facts": 78
+        },
+        {
+            "start_date": "2014-08-19",
+            "end_date": "2014-08-20",
+            "no_of_facts": 78
+        },
+        {
+            "start_date": "2014-08-20",
+            "end_date": "2014-08-21",
+            "no_of_facts": 48
+        },
+        {
+            "start_date": "2014-08-21",
+            "end_date": "2014-08-22",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-08-22",
+            "end_date": "2014-08-23",
+            "no_of_facts": 39
+        },
+        {
+            "start_date": "2014-08-23",
+            "end_date": "2014-08-24",
+            "no_of_facts": 42
+        },
+        {
+            "start_date": "2014-08-24",
+            "end_date": "2014-08-25",
+            "no_of_facts": 99
+        },
+        {
+            "start_date": "2014-08-25",
+            "end_date": "2014-08-26",
+            "no_of_facts": 72
+        },
+        {
+            "start_date": "2014-08-26",
+            "end_date": "2014-08-27",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-08-27",
+            "end_date": "2014-08-28",
+            "no_of_facts": 93
+        },
+        {
+            "start_date": "2014-08-28",
+            "end_date": "2014-08-29",
+            "no_of_facts": 57
+        },
+        {
+            "start_date": "2014-08-29",
+            "end_date": "2014-08-30",
+            "no_of_facts": 48
+        },
+        {
+            "start_date": "2014-08-30",
+            "end_date": "2014-08-31",
+            "no_of_facts": 33
+        },
+        {
+            "start_date": "2014-08-31",
+            "end_date": "2014-09-01",
+            "no_of_facts": 105
+        },
+        {
+            "start_date": "2014-09-01",
+            "end_date": "2014-09-02",
+            "no_of_facts": 126
+        },
+        {
+            "start_date": "2014-09-02",
+            "end_date": "2014-09-03",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-09-03",
+            "end_date": "2014-09-04",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-09-04",
+            "end_date": "2014-09-05",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-09-05",
+            "end_date": "2014-09-06",
+            "no_of_facts": 54
+        },
+        {
+            "start_date": "2014-09-06",
+            "end_date": "2014-09-07",
+            "no_of_facts": 33
+        },
+        {
+            "start_date": "2014-09-07",
+            "end_date": "2014-09-08",
+            "no_of_facts": 69
+        },
+        {
+            "start_date": "2014-09-08",
+            "end_date": "2014-09-09",
+            "no_of_facts": 72
+        },
+        {
+            "start_date": "2014-09-09",
+            "end_date": "2014-09-10",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-09-10",
+            "end_date": "2014-09-11",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-09-11",
+            "end_date": "2014-09-12",
+            "no_of_facts": 93
+        },
+        {
+            "start_date": "2014-09-12",
+            "end_date": "2014-09-13",
+            "no_of_facts": 54
+        },
+        {
+            "start_date": "2014-09-13",
+            "end_date": "2014-09-14",
+            "no_of_facts": 48
+        },
+        {
+            "start_date": "2014-09-14",
+            "end_date": "2014-09-15",
+            "no_of_facts": 120
+        },
+        {
+            "start_date": "2014-09-15",
+            "end_date": "2014-09-16",
+            "no_of_facts": 90
+        },
+        {
+            "start_date": "2014-09-16",
+            "end_date": "2014-09-17",
+            "no_of_facts": 120
+        },
+        {
+            "start_date": "2014-09-17",
+            "end_date": "2014-09-18",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-09-18",
+            "end_date": "2014-09-19",
+            "no_of_facts": 90
+        },
+        {
+            "start_date": "2014-09-19",
+            "end_date": "2014-09-20",
+            "no_of_facts": 57
+        },
+        {
+            "start_date": "2014-09-20",
+            "end_date": "2014-09-21",
+            "no_of_facts": 51
+        },
+        {
+            "start_date": "2014-09-21",
+            "end_date": "2014-09-22",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-09-22",
+            "end_date": "2014-09-23",
+            "no_of_facts": 90
+        },
+        {
+            "start_date": "2014-09-23",
+            "end_date": "2014-09-24",
+            "no_of_facts": 108
+        },
+        {
+            "start_date": "2014-09-24",
+            "end_date": "2014-09-25",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-09-25",
+            "end_date": "2014-09-26",
+            "no_of_facts": 60
+        },
+        {
+            "start_date": "2014-09-26",
+            "end_date": "2014-09-27",
+            "no_of_facts": 42
+        },
+        {
+            "start_date": "2014-09-27",
+            "end_date": "2014-09-28",
+            "no_of_facts": 33
+        },
+        {
+            "start_date": "2014-09-28",
+            "end_date": "2014-09-29",
+            "no_of_facts": 114
+        },
+        {
+            "start_date": "2014-09-29",
+            "end_date": "2014-09-30",
+            "no_of_facts": 93
+        },
+        {
+            "start_date": "2014-09-30",
+            "end_date": "2014-10-01",
+            "no_of_facts": 93
+        },
+        {
+            "start_date": "2014-10-01",
+            "end_date": "2014-10-02",
+            "no_of_facts": 117
+        },
+        {
+            "start_date": "2014-10-02",
+            "end_date": "2014-10-03",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-10-03",
+            "end_date": "2014-10-04",
+            "no_of_facts": 27
+        },
+        {
+            "start_date": "2014-10-04",
+            "end_date": "2014-10-05",
+            "no_of_facts": 42
+        },
+        {
+            "start_date": "2014-10-05",
+            "end_date": "2014-10-06",
+            "no_of_facts": 105
+        },
+        {
+            "start_date": "2014-10-06",
+            "end_date": "2014-10-07",
+            "no_of_facts": 78
+        },
+        {
+            "start_date": "2014-10-07",
+            "end_date": "2014-10-08",
+            "no_of_facts": 114
+        },
+        {
+            "start_date": "2014-10-08",
+            "end_date": "2014-10-09",
+            "no_of_facts": 72
+        },
+        {
+            "start_date": "2014-10-09",
+            "end_date": "2014-10-10",
+            "no_of_facts": 75
+        },
+        {
+            "start_date": "2014-10-10",
+            "end_date": "2014-10-11",
+            "no_of_facts": 45
+        },
+        {
+            "start_date": "2014-10-11",
+            "end_date": "2014-10-12",
+            "no_of_facts": 18
+        },
+        {
+            "start_date": "2014-10-12",
+            "end_date": "2014-10-13",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-10-13",
+            "end_date": "2014-10-14",
+            "no_of_facts": 114
+        },
+        {
+            "start_date": "2014-10-14",
+            "end_date": "2014-10-15",
+            "no_of_facts": 102
+        },
+        {
+            "start_date": "2014-10-15",
+            "end_date": "2014-10-16",
+            "no_of_facts": 69
+        },
+        {
+            "start_date": "2014-10-16",
+            "end_date": "2014-10-17",
+            "no_of_facts": 99
+        },
+        {
+            "start_date": "2014-10-17",
+            "end_date": "2014-10-18",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-10-18",
+            "end_date": "2014-10-19",
+            "no_of_facts": 60
+        },
+        {
+            "start_date": "2014-10-19",
+            "end_date": "2014-10-20",
+            "no_of_facts": 111
+        },
+        {
+            "start_date": "2014-10-20",
+            "end_date": "2014-10-21",
+            "no_of_facts": 120
+        },
+        {
+            "start_date": "2014-10-21",
+            "end_date": "2014-10-22",
+            "no_of_facts": 93
+        },
+        {
+            "start_date": "2014-10-22",
+            "end_date": "2014-10-23",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-10-23",
+            "end_date": "2014-10-24",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-10-24",
+            "end_date": "2014-10-25",
+            "no_of_facts": 39
+        },
+        {
+            "start_date": "2014-10-25",
+            "end_date": "2014-10-26",
+            "no_of_facts": 18
+        },
+        {
+            "start_date": "2014-10-26",
+            "end_date": "2014-10-27",
+            "no_of_facts": 129
+        },
+        {
+            "start_date": "2014-10-27",
+            "end_date": "2014-10-28",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-10-28",
+            "end_date": "2014-10-29",
+            "no_of_facts": 99
+        },
+        {
+            "start_date": "2014-10-29",
+            "end_date": "2014-10-30",
+            "no_of_facts": 69
+        },
+        {
+            "start_date": "2014-10-30",
+            "end_date": "2014-10-31",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-10-31",
+            "end_date": "2014-11-01",
+            "no_of_facts": 57
+        },
+        {
+            "start_date": "2014-11-01",
+            "end_date": "2014-11-02",
+            "no_of_facts": 48
+        },
+        {
+            "start_date": "2014-11-02",
+            "end_date": "2014-11-03",
+            "no_of_facts": 99
+        },
+        {
+            "start_date": "2014-11-03",
+            "end_date": "2014-11-04",
+            "no_of_facts": 69
+        },
+        {
+            "start_date": "2014-11-04",
+            "end_date": "2014-11-05",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-11-05",
+            "end_date": "2014-11-06",
+            "no_of_facts": 75
+        },
+        {
+            "start_date": "2014-11-06",
+            "end_date": "2014-11-07",
+            "no_of_facts": 72
+        },
+        {
+            "start_date": "2014-11-07",
+            "end_date": "2014-11-08",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-11-08",
+            "end_date": "2014-11-09",
+            "no_of_facts": 51
+        },
+        {
+            "start_date": "2014-11-09",
+            "end_date": "2014-11-10",
+            "no_of_facts": 126
+        },
+        {
+            "start_date": "2014-11-10",
+            "end_date": "2014-11-11",
+            "no_of_facts": 102
+        },
+        {
+            "start_date": "2014-11-11",
+            "end_date": "2014-11-12",
+            "no_of_facts": 138
+        },
+        {
+            "start_date": "2014-11-12",
+            "end_date": "2014-11-13",
+            "no_of_facts": 123
+        },
+        {
+            "start_date": "2014-11-13",
+            "end_date": "2014-11-14",
+            "no_of_facts": 105
+        },
+        {
+            "start_date": "2014-11-14",
+            "end_date": "2014-11-15",
+            "no_of_facts": 60
+        },
+        {
+            "start_date": "2014-11-15",
+            "end_date": "2014-11-16",
+            "no_of_facts": 78
+        },
+        {
+            "start_date": "2014-11-16",
+            "end_date": "2014-11-17",
+            "no_of_facts": 126
+        },
+        {
+            "start_date": "2014-11-17",
+            "end_date": "2014-11-18",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-11-18",
+            "end_date": "2014-11-19",
+            "no_of_facts": 114
+        },
+        {
+            "start_date": "2014-11-19",
+            "end_date": "2014-11-20",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-11-20",
+            "end_date": "2014-11-21",
+            "no_of_facts": 150
+        },
+        {
+            "start_date": "2014-11-21",
+            "end_date": "2014-11-22",
+            "no_of_facts": 60
+        },
+        {
+            "start_date": "2014-11-22",
+            "end_date": "2014-11-23",
+            "no_of_facts": 39
+        },
+        {
+            "start_date": "2014-11-23",
+            "end_date": "2014-11-24",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-11-24",
+            "end_date": "2014-11-25",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-11-25",
+            "end_date": "2014-11-26",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-11-26",
+            "end_date": "2014-11-27",
+            "no_of_facts": 90
+        },
+        {
+            "start_date": "2014-11-27",
+            "end_date": "2014-11-28",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-11-28",
+            "end_date": "2014-11-29",
+            "no_of_facts": 42
+        },
+        {
+            "start_date": "2014-11-29",
+            "end_date": "2014-11-30",
+            "no_of_facts": 54
+        },
+        {
+            "start_date": "2014-11-30",
+            "end_date": "2014-12-01",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-12-01",
+            "end_date": "2014-12-02",
+            "no_of_facts": 69
+        },
+        {
+            "start_date": "2014-12-02",
+            "end_date": "2014-12-03",
+            "no_of_facts": 108
+        },
+        {
+            "start_date": "2014-12-03",
+            "end_date": "2014-12-04",
+            "no_of_facts": 72
+        },
+        {
+            "start_date": "2014-12-04",
+            "end_date": "2014-12-05",
+            "no_of_facts": 72
+        },
+        {
+            "start_date": "2014-12-05",
+            "end_date": "2014-12-06",
+            "no_of_facts": 51
+        },
+        {
+            "start_date": "2014-12-06",
+            "end_date": "2014-12-07",
+            "no_of_facts": 72
+        },
+        {
+            "start_date": "2014-12-07",
+            "end_date": "2014-12-08",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-12-08",
+            "end_date": "2014-12-09",
+            "no_of_facts": 126
+        },
+        {
+            "start_date": "2014-12-09",
+            "end_date": "2014-12-10",
+            "no_of_facts": 111
+        },
+        {
+            "start_date": "2014-12-10",
+            "end_date": "2014-12-11",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-12-11",
+            "end_date": "2014-12-12",
+            "no_of_facts": 81
+        },
+        {
+            "start_date": "2014-12-12",
+            "end_date": "2014-12-13",
+            "no_of_facts": 45
+        },
+        {
+            "start_date": "2014-12-13",
+            "end_date": "2014-12-14",
+            "no_of_facts": 45
+        },
+        {
+            "start_date": "2014-12-14",
+            "end_date": "2014-12-15",
+            "no_of_facts": 87
+        },
+        {
+            "start_date": "2014-12-15",
+            "end_date": "2014-12-16",
+            "no_of_facts": 78
+        },
+        {
+            "start_date": "2014-12-16",
+            "end_date": "2014-12-17",
+            "no_of_facts": 78
+        },
+        {
+            "start_date": "2014-12-17",
+            "end_date": "2014-12-18",
+            "no_of_facts": 60
+        },
+        {
+            "start_date": "2014-12-18",
+            "end_date": "2014-12-19",
+            "no_of_facts": 60
+        },
+        {
+            "start_date": "2014-12-19",
+            "end_date": "2014-12-20",
+            "no_of_facts": 42
+        },
+        {
+            "start_date": "2014-12-20",
+            "end_date": "2014-12-21",
+            "no_of_facts": 33
+        },
+        {
+            "start_date": "2014-12-21",
+            "end_date": "2014-12-22",
+            "no_of_facts": 84
+        },
+        {
+            "start_date": "2014-12-22",
+            "end_date": "2014-12-23",
+            "no_of_facts": 102
+        },
+        {
+            "start_date": "2014-12-23",
+            "end_date": "2014-12-24",
+            "no_of_facts": 48
+        },
+        {
+            "start_date": "2014-12-24",
+            "end_date": "2014-12-25",
+            "no_of_facts": 36
+        },
+        {
+            "start_date": "2014-12-25",
+            "end_date": "2014-12-26",
+            "no_of_facts": 48
+        },
+        {
+            "start_date": "2014-12-26",
+            "end_date": "2014-12-27",
+            "no_of_facts": 42
+        },
+        {
+            "start_date": "2014-12-27",
+            "end_date": "2014-12-28",
+            "no_of_facts": 45
+        },
+        {
+            "start_date": "2014-12-28",
+            "end_date": "2014-12-29",
+            "no_of_facts": 138
+        },
+        {
+            "start_date": "2014-12-29",
+            "end_date": "2014-12-30",
+            "no_of_facts": 96
+        },
+        {
+            "start_date": "2014-12-30",
+            "end_date": "2014-12-31",
+            "no_of_facts": 27
+        },
+        {
+            "start_date": "2014-12-31",
+            "end_date": "2015-01-01",
+            "no_of_facts": 0
+        }
+    ]
+}

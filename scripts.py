@@ -1,6 +1,31 @@
 
 import os
+import json
 from pathlib import Path
+import copy
+
+def read_json(path):
+    print("Reading from file " + path + "...")
+    in_file = open(path, "r", encoding="utf8")
+    dict = json.load(in_file)
+    in_file.close()
+    return dict
+
+def write_json(path, dict):
+    print("Writing to file " + path + "...")
+    touch(path)
+    out_file = open(path, "w", encoding="utf8")
+    json.dump(dict, out_file, indent=4)
+    out_file.close()
+
+def simulate_dates(start, end, delta):
+    dates = []
+    sim_date = copy.copy(start)
+    while sim_date != end:
+        dates.append(copy.copy(sim_date))
+        sim_date = sim_date + delta
+    return dates + [copy.copy(end)]
+
 
 def remove_unwanted_symbols_from_str(str):
     return str.replace(' ', ' ')
