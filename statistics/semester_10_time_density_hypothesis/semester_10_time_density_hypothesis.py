@@ -79,8 +79,8 @@ class TimeDensityHypothesis():
             quad_start_date = self._parse_start_date(quad["TIME_FROM"])
 
             for interval in no_of_facts:
-                if self._compare_iso(interval["start_date"], quad_start_date) and \
-                    self._compare_iso(quad_start_date, interval["end_date"]):
+                if interval["start_date"] <= quad_start_date and \
+                    quad_start_date < interval["end_date"]:
 
                     interval["no_of_facts"] += 1
                     break
@@ -93,8 +93,8 @@ class TimeDensityHypothesis():
             quad_start_date = self._parse_start_date(quad["TIME_FROM"])
 
             for interval in no_of_facts:
-                if self._compare_iso(interval["start_date"], quad_start_date) and \
-                    self._compare_iso(quad_start_date, interval["end_date"]):
+                if interval["start_date"] <= quad_start_date and \
+                    quad_start_date < interval["end_date"]:
                     
                     no_of_facts_for_each_timestamp.append(interval["no_of_facts"])
                     break
@@ -158,13 +158,14 @@ class TimeDensityHypothesis():
             quad_start_date = self._parse_start_date(quad["TIME_FROM"])
 
             for partition in partitions:
-                if self._compare_iso(partition["start_date"], quad_start_date) and \
-                    self._compare_iso(quad_start_date, partition["end_date"]):
+                if partition["start_date"] <= quad_start_date and \
+                    quad_start_date < partition["end_date"]:
                     
                     if partition["partition"] == "sparse":
                         sparse_measure.update(quad["RANK"])
                     if partition["partition"] == "dense":
                         dense_measure.update(quad["RANK"])
+                    break
         
         sparse_measure.normalize()
         dense_measure.normalize()
