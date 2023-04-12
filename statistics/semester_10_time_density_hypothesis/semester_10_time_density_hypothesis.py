@@ -170,7 +170,7 @@ class TimeDensityHypothesis():
         sparse_measure.normalize()
         dense_measure.normalize()
 
-        write_json(time_density_path, {"sparse": sparse_measure.as_dict(), "dense": dense_measure.as_dict()})
+        write_json(time_density_path, {"dense": dense_measure.as_dict(), "sparse": sparse_measure.as_dict()})
 
 
 
