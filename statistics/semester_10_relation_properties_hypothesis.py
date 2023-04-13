@@ -105,15 +105,32 @@ class RelationPropertiesHypothesis():
             classification["inverse"] = (max_inverse / relation["total"]) >= self.inverse_threshold
             classification["reflexive"] = (relation["reflexive"] / relation["total"]) >= self.reflexive_threshold
 
-            relation_classification[relation] = classification
+            relation_classification[relation_name] = classification
 
         write_json(relation_classification_path, relation_classification)
 
     def _analyze_with_property(self, relation_classification, ranked_quads, property = "symmetric"):
-        relation_property_analysis_path = os.path.join(self.params.base_directory, "result", self.dataset, "split_" + self.split, "relation_property_analysis_"+self.mode+".json")
+        relation_property_analysis_path = os.path.join(self.params.base_directory, "result", self.dataset, "split_" + self.split, "semester_10_hypothesis_3", "relation_property_"+property+"_"+self.mode+".json")
 
         measure_in_class = Measure()
         measure_no_class = Measure()
+
+        for i, quad in enumerate(ranked_quads):
+            if i % 10000 == 0:
+                print(f"Relation properties hypothesis, dataset {self.dataset}, measuring classified relations: Processing ranked quad {i}-{i+10000}, out of {len(ranked_quads)}")
+
+            if "RANK" not in quad.keys():
+                continue
+
+            if relation_classification[quad["RELATION"]][property] == True:
+                measure_in_class.update(quad["RANK"])
+            else:
+                measure_no_class.update(quad["RANK"])
+
+        measure_in_class.normalize()
+        measure_no_class.normalize()
+
+        write_json(relation_property_analysis_path, {property: measure_in_class.as_dict(), "not " + property: measure_no_class.as_dict()})
 
     def run_analysis(self):
         relation_classification_path = os.path.join(self.params.base_directory, "statistics", "resources", self.dataset, "relation_classification_" + self.mode + ".json")

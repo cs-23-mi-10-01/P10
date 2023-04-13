@@ -1,0 +1,62 @@
+{
+    "<playsFor>": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "<wasBornIn>": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "<hasWonPrize>": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "<isMarriedTo>": {
+        "symmetric": true,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "<created>": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "<diedIn>": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "<isAffiliatedTo>": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "<owns>": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "<graduatedFrom>": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "<worksAt>": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    }
+}

@@ -2,6 +2,7 @@
 import json
 from scripts import write
 import os
+from formatlatex.semester_10_hypothesis_3 import FormatRelationPropertyHypothesis
 
 class FormatLatex():
     def __init__(self, params) -> None:
@@ -284,4 +285,6 @@ class FormatLatex():
         #self.format_hypothesis_3()
         #self.format_no_of_entities()
         # self.format_hypothesis_2_overlap()
-        self.format_semester_9_hypothesis_1()
+        #self.format_semester_9_hypothesis_1()
+        format_relation_property = FormatRelationPropertyHypothesis(self.params)
+        format_relation_property.format_semester_9_hypothesis_1()

@@ -58,7 +58,7 @@ class Statistics():
             measure = Measure()
 
             for quad in ranked_quads:
-                if quad[element_type] is not "0":
+                if quad[element_type] != "0":
                     continue
 
                 ranks = {}
@@ -91,16 +91,16 @@ class Statistics():
             json_output = []
             json_output_normalized = []
 
-            if element is "ENTITY":
+            if element == "ENTITY":
                 target_parts = ["HEAD", "TAIL"]
-            elif element is "TIME":
+            elif element == "TIME":
                 target_parts = ["TIME_FROM", "TIME_TO"]
             else:
                 target_parts = [element]
 
             for target_part in target_parts:
                 for quad in ranked_quads:
-                    if quad[target_part] is "0":
+                    if quad[target_part] == "0":
                         continue
 
                     if quad[target_part] not in element_measures.keys():
