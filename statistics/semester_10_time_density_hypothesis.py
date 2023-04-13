@@ -105,7 +105,7 @@ class TimeDensityHypothesis():
 
     def _create_time_density_partition(self, time_density_partition_path):
         no_of_facts_path = os.path.join(self.params.base_directory, 
-                "statistics", "semester_10_time_density_hypothesis", "resources", self.dataset, 
+                "statistics", "resources", self.dataset, 
                 "split_" + self.split, "no_of_facts.json")
         
         if not exists(no_of_facts_path):
@@ -132,10 +132,10 @@ class TimeDensityHypothesis():
 
     def run_analysis(self):
         time_density_partition_path = os.path.join(self.params.base_directory, 
-                "statistics", "semester_10_time_density_hypothesis", "resources", self.dataset, 
+                "statistics", "resources", self.dataset, 
                 "split_" + self.split, "partition.json")
         ranks_path = os.path.join(self.params.base_directory, "result", self.dataset, "split_" + self.split, "ranked_quads.json")
-        time_density_path = os.path.join(self.params.base_directory, "result", self.dataset, "split_" + self.split, "semester_10_time_density_hypothesis", "time_density.json")
+        time_density_path = os.path.join(self.params.base_directory, "result", self.dataset, "split_" + self.split, "time_density.json")
 
         if not exists(time_density_partition_path):
             self._create_time_density_partition(time_density_partition_path)

@@ -26,7 +26,7 @@ def main():
     if params.embeddings == ['all']:
         params.embeddings = ['DE_DistMult']
     if params.datasets == ['all']:
-        params.datasets = ['icews14', 'wikidata12k', 'yago11k']
+        params.datasets = ['icews14']
     if params.splits == ['all']:
         params.splits = ['original']
     

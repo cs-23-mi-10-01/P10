@@ -7,7 +7,8 @@ from scripts import touch, year_to_iso_format, read_json, write_json
 from statistics.measure import Measure
 from copy import deepcopy
 from dataset_handler.dataset_handler import DatasetHandler
-from statistics.semester_10_time_density_hypothesis.semester_10_time_density_hypothesis import TimeDensityHypothesis
+from statistics.semester_10_time_density_hypothesis import TimeDensityHypothesis
+from statistics.semester_10_relation_properties_hypothesis import RelationPropertiesHypothesis
 
 
 class Statistics():
@@ -381,62 +382,6 @@ class Statistics():
         print (percentage* 100)
         return
 
-    def relation_analysis(self, reader: DatasetHandler, dataset):
-
-        print("Analyzing relation types...")
-
-        for mode in ["timestamps", "no-timestamps"]:
-            reader.read_full_dataset()
-            relations_dict = {}
-
-            print(mode)
-            for row in reader.rows():
-                if dataset in ["icews14"]:
-                    row["start_timestamp"] = row["timestamp"]
-                    row["end_timestamp"] = "-"
-                if mode == "no-timestamps":
-                    row["start_timestamp"] = "-"
-                    row["end_timestamp"] = "-"
-            
-            i = 0
-            for row in reader.rows():
-                if i % 10000 == 0:
-                    print("Analyzing row " + str(i) + "/" + str(len(reader.rows())))
-                i += 1
-                row_relation = row["relation"]
-
-                if row_relation not in relations_dict.keys():
-                    relations_dict[row_relation] = {"relation": row_relation, "total": 0, "symmetric": 0, "anti-symmetric": 0, "reflexive": 0, "inverse": {}}
-                
-                relations_dict[row_relation]["total"] += 1
-
-                symmetric_relations = reader.find_in_rows(head=row["tail"], relation=row_relation, tail=row["head"], start_timestamp=row["start_timestamp"], end_timestamp=row["end_timestamp"])
-                if len(symmetric_relations) > 0:
-                    relations_dict[row_relation]["symmetric"] += 1
-                else:
-                    relations_dict[row_relation]["anti-symmetric"] += 1
-                
-                inverse_relations = reader.find_in_rows(head=row["tail"], relation="*", tail=row["head"], start_timestamp=row["start_timestamp"], end_timestamp=row["end_timestamp"])
-                for inv_row in inverse_relations:
-                    if inv_row["relation"] == row_relation:
-                        continue
-
-                    if inv_row["relation"] not in relations_dict[row_relation]["inverse"].keys():
-                        relations_dict[row_relation]["inverse"][inv_row["relation"]] = 0
-                    
-                    relations_dict[row_relation]["inverse"][inv_row["relation"]] += 1
-                
-                if row["head"] == row["tail"]:
-                    relations_dict[row_relation]["reflexive"] += 1
-            
-            relations_json = []
-            for key in relations_dict.keys():
-                relations_json.append(relations_dict[key])
-            relations_json.sort(key=lambda val: val["total"], reverse=True)
-
-            results_path = os.path.join(self.params.base_directory, "result", dataset, "relation_analysis", "relation_types_"+mode+".json")
-            write_json(results_path, relations_json)
-
     def run(self):        
         embeddings = self.params.embeddings
 
@@ -454,8 +399,8 @@ class Statistics():
             # # self.find_common_elements(top)
             # # self.find_common_elements(top_percentage)
 
-            # dataset_handler = DatasetHandler(self.params, dataset)
-            # self.relation_analysis(dataset_handler, dataset)
+            relation_properties_hypothesis = RelationPropertiesHypothesis(self.params, dataset)
+            relation_properties_hypothesis.run_analysis()
 
             # if dataset in ['icews14']:
             #     no_of_elements_path = os.path.join(self.params.base_directory, "datasets", dataset, "full.txt")
@@ -464,8 +409,8 @@ class Statistics():
             # no_of_elements_dataset = self.read_csv(no_of_elements_path)
             # self.no_of_elements(no_of_elements_dataset, dataset)
 
-            time_density_hypothesis = TimeDensityHypothesis(self.params, dataset)
-            time_density_hypothesis.run_analysis()
+            # time_density_hypothesis = TimeDensityHypothesis(self.params, dataset)
+            # time_density_hypothesis.run_analysis()
 
             for split in self.params.splits:
 
