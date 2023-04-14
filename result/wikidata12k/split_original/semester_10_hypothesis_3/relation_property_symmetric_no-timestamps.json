@@ -1,4 +1,6 @@
 {
+    "facts_in_class": 0,
+    "facts_not_in_class": 12186,
     "symmetric": {},
     "not symmetric": {
         "DE_TransE": {

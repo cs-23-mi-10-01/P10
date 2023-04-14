@@ -1,4 +1,6 @@
 {
+    "facts_in_class": 11751,
+    "facts_not_in_class": 435,
     "anti-symmetric": {
         "DE_TransE": {
             "HIT1": 0.07650412730831418,

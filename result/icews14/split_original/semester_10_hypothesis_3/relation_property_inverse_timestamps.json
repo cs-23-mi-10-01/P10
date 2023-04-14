@@ -1,4 +1,6 @@
 {
+    "facts_in_class": 1308,
+    "facts_not_in_class": 25581,
     "inverse": {
         "DE_TransE": {
             "HIT1": 0.15902140672782875,

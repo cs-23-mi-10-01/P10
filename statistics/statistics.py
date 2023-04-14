@@ -399,7 +399,7 @@ class Statistics():
             # # self.find_common_elements(top)
             # # self.find_common_elements(top_percentage)
 
-            relation_properties_hypothesis = RelationPropertiesHypothesis(self.params, dataset)
+            relation_properties_hypothesis = RelationPropertiesHypothesis(self.params, dataset, mode="no-timestamps")
             relation_properties_hypothesis.run_analysis()
 
             # if dataset in ['icews14']:

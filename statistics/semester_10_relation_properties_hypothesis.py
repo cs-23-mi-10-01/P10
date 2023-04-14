@@ -115,6 +115,9 @@ class RelationPropertiesHypothesis():
         measure_in_class = Measure()
         measure_no_class = Measure()
 
+        facts_in_class = 0
+        facts_not_in_class = 0
+
         for i, quad in enumerate(ranked_quads):
             if i % 10000 == 0:
                 print(f"Relation properties hypothesis, dataset {self.dataset}, measuring classified relations: Processing ranked quad {i}-{i+10000}, out of {len(ranked_quads)}")
@@ -123,14 +126,17 @@ class RelationPropertiesHypothesis():
                 continue
 
             if relation_classification[quad["RELATION"]][property] == True:
+                facts_in_class += 1
                 measure_in_class.update(quad["RANK"])
             else:
+                facts_not_in_class += 1
                 measure_no_class.update(quad["RANK"])
 
         measure_in_class.normalize()
         measure_no_class.normalize()
 
-        write_json(relation_property_analysis_path, {property: measure_in_class.as_dict(), "not " + property: measure_no_class.as_dict()})
+        write_json(relation_property_analysis_path, {"facts_in_class": facts_in_class, "facts_not_in_class": facts_not_in_class,
+                                                     property: measure_in_class.as_dict(), "not " + property: measure_no_class.as_dict()})
 
     def run_analysis(self):
         relation_classification_path = os.path.join(self.params.base_directory, "statistics", "resources", self.dataset, "relation_classification_" + self.mode + ".json")
