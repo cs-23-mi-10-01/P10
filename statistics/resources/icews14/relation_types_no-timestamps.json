@@ -1,6 +1,5 @@
-[
-    {
-        "relation": "Make statement",
+{
+    "Make statement": {
         "total": 15578,
         "symmetric": 3079,
         "anti-symmetric": 12499,
@@ -189,8 +188,7 @@
             "Threaten to reduce or stop aid": 4
         }
     },
-    {
-        "relation": "Consult",
+    "Consult": {
         "total": 10067,
         "symmetric": 9451,
         "anti-symmetric": 616,
@@ -366,8 +364,7 @@
             "Ease state of emergency or martial law": 1
         }
     },
-    {
-        "relation": "Make an appeal or request",
+    "Make an appeal or request": {
         "total": 6266,
         "symmetric": 2317,
         "anti-symmetric": 3949,
@@ -564,8 +561,7 @@
             "Express intent to ease administrative sanctions": 46
         }
     },
-    {
-        "relation": "Express intent to meet or negotiate",
+    "Express intent to meet or negotiate": {
         "total": 5087,
         "symmetric": 1575,
         "anti-symmetric": 3512,
@@ -740,8 +736,7 @@
             "Express intent to ease administrative sanctions": 5
         }
     },
-    {
-        "relation": "Make a visit",
+    "Make a visit": {
         "total": 4267,
         "symmetric": 245,
         "anti-symmetric": 4022,
@@ -850,8 +845,7 @@
             "Ease economic sanctions, boycott, embargo": 2
         }
     },
-    {
-        "relation": "Host a visit",
+    "Host a visit": {
         "total": 4265,
         "symmetric": 257,
         "anti-symmetric": 4008,
@@ -1000,8 +994,7 @@
             "Accede to demands for change in leadership": 2
         }
     },
-    {
-        "relation": "Arrest, detain, or charge with legal action",
+    "Arrest, detain, or charge with legal action": {
         "total": 3989,
         "symmetric": 23,
         "anti-symmetric": 3966,
@@ -1159,8 +1152,7 @@
             "Consider policy option": 14
         }
     },
-    {
-        "relation": "Praise or endorse",
+    "Praise or endorse": {
         "total": 3598,
         "symmetric": 470,
         "anti-symmetric": 3128,
@@ -1340,8 +1332,7 @@
             "Investigate crime, corruption": 1
         }
     },
-    {
-        "relation": "Criticize or denounce",
+    "Criticize or denounce": {
         "total": 2992,
         "symmetric": 867,
         "anti-symmetric": 2125,
@@ -1529,8 +1520,7 @@
             "Ease curfew": 3
         }
     },
-    {
-        "relation": "Accuse",
+    "Accuse": {
         "total": 2653,
         "symmetric": 980,
         "anti-symmetric": 1673,
@@ -1719,8 +1709,7 @@
             "Express intent to yield": 1
         }
     },
-    {
-        "relation": "Use unconventional violence",
+    "Use unconventional violence": {
         "total": 2373,
         "symmetric": 551,
         "anti-symmetric": 1822,
@@ -1853,8 +1842,7 @@
             "Express intent to yield": 2
         }
     },
-    {
-        "relation": "Use conventional military force",
+    "Use conventional military force": {
         "total": 2005,
         "symmetric": 212,
         "anti-symmetric": 1793,
@@ -2003,8 +1991,7 @@
             "Ease curfew": 2
         }
     },
-    {
-        "relation": "Engage in negotiation",
+    "Engage in negotiation": {
         "total": 1991,
         "symmetric": 1705,
         "anti-symmetric": 286,
@@ -2154,8 +2141,7 @@
             "Threaten to halt negotiations": 9
         }
     },
-    {
-        "relation": "Express intent to cooperate",
+    "Express intent to cooperate": {
         "total": 1619,
         "symmetric": 1050,
         "anti-symmetric": 569,
@@ -2322,8 +2308,7 @@
             "Ease economic sanctions, boycott, embargo": 2
         }
     },
-    {
-        "relation": "Demand",
+    "Demand": {
         "total": 1454,
         "symmetric": 267,
         "anti-symmetric": 1187,
@@ -2498,8 +2483,7 @@
             "Express intent to ease administrative sanctions": 10
         }
     },
-    {
-        "relation": "Express intent to engage in diplomatic cooperation (such as policy support)",
+    "Express intent to engage in diplomatic cooperation (such as policy support)": {
         "total": 1424,
         "symmetric": 490,
         "anti-symmetric": 934,
@@ -2665,8 +2649,7 @@
             "Express intent to institute political reform": 1
         }
     },
-    {
-        "relation": "Engage in diplomatic cooperation",
+    "Engage in diplomatic cooperation": {
         "total": 1396,
         "symmetric": 632,
         "anti-symmetric": 764,
@@ -2804,8 +2787,7 @@
             "Ease economic sanctions, boycott, embargo": 1
         }
     },
-    {
-        "relation": "Sign formal agreement",
+    "Sign formal agreement": {
         "total": 1325,
         "symmetric": 1033,
         "anti-symmetric": 292,
@@ -2945,8 +2927,7 @@
             "Demonstrate for leadership change": 1
         }
     },
-    {
-        "relation": "Investigate",
+    "Investigate": {
         "total": 996,
         "symmetric": 24,
         "anti-symmetric": 972,
@@ -3083,8 +3064,7 @@
             "Impose embargo, boycott, or sanctions": 10
         }
     },
-    {
-        "relation": "Discuss by telephone",
+    "Discuss by telephone": {
         "total": 958,
         "symmetric": 955,
         "anti-symmetric": 3,
@@ -3154,8 +3134,7 @@
             "Appeal for economic aid": 1
         }
     },
-    {
-        "relation": "Reject",
+    "Reject": {
         "total": 944,
         "symmetric": 182,
         "anti-symmetric": 762,
@@ -3325,8 +3304,7 @@
             "Investigate crime, corruption": 2
         }
     },
-    {
-        "relation": "fight with small arms and light weapons",
+    "fight with small arms and light weapons": {
         "total": 860,
         "symmetric": 346,
         "anti-symmetric": 514,
@@ -3460,8 +3438,7 @@
             "Ease curfew": 1
         }
     },
-    {
-        "relation": "Make optimistic comment",
+    "Make optimistic comment": {
         "total": 773,
         "symmetric": 84,
         "anti-symmetric": 689,
@@ -3609,8 +3586,7 @@
             "Threaten to halt negotiations": 2
         }
     },
-    {
-        "relation": "Threaten",
+    "Threaten": {
         "total": 675,
         "symmetric": 118,
         "anti-symmetric": 557,
@@ -3776,8 +3752,7 @@
             "Express intent to ease administrative sanctions": 11
         }
     },
-    {
-        "relation": "Demonstrate or rally",
+    "Demonstrate or rally": {
         "total": 635,
         "symmetric": 4,
         "anti-symmetric": 631,
@@ -3901,8 +3876,7 @@
             "Halt negotiations": 6
         }
     },
-    {
-        "relation": "Abduct, hijack, or take hostage",
+    "Abduct, hijack, or take hostage": {
         "total": 603,
         "symmetric": 106,
         "anti-symmetric": 497,
@@ -3988,8 +3962,7 @@
             "Reject plan, agreement to settle dispute": 1
         }
     },
-    {
-        "relation": "Make pessimistic comment",
+    "Make pessimistic comment": {
         "total": 559,
         "symmetric": 82,
         "anti-symmetric": 477,
@@ -4141,8 +4114,7 @@
             "Threaten to halt negotiations": 5
         }
     },
-    {
-        "relation": "Meet at a 'third' location",
+    "Meet at a 'third' location": {
         "total": 559,
         "symmetric": 509,
         "anti-symmetric": 50,
@@ -4231,8 +4203,7 @@
             "Appeal to engage in or accept mediation": 1
         }
     },
-    {
-        "relation": "Engage in symbolic act",
+    "Engage in symbolic act": {
         "total": 529,
         "symmetric": 132,
         "anti-symmetric": 397,
@@ -4362,8 +4333,7 @@
             "Express intent to ease administrative sanctions": 3
         }
     },
-    {
-        "relation": "Appeal for diplomatic cooperation (such as policy support)",
+    "Appeal for diplomatic cooperation (such as policy support)": {
         "total": 491,
         "symmetric": 45,
         "anti-symmetric": 446,
@@ -4509,8 +4479,7 @@
             "Express intent to ease administrative sanctions": 9
         }
     },
-    {
-        "relation": "Return, release person(s)",
+    "Return, release person(s)": {
         "total": 446,
         "symmetric": 19,
         "anti-symmetric": 427,
@@ -4643,8 +4612,7 @@
             "Ease curfew": 1
         }
     },
-    {
-        "relation": "Protest violently, riot",
+    "Protest violently, riot": {
         "total": 351,
         "symmetric": 0,
         "anti-symmetric": 351,
@@ -4735,8 +4703,7 @@
             "Halt negotiations": 2
         }
     },
-    {
-        "relation": "Provide humanitarian aid",
+    "Provide humanitarian aid": {
         "total": 308,
         "symmetric": 7,
         "anti-symmetric": 301,
@@ -4862,8 +4829,7 @@
             "Ease curfew": 4
         }
     },
-    {
-        "relation": "Make empathetic comment",
+    "Make empathetic comment": {
         "total": 290,
         "symmetric": 21,
         "anti-symmetric": 269,
@@ -4990,8 +4956,7 @@
             "Express intent to ease administrative sanctions": 1
         }
     },
-    {
-        "relation": "Use tactics of violent repression",
+    "Use tactics of violent repression": {
         "total": 271,
         "symmetric": 0,
         "anti-symmetric": 271,
@@ -5051,8 +5016,7 @@
             "Refuse to yield": 42
         }
     },
-    {
-        "relation": "Occupy territory",
+    "Occupy territory": {
         "total": 260,
         "symmetric": 2,
         "anti-symmetric": 258,
@@ -5153,8 +5117,7 @@
             "Sexually assault": 1
         }
     },
-    {
-        "relation": "Physically assault",
+    "Physically assault": {
         "total": 242,
         "symmetric": 62,
         "anti-symmetric": 180,
@@ -5262,8 +5225,7 @@
             "Defend verbally": 1
         }
     },
-    {
-        "relation": "Reduce relations",
+    "Reduce relations": {
         "total": 234,
         "symmetric": 24,
         "anti-symmetric": 210,
@@ -5395,8 +5357,7 @@
             "Impose state of emergency or martial law": 1
         }
     },
-    {
-        "relation": "Deny responsibility",
+    "Deny responsibility": {
         "total": 220,
         "symmetric": 8,
         "anti-symmetric": 212,
@@ -5522,8 +5483,7 @@
             "Appeal for policy change": 1
         }
     },
-    {
-        "relation": "Mobilize or increase armed forces",
+    "Mobilize or increase armed forces": {
         "total": 215,
         "symmetric": 0,
         "anti-symmetric": 215,
@@ -5589,8 +5549,7 @@
             "Investigate": 5
         }
     },
-    {
-        "relation": "Provide aid",
+    "Provide aid": {
         "total": 203,
         "symmetric": 2,
         "anti-symmetric": 201,
@@ -5714,8 +5673,7 @@
             "Rally support on behalf of": 2
         }
     },
-    {
-        "relation": "Ease administrative sanctions",
+    "Ease administrative sanctions": {
         "total": 182,
         "symmetric": 38,
         "anti-symmetric": 144,
@@ -5827,8 +5785,7 @@
             "Accuse of war crimes": 1
         }
     },
-    {
-        "relation": "Impose administrative sanctions",
+    "Impose administrative sanctions": {
         "total": 178,
         "symmetric": 0,
         "anti-symmetric": 178,
@@ -5913,8 +5870,7 @@
             "Obstruct passage, block": 12
         }
     },
-    {
-        "relation": "Bring lawsuit against",
+    "Bring lawsuit against": {
         "total": 178,
         "symmetric": 25,
         "anti-symmetric": 153,
@@ -6040,8 +5996,7 @@
             "Express intent to yield": 1
         }
     },
-    {
-        "relation": "Confiscate property",
+    "Confiscate property": {
         "total": 176,
         "symmetric": 0,
         "anti-symmetric": 176,
@@ -6121,8 +6076,7 @@
             "Rally support on behalf of": 5
         }
     },
-    {
-        "relation": "Expel or deport individuals",
+    "Expel or deport individuals": {
         "total": 166,
         "symmetric": 0,
         "anti-symmetric": 166,
@@ -6225,8 +6179,7 @@
             "Consider policy option": 1
         }
     },
-    {
-        "relation": "Reduce or break diplomatic relations",
+    "Reduce or break diplomatic relations": {
         "total": 161,
         "symmetric": 0,
         "anti-symmetric": 161,
@@ -6280,8 +6233,7 @@
             "Use conventional military force": 2
         }
     },
-    {
-        "relation": "Cooperate economically",
+    "Cooperate economically": {
         "total": 146,
         "symmetric": 50,
         "anti-symmetric": 96,
@@ -6341,8 +6293,7 @@
             "Demand de-escalation of military engagement": 3
         }
     },
-    {
-        "relation": "Sexually assault",
+    "Sexually assault": {
         "total": 138,
         "symmetric": 20,
         "anti-symmetric": 118,
@@ -6430,8 +6381,7 @@
             "Demand judicial cooperation": 6
         }
     },
-    {
-        "relation": "Complain officially",
+    "Complain officially": {
         "total": 137,
         "symmetric": 31,
         "anti-symmetric": 106,
@@ -6553,8 +6503,7 @@
             "Ease curfew": 1
         }
     },
-    {
-        "relation": "Rally support on behalf of",
+    "Rally support on behalf of": {
         "total": 127,
         "symmetric": 0,
         "anti-symmetric": 127,
@@ -6636,8 +6585,7 @@
             "Appeal for de-escalation of military engagement": 5
         }
     },
-    {
-        "relation": "Cooperate militarily",
+    "Cooperate militarily": {
         "total": 125,
         "symmetric": 42,
         "anti-symmetric": 83,
@@ -6693,8 +6641,7 @@
             "fight with artillery and tanks": 4
         }
     },
-    {
-        "relation": "Impose embargo, boycott, or sanctions",
+    "Impose embargo, boycott, or sanctions": {
         "total": 122,
         "symmetric": 0,
         "anti-symmetric": 122,
@@ -6772,8 +6719,7 @@
             "Rally support on behalf of": 4
         }
     },
-    {
-        "relation": "Coerce",
+    "Coerce": {
         "total": 120,
         "symmetric": 0,
         "anti-symmetric": 120,
@@ -6859,8 +6805,7 @@
             "Consider policy option": 1
         }
     },
-    {
-        "relation": "Yield",
+    "Yield": {
         "total": 118,
         "symmetric": 4,
         "anti-symmetric": 114,
@@ -6980,8 +6925,7 @@
             "Mobilize or increase armed forces": 1
         }
     },
-    {
-        "relation": "Express intent to provide military aid",
+    "Express intent to provide military aid": {
         "total": 114,
         "symmetric": 0,
         "anti-symmetric": 114,
@@ -7059,8 +7003,7 @@
             "Kill by physical assault": 2
         }
     },
-    {
-        "relation": "Consider policy option",
+    "Consider policy option": {
         "total": 111,
         "symmetric": 0,
         "anti-symmetric": 111,
@@ -7155,8 +7098,7 @@
             "Rally support on behalf of": 2
         }
     },
-    {
-        "relation": "Threaten with military force",
+    "Threaten with military force": {
         "total": 111,
         "symmetric": 2,
         "anti-symmetric": 109,
@@ -7268,8 +7210,7 @@
             "Express intent to mediate": 3
         }
     },
-    {
-        "relation": "Express intent to cooperate economically",
+    "Express intent to cooperate economically": {
         "total": 111,
         "symmetric": 33,
         "anti-symmetric": 78,
@@ -7339,8 +7280,7 @@
             "Provide economic aid": 3
         }
     },
-    {
-        "relation": "Provide military aid",
+    "Provide military aid": {
         "total": 110,
         "symmetric": 0,
         "anti-symmetric": 110,
@@ -7386,8 +7326,7 @@
             "Cooperate economically": 1
         }
     },
-    {
-        "relation": "Reject proposal to meet, discuss, or negotiate",
+    "Reject proposal to meet, discuss, or negotiate": {
         "total": 108,
         "symmetric": 5,
         "anti-symmetric": 103,
@@ -7486,8 +7425,7 @@
             "Express intent to ease administrative sanctions": 1
         }
     },
-    {
-        "relation": "Engage in material cooperation",
+    "Engage in material cooperation": {
         "total": 108,
         "symmetric": 34,
         "anti-symmetric": 74,
@@ -7582,8 +7520,7 @@
             "Halt negotiations": 1
         }
     },
-    {
-        "relation": "Employ aerial weapons",
+    "Employ aerial weapons": {
         "total": 107,
         "symmetric": 0,
         "anti-symmetric": 107,
@@ -7645,8 +7582,7 @@
             "Reduce or break diplomatic relations": 3
         }
     },
-    {
-        "relation": "Express intent to provide material aid",
+    "Express intent to provide material aid": {
         "total": 98,
         "symmetric": 4,
         "anti-symmetric": 94,
@@ -7768,8 +7704,7 @@
             "Reduce or break diplomatic relations": 3
         }
     },
-    {
-        "relation": "Provide economic aid",
+    "Provide economic aid": {
         "total": 98,
         "symmetric": 0,
         "anti-symmetric": 98,
@@ -7860,8 +7795,7 @@
             "fight with artillery and tanks": 1
         }
     },
-    {
-        "relation": "Kill by physical assault",
+    "Kill by physical assault": {
         "total": 97,
         "symmetric": 4,
         "anti-symmetric": 93,
@@ -7918,8 +7852,7 @@
             "Demonstrate or rally": 1
         }
     },
-    {
-        "relation": "Express accord",
+    "Express accord": {
         "total": 95,
         "symmetric": 16,
         "anti-symmetric": 79,
@@ -8000,8 +7933,7 @@
             "Appeal for change in leadership": 1
         }
     },
-    {
-        "relation": "Conduct suicide, car, or other non-military bombing",
+    "Conduct suicide, car, or other non-military bombing": {
         "total": 95,
         "symmetric": 0,
         "anti-symmetric": 95,
@@ -8063,8 +7995,7 @@
             "Express intent to provide military aid": 2
         }
     },
-    {
-        "relation": "Carry out suicide bombing",
+    "Carry out suicide bombing": {
         "total": 92,
         "symmetric": 0,
         "anti-symmetric": 92,
@@ -8093,8 +8024,7 @@
             "Threaten": 1
         }
     },
-    {
-        "relation": "Appeal for intelligence",
+    "Appeal for intelligence": {
         "total": 87,
         "symmetric": 8,
         "anti-symmetric": 79,
@@ -8207,8 +8137,7 @@
             "Express intent to ease administrative sanctions": 1
         }
     },
-    {
-        "relation": "Rally opposition against",
+    "Rally opposition against": {
         "total": 87,
         "symmetric": 15,
         "anti-symmetric": 72,
@@ -8298,8 +8227,7 @@
             "Rally support on behalf of": 1
         }
     },
-    {
-        "relation": "Express intent to release persons or property",
+    "Express intent to release persons or property": {
         "total": 86,
         "symmetric": 7,
         "anti-symmetric": 79,
@@ -8394,8 +8322,7 @@
             "Express intent to cooperate economically": 1
         }
     },
-    {
-        "relation": "Demand change in leadership",
+    "Demand change in leadership": {
         "total": 83,
         "symmetric": 4,
         "anti-symmetric": 79,
@@ -8465,8 +8392,7 @@
             "Conduct hunger strike": 12
         }
     },
-    {
-        "relation": "Express intent to provide economic aid",
+    "Express intent to provide economic aid": {
         "total": 81,
         "symmetric": 0,
         "anti-symmetric": 81,
@@ -8561,8 +8487,7 @@
             "Obstruct passage, block": 4
         }
     },
-    {
-        "relation": "Accuse of crime, corruption",
+    "Accuse of crime, corruption": {
         "total": 79,
         "symmetric": 5,
         "anti-symmetric": 74,
@@ -8662,8 +8587,7 @@
             "Halt negotiations": 1
         }
     },
-    {
-        "relation": "Demand diplomatic cooperation (such as policy support)",
+    "Demand diplomatic cooperation (such as policy support)": {
         "total": 78,
         "symmetric": 0,
         "anti-symmetric": 78,
@@ -8751,8 +8675,7 @@
             "Express intent to ease administrative sanctions": 2
         }
     },
-    {
-        "relation": "Grant diplomatic recognition",
+    "Grant diplomatic recognition": {
         "total": 75,
         "symmetric": 19,
         "anti-symmetric": 56,
@@ -8793,8 +8716,7 @@
             "Use unconventional violence": 1
         }
     },
-    {
-        "relation": "Acknowledge or claim responsibility",
+    "Acknowledge or claim responsibility": {
         "total": 74,
         "symmetric": 0,
         "anti-symmetric": 74,
@@ -8849,8 +8771,7 @@
             "Physically assault": 1
         }
     },
-    {
-        "relation": "Impose restrictions on political freedoms",
+    "Impose restrictions on political freedoms": {
         "total": 73,
         "symmetric": 0,
         "anti-symmetric": 73,
@@ -8936,8 +8857,7 @@
             "Reduce or stop material aid": 1
         }
     },
-    {
-        "relation": "Defy norms, law",
+    "Defy norms, law": {
         "total": 73,
         "symmetric": 0,
         "anti-symmetric": 73,
@@ -9036,8 +8956,7 @@
             "Express intent to ease administrative sanctions": 1
         }
     },
-    {
-        "relation": "Reject plan, agreement to settle dispute",
+    "Reject plan, agreement to settle dispute": {
         "total": 69,
         "symmetric": 29,
         "anti-symmetric": 40,
@@ -9151,8 +9070,7 @@
             "Threaten to halt negotiations": 4
         }
     },
-    {
-        "relation": "Express intent to settle dispute",
+    "Express intent to settle dispute": {
         "total": 67,
         "symmetric": 30,
         "anti-symmetric": 37,
@@ -9208,8 +9126,7 @@
             "Express accord": 5
         }
     },
-    {
-        "relation": "Retreat or surrender militarily",
+    "Retreat or surrender militarily": {
         "total": 64,
         "symmetric": 0,
         "anti-symmetric": 64,
@@ -9261,8 +9178,7 @@
             "Demand de-escalation of military engagement": 2
         }
     },
-    {
-        "relation": "Obstruct passage, block",
+    "Obstruct passage, block": {
         "total": 63,
         "symmetric": 0,
         "anti-symmetric": 63,
@@ -9311,8 +9227,7 @@
             "Use tactics of violent repression": 84
         }
     },
-    {
-        "relation": "Express intent to provide humanitarian aid",
+    "Express intent to provide humanitarian aid": {
         "total": 62,
         "symmetric": 2,
         "anti-symmetric": 60,
@@ -9426,8 +9341,7 @@
             "Reduce or stop material aid": 1
         }
     },
-    {
-        "relation": "Appeal for change in leadership",
+    "Appeal for change in leadership": {
         "total": 62,
         "symmetric": 2,
         "anti-symmetric": 60,
@@ -9517,8 +9431,7 @@
             "Express accord": 1
         }
     },
-    {
-        "relation": "Assassinate",
+    "Assassinate": {
         "total": 59,
         "symmetric": 2,
         "anti-symmetric": 57,
@@ -9559,8 +9472,7 @@
             "Protest violently, riot": 2
         }
     },
-    {
-        "relation": "Give ultimatum",
+    "Give ultimatum": {
         "total": 58,
         "symmetric": 0,
         "anti-symmetric": 58,
@@ -9656,8 +9568,7 @@
             "Express intent to ease administrative sanctions": 1
         }
     },
-    {
-        "relation": "Accuse of human rights abuses",
+    "Accuse of human rights abuses": {
         "total": 48,
         "symmetric": 0,
         "anti-symmetric": 48,
@@ -9710,8 +9621,7 @@
             "Reduce relations": 2
         }
     },
-    {
-        "relation": "Share intelligence or information",
+    "Share intelligence or information": {
         "total": 44,
         "symmetric": 6,
         "anti-symmetric": 38,
@@ -9773,8 +9683,7 @@
             "Arrest, detain, or charge with legal action": 1
         }
     },
-    {
-        "relation": "Refuse to yield",
+    "Refuse to yield": {
         "total": 44,
         "symmetric": 0,
         "anti-symmetric": 44,
@@ -9864,8 +9773,7 @@
             "Use tactics of violent repression": 42
         }
     },
-    {
-        "relation": "Investigate crime, corruption",
+    "Investigate crime, corruption": {
         "total": 43,
         "symmetric": 0,
         "anti-symmetric": 43,
@@ -9909,8 +9817,7 @@
             "Appeal for intelligence": 1
         }
     },
-    {
-        "relation": "Appeal to engage in or accept mediation",
+    "Appeal to engage in or accept mediation": {
         "total": 41,
         "symmetric": 0,
         "anti-symmetric": 41,
@@ -9984,8 +9891,7 @@
             "Host a visit": 1
         }
     },
-    {
-        "relation": "Appeal for de-escalation of military engagement",
+    "Appeal for de-escalation of military engagement": {
         "total": 40,
         "symmetric": 1,
         "anti-symmetric": 39,
@@ -10057,8 +9963,7 @@
             "Express intent to ease administrative sanctions": 1
         }
     },
-    {
-        "relation": "Halt negotiations",
+    "Halt negotiations": {
         "total": 39,
         "symmetric": 16,
         "anti-symmetric": 23,
@@ -10123,8 +10028,7 @@
             "Rally support on behalf of": 1
         }
     },
-    {
-        "relation": "Demonstrate military or police power",
+    "Demonstrate military or police power": {
         "total": 39,
         "symmetric": 6,
         "anti-symmetric": 33,
@@ -10195,8 +10099,7 @@
             "Threaten with military force": 15
         }
     },
-    {
-        "relation": "Accede to demands for change in leadership",
+    "Accede to demands for change in leadership": {
         "total": 38,
         "symmetric": 0,
         "anti-symmetric": 38,
@@ -10266,8 +10169,7 @@
             "Host a visit": 2
         }
     },
-    {
-        "relation": "fight with artillery and tanks",
+    "fight with artillery and tanks": {
         "total": 38,
         "symmetric": 13,
         "anti-symmetric": 25,
@@ -10343,8 +10245,7 @@
             "Threaten with military force": 15
         }
     },
-    {
-        "relation": "Conduct strike or boycott",
+    "Conduct strike or boycott": {
         "total": 36,
         "symmetric": 0,
         "anti-symmetric": 36,
@@ -10399,8 +10300,7 @@
             "Ease administrative sanctions": 1
         }
     },
-    {
-        "relation": "Increase military alert status",
+    "Increase military alert status": {
         "total": 36,
         "symmetric": 0,
         "anti-symmetric": 36,
@@ -10423,8 +10323,7 @@
             "Provide aid": 3
         }
     },
-    {
-        "relation": "Apologize",
+    "Apologize": {
         "total": 36,
         "symmetric": 0,
         "anti-symmetric": 36,
@@ -10486,8 +10385,7 @@
             "Arrest, detain, or charge with legal action": 1
         }
     },
-    {
-        "relation": "Appeal for release of persons or property",
+    "Appeal for release of persons or property": {
         "total": 36,
         "symmetric": 2,
         "anti-symmetric": 34,
@@ -10588,8 +10486,7 @@
             "fight with artillery and tanks": 18
         }
     },
-    {
-        "relation": "Mobilize or increase police power",
+    "Mobilize or increase police power": {
         "total": 36,
         "symmetric": 0,
         "anti-symmetric": 36,
@@ -10622,8 +10519,7 @@
             "Rally support on behalf of": 7
         }
     },
-    {
-        "relation": "Torture",
+    "Torture": {
         "total": 35,
         "symmetric": 0,
         "anti-symmetric": 35,
@@ -10677,8 +10573,7 @@
             "Deny responsibility": 2
         }
     },
-    {
-        "relation": "Appeal for judicial cooperation",
+    "Appeal for judicial cooperation": {
         "total": 35,
         "symmetric": 2,
         "anti-symmetric": 33,
@@ -10774,8 +10669,7 @@
             "Demand de-escalation of military engagement": 1
         }
     },
-    {
-        "relation": "Appeal to others to meet or negotiate",
+    "Appeal to others to meet or negotiate": {
         "total": 33,
         "symmetric": 0,
         "anti-symmetric": 33,
@@ -10859,8 +10753,7 @@
             "Express intent to ease administrative sanctions": 1
         }
     },
-    {
-        "relation": "Receive deployment of peacekeepers",
+    "Receive deployment of peacekeepers": {
         "total": 33,
         "symmetric": 0,
         "anti-symmetric": 33,
@@ -10918,8 +10811,7 @@
             "Threaten with sanctions, boycott, embargo": 6
         }
     },
-    {
-        "relation": "Express intent to de-escalate military engagement",
+    "Express intent to de-escalate military engagement": {
         "total": 32,
         "symmetric": 0,
         "anti-symmetric": 32,
@@ -10950,8 +10842,7 @@
             "Use conventional military force": 2
         }
     },
-    {
-        "relation": "Defend verbally",
+    "Defend verbally": {
         "total": 31,
         "symmetric": 0,
         "anti-symmetric": 31,
@@ -10991,8 +10882,7 @@
             "fight with small arms and light weapons": 1
         }
     },
-    {
-        "relation": "Declare truce, ceasefire",
+    "Declare truce, ceasefire": {
         "total": 31,
         "symmetric": 19,
         "anti-symmetric": 12,
@@ -11067,8 +10957,7 @@
             "Reduce or break diplomatic relations": 3
         }
     },
-    {
-        "relation": "Refuse to release persons or property",
+    "Refuse to release persons or property": {
         "total": 31,
         "symmetric": 0,
         "anti-symmetric": 31,
@@ -11107,8 +10996,7 @@
             "Protest violently, riot": 1
         }
     },
-    {
-        "relation": "Demonstrate for leadership change",
+    "Demonstrate for leadership change": {
         "total": 31,
         "symmetric": 0,
         "anti-symmetric": 31,
@@ -11143,8 +11031,7 @@
             "Yield": 2
         }
     },
-    {
-        "relation": "Provide military protection or peacekeeping",
+    "Provide military protection or peacekeeping": {
         "total": 30,
         "symmetric": 0,
         "anti-symmetric": 30,
@@ -11185,8 +11072,7 @@
             "Appeal for intelligence": 2
         }
     },
-    {
-        "relation": "Decline comment",
+    "Decline comment": {
         "total": 30,
         "symmetric": 0,
         "anti-symmetric": 30,
@@ -11273,8 +11159,7 @@
             "Yield": 1
         }
     },
-    {
-        "relation": "Appeal for military aid",
+    "Appeal for military aid": {
         "total": 30,
         "symmetric": 0,
         "anti-symmetric": 30,
@@ -11347,8 +11232,7 @@
             "Engage in negotiation": 3
         }
     },
-    {
-        "relation": "Increase police alert status",
+    "Increase police alert status": {
         "total": 28,
         "symmetric": 0,
         "anti-symmetric": 28,
@@ -11399,8 +11283,7 @@
             "Rally support on behalf of": 2
         }
     },
-    {
-        "relation": "Appeal for aid",
+    "Appeal for aid": {
         "total": 26,
         "symmetric": 0,
         "anti-symmetric": 26,
@@ -11474,8 +11357,7 @@
             "Meet at a 'third' location": 1
         }
     },
-    {
-        "relation": "Ease economic sanctions, boycott, embargo",
+    "Ease economic sanctions, boycott, embargo": {
         "total": 24,
         "symmetric": 0,
         "anti-symmetric": 24,
@@ -11515,8 +11397,7 @@
             "Make a visit": 2
         }
     },
-    {
-        "relation": "Mediate",
+    "Mediate": {
         "total": 23,
         "symmetric": 0,
         "anti-symmetric": 23,
@@ -11542,8 +11423,7 @@
             "Meet at a 'third' location": 2
         }
     },
-    {
-        "relation": "Appeal for change in institutions, regime",
+    "Appeal for change in institutions, regime": {
         "total": 23,
         "symmetric": 2,
         "anti-symmetric": 21,
@@ -11583,8 +11463,7 @@
             "Use conventional military force": 1
         }
     },
-    {
-        "relation": "Appeal for economic aid",
+    "Appeal for economic aid": {
         "total": 23,
         "symmetric": 0,
         "anti-symmetric": 23,
@@ -11664,8 +11543,7 @@
             "Kill by physical assault": 1
         }
     },
-    {
-        "relation": "Express intent to ease economic sanctions, boycott, or embargo",
+    "Express intent to ease economic sanctions, boycott, or embargo": {
         "total": 23,
         "symmetric": 0,
         "anti-symmetric": 23,
@@ -11704,8 +11582,7 @@
             "fight with artillery and tanks": 140
         }
     },
-    {
-        "relation": "Impose blockade, restrict movement",
+    "Impose blockade, restrict movement": {
         "total": 23,
         "symmetric": 0,
         "anti-symmetric": 23,
@@ -11747,8 +11624,7 @@
             "Receive inspectors": 6
         }
     },
-    {
-        "relation": "Demand meeting, negotiation",
+    "Demand meeting, negotiation": {
         "total": 19,
         "symmetric": 0,
         "anti-symmetric": 19,
@@ -11817,8 +11693,7 @@
             "Use tactics of violent repression": 42
         }
     },
-    {
-        "relation": "Appeal for economic cooperation",
+    "Appeal for economic cooperation": {
         "total": 18,
         "symmetric": 3,
         "anti-symmetric": 15,
@@ -11901,8 +11776,7 @@
             "Demand change in leadership": 2
         }
     },
-    {
-        "relation": "Appeal for easing of administrative sanctions",
+    "Appeal for easing of administrative sanctions": {
         "total": 18,
         "symmetric": 0,
         "anti-symmetric": 18,
@@ -11978,8 +11852,7 @@
             "Appeal for change in leadership": 1
         }
     },
-    {
-        "relation": "Accuse of espionage, treason",
+    "Accuse of espionage, treason": {
         "total": 18,
         "symmetric": 0,
         "anti-symmetric": 18,
@@ -12002,8 +11875,7 @@
             "Threaten": 1
         }
     },
-    {
-        "relation": "Express intent to cooperate militarily",
+    "Express intent to cooperate militarily": {
         "total": 17,
         "symmetric": 4,
         "anti-symmetric": 13,
@@ -12054,8 +11926,7 @@
             "fight with small arms and light weapons": 11
         }
     },
-    {
-        "relation": "Appeal to others to settle dispute",
+    "Appeal to others to settle dispute": {
         "total": 16,
         "symmetric": 0,
         "anti-symmetric": 16,
@@ -12093,8 +11964,7 @@
             "Make statement": 1
         }
     },
-    {
-        "relation": "Express intent to mediate",
+    "Express intent to mediate": {
         "total": 16,
         "symmetric": 0,
         "anti-symmetric": 16,
@@ -12146,8 +12016,7 @@
             "Threaten with military force": 3
         }
     },
-    {
-        "relation": "Demand intelligence cooperation",
+    "Demand intelligence cooperation": {
         "total": 16,
         "symmetric": 0,
         "anti-symmetric": 16,
@@ -12208,8 +12077,7 @@
             "fight with artillery and tanks": 7
         }
     },
-    {
-        "relation": "Attempt to assassinate",
+    "Attempt to assassinate": {
         "total": 15,
         "symmetric": 0,
         "anti-symmetric": 15,
@@ -12227,8 +12095,7 @@
             "Use unconventional violence": 2
         }
     },
-    {
-        "relation": "Appeal for policy change",
+    "Appeal for policy change": {
         "total": 14,
         "symmetric": 0,
         "anti-symmetric": 14,
@@ -12239,8 +12106,7 @@
             "Host a visit": 2
         }
     },
-    {
-        "relation": "Engage in mass killings",
+    "Engage in mass killings": {
         "total": 14,
         "symmetric": 0,
         "anti-symmetric": 14,
@@ -12269,8 +12135,7 @@
             "fight with small arms and light weapons": 11
         }
     },
-    {
-        "relation": "Demand material cooperation",
+    "Demand material cooperation": {
         "total": 14,
         "symmetric": 0,
         "anti-symmetric": 14,
@@ -12317,8 +12182,7 @@
             "Express intent to engage in diplomatic cooperation (such as policy support)": 1
         }
     },
-    {
-        "relation": "Demand de-escalation of military engagement",
+    "Demand de-escalation of military engagement": {
         "total": 13,
         "symmetric": 0,
         "anti-symmetric": 13,
@@ -12360,8 +12224,7 @@
             "Receive deployment of peacekeepers": 6
         }
     },
-    {
-        "relation": "Impose state of emergency or martial law",
+    "Impose state of emergency or martial law": {
         "total": 13,
         "symmetric": 0,
         "anti-symmetric": 13,
@@ -12385,8 +12248,7 @@
             "Cooperate militarily": 10
         }
     },
-    {
-        "relation": "Express intent to yield",
+    "Express intent to yield": {
         "total": 13,
         "symmetric": 0,
         "anti-symmetric": 13,
@@ -12425,8 +12287,7 @@
             "Use conventional military force": 3
         }
     },
-    {
-        "relation": "Return, release property",
+    "Return, release property": {
         "total": 13,
         "symmetric": 0,
         "anti-symmetric": 13,
@@ -12485,8 +12346,7 @@
             "Yield": 4
         }
     },
-    {
-        "relation": "Express intent to ease administrative sanctions",
+    "Express intent to ease administrative sanctions": {
         "total": 13,
         "symmetric": 0,
         "anti-symmetric": 13,
@@ -12535,8 +12395,7 @@
             "Host a visit": 4
         }
     },
-    {
-        "relation": "Appeal for material cooperation",
+    "Appeal for material cooperation": {
         "total": 12,
         "symmetric": 0,
         "anti-symmetric": 12,
@@ -12608,8 +12467,7 @@
             "Grant diplomatic recognition": 1
         }
     },
-    {
-        "relation": "Engage in judicial cooperation",
+    "Engage in judicial cooperation": {
         "total": 12,
         "symmetric": 0,
         "anti-symmetric": 12,
@@ -12660,8 +12518,7 @@
             "fight with small arms and light weapons": 12
         }
     },
-    {
-        "relation": "Grant asylum",
+    "Grant asylum": {
         "total": 12,
         "symmetric": 0,
         "anti-symmetric": 12,
@@ -12673,8 +12530,7 @@
             "Make statement": 5
         }
     },
-    {
-        "relation": "Appeal for rights",
+    "Appeal for rights": {
         "total": 11,
         "symmetric": 0,
         "anti-symmetric": 11,
@@ -12699,8 +12555,7 @@
             "Use unconventional violence": 3
         }
     },
-    {
-        "relation": "Express intent to accept mediation",
+    "Express intent to accept mediation": {
         "total": 11,
         "symmetric": 0,
         "anti-symmetric": 11,
@@ -12739,8 +12594,7 @@
             "Return, release person(s)": 1
         }
     },
-    {
-        "relation": "Accuse of aggression",
+    "Accuse of aggression": {
         "total": 11,
         "symmetric": 0,
         "anti-symmetric": 11,
@@ -12758,8 +12612,7 @@
             "Use conventional military force": 3
         }
     },
-    {
-        "relation": "Threaten non-force",
+    "Threaten non-force": {
         "total": 11,
         "symmetric": 0,
         "anti-symmetric": 11,
@@ -12833,8 +12686,7 @@
             "Express intent to ease administrative sanctions": 1
         }
     },
-    {
-        "relation": "Demand economic aid",
+    "Demand economic aid": {
         "total": 11,
         "symmetric": 0,
         "anti-symmetric": 11,
@@ -12884,8 +12736,7 @@
             "fight with small arms and light weapons": 13
         }
     },
-    {
-        "relation": "Express intent to engage in material cooperation",
+    "Express intent to engage in material cooperation": {
         "total": 11,
         "symmetric": 5,
         "anti-symmetric": 6,
@@ -12915,8 +12766,7 @@
             "Host a visit": 1
         }
     },
-    {
-        "relation": "Seize or damage property",
+    "Seize or damage property": {
         "total": 11,
         "symmetric": 0,
         "anti-symmetric": 11,
@@ -12929,8 +12779,7 @@
             "Ease administrative sanctions": 4
         }
     },
-    {
-        "relation": "Reduce or stop military assistance",
+    "Reduce or stop military assistance": {
         "total": 10,
         "symmetric": 0,
         "anti-symmetric": 10,
@@ -12993,8 +12842,7 @@
             "Use conventional military force": 2
         }
     },
-    {
-        "relation": "Accede to demands for rights",
+    "Accede to demands for rights": {
         "total": 10,
         "symmetric": 0,
         "anti-symmetric": 10,
@@ -13053,8 +12901,7 @@
             "Make statement": 2
         }
     },
-    {
-        "relation": "Refuse to ease administrative sanctions",
+    "Refuse to ease administrative sanctions": {
         "total": 10,
         "symmetric": 0,
         "anti-symmetric": 10,
@@ -13089,8 +12936,7 @@
             "Deny responsibility": 4
         }
     },
-    {
-        "relation": "Reduce or stop economic assistance",
+    "Reduce or stop economic assistance": {
         "total": 10,
         "symmetric": 0,
         "anti-symmetric": 10,
@@ -13117,8 +12963,7 @@
             "Make statement": 2
         }
     },
-    {
-        "relation": "Veto",
+    "Veto": {
         "total": 10,
         "symmetric": 0,
         "anti-symmetric": 10,
@@ -13145,8 +12990,7 @@
             "Praise or endorse": 9
         }
     },
-    {
-        "relation": "Accuse of war crimes",
+    "Accuse of war crimes": {
         "total": 9,
         "symmetric": 0,
         "anti-symmetric": 9,
@@ -13171,8 +13015,7 @@
             "Demand": 1
         }
     },
-    {
-        "relation": "Appeal to yield",
+    "Appeal to yield": {
         "total": 9,
         "symmetric": 0,
         "anti-symmetric": 9,
@@ -13256,8 +13099,7 @@
             "fight with artillery and tanks": 12
         }
     },
-    {
-        "relation": "Appeal for humanitarian aid",
+    "Appeal for humanitarian aid": {
         "total": 8,
         "symmetric": 0,
         "anti-symmetric": 8,
@@ -13302,8 +13144,7 @@
             "Rally support on behalf of": 1
         }
     },
-    {
-        "relation": "Demand release of persons or property",
+    "Demand release of persons or property": {
         "total": 8,
         "symmetric": 0,
         "anti-symmetric": 8,
@@ -13337,8 +13178,7 @@
             "fight with artillery and tanks": 1
         }
     },
-    {
-        "relation": "Demand change in institutions, regime",
+    "Demand change in institutions, regime": {
         "total": 8,
         "symmetric": 0,
         "anti-symmetric": 8,
@@ -13356,8 +13196,7 @@
             "Meet at a 'third' location": 1
         }
     },
-    {
-        "relation": "Demand that target yields",
+    "Demand that target yields": {
         "total": 8,
         "symmetric": 0,
         "anti-symmetric": 8,
@@ -13398,8 +13237,7 @@
             "Occupy territory": 1
         }
     },
-    {
-        "relation": "Ease curfew",
+    "Ease curfew": {
         "total": 8,
         "symmetric": 0,
         "anti-symmetric": 8,
@@ -13431,8 +13269,7 @@
             "Make statement": 4
         }
     },
-    {
-        "relation": "Express intent to cooperate on intelligence",
+    "Express intent to cooperate on intelligence": {
         "total": 8,
         "symmetric": 5,
         "anti-symmetric": 3,
@@ -13475,8 +13312,7 @@
             "Share intelligence or information": 6
         }
     },
-    {
-        "relation": "Refuse to de-escalate military engagement",
+    "Refuse to de-escalate military engagement": {
         "total": 7,
         "symmetric": 0,
         "anti-symmetric": 7,
@@ -13506,8 +13342,7 @@
             "Use conventional military force": 2
         }
     },
-    {
-        "relation": "Demand settling of dispute",
+    "Demand settling of dispute": {
         "total": 7,
         "symmetric": 0,
         "anti-symmetric": 7,
@@ -13534,8 +13369,7 @@
             "Use unconventional violence": 3
         }
     },
-    {
-        "relation": "Threaten with political dissent, protest",
+    "Threaten with political dissent, protest": {
         "total": 7,
         "symmetric": 0,
         "anti-symmetric": 7,
@@ -13557,8 +13391,7 @@
             "Praise or endorse": 2
         }
     },
-    {
-        "relation": "Ban political parties or politicians",
+    "Ban political parties or politicians": {
         "total": 7,
         "symmetric": 0,
         "anti-symmetric": 7,
@@ -13588,8 +13421,7 @@
             "Praise or endorse": 1
         }
     },
-    {
-        "relation": "Reduce or stop material aid",
+    "Reduce or stop material aid": {
         "total": 6,
         "symmetric": 0,
         "anti-symmetric": 6,
@@ -13602,8 +13434,7 @@
             "Sign formal agreement": 2
         }
     },
-    {
-        "relation": "Threaten with repression",
+    "Threaten with repression": {
         "total": 6,
         "symmetric": 0,
         "anti-symmetric": 6,
@@ -13624,8 +13455,7 @@
             "Praise or endorse": 2
         }
     },
-    {
-        "relation": "Express intent to provide military protection or peacekeeping",
+    "Express intent to provide military protection or peacekeeping": {
         "total": 6,
         "symmetric": 0,
         "anti-symmetric": 6,
@@ -13643,8 +13473,7 @@
             "Threaten": 2
         }
     },
-    {
-        "relation": "Express intent to change leadership",
+    "Express intent to change leadership": {
         "total": 6,
         "symmetric": 0,
         "anti-symmetric": 6,
@@ -13657,8 +13486,7 @@
             "Praise or endorse": 1
         }
     },
-    {
-        "relation": "Threaten with sanctions, boycott, embargo",
+    "Threaten with sanctions, boycott, embargo": {
         "total": 6,
         "symmetric": 0,
         "anti-symmetric": 6,
@@ -13675,8 +13503,7 @@
             "Threaten": 2
         }
     },
-    {
-        "relation": "Threaten to reduce or break relations",
+    "Threaten to reduce or break relations": {
         "total": 6,
         "symmetric": 0,
         "anti-symmetric": 6,
@@ -13690,8 +13517,7 @@
             "Engage in symbolic act": 1
         }
     },
-    {
-        "relation": "Violate ceasefire",
+    "Violate ceasefire": {
         "total": 6,
         "symmetric": 0,
         "anti-symmetric": 6,
@@ -13713,8 +13539,7 @@
             "Use conventional military force": 2
         }
     },
-    {
-        "relation": "Demand mediation",
+    "Demand mediation": {
         "total": 5,
         "symmetric": 0,
         "anti-symmetric": 5,
@@ -13748,8 +13573,7 @@
             "Sexually assault": 9
         }
     },
-    {
-        "relation": "Destroy property",
+    "Destroy property": {
         "total": 5,
         "symmetric": 0,
         "anti-symmetric": 5,
@@ -13769,8 +13593,7 @@
             "Threaten": 1
         }
     },
-    {
-        "relation": "Expel or withdraw peacekeepers",
+    "Expel or withdraw peacekeepers": {
         "total": 4,
         "symmetric": 0,
         "anti-symmetric": 4,
@@ -13788,16 +13611,14 @@
             "Provide economic aid": 4
         }
     },
-    {
-        "relation": "Demonstrate for policy change",
+    "Demonstrate for policy change": {
         "total": 4,
         "symmetric": 0,
         "anti-symmetric": 4,
         "reflexive": 0,
         "inverse": {}
     },
-    {
-        "relation": "Demand easing of administrative sanctions",
+    "Demand easing of administrative sanctions": {
         "total": 4,
         "symmetric": 0,
         "anti-symmetric": 4,
@@ -13814,8 +13635,7 @@
             "Threaten": 4
         }
     },
-    {
-        "relation": "Refuse to ease economic sanctions, boycott, or embargo",
+    "Refuse to ease economic sanctions, boycott, or embargo": {
         "total": 4,
         "symmetric": 0,
         "anti-symmetric": 4,
@@ -13854,8 +13674,7 @@
             "fight with artillery and tanks": 7
         }
     },
-    {
-        "relation": "Investigate human rights abuses",
+    "Investigate human rights abuses": {
         "total": 4,
         "symmetric": 0,
         "anti-symmetric": 4,
@@ -13886,8 +13705,7 @@
             "fight with small arms and light weapons": 4
         }
     },
-    {
-        "relation": "Accede to demands for change in institutions, regime",
+    "Accede to demands for change in institutions, regime": {
         "total": 4,
         "symmetric": 0,
         "anti-symmetric": 4,
@@ -13905,8 +13723,7 @@
             "Praise or endorse": 2
         }
     },
-    {
-        "relation": "Demand judicial cooperation",
+    "Demand judicial cooperation": {
         "total": 4,
         "symmetric": 0,
         "anti-symmetric": 4,
@@ -13949,8 +13766,7 @@
             "Praise or endorse": 1
         }
     },
-    {
-        "relation": "Demobilize armed forces",
+    "Demobilize armed forces": {
         "total": 4,
         "symmetric": 0,
         "anti-symmetric": 4,
@@ -13973,8 +13789,7 @@
             "Sign formal agreement": 11
         }
     },
-    {
-        "relation": "Reduce or stop humanitarian assistance",
+    "Reduce or stop humanitarian assistance": {
         "total": 4,
         "symmetric": 0,
         "anti-symmetric": 4,
@@ -14001,8 +13816,7 @@
             "Make statement": 4
         }
     },
-    {
-        "relation": "Threaten to reduce or stop aid",
+    "Threaten to reduce or stop aid": {
         "total": 4,
         "symmetric": 0,
         "anti-symmetric": 4,
@@ -14016,8 +13830,7 @@
             "Make statement": 4
         }
     },
-    {
-        "relation": "Appeal for political reform",
+    "Appeal for political reform": {
         "total": 3,
         "symmetric": 0,
         "anti-symmetric": 3,
@@ -14027,8 +13840,7 @@
             "Host a visit": 2
         }
     },
-    {
-        "relation": "Demand political reform",
+    "Demand political reform": {
         "total": 3,
         "symmetric": 0,
         "anti-symmetric": 3,
@@ -14051,8 +13863,7 @@
             "Use unconventional violence": 1
         }
     },
-    {
-        "relation": "Conduct hunger strike",
+    "Conduct hunger strike": {
         "total": 3,
         "symmetric": 0,
         "anti-symmetric": 3,
@@ -14062,8 +13873,7 @@
             "Praise or endorse": 1
         }
     },
-    {
-        "relation": "Reject material cooperation",
+    "Reject material cooperation": {
         "total": 3,
         "symmetric": 0,
         "anti-symmetric": 3,
@@ -14074,8 +13884,7 @@
             "Appeal for material cooperation": 2
         }
     },
-    {
-        "relation": "Demand military aid",
+    "Demand military aid": {
         "total": 3,
         "symmetric": 0,
         "anti-symmetric": 3,
@@ -14116,8 +13925,7 @@
             "Threaten": 15
         }
     },
-    {
-        "relation": "Reject military cooperation",
+    "Reject military cooperation": {
         "total": 3,
         "symmetric": 0,
         "anti-symmetric": 3,
@@ -14160,8 +13968,7 @@
             "fight with small arms and light weapons": 11
         }
     },
-    {
-        "relation": "Forgive",
+    "Forgive": {
         "total": 3,
         "symmetric": 0,
         "anti-symmetric": 3,
@@ -14170,8 +13977,7 @@
             "Protest violently, riot": 1
         }
     },
-    {
-        "relation": "Ease military blockade",
+    "Ease military blockade": {
         "total": 3,
         "symmetric": 0,
         "anti-symmetric": 3,
@@ -14184,8 +13990,7 @@
             "Make statement": 4
         }
     },
-    {
-        "relation": "Express intent to change policy",
+    "Express intent to change policy": {
         "total": 2,
         "symmetric": 0,
         "anti-symmetric": 2,
@@ -14197,8 +14002,7 @@
             "Return, release person(s)": 1
         }
     },
-    {
-        "relation": "Accede to demands for change in policy",
+    "Accede to demands for change in policy": {
         "total": 2,
         "symmetric": 0,
         "anti-symmetric": 2,
@@ -14218,8 +14022,7 @@
             "Sign formal agreement": 1
         }
     },
-    {
-        "relation": "Receive inspectors",
+    "Receive inspectors": {
         "total": 2,
         "symmetric": 0,
         "anti-symmetric": 2,
@@ -14236,8 +14039,7 @@
             "Use conventional military force": 4
         }
     },
-    {
-        "relation": "Halt mediation",
+    "Halt mediation": {
         "total": 2,
         "symmetric": 0,
         "anti-symmetric": 2,
@@ -14300,8 +14102,7 @@
             "Yield": 1
         }
     },
-    {
-        "relation": "Demand policy change",
+    "Demand policy change": {
         "total": 2,
         "symmetric": 0,
         "anti-symmetric": 2,
@@ -14333,8 +14134,7 @@
             "Use conventional military force": 1
         }
     },
-    {
-        "relation": "Reject economic cooperation",
+    "Reject economic cooperation": {
         "total": 2,
         "symmetric": 0,
         "anti-symmetric": 2,
@@ -14366,8 +14166,7 @@
             "Use conventional military force": 1
         }
     },
-    {
-        "relation": "Accede to requests or demands for political reform",
+    "Accede to requests or demands for political reform": {
         "total": 2,
         "symmetric": 0,
         "anti-symmetric": 2,
@@ -14378,16 +14177,14 @@
             "Provide humanitarian aid": 1
         }
     },
-    {
-        "relation": "Demand rights",
+    "Demand rights": {
         "total": 2,
         "symmetric": 0,
         "anti-symmetric": 2,
         "reflexive": 0,
         "inverse": {}
     },
-    {
-        "relation": "Express intent to cooperate on judicial matters",
+    "Express intent to cooperate on judicial matters": {
         "total": 2,
         "symmetric": 0,
         "anti-symmetric": 2,
@@ -14402,8 +14199,7 @@
             "Yield": 1
         }
     },
-    {
-        "relation": "Use as human shield",
+    "Use as human shield": {
         "total": 2,
         "symmetric": 0,
         "anti-symmetric": 2,
@@ -14417,16 +14213,14 @@
             "Use unconventional violence": 12
         }
     },
-    {
-        "relation": "Engage in political dissent",
+    "Engage in political dissent": {
         "total": 2,
         "symmetric": 0,
         "anti-symmetric": 2,
         "reflexive": 0,
         "inverse": {}
     },
-    {
-        "relation": "Obstruct passage to demand leadership change",
+    "Obstruct passage to demand leadership change": {
         "total": 2,
         "symmetric": 0,
         "anti-symmetric": 2,
@@ -14439,16 +14233,14 @@
             "Yield": 2
         }
     },
-    {
-        "relation": "Reject request for change in leadership",
+    "Reject request for change in leadership": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
         "reflexive": 0,
         "inverse": {}
     },
-    {
-        "relation": "Ease state of emergency or martial law",
+    "Ease state of emergency or martial law": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
@@ -14458,8 +14250,7 @@
             "Praise or endorse": 1
         }
     },
-    {
-        "relation": "Demand humanitarian aid",
+    "Demand humanitarian aid": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
@@ -14487,16 +14278,14 @@
             "fight with small arms and light weapons": 2
         }
     },
-    {
-        "relation": "Threaten with administrative sanctions",
+    "Threaten with administrative sanctions": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
         "reflexive": 0,
         "inverse": {}
     },
-    {
-        "relation": "Appeal for military protection or peacekeeping",
+    "Appeal for military protection or peacekeeping": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
@@ -14510,16 +14299,14 @@
             "Reject": 2
         }
     },
-    {
-        "relation": "Investigate war crimes",
+    "Investigate war crimes": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
         "reflexive": 0,
         "inverse": {}
     },
-    {
-        "relation": "Reject request for military aid",
+    "Reject request for military aid": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
@@ -14532,8 +14319,7 @@
             "Use unconventional violence": 5
         }
     },
-    {
-        "relation": "Use chemical, biological, or radiological weapons",
+    "Use chemical, biological, or radiological weapons": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
@@ -14543,8 +14329,7 @@
             "Use unconventional violence": 2
         }
     },
-    {
-        "relation": "Demand material aid",
+    "Demand material aid": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
@@ -14554,8 +14339,7 @@
             "Make an appeal or request": 1
         }
     },
-    {
-        "relation": "Appeal for target to allow international involvement (non-mediation)",
+    "Appeal for target to allow international involvement (non-mediation)": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
@@ -14566,8 +14350,7 @@
             "Praise or endorse": 2
         }
     },
-    {
-        "relation": "Express intent to change institutions, regime",
+    "Express intent to change institutions, regime": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
@@ -14595,8 +14378,7 @@
             "Use conventional military force": 1
         }
     },
-    {
-        "relation": "Reject request for military protection or peacekeeping",
+    "Reject request for military protection or peacekeeping": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
@@ -14605,8 +14387,7 @@
             "Engage in diplomatic cooperation": 1
         }
     },
-    {
-        "relation": "Carry out car bombing",
+    "Carry out car bombing": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
@@ -14621,8 +14402,7 @@
             "Use conventional military force": 18
         }
     },
-    {
-        "relation": "Carry out roadside bombing",
+    "Carry out roadside bombing": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
@@ -14633,16 +14413,14 @@
             "Use conventional military force": 2
         }
     },
-    {
-        "relation": "Threaten to halt mediation",
+    "Threaten to halt mediation": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
         "reflexive": 0,
         "inverse": {}
     },
-    {
-        "relation": "Express intent to institute political reform",
+    "Express intent to institute political reform": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
@@ -14655,8 +14433,7 @@
             "Reject": 1
         }
     },
-    {
-        "relation": "Appeal for easing of economic sanctions, boycott, or embargo",
+    "Appeal for easing of economic sanctions, boycott, or embargo": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
@@ -14699,8 +14476,7 @@
             "fight with small arms and light weapons": 11
         }
     },
-    {
-        "relation": "Threaten to halt negotiations",
+    "Threaten to halt negotiations": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
@@ -14743,24 +14519,21 @@
             "fight with small arms and light weapons": 11
         }
     },
-    {
-        "relation": "Ease political dissent",
+    "Ease political dissent": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
         "reflexive": 0,
         "inverse": {}
     },
-    {
-        "relation": "Expel or withdraw",
+    "Expel or withdraw": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
         "reflexive": 0,
         "inverse": {}
     },
-    {
-        "relation": "Engage in mass expulsion",
+    "Engage in mass expulsion": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
@@ -14783,8 +14556,7 @@
             "Return, release person(s)": 2
         }
     },
-    {
-        "relation": "Engage in violent protest for rights",
+    "Engage in violent protest for rights": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
@@ -14810,20 +14582,18 @@
             "fight with artillery and tanks": 1
         }
     },
-    {
-        "relation": "Detonate nuclear weapons",
+    "Detonate nuclear weapons": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
         "reflexive": 0,
         "inverse": {}
     },
-    {
-        "relation": "Reject judicial cooperation",
+    "Reject judicial cooperation": {
         "total": 1,
         "symmetric": 0,
         "anti-symmetric": 1,
         "reflexive": 0,
         "inverse": {}
     }
-]
+}
