@@ -3,7 +3,7 @@ import torch
 import sys
 from scripts import remove_unwanted_symbols
 from rank.de_simple import de_transe, de_simple, de_distmult, dataset, params
-from rank.TERO import TERO_model, Dataset
+from rank.TERO import TERO_model, Dataset, Dataset_YG
 from rank.TFLEX.tflex import FLEX
 from rank.TimePlex import models as Timeplex_model
 
@@ -25,6 +25,7 @@ class Loader:
         elif self.embedding in ["TERO", "ATISE"]:
             sys.modules['model'] = TERO_model
             sys.modules['Dataset'] = Dataset
+            sys.modules['Dataset_YG'] = Dataset_YG
         elif self.embedding in ["TFLEX"]:
             pass
         elif self.embedding in ["TimePlex"]:
