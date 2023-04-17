@@ -49,7 +49,7 @@ class Ranker:
         if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
             rank_calculator = DE_Rank(self.params, model, dataset)
         if embedding_name in ["TERO", "ATISE"]:
-            rank_calculator = TERO_Rank(self.params, model)
+            rank_calculator = TERO_Rank(self.params, model, dataset)
         if embedding_name in ["TFLEX"]:
             rank_calculator = TFLEX_Rank(self.params, model)
         if embedding_name in ["TimePlex"]:
@@ -64,11 +64,7 @@ class Ranker:
                 if not (quad["TAIL"] == "0" or quad["TIME_FROM"] == "0"):
                     ranked_quads.append(quad)
                     continue
-            if embedding_name in ['DE_TransE', 'DE_SimplE', 'DE_DistMult']:
-                if quad["TIME_TO"] == "0":
-                    ranked_quads.append(quad)
-                    continue
-            if dataset in ['icews14'] and embedding_name in ['DE_TransE', 'DE_SimplE', 'DE_DistMult']:
+            if embedding_name in ['DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE']:
                 if quad["TIME_TO"] == "0":
                     ranked_quads.append(quad)
                     continue
