@@ -28,7 +28,7 @@ def main():
     if params.datasets == ['all']:
         params.datasets = ['yago11k']
     if params.splits == ['all']:
-        params.splits = ['original', '1', '2', '3']
+        params.splits = ['1', '2', '3']
     
     match params.task:
         case "split_dataset":

@@ -43,10 +43,14 @@ class RankCalculator:
             return self.get_day_from_timestamp(timestamp)
         
         if self.dataset in ['yago11k']: 
-            check_timestamp = timestamp + "-##-##"
+            check_timestamp = timestamp
+            if check_timestamp == '-':
+                check_timestamp = "####"
+
+            check_timestamp = check_timestamp + "-##-##"
 
             if check_timestamp.split('-')[0] == '####':
-                start=self.kg.start_year
+                return 0
             elif check_timestamp[0] == '-':
                 start=-int(check_timestamp.split('-')[1].replace('#', '0'))
             elif check_timestamp[0] != '-':
