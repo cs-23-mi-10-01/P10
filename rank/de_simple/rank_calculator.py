@@ -7,11 +7,12 @@ from dateutil.relativedelta import relativedelta
 
 
 class RankCalculator:
-    def __init__(self, params, model, dataset_name):
+    def __init__(self, params, model, dataset_name, mode = "rank"):
         self.params = params
         self.dataset = model.module.dataset
         self.model = model
         self.dataset_name = dataset_name
+        self.mode = mode
 
         self.num_of_ent = self.dataset.numEnt()
         self.num_of_rel = self.dataset.numRel()
@@ -99,9 +100,9 @@ class RankCalculator:
             case _:
                 raise Exception("Unknown target")
 
-        return self.shred_facts(np.array(sim_facts))
+        return sim_facts
 
-    def get_rank_of(self, head, relation, tail, time_from, time_to, answer):
+    def simulate_fact_scores(self, head, relation, tail, time_from, time_to, answer):
         target = "?"
         if head == "0":
             target = "h"
@@ -112,8 +113,21 @@ class RankCalculator:
         elif time_from == "0":
             target = "T"
 
-        heads, rels, tails, years, months, days = self.simulate_facts(head, relation, tail, time_from, target, answer)
+        facts = self.simulate_facts(head, relation, tail, time_from, target, answer)
+        heads, rels, tails, years, months, days = self.shred_facts(np.array(facts))
         sim_scores = self.model.module(heads, rels, tails, years, months, days).cpu().data.numpy()
-        rank = self.get_rank(sim_scores)
+        
+        scored_simulated_facts = []
+        for fact, score in zip(facts, sim_scores):
+            scored_simulated_facts.append([fact[0], fact[1], fact[2], fact[3], fact[4], fact[5], score])
 
+        return scored_simulated_facts
+    #    if self.mode == "rank":
+    #        
+    #    elif self.mode == "predicted_answer":
+    #        i = 1
+    #        return [heads[i], rels[i], tails[i], years[i], months[i], days[i]]
+        
+    def rank_of_correct_prediction(self, fact_scores):
+        rank = self.get_rank([fact[6] for fact in fact_scores])
         return rank

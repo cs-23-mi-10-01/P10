@@ -49,7 +49,7 @@ def main():
             generate_quads.generate_test_quads()
         case "time_difference":
             time_difference = Time_Difference(params)
-            time_difference.calc()
+            time_difference.get_responses()
 
     params.timer.stop("main")
 

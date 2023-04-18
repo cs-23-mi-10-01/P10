@@ -73,10 +73,10 @@ class Ranker:
             if "RANK" not in ranked_quad.keys():
                 ranked_quad["RANK"] = {}
 
-            ranked_quad["RANK"][embedding_name] = str(rank_calculator.get_rank_of(quad["HEAD"], quad["RELATION"],
-                                                                                quad["TAIL"], quad["TIME_FROM"],
-                                                                                quad["TIME_TO"], quad["ANSWER"]))
+            fact_scores = rank_calculator.simulate_fact_scores(quad["HEAD"], quad["RELATION"],
+                                                    quad["TAIL"], quad["TIME_FROM"],
+                                                    quad["TIME_TO"], quad["ANSWER"])
+            ranked_quad["RANK"][embedding_name] = str(rank_calculator.rank_of_correct_prediction(fact_scores))
             ranked_quads.append(ranked_quad)
 
         return ranked_quads
-
