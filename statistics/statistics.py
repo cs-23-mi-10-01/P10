@@ -209,7 +209,7 @@ class Statistics():
         print("Testing hypothesis 3.")
 
         for quad in ranked_quads:
-            if quad["HEAD"] is "0" or quad["TAIL"] is "0":
+            if quad["HEAD"] == "0" or quad["TAIL"] == "0":
                 continue
 
             entity_n = quad["HEAD"]
@@ -429,3 +429,6 @@ class Statistics():
                 # self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=20)
                 # self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=100)
                 # self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=50, percentage=True)
+
+    def average_timestamp_precision(self):
+        print("hejdå")
