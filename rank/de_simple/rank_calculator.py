@@ -7,12 +7,11 @@ from dateutil.relativedelta import relativedelta
 
 
 class RankCalculator:
-    def __init__(self, params, model, dataset_name, mode = "rank"):
+    def __init__(self, params, model, dataset_name):
         self.params = params
         self.dataset = model.module.dataset
         self.model = model
         self.dataset_name = dataset_name
-        self.mode = mode
 
         self.num_of_ent = self.dataset.numEnt()
         self.num_of_rel = self.dataset.numRel()
@@ -122,12 +121,12 @@ class RankCalculator:
             scored_simulated_facts.append([fact[0], fact[1], fact[2], fact[3], fact[4], fact[5], score])
 
         return scored_simulated_facts
-    #    if self.mode == "rank":
-    #        
-    #    elif self.mode == "predicted_answer":
-    #        i = 1
-    #        return [heads[i], rels[i], tails[i], years[i], months[i], days[i]]
-        
+    
     def rank_of_correct_prediction(self, fact_scores):
         rank = self.get_rank([fact[6] for fact in fact_scores])
         return rank
+    
+    def best_prediction(self, fact_scores):
+        scores = [fact[6] for fact in fact_scores]
+        highest_score = max(scores)
+        return fact_scores[scores.index(highest_score)][0:6]

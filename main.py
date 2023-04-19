@@ -7,14 +7,13 @@ from split_dataset.split_dataset import SplitDataset
 from statistics.statistics import Statistics
 from formatlatex.formatlatex import FormatLatex
 from queries.generate_queries import GenerateQueries
-from time_difference.time_difference import Time_Difference
 
 
 def main():
     parser = argparse.ArgumentParser()
 
     #python -task rank -dataset icews14 -embedding DE_TransE -split all
-    parser.add_argument('-task', type=str, default='rank', choices=['statistics', 'rank', 'formatlatex', 'split_dataset', 'generate_quads', 'time_difference'])
+    parser.add_argument('-task', type=str, default='rank', choices=['statistics', 'rank', 'formatlatex', 'split_dataset', 'generate_quads', 'best_predictions'])
     parser.add_argument('-dataset', type=str, default='all', choices=['all', 'icews14', 'wikidata11k', 'wikidata12k', 'yago11k'])
     parser.add_argument('-split', type=str, default='all', choices=['all', 'original', '1', '2', '3'])
     parser.add_argument('-embedding', type=str, default='all', choices=['all', 'DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE', 'TFLEX','TimePlex'])
@@ -47,9 +46,9 @@ def main():
         case "generate_quads":
             generate_quads = GenerateQueries(params)
             generate_quads.generate_test_quads()
-        case "time_difference":
-            time_difference = Time_Difference(params)
-            time_difference.get_responses()
+        case "best_predictions":
+            ranker = Ranker(params, "best_predictions")
+            ranker.rank()
 
     params.timer.stop("main")
 
