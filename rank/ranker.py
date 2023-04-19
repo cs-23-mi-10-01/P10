@@ -21,7 +21,7 @@ class Ranker:
             for split in self.params.splits:
                 for embedding_name in self.params.embeddings:
                     
-                    # set result paths for different modes
+                    # set output paths and functions for different modes
                     match(self.mode):
                         case "rank":
                             output_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
