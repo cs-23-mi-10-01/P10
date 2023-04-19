@@ -64,3 +64,6 @@ def year_to_iso_format(year):
 
 def exists(path):
     return os.path.exists(path)
+
+def date_to_iso(date):
+    return f"{date.year:04d}-{date.month:02d}-{date.day:02d}"
