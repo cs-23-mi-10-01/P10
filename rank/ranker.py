@@ -21,27 +21,34 @@ class Ranker:
             for split in self.params.splits:
                 for embedding_name in self.params.embeddings:
                     
-                    # set result and input paths paths for different modes
+                    # set result paths for different modes
                     match(self.mode):
                         case "rank":
                             output_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
+                            generate_function = getattr(self, '_generate_ranked_quads')
                         case "best_predictions":
                             output_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
+                            generate_function = getattr(self, '_generate_best_predictions')
+                    
+                    #set input path
                     if exists(output_path):
                         quads_path = output_path
                     else:
                          quads_path = os.path.join(self.base_directory, "queries", dataset, "split_" + split, "test_quads.json")                  
                     
+                    # read from input
                     in_file = open(quads_path, "r", encoding="utf8")
                     print("Reading from file " + str(quads_path) + "...")
                     self.ranked_quads = json.load(in_file)
                     in_file.close()
 
+                    # load model via torch
                     model_path = os.path.join(self.base_directory, "models", embedding_name, dataset, "split_" + split, "Model.model")
                     loader = Loader(self.params, model_path, embedding_name)
                     model = loader.load()
                     model.eval()
-
+                    
+                    # select rank calculator depending on method
                     if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
                         rank_calculator = DE_Rank(self.params, model, dataset)
                     if embedding_name in ["TERO", "ATISE"]:
@@ -51,14 +58,8 @@ class Ranker:
                     if embedding_name in ["TimePlex"]:
                         rank_calculator = TimePlex_Rank(self.params, model)
                     
-                    match(self.mode):
-                        case "rank":
-                            self.ranked_quads = self._generate_ranked_quads(rank_calculator, embedding_name, dataset, split)
-                            json_output = self.ranked_quads
-                        case "best_predictions":
-                            best_predictions = self.generate_best_predictions(rank_calculator, embedding_name, dataset, split)
-                            json_output = best_predictions
-
+                    # write to file
+                    json_output = generate_function(rank_calculator, embedding_name, dataset, split)
                     touch(output_path)
                     out_file = open(output_path, "w", encoding="utf8")
                     print("Writing to file " + str(output_path) + "...")
@@ -96,7 +97,7 @@ class Ranker:
 
         return ranked_quads
     
-    def generate_best_predictions(self, rank_calculator, embedding_name, dataset, split):
+    def _generate_best_predictions(self, rank_calculator, embedding_name, dataset, split):
         best_predictions = []
         for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
             if i % 1000 == 0:
