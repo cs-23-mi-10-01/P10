@@ -42,7 +42,7 @@ class RankCalculator:
         if self.dataset in ['icews14']:
             return self.get_day_from_timestamp(timestamp)
         
-        if self.dataset in ['yago11k']: 
+        if self.dataset in ['yago11k', 'wikidata12k']: 
             check_timestamp = timestamp
             if check_timestamp == '-':
                 check_timestamp = "####"

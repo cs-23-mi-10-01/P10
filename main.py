@@ -22,13 +22,12 @@ def main():
     params = Parameters(args)
 
     params.timer.start("main")
-
     if params.embeddings == ['all']:
         params.embeddings = ['TERO', 'ATISE']
     if params.datasets == ['all']:
-        params.datasets = ['yago11k']
+        params.datasets = ['wikidata12k']
     if params.splits == ['all']:
-        params.splits = ['1', '2', '3']
+        params.splits = ['original', '1', '2', '3']
     
     match params.task:
         case "split_dataset":
