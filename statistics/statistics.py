@@ -70,7 +70,8 @@ class Statistics():
                         if quad["TIME_TO"] == "0":
                             continue
                     
-                    ranks[embedding] = int(float(quad["RANK"][embedding]))
+                    if embedding in quad["RANK"].keys():
+                        ranks[embedding] = int(float(quad["RANK"][embedding]))
                 measure.update(ranks)
             
             measure.print()
@@ -399,8 +400,8 @@ class Statistics():
             # # self.find_common_elements(top)
             # # self.find_common_elements(top_percentage)
 
-            relation_properties_hypothesis = RelationPropertiesHypothesis(self.params, dataset, mode="no-timestamps")
-            relation_properties_hypothesis.run_analysis()
+            # relation_properties_hypothesis = RelationPropertiesHypothesis(self.params, dataset, mode="no-timestamps")
+            # relation_properties_hypothesis.run_analysis()
 
             # if dataset in ['icews14']:
             #     no_of_elements_path = os.path.join(self.params.base_directory, "datasets", dataset, "full.txt")
@@ -415,14 +416,14 @@ class Statistics():
             for split in self.params.splits:
 
                 ranks_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
-                # ranked_quads = read_json(ranks_path)
+                ranked_quads = read_json(ranks_path)
 
-                # self.calculate_overall_scores(ranked_quads, embeddings, dataset, split)
+                self.calculate_overall_scores(ranked_quads, embeddings, dataset, split)
 
-                # overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")        
-                # overall_scores = read_json(overall_scores_path)
+                overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")        
+                overall_scores = read_json(overall_scores_path)
 
-                # self.semester_9_hypothesis_1(ranked_quads, embeddings, dataset, split, normalization_scores=overall_scores)
+                self.semester_9_hypothesis_1(ranked_quads, embeddings, dataset, split)
                 # self.semester_9_hypothesis_2(ranked_quads, embeddings, dataset, split, normalization_scores=overall_scores)
                 # self.semester_9_hypothesis_3(ranked_quads, embeddings, dataset, split, normalization_scores=overall_scores)
                 # self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=10)

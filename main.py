@@ -25,9 +25,9 @@ def main():
     if params.embeddings == ['all']:
         params.embeddings = ['TERO', 'ATISE']
     if params.datasets == ['all']:
-        params.datasets = ['wikidata12k']
+        params.datasets = ['icews14']
     if params.splits == ['all']:
-        params.splits = ['original', '1', '2', '3']
+        params.splits = ['2', '3']
     
     match params.task:
         case "split_dataset":
