@@ -20,21 +20,18 @@ class Ranker:
         for dataset in self.params.datasets:
             for split in self.params.splits:
                 for embedding_name in self.params.embeddings:
-                    ranked_quads_result_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
-                    best_prediction_result_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
-                    quads_path = ''
-
+                    
+                    # set result and input paths paths for different modes
                     match(self.mode):
                         case "rank":
-                            if exists(ranked_quads_result_path):
-                                quads_path = ranked_quads_result_path
+                            output_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
                         case "best_predictions":
-                            if exists(best_prediction_result_path):
-                                quads_path = best_prediction_result_path
-                    if quads_path == '':
-                        quads_path = os.path.join(self.base_directory, "queries", dataset, "split_" + split, "test_quads.json")
+                            output_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
+                    if exists(output_path):
+                        quads_path = output_path
+                    else:
+                         quads_path = os.path.join(self.base_directory, "queries", dataset, "split_" + split, "test_quads.json")                  
                     
-
                     in_file = open(quads_path, "r", encoding="utf8")
                     print("Reading from file " + str(quads_path) + "...")
                     self.ranked_quads = json.load(in_file)
@@ -57,11 +54,9 @@ class Ranker:
                     match(self.mode):
                         case "rank":
                             self.ranked_quads = self._generate_ranked_quads(rank_calculator, embedding_name, dataset, split)
-                            output_path = ranked_quads_result_path
                             json_output = self.ranked_quads
                         case "best_predictions":
                             best_predictions = self.generate_best_predictions(rank_calculator, embedding_name, dataset, split)
-                            output_path = best_prediction_result_path
                             json_output = best_predictions
 
                     touch(output_path)
