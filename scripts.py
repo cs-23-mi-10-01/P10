@@ -4,6 +4,12 @@ import json
 from pathlib import Path
 import copy
 
+def read_text(path):
+        in_file = open(path, "r", encoding="utf8")
+        text = in_file.read()
+        in_file.close()
+        return text
+
 def read_json(path):
     print("Reading from file " + path + "...")
     in_file = open(path, "r", encoding="utf8")
