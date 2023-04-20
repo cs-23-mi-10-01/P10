@@ -48,7 +48,9 @@ def main():
             generate_quads.generate_test_quads()
         case "best_predictions":
             ranker = Ranker(params, "best_predictions")
-            ranker.rank()
+            #ranker.rank()
+            statistics = Statistics(params)
+            statistics.average_timestamp_precision()
 
     params.timer.stop("main")
 

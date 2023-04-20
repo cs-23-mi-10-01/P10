@@ -114,7 +114,7 @@ class Ranker:
                 fact_scores = rank_calculator.simulate_fact_scores(quad["HEAD"], quad["RELATION"],
                                                     quad["TAIL"], quad["TIME_FROM"],
                                                     quad["TIME_TO"], quad["ANSWER"])
-                best_prediction_quad["BEST_PREDICTION"][embedding_name] = str(rank_calculator.best_prediction(fact_scores))
+                best_prediction_quad["BEST_PREDICTION"][embedding_name] = [rank_calculator.best_prediction(fact_scores)]
                 best_predictions.append(best_prediction_quad)
 
         return best_predictions

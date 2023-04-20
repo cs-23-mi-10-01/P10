@@ -129,4 +129,5 @@ class RankCalculator:
     def best_prediction(self, fact_scores):
         scores = [fact[6] for fact in fact_scores]
         highest_score = max(scores)
-        return fact_scores[scores.index(highest_score)][0:6]
+        pred = fact_scores[scores.index(highest_score)][0:6]
+        return date(pred[3], pred[4], pred[5]).isoformat()

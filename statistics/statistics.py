@@ -3,6 +3,7 @@ import os
 import json
 import pandas
 
+from datetime import date
 from scripts import touch, year_to_iso_format, read_json, write_json
 from statistics.measure import Measure
 from copy import deepcopy
@@ -241,9 +242,9 @@ class Statistics():
             other_key = entity_m+";"+entity_n
             if other_key in entity_measures.keys():
                 if entity_measures[key]["FACTS"] >= self.zeta and entity_measures[other_key]["FACTS"] >= self.zeta:
-                    entity_measures[key]["DIFFERENCE"] = {}
+                    entity_measures[key]["diff_list"] = {}
                     for embedding in embeddings:
-                        entity_measures[key]["DIFFERENCE"][embedding] = entity_measures[other_key]["RANK"].mrr[embedding] - entity_measures[key]["RANK"].mrr[embedding]
+                        entity_measures[key]["diff_list"][embedding] = entity_measures[other_key]["RANK"].mrr[embedding] - entity_measures[key]["RANK"].mrr[embedding]
                 
         json_output = []
         for i, key in enumerate(entity_measures.keys()):
@@ -261,9 +262,9 @@ class Statistics():
                 other_key = entity_m+";"+entity_n
                 if other_key in entity_measures.keys():
                     if entity_measures[key]["FACTS"] >= self.zeta and entity_measures[other_key]["FACTS"] >= self.zeta:
-                        entity_measures[key]["DIFFERENCE"] = {}
+                        entity_measures[key]["diff_list"] = {}
                         for embedding in embeddings:
-                            entity_measures[key]["DIFFERENCE"][embedding] = entity_measures[other_key]["RANK"].mrr[embedding] - entity_measures[key]["RANK"].mrr[embedding]                  
+                            entity_measures[key]["diff_list"][embedding] = entity_measures[other_key]["RANK"].mrr[embedding] - entity_measures[key]["RANK"].mrr[embedding]                  
 
                 json_output_normalized.append(deepcopy(entity_measures[key]))
                 json_output_normalized[i]["RANK"] = json_output_normalized[i]["RANK"].as_dict()
@@ -431,4 +432,32 @@ class Statistics():
                 # self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=50, percentage=True)
 
     def average_timestamp_precision(self):
-        print("hejdå")
+        for dataset in self.params.datasets:
+            for split in self.params.splits:
+                for embedding in self.params.embeddings:
+                    # read json file with best predictions (from Ranker._generate_best_predictions)
+                    predictions_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
+                    avg_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "prediction_avg.json")
+                    best_predictions = read_json(predictions_path)
+                    diff_list = []
+
+                    #get and save difference
+                    for i in best_predictions:
+                        answer = date.fromisoformat(i['ANSWER'])
+                        prediction = date.fromisoformat(i['BEST_PREDICTION'][embedding][0])
+                        difference = (abs((answer-prediction).days))
+                        diff_list.append(difference)
+                        if len(i['BEST_PREDICTION'][embedding]) == 1:
+                            i['BEST_PREDICTION'][embedding].append(difference)
+                
+                    # get average
+                    avg = sum(diff_list)/len(diff_list)
+                    print(avg)
+
+                    write_json(predictions_path, best_predictions)
+
+
+        #a = date(2022,2,24)
+        #b = date(2023,2,24)
+        #result = (a-b).days
+        #print(result)
