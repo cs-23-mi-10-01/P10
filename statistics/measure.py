@@ -75,3 +75,11 @@ class Measure():
                 "MRR": self.mrr[embedding]
             }
         return ret_dict
+    
+    def as_mrp(self):
+        ret_dict = {}
+        for embedding in self.hit1.keys():
+            ret_dict[embedding] = {
+                "MRP": self.mrr[embedding]
+            }
+        return ret_dict

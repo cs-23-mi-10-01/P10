@@ -1,5 +1,5 @@
 import os
-from scripts import read_json, simulate_dates, exists, write_json
+from scripts import read_json, simulate_dates, exists, write_json, date_to_iso
 import datetime
 from dateutil.relativedelta import relativedelta
 from statistics.measure import Measure
@@ -37,9 +37,6 @@ class TimeDensityHypothesis():
         
         return self._include_quad(quad)
     
-    def _date_to_iso(self, date):
-        return f"{date.year:04d}-{date.month:02d}-{date.day:02d}"
-    
     def _compare_iso(self, x, y):
         return x <= y
     
@@ -68,8 +65,8 @@ class TimeDensityHypothesis():
         simulated_dates = simulate_dates(self.start_date, self.end_date, self.delta_date)
         for i in range(len(simulated_dates) - 1):
             no_of_facts.append({
-                "start_date": self._date_to_iso(simulated_dates[i]),
-                "end_date": self._date_to_iso(simulated_dates[i+1]),
+                "start_date": date_to_iso(simulated_dates[i]),
+                "end_date": date_to_iso(simulated_dates[i+1]),
                 "no_of_facts": 0})
         
         for i, quad in enumerate(test_quads):
