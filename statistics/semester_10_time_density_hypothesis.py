@@ -24,6 +24,9 @@ class TimeDensityHypothesis():
             self.end_date = datetime.date(2845, 1, 1)
             self.delta_date = relativedelta(years=1)
 
+        self.sparse_percentile = 0.25
+        self.dense_percentile = 0.75
+
     def _include_quad(self, quad):
         if self.dataset in ["wikidata12k", "yago11k"]:
             if quad["TIME_FROM"] == "-":
@@ -46,14 +49,12 @@ class TimeDensityHypothesis():
         else:
             return date
     
-    def _median(self, arr):
+    def _percentile_cutoffs(self, arr):
         arr.sort()
         number_of_nums = len(arr)
-        middle_index = number_of_nums // 2
-        if number_of_nums % 2 == 0:
-            return (arr[middle_index - 1] + arr[middle_index]) / 2
-        else:
-            return arr[middle_index]  
+        sparse_index = int(number_of_nums * self.sparse_percentile)
+        dense_index = int(number_of_nums * self.dense_percentile)
+        return (arr[sparse_index], arr[dense_index])
         
     def _create_no_of_facts_resource(self, no_of_facts_path):
         test_quads_path = os.path.join(self.params.base_directory, "queries", self.dataset, "split_" + self.split, "test_quads.json")
@@ -96,9 +97,9 @@ class TimeDensityHypothesis():
                     no_of_facts_for_each_timestamp.append(interval["no_of_facts"])
                     break
 
-        median = self._median(no_of_facts_for_each_timestamp)
+        sparse_cutoff, dense_cutoff = self._percentile_cutoffs(no_of_facts_for_each_timestamp)
 
-        write_json(no_of_facts_path, {"median": median, "no_of_facts": no_of_facts})
+        write_json(no_of_facts_path, {"sparse_cutoff": sparse_cutoff, "dense_cutoff": dense_cutoff, "no_of_facts": no_of_facts})
 
     def _create_time_density_partition(self, time_density_partition_path):
         no_of_facts_path = os.path.join(self.params.base_directory, 
@@ -108,14 +109,20 @@ class TimeDensityHypothesis():
         if not exists(no_of_facts_path):
             self._create_no_of_facts_resource(no_of_facts_path)
         
-        median_json = read_json(no_of_facts_path)
+        cutoffs_json = read_json(no_of_facts_path)
 
         partitions = []
-        for interval in median_json["no_of_facts"]:
+        for interval in cutoffs_json["no_of_facts"]:
+            if interval["no_of_facts"] < cutoffs_json["sparse_cutoff"]:
+                partition = "sparse"
+            elif cutoffs_json["dense_cutoff"] <= interval["no_of_facts"]:
+                partition = "dense"
+            else:
+                partition = "none"
             partitions.append({
                 "start_date": interval["start_date"],
                 "end_date": interval["end_date"],
-                "partition": "dense" if interval["no_of_facts"] >= median_json["median"] else "sparse",
+                "partition": partition,
                 "no_of_facts": interval["no_of_facts"]
             })
 

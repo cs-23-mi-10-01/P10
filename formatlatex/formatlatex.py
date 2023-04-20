@@ -2,7 +2,7 @@
 import json
 from scripts import write
 import os
-from formatlatex.semester_10_hypothesis_3 import FormatRelationPropertyHypothesis
+from formatlatex.semester_10_relation_property_hypothesis import FormatRelationPropertyHypothesis
 from formatlatex.semester_10_voting_hypothesis import FormatVotingHypothesis
 
 class FormatLatex():
@@ -292,7 +292,7 @@ class FormatLatex():
         #self.format_no_of_entities()
         # self.format_hypothesis_2_overlap()
         # self.format_semester_9_hypothesis_1()
-        # format_relation_property = FormatRelationPropertyHypothesis(self.params)
-        # format_relation_property.format_semester_9_hypothesis_1()
-        format_voting_hypothesis = FormatVotingHypothesis(self.params)
-        format_voting_hypothesis.format()
+        format_relation_property = FormatRelationPropertyHypothesis(self.params)
+        format_relation_property.format()
+        # format_voting_hypothesis = FormatVotingHypothesis(self.params)
+        # format_voting_hypothesis.format()

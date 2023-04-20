@@ -23,8 +23,10 @@ class FormatRelationPropertyHypothesis():
         return text
 
         
-    def format_semester_9_hypothesis_1(self):
+    def format(self):
         embeddings = ["DE_TransE", "DE_DistMult", "DE_SimplE", "TERO", "ATISE", "TimePlex"]
+        datasets = ['icews14', 'wikidata12k', 'yago11k']
+        splits = ['original']
         metric = "MRR"
 
         static_text_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_10_hypothesis_3_static_text.txt")
@@ -33,8 +35,8 @@ class FormatRelationPropertyHypothesis():
         static_text = self.read_text(static_text_path)
         shorthand = self.read_json(shorthand_path)
 
-        for dataset in self.params.datasets:
-            for split in self.params.splits:
+        for dataset in datasets:
+            for split in splits:
                 results_dir = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_10_hypothesis_3")
 
                 data_string = ""

@@ -21,6 +21,9 @@ class VotingHypothesis():
     def _first_last(self, a, b):
         return (a if a < b else b, a if a >= b else b)
     
+    def _abs(self, x):
+        return x if x >= 0 else -x
+    
     def _difference(self, a, b):
         sign = 1 if a < b else -1
 
@@ -69,14 +72,17 @@ class VotingHypothesis():
                     best_iso = self._from_embedding_specific_format_to_iso(prediction_quad["BEST_PREDICTION"][embedding])
                     answer_iso = prediction_quad["ANSWER"]
 
-                    rankings[embedding] = self._difference(best_iso, answer_iso) + 1
+                    rankings[embedding] = self._abs(self._difference(best_iso, answer_iso)) + 1
                     best_answers.append(best_iso)
                 
                 avg_date = self._average(best_answers)
-                avg_ranking = {"AVG": self._difference(avg_date, answer_iso) + 1}
+                avg_ranking = {"AVG": self._abs(self._difference(avg_date, answer_iso)) + 1}
 
                 measure.update(rankings)
                 avg_measure.update(avg_ranking)
+            
+        measure.normalize()
+        avg_measure.normalize()
 
         write_json(mrp_path, measure.as_mrp() | avg_measure.as_mrp())
 

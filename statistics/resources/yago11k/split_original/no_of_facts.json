@@ -1,5 +1,6 @@
 {
-    "median": 84.0,
+    "sparse_cutoff": 48,
+    "dense_cutoff": 176,
     "no_of_facts": [
         {
             "start_date": "0001-01-01",
