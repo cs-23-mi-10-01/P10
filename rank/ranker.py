@@ -29,11 +29,12 @@ class Ranker:
                     print("Reading from file " + str(quads_path) + "...")
                     self.ranked_quads = json.load(in_file)
                     in_file.close()
-
+                    
                     model_path = os.path.join(self.base_directory, "models", embedding_name, dataset, "split_" + split, "Model.model")
                     loader = Loader(self.params, model_path, embedding_name)
                     model = loader.load()
-                    model.eval()
+                    if embedding_name not in ["TimePlex"]:
+                        model.eval()
 
                     self.ranked_quads = self._generate_ranked_quads(model, embedding_name, dataset, split)
 
