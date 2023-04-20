@@ -36,6 +36,10 @@ class Statistics():
 
             ranks = {}
             for embedding in embeddings:
+                if "RANK" not in quad.keys():
+                    continue
+                if embedding not in quad["RANK"].keys():
+                    continue
                 if embedding == "TFLEX":
                     if not (quad["TAIL"] == "0" or quad["TIME_FROM"] == "0"):
                         continue
@@ -420,14 +424,14 @@ class Statistics():
             for split in self.params.splits:
 
                 ranks_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
-                # ranked_quads = read_json(ranks_path)
+                ranked_quads = read_json(ranks_path)
 
-                # self.calculate_overall_scores(ranked_quads, embeddings, dataset, split)
+                self.calculate_overall_scores(ranked_quads, embeddings, dataset, split)
 
-                # overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")        
-                # overall_scores = read_json(overall_scores_path)
+                overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")        
+                overall_scores = read_json(overall_scores_path)
 
-                # self.semester_9_hypothesis_1(ranked_quads, embeddings, dataset, split)
+                self.semester_9_hypothesis_1(ranked_quads, embeddings, dataset, split)
                 # self.semester_9_hypothesis_2(ranked_quads, embeddings, dataset, split, normalization_scores=overall_scores)
                 # self.semester_9_hypothesis_3(ranked_quads, embeddings, dataset, split, normalization_scores=overall_scores)
                 # self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=10)
