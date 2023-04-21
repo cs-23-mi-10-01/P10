@@ -2,11 +2,16 @@
 import json
 from scripts import write
 import os
-from formatlatex.semester_10_hypothesis_3 import FormatRelationPropertyHypothesis
+from formatlatex.semester_10_relation_property_hypothesis import FormatRelationPropertyHypothesis
+from formatlatex.semester_10_voting_hypothesis import FormatVotingHypothesis
 
 class FormatLatex():
     def __init__(self, params) -> None:
         self.params = params
+
+    def sort_methods(self, embeddings):
+        all_embeddings = ["DE_TransE", "DE_DistMult", "DE_SimplE", "ATISE", "TERO", "TFLEX"]
+        return [e for e in all_embeddings if e in embeddings]
     
     def read_json(self, path):
         in_file = open(path, "r", encoding="utf8")
@@ -32,7 +37,7 @@ class FormatLatex():
         return round(val, 1)
     
     def format_semester_9_hypothesis_1(self):
-        embeddings = self.params.embeddings
+        embeddings = self.sort_methods(self.params.embeddings)
         metric = "MRR"
 
         prefix_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_9_hypothesis_1_prefix.txt")
@@ -76,7 +81,8 @@ class FormatLatex():
                         f"({float(i) + 0.5}, {overall_score})" + "\n" + \
                         r"} ;" + "\n"
 
-                    max_y = min(highest_score*1.2, 1.0)
+                    #max_y = min(highest_score*1.2, 1.0)
+                    max_y = highest_score*1.2
                     
                     mod_prefix_text = prefix_text.replace(
                         "%1", f"""{",".join([shorthand[e] for e in embeddings])}""").replace(
@@ -285,6 +291,8 @@ class FormatLatex():
         #self.format_hypothesis_3()
         #self.format_no_of_entities()
         # self.format_hypothesis_2_overlap()
-        #self.format_semester_9_hypothesis_1()
-        format_relation_property = FormatRelationPropertyHypothesis(self.params)
-        format_relation_property.format_semester_9_hypothesis_1()
+        self.format_semester_9_hypothesis_1()
+        # format_relation_property = FormatRelationPropertyHypothesis(self.params)
+        # format_relation_property.format()
+        # format_voting_hypothesis = FormatVotingHypothesis(self.params)
+        # format_voting_hypothesis.format()

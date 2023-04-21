@@ -9,6 +9,7 @@ from copy import deepcopy
 from dataset_handler.dataset_handler import DatasetHandler
 from statistics.semester_10_time_density_hypothesis import TimeDensityHypothesis
 from statistics.semester_10_relation_properties_hypothesis import RelationPropertiesHypothesis
+from statistics.semester_10_voting_hypothesis import VotingHypothesis
 
 
 class Statistics():
@@ -35,6 +36,10 @@ class Statistics():
 
             ranks = {}
             for embedding in embeddings:
+                if "RANK" not in quad.keys():
+                    continue
+                if embedding not in quad["RANK"].keys():
+                    continue
                 if embedding == "TFLEX":
                     if not (quad["TAIL"] == "0" or quad["TIME_FROM"] == "0"):
                         continue
@@ -70,7 +75,8 @@ class Statistics():
                         if quad["TIME_TO"] == "0":
                             continue
                     
-                    ranks[embedding] = int(float(quad["RANK"][embedding]))
+                    if embedding in quad["RANK"].keys():
+                        ranks[embedding] = int(float(quad["RANK"][embedding]))
                 measure.update(ranks)
             
             measure.print()
@@ -399,7 +405,7 @@ class Statistics():
             # # self.find_common_elements(top)
             # # self.find_common_elements(top_percentage)
 
-            relation_properties_hypothesis = RelationPropertiesHypothesis(self.params, dataset, mode="no-timestamps")
+            relation_properties_hypothesis = RelationPropertiesHypothesis(self.params, dataset, mode="timestamps")
             relation_properties_hypothesis.run_analysis()
 
             # if dataset in ['icews14']:
@@ -412,17 +418,20 @@ class Statistics():
             # time_density_hypothesis = TimeDensityHypothesis(self.params, dataset)
             # time_density_hypothesis.run_analysis()
 
+            # voting_hypothesis = VotingHypothesis(self.params, dataset)
+            # voting_hypothesis.run_analysis()
+
             for split in self.params.splits:
 
                 ranks_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
-                # ranked_quads = read_json(ranks_path)
+                ranked_quads = read_json(ranks_path)
 
-                # self.calculate_overall_scores(ranked_quads, embeddings, dataset, split)
+                self.calculate_overall_scores(ranked_quads, embeddings, dataset, split)
 
-                # overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")        
-                # overall_scores = read_json(overall_scores_path)
+                overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")        
+                overall_scores = read_json(overall_scores_path)
 
-                # self.semester_9_hypothesis_1(ranked_quads, embeddings, dataset, split, normalization_scores=overall_scores)
+                self.semester_9_hypothesis_1(ranked_quads, embeddings, dataset, split)
                 # self.semester_9_hypothesis_2(ranked_quads, embeddings, dataset, split, normalization_scores=overall_scores)
                 # self.semester_9_hypothesis_3(ranked_quads, embeddings, dataset, split, normalization_scores=overall_scores)
                 # self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=10)
