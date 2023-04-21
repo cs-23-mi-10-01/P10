@@ -23,7 +23,7 @@ def main():
 
     params.timer.start("main")
     if params.embeddings == ['all']:
-        params.embeddings = ['DE_TransE', 'DE_SimplE', 'DE_DistMult']
+        params.embeddings = ['DE_TransE','DE_SimplE','DE_DistMult','TERO','ATISE']
     if params.datasets == ['all']:
         params.datasets = ['icews14']
     if params.splits == ['all']:
@@ -47,7 +47,7 @@ def main():
             generate_quads.generate_test_quads()
         case "best_predictions":
             ranker = Ranker(params, "best_predictions")
-            #ranker.rank()
+            ranker.rank()
             statistics = Statistics(params)
             statistics.average_timestamp_precision()
 

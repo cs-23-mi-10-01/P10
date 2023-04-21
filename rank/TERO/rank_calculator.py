@@ -65,6 +65,15 @@ class RankCalculator:
             return None
         
         return None
+    
+    def get_timestamp_from_day(self, day):
+        return self.start_sim_date + datetime.timedelta(int(day))
+
+    def get_timestamp_from_time_id(self, time_id):
+        if self.dataset in ['icews14']:
+            return self.get_timestamp_from_day(time_id)
+        return None
+
 
     def simulate_facts(self, head, relation, tail, timestamp, target, answer):
         if head != "0":
@@ -135,10 +144,11 @@ class RankCalculator:
         return scored_simulated_facts
 
     def rank_of_correct_prediction(self, fact_scores):
-        return self.get_rank([fact[4] for fact in fact_scores]) #does this work for tero as well?
+        return self.get_rank([fact[4] for fact in fact_scores])
 
     def best_prediction(self, fact_scores): #copypaste fra distmult skal fikses
         scores = [fact[4] for fact in fact_scores]
         highest_score = max(scores)
-        pred = fact_scores[scores.index(highest_score)][0:6]
-        return date(pred[3]).isoformat()
+        pred = fact_scores[scores.index(highest_score)][0:5]
+        #print(self.get_timestamp_from_time_id(pred[3]))
+        return self.get_timestamp_from_time_id(pred[3]).isoformat()
