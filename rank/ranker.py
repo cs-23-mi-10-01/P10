@@ -31,7 +31,7 @@ class Ranker:
                     in_file.close()
                     
                     model_path = os.path.join(self.base_directory, "models", embedding_name, dataset, "split_" + split, "Model.model")
-                    loader = Loader(self.params, model_path, embedding_name)
+                    loader = Loader(self.params, dataset, split, model_path, embedding_name)
                     model = loader.load()
                     if embedding_name not in ["TimePlex"]:
                         model.eval()
@@ -54,7 +54,7 @@ class Ranker:
         if embedding_name in ["TFLEX"]:
             rank_calculator = TFLEX_Rank(self.params, model)
         if embedding_name in ["TimePlex"]:
-            rank_calculator = TimePlex_Rank(self.params, model)
+            rank_calculator = TimePlex_Rank(self.params, model, dataset)
 
         for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
             if i % 1000 == 0:

@@ -24,9 +24,9 @@ def main():
     params.timer.start("main")
 
     if params.embeddings == ['all']:
-        params.embeddings = ['DE_DistMult']
+        params.embeddings = ['TimePlex']
     if params.datasets == ['all']:
-        params.datasets = ['wikidata12k', 'yago11k']
+        params.datasets = ['wikidata12k']
     if params.splits == ['all']:
         params.splits = ['original']
     
