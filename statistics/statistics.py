@@ -434,10 +434,11 @@ class Statistics():
     def average_timestamp_precision(self):
         for dataset in self.params.datasets:
             for split in self.params.splits:
+                avg = {}
                 for embedding in self.params.embeddings:
                     # read json file with best predictions (from Ranker._generate_best_predictions)
                     predictions_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
-                    avg_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "prediction_avg.json")
+                    avg_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "timestamp_prediction_avg.json")
                     best_predictions = read_json(predictions_path)
                     diff_list = []
 
@@ -449,15 +450,9 @@ class Statistics():
                         diff_list.append(difference)
                         if len(i['BEST_PREDICTION'][embedding]) == 1:
                             i['BEST_PREDICTION'][embedding].append(difference)
-                
-                    # get average
-                    avg = sum(diff_list)/len(diff_list)
-                    print(avg)
+
+                    avg[embedding] = sum(diff_list)/len(diff_list)
+                    print(avg[embedding])
 
                     write_json(predictions_path, best_predictions)
-
-
-        #a = date(2022,2,24)
-        #b = date(2023,2,24)
-        #result = (a-b).days
-        #print(result)
+                    write_json(avg_path, avg)
