@@ -4,6 +4,12 @@ import json
 from pathlib import Path
 import copy
 
+def read_text(path):
+        in_file = open(path, "r", encoding="utf8")
+        text = in_file.read()
+        in_file.close()
+        return text
+
 def read_json(path):
     print("Reading from file " + path + "...")
     in_file = open(path, "r", encoding="utf8")
@@ -64,3 +70,6 @@ def year_to_iso_format(year):
 
 def exists(path):
     return os.path.exists(path)
+
+def date_to_iso(date):
+    return f"{date.year:04d}-{date.month:02d}-{date.day:02d}"

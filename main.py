@@ -22,7 +22,6 @@ def main():
     params = Parameters(args)
 
     params.timer.start("main")
-
     if params.embeddings == ['all']:
         params.embeddings = ['DE_TransE', 'DE_SimplE', 'DE_DistMult']
     if params.datasets == ['all']:

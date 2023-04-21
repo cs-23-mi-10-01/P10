@@ -1,56 +1,236 @@
 [
     {
         "start_date": "0001-01-01",
-        "end_date": "1980-01-01",
+        "end_date": "1917-01-01",
         "partition": "sparse",
-        "no_of_facts": 3360
+        "no_of_facts": 748
     },
     {
-        "start_date": "1980-01-01",
-        "end_date": "1981-01-01",
-        "partition": "dense",
-        "no_of_facts": 84
+        "start_date": "1917-01-01",
+        "end_date": "1918-01-01",
+        "partition": "none",
+        "no_of_facts": 52
     },
     {
-        "start_date": "1981-01-01",
-        "end_date": "1988-01-01",
+        "start_date": "1918-01-01",
+        "end_date": "1920-01-01",
         "partition": "sparse",
-        "no_of_facts": 452
+        "no_of_facts": 56
     },
     {
-        "start_date": "1988-01-01",
-        "end_date": "1991-01-01",
-        "partition": "dense",
-        "no_of_facts": 292
+        "start_date": "1920-01-01",
+        "end_date": "1921-01-01",
+        "partition": "none",
+        "no_of_facts": 48
     },
     {
-        "start_date": "1991-01-01",
-        "end_date": "1992-01-01",
+        "start_date": "1921-01-01",
+        "end_date": "1928-01-01",
+        "partition": "sparse",
+        "no_of_facts": 208
+    },
+    {
+        "start_date": "1928-01-01",
+        "end_date": "1930-01-01",
+        "partition": "none",
+        "no_of_facts": 100
+    },
+    {
+        "start_date": "1930-01-01",
+        "end_date": "1931-01-01",
+        "partition": "sparse",
+        "no_of_facts": 8
+    },
+    {
+        "start_date": "1931-01-01",
+        "end_date": "1932-01-01",
+        "partition": "none",
+        "no_of_facts": 60
+    },
+    {
+        "start_date": "1932-01-01",
+        "end_date": "1937-01-01",
+        "partition": "sparse",
+        "no_of_facts": 116
+    },
+    {
+        "start_date": "1937-01-01",
+        "end_date": "1938-01-01",
+        "partition": "none",
+        "no_of_facts": 56
+    },
+    {
+        "start_date": "1938-01-01",
+        "end_date": "1942-01-01",
+        "partition": "sparse",
+        "no_of_facts": 116
+    },
+    {
+        "start_date": "1942-01-01",
+        "end_date": "1944-01-01",
+        "partition": "none",
+        "no_of_facts": 100
+    },
+    {
+        "start_date": "1944-01-01",
+        "end_date": "1946-01-01",
+        "partition": "sparse",
+        "no_of_facts": 64
+    },
+    {
+        "start_date": "1946-01-01",
+        "end_date": "1947-01-01",
+        "partition": "none",
+        "no_of_facts": 60
+    },
+    {
+        "start_date": "1947-01-01",
+        "end_date": "1950-01-01",
+        "partition": "sparse",
+        "no_of_facts": 104
+    },
+    {
+        "start_date": "1950-01-01",
+        "end_date": "1951-01-01",
+        "partition": "none",
+        "no_of_facts": 68
+    },
+    {
+        "start_date": "1951-01-01",
+        "end_date": "1955-01-01",
+        "partition": "sparse",
+        "no_of_facts": 128
+    },
+    {
+        "start_date": "1955-01-01",
+        "end_date": "1956-01-01",
+        "partition": "none",
+        "no_of_facts": 64
+    },
+    {
+        "start_date": "1956-01-01",
+        "end_date": "1959-01-01",
+        "partition": "sparse",
+        "no_of_facts": 96
+    },
+    {
+        "start_date": "1959-01-01",
+        "end_date": "1960-01-01",
+        "partition": "none",
+        "no_of_facts": 76
+    },
+    {
+        "start_date": "1960-01-01",
+        "end_date": "1961-01-01",
+        "partition": "sparse",
+        "no_of_facts": 32
+    },
+    {
+        "start_date": "1961-01-01",
+        "end_date": "1964-01-01",
+        "partition": "none",
+        "no_of_facts": 184
+    },
+    {
+        "start_date": "1964-01-01",
+        "end_date": "1966-01-01",
         "partition": "sparse",
         "no_of_facts": 76
     },
     {
-        "start_date": "1992-01-01",
-        "end_date": "1994-01-01",
-        "partition": "dense",
-        "no_of_facts": 180
+        "start_date": "1966-01-01",
+        "end_date": "1968-01-01",
+        "partition": "none",
+        "no_of_facts": 116
     },
     {
-        "start_date": "1994-01-01",
-        "end_date": "1995-01-01",
+        "start_date": "1968-01-01",
+        "end_date": "1971-01-01",
         "partition": "sparse",
-        "no_of_facts": 72
+        "no_of_facts": 112
     },
     {
-        "start_date": "1995-01-01",
-        "end_date": "2016-01-01",
+        "start_date": "1971-01-01",
+        "end_date": "1972-01-01",
+        "partition": "none",
+        "no_of_facts": 64
+    },
+    {
+        "start_date": "1972-01-01",
+        "end_date": "1973-01-01",
+        "partition": "sparse",
+        "no_of_facts": 36
+    },
+    {
+        "start_date": "1973-01-01",
+        "end_date": "1975-01-01",
+        "partition": "none",
+        "no_of_facts": 144
+    },
+    {
+        "start_date": "1975-01-01",
+        "end_date": "1976-01-01",
+        "partition": "sparse",
+        "no_of_facts": 44
+    },
+    {
+        "start_date": "1976-01-01",
+        "end_date": "1986-01-01",
+        "partition": "none",
+        "no_of_facts": 652
+    },
+    {
+        "start_date": "1986-01-01",
+        "end_date": "1987-01-01",
+        "partition": "sparse",
+        "no_of_facts": 36
+    },
+    {
+        "start_date": "1987-01-01",
+        "end_date": "2001-01-01",
+        "partition": "none",
+        "no_of_facts": 1456
+    },
+    {
+        "start_date": "2001-01-01",
+        "end_date": "2002-01-01",
         "partition": "dense",
-        "no_of_facts": 3588
+        "no_of_facts": 184
     },
     {
-        "start_date": "2016-01-01",
+        "start_date": "2002-01-01",
+        "end_date": "2003-01-01",
+        "partition": "none",
+        "no_of_facts": 156
+    },
+    {
+        "start_date": "2003-01-01",
+        "end_date": "2010-01-01",
+        "partition": "dense",
+        "no_of_facts": 1484
+    },
+    {
+        "start_date": "2010-01-01",
+        "end_date": "2011-01-01",
+        "partition": "none",
+        "no_of_facts": 168
+    },
+    {
+        "start_date": "2011-01-01",
+        "end_date": "2013-01-01",
+        "partition": "dense",
+        "no_of_facts": 400
+    },
+    {
+        "start_date": "2013-01-01",
+        "end_date": "2017-01-01",
+        "partition": "none",
+        "no_of_facts": 512
+    },
+    {
+        "start_date": "2017-01-01",
         "end_date": "2845-01-01",
         "partition": "sparse",
-        "no_of_facts": 100
+        "no_of_facts": 20
     }
 ]
