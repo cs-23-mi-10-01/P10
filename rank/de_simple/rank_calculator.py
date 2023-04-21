@@ -123,8 +123,7 @@ class RankCalculator:
         return scored_simulated_facts
     
     def rank_of_correct_prediction(self, fact_scores):
-        rank = self.get_rank([fact[6] for fact in fact_scores])
-        return rank
+        return self.get_rank([fact[6] for fact in fact_scores])
     
     def best_prediction(self, fact_scores):
         scores = [fact[6] for fact in fact_scores]
