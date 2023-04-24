@@ -2,8 +2,6 @@ import torch
 
 from rank.TimePlex.pairwise.gadgets import Recurrent, Pairs
 
-import pdb
-
 from rank.TimePlex.models_helper import *
 
 def modify_args_timeplex_base(args):
@@ -103,13 +101,13 @@ class TimePlex_base(torch.nn.Module):
         self.unit_reg = unit_reg
 
         self.reg = reg
-        print("Regularization value: in time_complex_fast: ", reg)
+        # print("Regularization value: in time_complex_fast: ", reg)
 
         self.normalize_time = normalize_time
 
         self.batch_norm = batch_norm
 
-        print("batch_norm not being used")
+        # print("batch_norm not being used")
 
         # --srt, ort weights --#
         self.srt_wt = srt_wt 
@@ -311,7 +309,7 @@ class TimePlex_base(torch.nn.Module):
                 reg += wt* torch.sum(torch.abs(ele) ** 3)
             ret =  self.emb_reg_wt * (reg / s.shape[0])
         else:
-            print("Unknown reg for complex model")
+            # print("Unknown reg for complex model")
             assert (False)
 
         return ret + time_reg
@@ -367,18 +365,18 @@ class TimePlex(torch.nn.Module):
         self.entity_count = entity_count
         self.relation_count = relation_count
 
-        print("Recurrent args:",recurrent_args)
-        print("Pairs args:",pairs_args)
+        # print("Recurrent args:",recurrent_args)
+        # print("Pairs args:",pairs_args)
 
         # --Load pretrained TimePlex(base) embeddings--#
         if model_path != "":
-            print("Loading embeddings from model saved at {}".format(model_path))
+            # print("Loading embeddings from model saved at {}".format(model_path))
             state = torch.load(model_path, map_location="cpu")
             model_arguments = modify_args_timeplex_base(state['model_arguments'])
             self.base_model = TimePlex_base(**model_arguments)
             self.base_model.load_state_dict(state['model_weights'])
             base_model_inverse = state['model_arguments'].get('flag_add_reverse',False)
-            print("Initialized base model (TimePlex)")
+            # print("Initialized base model (TimePlex)")
 
         else:
             raise Exception("Please provide path to Timeplex(base) embeddings")
@@ -387,17 +385,17 @@ class TimePlex(torch.nn.Module):
         self.embedding_dim = embedding_dim
 
         self.base_model_inverse = base_model_inverse
-        print("***Base model inverse:{}".format(self.base_model_inverse))
+        # print("***Base model inverse:{}".format(self.base_model_inverse))
 
 
         # --Freezing base model--#
         # '''
         if freeze_weights:
-            print("Freezing base model weights")
+            # print("Freezing base model weights")
             for param in self.base_model.parameters():
                 param.requires_grad = False
-        else:
-            print("Not freezing base model weights")
+        # else:
+        #     print("Not freezing base model weights")
 
         self.freeze_weights = freeze_weights
         # '''
@@ -412,9 +410,9 @@ class TimePlex(torch.nn.Module):
             self.pairs = Pairs(train_kb, entity_count, relation_count, load_to_gpu=has_cuda,
                                                 eval_batch_size=eval_batch_size,
                                                 use_obj_scores=use_obj_scores, **pairs_args)
-            print("Initialized Pairs")
-        else:
-            print("Not  Initializing Pairs")
+            # print("Initialized Pairs")
+        # else:
+        #     print("Not  Initializing Pairs")
 
 
 
@@ -422,10 +420,10 @@ class TimePlex(torch.nn.Module):
             self.recurrent = Recurrent(train_kb, entity_count, relation_count, load_to_gpu=has_cuda,
                                                 eval_batch_size=eval_batch_size,
                                                 use_obj_scores=use_obj_scores, **recurrent_args)
-            print("Initialized Recurrent")
+        #     print("Initialized Recurrent")
 
-        else:
-            print("Not Initializing Recurrent")
+        # else:
+        #     print("Not Initializing Recurrent")
                     
         # pdb.set_trace()
 
@@ -436,15 +434,12 @@ class TimePlex(torch.nn.Module):
             base_score = self.base_model(s, r, o, t)
         else:
             rel_cnt = self.relation_count
-            try:
-                if s is None:
-                    base_score = self.base_model(o, r + rel_cnt, s, t)
-                elif o is None:
-                    base_score = self.base_model(s, r, o, t)
-                else:
-                    base_score = self.base_model(s, r, o, t) + self.base_model(o, r + rel_cnt, s, t)
-            except:
-                pdb.set_trace()
+            if s is None:
+                base_score = self.base_model(o, r + rel_cnt, s, t)
+            elif o is None:
+                base_score = self.base_model(s, r, o, t)
+            else:
+                base_score = self.base_model(s, r, o, t) + self.base_model(o, r + rel_cnt, s, t)
 
         pairs_score = self.pairs(s, r, o, t) if self.pairs_wt else 0.0
         recurrent_score = self.recurrent(s, r, o, t) if self.recurrent_wt else 0.0

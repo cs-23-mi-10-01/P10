@@ -14,7 +14,6 @@ from rank.TimePlex.utils import func_load_to_gpu
 from rank.TimePlex.pairwise.prob_density_scorer import RecurringFactScorer, ProbDensityScorer
 
 import pickle
-import pdb
 
 # --Note: Define this in one place from where all files (kb.py included) use it------ #
 YEARMIN = 0
@@ -40,12 +39,12 @@ class Gadget(torch.nn.Module):
         """
         super(Gadget, self).__init__()
         self.load_to_gpu = load_to_gpu
-        print("relation_count:", relation_count)
+        # print("relation_count:", relation_count)
         self.entity_count, self.relation_count = entity_count, relation_count + 1  # dummy relation added to avoid empty neighbour case
 
         self.sub_facts, self.sub_degree, self.obj_facts, self.obj_degree = self.init_matrices(train_kb, max_neighbours)
 
-        print("Created entity neighbourhood dict")
+        # print("Created entity neighbourhood dict")
 
         # --build time_emb_matrix to retrieve t1/t2 from interval id-- #
         assert (train_kb.datamap.use_time_interval == False)  # no time binning assumed
@@ -96,12 +95,12 @@ class Gadget(torch.nn.Module):
                                          self.load_to_gpu)
         self.eval_tensors = {'subject': self.get_nbors_indices(self.eval_ids, mode='subject'),
                              'object': self.get_nbors_indices(self.eval_ids, mode='object')}
-        print("Constructed tensors for eval")
+        # print("Constructed tensors for eval")
 
         self.use_obj_scores = use_obj_scores
 
-        if not use_obj_scores:
-            print("Not looking at object (e2) neighbourhood")
+        # if not use_obj_scores:
+        #     print("Not looking at object (e2) neighbourhood")
 
         self.train_kb = train_kb
         self.t1_map = t1_map
@@ -176,7 +175,7 @@ class Gadget(torch.nn.Module):
             entity_degrees -= 1  # positive sample filtered for each entity, hence reduce degree by 1
 
         indices = numpy.repeat(numpy.arange(batch_size), entity_degrees.cpu())
-        indices = func_load_to_gpu(torch.tensor(indices), self.load_to_gpu)
+        indices = func_load_to_gpu(torch.tensor(indices, dtype=torch.int64), self.load_to_gpu)
 
         return entity_nbors, indices
 
@@ -331,7 +330,7 @@ class Gadget(torch.nn.Module):
             for key in obj_facts_dict:
                 max_neighbours = max(max_neighbours, len(obj_facts_dict[key]))
 
-        print("Max neighbours:{}".format(max_neighbours))
+        # print("Max neighbours:{}".format(max_neighbours))
 
         num_entities = len(train_kb.datamap.entity_map)
 
@@ -395,7 +394,7 @@ class Pairs(Gadget):
                 # ------------------------ #
 
                 self.scoring_gadget = torch.nn.ModuleDict({'subject': sub_prob_density, 'object': obj_prob_density})
-                print("Initialized {} scoring gadget for pairwise".format(self.scoring_gadget_type))
+                # print("Initialized {} scoring gadget for pairwise".format(self.scoring_gadget_type))
         else:
             raise Exception("Unknown gadget type {}".format(self.scoring_gadget_type))
         
@@ -567,14 +566,14 @@ class Recurrent(Gadget):
                 # ------------------------ #
 
                 self.scoring_gadget = torch.nn.ModuleDict({'subject': sub_prob_density, 'object': obj_prob_density})
-                print("Initialized {} scoring gadget for recurrent".format(self.scoring_gadget_type))
+                # print("Initialized {} scoring gadget for recurrent".format(self.scoring_gadget_type))
         else:
             raise Exception("Unknown gadget type {}".format(self.scoring_gadget_type))
         
         return
 
 
-    def compute_scores(self, s, r, o, t, mode='subject', positive_samples=False, eval=False, predict_time=False):
+    def compute_scores(self, s, r, o, t, mode='subject', positive_samples=False, eval=True, predict_time=False):
         """
         Computes score for each sample (s,r,o,t are expected to be of same length)
         mode='subject' means look at subjects' neighbourhood only (similar for mode='object').
@@ -645,6 +644,10 @@ class Recurrent(Gadget):
 
         # pdb.set_trace()
 
+        s1 = r_time.shape
+        s2 = query_time.shape
+        s3 = entity_nbors.shape
+        s4 = t_repeated.shape
         time_diff = r_time - query_time
 
         # print("r_time shape:{}, query_time:{}".format(r_time.shape, query_time.shape))

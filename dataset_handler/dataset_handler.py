@@ -144,4 +144,10 @@ class DatasetHandler:
     
     def relation2id(self, relation):
         return self._relation2id[relation]
+    
+    def no_of_entities(self):
+        return len(self._entity2id)
+    
+    def no_of_relations(self):
+        return len(self._relation2id)
 

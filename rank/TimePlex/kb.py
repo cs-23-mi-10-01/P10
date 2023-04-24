@@ -2,7 +2,6 @@ import numpy
 import torch
 from collections import defaultdict as dd
 import os
-import pdb
 
 YEARMIN = 0  # -50
 YEARMAX = 3000
@@ -103,20 +102,17 @@ class Datamap(object):
     def convert_dict2mat(dict_in):
         dict_mat = numpy.zeros(len(dict_in))
         # ipdb.set_trace()
-        try:
-            for key in dict_in.keys():
-                if type(key) == tuple:
-                    if key == ('UNK-TIME', 'UNK-TIME'):
-                        dict_mat[int(dict_in[key])] = -1
-                    else:
-                        dict_mat[int(dict_in[key])] = int(numpy.mean(key))
+        for key in dict_in.keys():
+            if type(key) == tuple:
+                if key == ('UNK-TIME', 'UNK-TIME'):
+                    dict_mat[int(dict_in[key])] = -1
                 else:
-                    if key == 'UNK-TIME':
-                        dict_mat[int(dict_in[key])] = -1
-                    else:
-                        dict_mat[int(dict_in[key])] = int(key)
-        except:
-            pdb.set_trace()
+                    dict_mat[int(dict_in[key])] = int(numpy.mean(key))
+            else:
+                if key == 'UNK-TIME':
+                    dict_mat[int(dict_in[key])] = -1
+                else:
+                    dict_mat[int(dict_in[key])] = int(key)
         dict_mat = numpy.array(dict_mat)
         return dict_mat
 
@@ -125,16 +121,13 @@ class Datamap(object):
         dict_mat_s = numpy.zeros(len(dict_in))
         dict_mat_e = numpy.zeros(len(dict_in))
         # ipdb.set_trace()
-        try:
-            for key in dict_in.keys():
-                if key == ('UNK-TIME', 'UNK-TIME'):
-                    dict_mat_s[int(dict_in[key])] = -1
-                    dict_mat_e[int(dict_in[key])] = -1
-                else:
-                    dict_mat_s[int(dict_in[key])] = key[0]
-                    dict_mat_e[int(dict_in[key])] = key[1]
-        except:
-            pdb.set_trace()
+        for key in dict_in.keys():
+            if key == ('UNK-TIME', 'UNK-TIME'):
+                dict_mat_s[int(dict_in[key])] = -1
+                dict_mat_e[int(dict_in[key])] = -1
+            else:
+                dict_mat_s[int(dict_in[key])] = key[0]
+                dict_mat_e[int(dict_in[key])] = key[1]
         dict_mat_s = numpy.array(dict_mat_s)
         dict_mat_e = numpy.array(dict_mat_e)
         return dict_mat_s, dict_mat_e
@@ -234,15 +227,12 @@ class Datamap(object):
         year_list = []
 
         for k, v in triple_time.items():
-            try:
-                start = v[0].split('-')[0]
-                end = v[1].split('-')[0]
-                # if(len(v)!=1):
-                #     end = v[1].split('-')[0]
-                # else:
-                #     end='####'
-            except:
-                pdb.set_trace()
+            start = v[0].split('-')[0]
+            end = v[1].split('-')[0]
+            # if(len(v)!=1):
+            #     end = v[1].split('-')[0]
+            # else:
+            #     end='####'
 
             if start.find('#') == -1 and len(start) == 4: year_list.append(int(start))
             if end.find('#') == -1 and len(end) == 4: year_list.append(int(end))
@@ -463,11 +453,8 @@ class kb(object):
         return start, end
 
     def get_span_ids(self, start_in, end_in):
-        try:
-            start = start_in.split('-')[0]
-            end = end_in.split('-')[0]
-        except:
-            pdb.set_trace()
+        start = start_in.split('-')[0]
+        end = end_in.split('-')[0]
 
         if start == '####':
             start = YEARMIN

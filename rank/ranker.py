@@ -33,8 +33,7 @@ class Ranker:
                     model_path = os.path.join(self.base_directory, "models", embedding_name, dataset, "split_" + split, "Model.model")
                     loader = Loader(self.params, dataset, split, model_path, embedding_name)
                     model = loader.load()
-                    if embedding_name not in ["TimePlex"]:
-                        model.eval()
+                    model.eval()
 
                     self.ranked_quads = self._generate_ranked_quads(model, embedding_name, dataset, split)
 
@@ -66,10 +65,6 @@ class Ranker:
                     ranked_quads.append(quad)
                     continue
             if embedding_name in ['DE_TransE', 'DE_SimplE', 'DE_DistMult']:
-                if quad["TIME_TO"] == "0":
-                    ranked_quads.append(quad)
-                    continue
-            if dataset in ['icews14'] and embedding_name in ['DE_TransE', 'DE_SimplE', 'DE_DistMult']:
                 if quad["TIME_TO"] == "0":
                     ranked_quads.append(quad)
                     continue
