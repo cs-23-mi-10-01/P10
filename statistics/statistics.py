@@ -4,13 +4,14 @@ import json
 import pandas
 
 from datetime import date
-from scripts import touch, year_to_iso_format, read_json, write_json
+from scripts import touch, year_to_iso_format, read_json, write_json, exists
 from statistics.measure import Measure
 from copy import deepcopy
 from dataset_handler.dataset_handler import DatasetHandler
 from statistics.semester_10_time_density_hypothesis import TimeDensityHypothesis
 from statistics.semester_10_relation_properties_hypothesis import RelationPropertiesHypothesis
 from statistics.semester_10_voting_hypothesis import VotingHypothesis
+from rank.ranker import Ranker
 
 
 class Statistics():
@@ -443,25 +444,38 @@ class Statistics():
     def average_timestamp_precision(self):
         for dataset in self.params.datasets:
             for split in self.params.splits:
-                avg = {}
                 for embedding in self.params.embeddings:
-                    # read json file with best predictions (from Ranker._generate_best_predictions)
+                    # file paths
                     predictions_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
                     avg_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "timestamp_prediction_avg.json")
+
                     best_predictions = read_json(predictions_path)
-                    diff_list = []
 
-                    #get and save difference
-                    for i in best_predictions:
-                        answer = date.fromisoformat(i['ANSWER'])
-                        prediction = date.fromisoformat(i['BEST_PREDICTION'][embedding][0])
-                        difference = (abs((answer-prediction).days))
-                        diff_list.append(difference)
-                        if len(i['BEST_PREDICTION'][embedding]) == 1:
-                            i['BEST_PREDICTION'][embedding].append(difference)
+                    #get differences and average and write to files
+                    self.best_predictions_time_difference(best_predictions, predictions_path, embedding)
+                    self.best_predictions_time_difference_avg(best_predictions, avg_path, embedding)
 
-                    avg[embedding] = sum(diff_list)/len(diff_list)
-                    print(avg[embedding])
+    def best_predictions_time_difference(self, best_predictions, predictions_path, embedding):
+        for i in best_predictions:
+            # find difference
+            answer = date.fromisoformat(i['ANSWER'])
+            prediction = date.fromisoformat(i['BEST_PREDICTION'][embedding]['PREDICTION'])
+            difference = (abs((answer-prediction).days))
+            
+            #save difference
+            i['BEST_PREDICTION'][embedding]['DIFFERENCE'] = difference
 
-                    write_json(predictions_path, best_predictions)
-                    write_json(avg_path, avg)
+        # write to file
+        write_json(predictions_path, best_predictions)
+                   
+    def best_predictions_time_difference_avg(self, best_predictions, avg_path, embedding):
+        # load avg (to not over-write)
+        avg = read_json(avg_path) if exists(avg_path) else {}
+
+        # find avg
+        no_predictions = len(best_predictions)
+        total_difference = sum(diff['BEST_PREDICTION'][embedding]['DIFFERENCE'] for diff in best_predictions)
+        avg[embedding] = total_difference/no_predictions
+
+        # write to file
+        write_json(avg_path, avg)

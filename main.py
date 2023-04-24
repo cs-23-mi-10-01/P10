@@ -23,7 +23,7 @@ def main():
 
     params.timer.start("main")
     if params.embeddings == ['all']:
-        params.embeddings = ['DE_TransE','DE_SimplE','DE_DistMult','TERO','ATISE']
+        params.embeddings = ['DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE']
     if params.datasets == ['all']:
         params.datasets = ['icews14']
     if params.splits == ['all']:

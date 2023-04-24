@@ -103,18 +103,23 @@ class Ranker:
             if i % 1000 == 0:
                 print("Generating predictions for fact " + str(i) + "-" + str(i + 999) + " (total number: " + str(len(self.ranked_quads)) + ") " \
                       + " on dataset " + dataset + ", split " + split + " with embedding " + embedding_name)
-  
+
             if quad["TIME_FROM"] == "0":
                 best_prediction_quad = quad
                 if "RANK" in best_prediction_quad.keys():
                     best_prediction_quad.pop("RANK")
                 if "BEST_PREDICTION" not in best_prediction_quad.keys():
                     best_prediction_quad["BEST_PREDICTION"] = {}
+                if embedding_name not in best_prediction_quad["BEST_PREDICTION"].keys():
+                    best_prediction_quad["BEST_PREDICTION"][embedding_name] = {}
+                else:
+                    best_predictions.append(quad)
+                    continue
                 
                 fact_scores = rank_calculator.simulate_fact_scores(quad["HEAD"], quad["RELATION"],
                                                     quad["TAIL"], quad["TIME_FROM"],
                                                     quad["TIME_TO"], quad["ANSWER"])
-                best_prediction_quad["BEST_PREDICTION"][embedding_name] = [rank_calculator.best_prediction(fact_scores)]
+                best_prediction_quad["BEST_PREDICTION"][embedding_name]["PREDICTION"] = rank_calculator.best_prediction(fact_scores)
                 best_predictions.append(best_prediction_quad)
 
         return best_predictions
