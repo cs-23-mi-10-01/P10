@@ -457,20 +457,37 @@ class Statistics():
 
     def best_predictions_time_difference(self, best_predictions, predictions_path, dataset, embedding):
         for i in best_predictions:
-            # find difference
-            if dataset in ['icews14']:
-                answer = date.fromisoformat(i['ANSWER'])
-                prediction = date.fromisoformat(i['BEST_PREDICTION'][embedding]['PREDICTION'])
-                difference = (abs((answer-prediction).days))
-            if dataset in ['wikidata12k','yago11k']:
-                if i['ANSWER']=='-':
+
+            # skip predictions for which we have no answer
+            if i['ANSWER']=='-':
                     continue
-                answer = int(i['ANSWER'])
-                prediction = int(i['BEST_PREDICTION'][embedding]['PREDICTION'])
-                difference = abs(answer-prediction)
             
-            #save difference
-            i['BEST_PREDICTION'][embedding]['DIFFERENCE'] = difference
+            match(dataset):
+                case 'icews14':
+                    answer = date.fromisoformat(i['ANSWER'])
+                    prediction = date.fromisoformat(i['BEST_PREDICTION'][embedding]['PREDICTION'])
+                    difference = (abs((answer-prediction).days))
+                    i['BEST_PREDICTION'][embedding]['DIFFERENCE'] = difference
+                case 'wikidata12k' | 'yago11k':
+                    if type(i['BEST_PREDICTION'][embedding]['PREDICTION']) is list:
+                        answer = int(i['ANSWER'])
+                        time_begin = i['BEST_PREDICTION'][embedding]['PREDICTION'][0]
+                        time_end = i['BEST_PREDICTION'][embedding]['PREDICTION'][1]
+                        difference_begin = abs(answer-time_begin)
+                        difference_end = abs(answer-time_end)
+                        if difference_begin < difference_end:
+                            best_case = difference_begin
+                            worst_case = difference_end
+                        else:
+                            best_case = difference_end
+                            worst_case = difference_begin
+                        i['BEST_PREDICTION'][embedding]['BEST_DIFFERENCE'] = best_case
+                        i['BEST_PREDICTION'][embedding]['WORST_DIFFERENCE'] = worst_case
+                    else:
+                        answer = int(i['ANSWER'])
+                        prediction = int(i['BEST_PREDICTION'][embedding]['PREDICTION'])
+                        difference = abs(answer-prediction)
+                        i['BEST_PREDICTION'][embedding]['DIFFERENCE'] = difference
 
         # write to file
         write_json(predictions_path, best_predictions)
@@ -483,9 +500,19 @@ class Statistics():
         predictions = list(filter( lambda x: 'DIFFERENCE' in x['BEST_PREDICTION'][embedding].keys(), best_predictions))
 
         # find avg
-        no_predictions = len(predictions)
-        total_difference = sum(i['BEST_PREDICTION'][embedding]['DIFFERENCE'] for i in predictions)
-        avg[embedding] = total_difference/no_predictions
+        if len(predictions) > 0:
+            no_predictions = len(predictions)
+            total_difference = sum(i['BEST_PREDICTION'][embedding]['DIFFERENCE'] for i in predictions)
+            avg[embedding] = total_difference/no_predictions
+        else:
+            predictions = list(filter( lambda x: 'BEST_DIFFERENCE' in x['BEST_PREDICTION'][embedding].keys(), best_predictions))
+            no_predictions = len(predictions)
+            total_best_difference = sum(i['BEST_PREDICTION'][embedding]['BEST_DIFFERENCE'] for i in predictions)
+            total_worst_difference = sum(i['BEST_PREDICTION'][embedding]['WORST_DIFFERENCE'] for i in predictions)
+            if embedding not in avg.keys():
+                avg[embedding] = {}
+            avg[embedding]['BEST'] = total_best_difference/no_predictions
+            avg[embedding]['WORST'] = total_worst_difference/no_predictions
 
         # write to file
         write_json(avg_path, avg)

@@ -43,7 +43,7 @@ class RankCalculator:
     def get_time_id_from_timestamp(self, timestamp):
         if self.dataset in ['icews14']:
             return self.get_day_from_timestamp(timestamp)
-        
+
         if self.dataset in ['yago11k', 'wikidata12k']: 
             check_timestamp = timestamp
             if check_timestamp == '-':
@@ -67,11 +67,13 @@ class RankCalculator:
         return None
     
     def get_timestamp_from_day(self, day):
-        return self.start_sim_date + datetime.timedelta(int(day))
+        return (self.start_sim_date + datetime.timedelta(int(day))).isoformat()
 
     def get_timestamp_from_time_id(self, time_id):
         if self.dataset in ['icews14']:
             return self.get_timestamp_from_day(time_id)
+        if self.dataset in ['wikidata12k', 'yago11k']:
+            return sorted(self.kg.year2id.items())[time_id][0]
         return None
 
 
@@ -150,5 +152,5 @@ class RankCalculator:
         scores = [fact[4] for fact in fact_scores]
         highest_score = max(scores)
         pred = fact_scores[scores.index(highest_score)][0:5]
-        #print(self.get_timestamp_from_time_id(pred[3]))
-        return self.get_timestamp_from_time_id(pred[3]).isoformat()
+        return self.get_timestamp_from_time_id(int(pred[3]))
+        exit()
