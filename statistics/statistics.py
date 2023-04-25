@@ -452,15 +452,22 @@ class Statistics():
                     best_predictions = read_json(predictions_path)
 
                     #get differences and average and write to files
-                    self.best_predictions_time_difference(best_predictions, predictions_path, embedding)
+                    self.best_predictions_time_difference(best_predictions, predictions_path, dataset, embedding)
                     self.best_predictions_time_difference_avg(best_predictions, avg_path, embedding)
 
-    def best_predictions_time_difference(self, best_predictions, predictions_path, embedding):
+    def best_predictions_time_difference(self, best_predictions, predictions_path, dataset, embedding):
         for i in best_predictions:
             # find difference
-            answer = date.fromisoformat(i['ANSWER'])
-            prediction = date.fromisoformat(i['BEST_PREDICTION'][embedding]['PREDICTION'])
-            difference = (abs((answer-prediction).days))
+            if dataset in ['icews14']:
+                answer = date.fromisoformat(i['ANSWER'])
+                prediction = date.fromisoformat(i['BEST_PREDICTION'][embedding]['PREDICTION'])
+                difference = (abs((answer-prediction).days))
+            if dataset in ['wikidata12k','yago11k']:
+                if i['ANSWER']=='-':
+                    continue
+                answer = int(i['ANSWER'])
+                prediction = int(i['BEST_PREDICTION'][embedding]['PREDICTION'])
+                difference = abs(answer-prediction)
             
             #save difference
             i['BEST_PREDICTION'][embedding]['DIFFERENCE'] = difference
@@ -472,9 +479,12 @@ class Statistics():
         # load avg (to not over-write)
         avg = read_json(avg_path) if exists(avg_path) else {}
 
+        # filter predictions w no answer
+        predictions = list(filter( lambda x: 'DIFFERENCE' in x['BEST_PREDICTION'][embedding].keys(), best_predictions))
+
         # find avg
-        no_predictions = len(best_predictions)
-        total_difference = sum(diff['BEST_PREDICTION'][embedding]['DIFFERENCE'] for diff in best_predictions)
+        no_predictions = len(predictions)
+        total_difference = sum(i['BEST_PREDICTION'][embedding]['DIFFERENCE'] for i in predictions)
         avg[embedding] = total_difference/no_predictions
 
         # write to file

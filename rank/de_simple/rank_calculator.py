@@ -125,8 +125,15 @@ class RankCalculator:
     def rank_of_correct_prediction(self, fact_scores):
         return self.get_rank([fact[6] for fact in fact_scores])
     
+    def time_granularity(self, date):
+        if self.dataset_name in ['icews14']:
+            correct_format = date.isoformat()
+        if self.dataset_name in ['wikidata12k', 'yago11k']:
+            correct_format = date.year
+        return correct_format
+
     def best_prediction(self, fact_scores):
         scores = [fact[6] for fact in fact_scores]
         highest_score = max(scores)
         pred = fact_scores[scores.index(highest_score)][0:6]
-        return date(pred[3], pred[4], pred[5]).isoformat()
+        return self.time_granularity(date(pred[3], pred[4], pred[5]))
