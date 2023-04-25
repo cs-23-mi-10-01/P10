@@ -1,0 +1,1382 @@
+{
+    "Make statement": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Consult": {
+        "symmetric": true,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Make an appeal or request": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to meet or negotiate": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Make a visit": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Host a visit": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": true,
+        "reflexive": false
+    },
+    "Arrest, detain, or charge with legal action": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Praise or endorse": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Criticize or denounce": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Accuse": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Use unconventional violence": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Use conventional military force": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Engage in negotiation": {
+        "symmetric": true,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to cooperate": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to engage in diplomatic cooperation (such as policy support)": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Engage in diplomatic cooperation": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Sign formal agreement": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Investigate": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Discuss by telephone": {
+        "symmetric": true,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Reject": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "fight with small arms and light weapons": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Make optimistic comment": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Threaten": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demonstrate or rally": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Abduct, hijack, or take hostage": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Make pessimistic comment": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Meet at a 'third' location": {
+        "symmetric": true,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Engage in symbolic act": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for diplomatic cooperation (such as policy support)": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Return, release person(s)": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Protest violently, riot": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Provide humanitarian aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Make empathetic comment": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Use tactics of violent repression": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Occupy territory": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Physically assault": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Reduce relations": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Deny responsibility": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Mobilize or increase armed forces": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Provide aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Ease administrative sanctions": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Impose administrative sanctions": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Bring lawsuit against": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Confiscate property": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Expel or deport individuals": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Reduce or break diplomatic relations": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Cooperate economically": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Sexually assault": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Complain officially": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Rally support on behalf of": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Cooperate militarily": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Impose embargo, boycott, or sanctions": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Coerce": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Yield": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to provide military aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Consider policy option": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Threaten with military force": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to cooperate economically": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Provide military aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Reject proposal to meet, discuss, or negotiate": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Engage in material cooperation": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Employ aerial weapons": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to provide material aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Provide economic aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Kill by physical assault": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express accord": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Conduct suicide, car, or other non-military bombing": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Carry out suicide bombing": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for intelligence": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Rally opposition against": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to release persons or property": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand change in leadership": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to provide economic aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Accuse of crime, corruption": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand diplomatic cooperation (such as policy support)": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Grant diplomatic recognition": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Acknowledge or claim responsibility": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Impose restrictions on political freedoms": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Defy norms, law": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Reject plan, agreement to settle dispute": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to settle dispute": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Retreat or surrender militarily": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Obstruct passage, block": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to provide humanitarian aid": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for change in leadership": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Assassinate": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Give ultimatum": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Accuse of human rights abuses": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Share intelligence or information": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Refuse to yield": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Investigate crime, corruption": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal to engage in or accept mediation": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for de-escalation of military engagement": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Halt negotiations": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demonstrate military or police power": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Accede to demands for change in leadership": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "fight with artillery and tanks": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Conduct strike or boycott": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Increase military alert status": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Apologize": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for release of persons or property": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Mobilize or increase police power": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Torture": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for judicial cooperation": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal to others to meet or negotiate": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Receive deployment of peacekeepers": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to de-escalate military engagement": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Defend verbally": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Declare truce, ceasefire": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Refuse to release persons or property": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demonstrate for leadership change": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Provide military protection or peacekeeping": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": true,
+        "reflexive": false
+    },
+    "Decline comment": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for military aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Increase police alert status": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Ease economic sanctions, boycott, embargo": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Mediate": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for change in institutions, regime": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for economic aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to ease economic sanctions, boycott, or embargo": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Impose blockade, restrict movement": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand meeting, negotiation": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for economic cooperation": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for easing of administrative sanctions": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Accuse of espionage, treason": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to cooperate militarily": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal to others to settle dispute": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to mediate": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand intelligence cooperation": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Attempt to assassinate": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for policy change": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Engage in mass killings": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand material cooperation": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand de-escalation of military engagement": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Impose state of emergency or martial law": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to yield": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Return, release property": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to ease administrative sanctions": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for material cooperation": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Engage in judicial cooperation": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Grant asylum": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for rights": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to accept mediation": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Accuse of aggression": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Threaten non-force": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand economic aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to engage in material cooperation": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Seize or damage property": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Reduce or stop military assistance": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Accede to demands for rights": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Refuse to ease administrative sanctions": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Reduce or stop economic assistance": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Veto": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Accuse of war crimes": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal to yield": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for humanitarian aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand release of persons or property": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand change in institutions, regime": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand that target yields": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Ease curfew": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to cooperate on intelligence": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Refuse to de-escalate military engagement": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand settling of dispute": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Threaten with political dissent, protest": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Ban political parties or politicians": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Reduce or stop material aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Threaten with repression": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to provide military protection or peacekeeping": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to change leadership": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Threaten with sanctions, boycott, embargo": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Threaten to reduce or break relations": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Violate ceasefire": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": true,
+        "reflexive": false
+    },
+    "Demand mediation": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Destroy property": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Expel or withdraw peacekeepers": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demonstrate for policy change": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand easing of administrative sanctions": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Refuse to ease economic sanctions, boycott, or embargo": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Investigate human rights abuses": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Accede to demands for change in institutions, regime": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand judicial cooperation": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demobilize armed forces": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Reduce or stop humanitarian assistance": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Threaten to reduce or stop aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for political reform": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand political reform": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Conduct hunger strike": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Reject material cooperation": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand military aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Reject military cooperation": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Forgive": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Ease military blockade": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to change policy": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Accede to demands for change in policy": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Receive inspectors": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": true,
+        "reflexive": false
+    },
+    "Halt mediation": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand policy change": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Reject economic cooperation": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Accede to requests or demands for political reform": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand rights": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to cooperate on judicial matters": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Use as human shield": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Engage in political dissent": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Obstruct passage to demand leadership change": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Reject request for change in leadership": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Ease state of emergency or martial law": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand humanitarian aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Threaten with administrative sanctions": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for military protection or peacekeeping": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Investigate war crimes": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Reject request for military aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Use chemical, biological, or radiological weapons": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Demand material aid": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": true,
+        "reflexive": false
+    },
+    "Appeal for target to allow international involvement (non-mediation)": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to change institutions, regime": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Reject request for military protection or peacekeeping": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Carry out car bombing": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Carry out roadside bombing": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Threaten to halt mediation": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Express intent to institute political reform": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Appeal for easing of economic sanctions, boycott, or embargo": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": true,
+        "reflexive": false
+    },
+    "Threaten to halt negotiations": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": true,
+        "reflexive": false
+    },
+    "Ease political dissent": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Expel or withdraw": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Engage in mass expulsion": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": true,
+        "reflexive": false
+    },
+    "Engage in violent protest for rights": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": true,
+        "reflexive": false
+    },
+    "Detonate nuclear weapons": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "Reject judicial cooperation": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    }
+}

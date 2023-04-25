@@ -1,0 +1,146 @@
+{
+    "P54": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P166": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P1411": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P39": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P131": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P31": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P1346": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P463": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P17": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P1435": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P69": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P793": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P26": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P2962": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P108": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P190": {
+        "symmetric": false,
+        "anti-symmetric": false,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P150": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P102": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P27": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P579": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P512": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P1376": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P6": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    },
+    "P551": {
+        "symmetric": false,
+        "anti-symmetric": true,
+        "inverse": false,
+        "reflexive": false
+    }
+}

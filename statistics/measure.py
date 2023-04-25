@@ -27,15 +27,15 @@ class Measure():
 
             self.num_facts[embedding] += 1
 
-            if ranks[embedding] == 1:
+            if int(ranks[embedding]) == 1:
                 self.hit1[embedding] += 1.0
-            if ranks[embedding] <= 3:
+            if int(ranks[embedding]) <= 3:
                 self.hit3[embedding] += 1.0
-            if ranks[embedding] <= 10:
+            if int(ranks[embedding]) <= 10:
                 self.hit10[embedding] += 1.0
 
-            self.mr[embedding] += ranks[embedding]
-            self.mrr[embedding] += (1.0 / ranks[embedding])
+            self.mr[embedding] += int(ranks[embedding])
+            self.mrr[embedding] += (1.0 / int(ranks[embedding]))
 
     def normalize(self):
         for embedding in self.hit1:
@@ -73,5 +73,13 @@ class Measure():
                 "HIT10": self.hit10[embedding], 
                 "MR": self.mr[embedding], 
                 "MRR": self.mrr[embedding]
+            }
+        return ret_dict
+    
+    def as_mrp(self):
+        ret_dict = {}
+        for embedding in self.hit1.keys():
+            ret_dict[embedding] = {
+                "MRP": self.mrr[embedding]
             }
         return ret_dict

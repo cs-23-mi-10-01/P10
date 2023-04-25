@@ -1,0 +1,16 @@
+\begin{table*}[htb]
+\centering
+\begin{minipage}{0.95\textwidth}
+\centering
+\caption{Relation properties comparison in %1}
+\vspace{-3mm}
+
+\begin{tabular}{l|cc|cc|cc|cc}\hline
+Model       & $T_S$ & $T_S'$ & $T_A$ & $T_A'$ & $T_I$ & $T_I'$ & $T_R$ & $T_R'$ \\ \hline
+%2 \hline
+\end{tabular}
+
+\label{fig:relation_properties_%1_comparison}
+\end{minipage}
+\end{table*}
+
