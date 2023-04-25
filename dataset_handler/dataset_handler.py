@@ -15,7 +15,7 @@ class DatasetHandler:
         self._entity2id = {}
         self._relation2id = {}
 
-        if self.dataset in ["wikidata12k", "yago11k"]:
+        if self.dataset in ["wikidata12k", "yago11k", "icews14"]:
             entity2id_path = os.path.join(self.base_directory, "datasets", self.dataset, "entity2id.txt")
             with open(entity2id_path, encoding='utf-8') as identifiers:
                 records = csv.DictReader(identifiers, fieldnames=['entity', 'id'], delimiter='\t')

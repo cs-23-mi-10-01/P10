@@ -34,29 +34,46 @@ class RankCalculator:
     def get_rel_id(self, relation):
         return self.relation_map[self.dataset_handler.relation2id(relation)]
     
-    def get_time_id(self, timestamp):
-        if str(timestamp) in self.year2id.keys():
-            return self.year2id[str(timestamp)]
-        else:
-            return self.year2id["UNK-TIME"]
+    def get_time_id(self, year, month, day):
+        if self.dataset_name in ['icews14']:
+            return self.time_str_id(year, month, day, year, month, day)
+        elif self.dataset_name in ['wikidata12k', 'yago11k']:
+            if str(year) in self.year2id.keys():
+                return self.year2id[str(year)]
+            else:
+                return self.year2id["UNK-TIME"]
+    
+    def timestamp_from_date(self, year, month, day):
+        if self.dataset_name in ['wikidata12k', 'yago11k']:
+            return year
+        elif self.dataset_name in ['icews14']:
+            return self.time_str_id(year, month, day, year, month, day)
     
     def interval_id(self, from_year, to_year):
         if f"({from_year}, {to_year})" in self.interval2id.keys():
             return self.interval2id[f"({from_year}, {to_year})"]
         else:
-            return self.interval2id["('UNK-TIME', 'UNK-TIME')"]
+            return self.interval2id["(UNK-TIME, UNK-TIME)"]
     
     def _year_to_iso_format(self, year):
         modified_year = str(year)
         if modified_year == '-':
             modified_year = "####"
-        return modified_year + "-##-##"
+        return self._to_iso_format(modified_year, "##", "##")
     
-    def time_str_id(self, from_year, to_year):
-        from_year_iso = self._year_to_iso_format(from_year)
-        to_year_iso = self._year_to_iso_format(to_year)
-        if f"{from_year_iso}\t{to_year_iso}" in self.time_str2id.keys():
-            return self.time_str2id[f"{from_year_iso}\t{to_year_iso}"]
+    def _to_iso_format(self, year, month, day):
+        return f"{year}-{month}-{day}"
+    
+    def time_str_id(self, from_year, from_month, from_day, to_year, to_month, to_day):
+        if self.dataset_name in ["wikidata12k", "yago11k"]:
+            from_iso = self._year_to_iso_format(from_year)
+            to_iso = self._year_to_iso_format(to_year)
+        elif self.dataset_name in ["icews14"]:
+            from_iso = self._to_iso_format(from_year, from_month, from_day)
+            to_iso = self._to_iso_format(from_year, from_month, from_day)
+        
+        if f"{from_iso}\t{to_iso}" in self.time_str2id.keys():
+            return self.time_str2id[f"{from_iso}\t{to_iso}"]
         else:
             return self.time_str2id["####-##-##\t####-##-##"]
     
@@ -73,12 +90,12 @@ class RankCalculator:
         if year == "UNK-TIME":
             return 0
         return year
-    
+
     def split_timestamp(self, element):
+        if element == '-':
+            return "UNK-TIME", "UNK-TIME", "UNK-TIME"
         if self.dataset_name in ['wikidata12k', 'yago11k']:
-            if element == '-':
-                return "UNK-TIME", "UNK-TIME", "UNK-TIME"
-            return int(element), "UNK-TIME", "UNK-TIME"
+            return int(element), 0, 0
         else:
             dt = datetime.date.fromisoformat(element)
             return dt.year, dt.month, dt.day
@@ -91,34 +108,32 @@ class RankCalculator:
 
         match target:
             case "h":
-                sim_fact = [answer, relation, tail, year_from, year_to]
+                sim_fact = [answer, relation, tail, year_from, month_from, day_from, year_to, month_to, day_to]
             case "r":
-                sim_fact = [head, answer, tail, year_from, year_to]
+                sim_fact = [head, answer, tail, year_from, month_from, day_from, year_to, month_to, day_to]
             case "t":
-                sim_fact = [head, relation, answer, year_from, year_to]
+                sim_fact = [head, relation, answer, year_from, month_from, day_from, year_to, month_to, day_to]
             case "Tf":
                 ans_year, ans_month, ans_day = self.split_timestamp(answer)
-                sim_fact = [head, relation, tail, ans_year, year_to]
+                sim_fact = [head, relation, tail, ans_year, ans_month, ans_day, year_to, month_to, day_to]
             case "Tt":
                 ans_year, ans_month, ans_day = self.split_timestamp(answer)
-                sim_fact = [head, relation, tail, year_from, ans_year]
+                sim_fact = [head, relation, tail, year_from, month_from, day_from, ans_year, ans_month, ans_day]
             case _:
                 raise Exception("Unknown target")
 
         return sim_fact
     
     def fact_as_ids(self, fact):
-        ret_fact = [self.get_ent_id(fact[0]),
-                      self.get_rel_id(fact[1]), 
-                      self.get_ent_id(fact[2]), 
-                      self.get_time_id(fact[3]), 
-                      self._if_year(fact[3]), 
-                      self.get_time_id(fact[4]), 
-                      self._if_year(fact[4]), 
-                      self.time_str_id(fact[3], fact[4]), 
-                      self.interval_id(fact[3], fact[4])]
-
-        return ret_fact
+        return [self.get_ent_id(fact[0]),
+                self.get_rel_id(fact[1]), 
+                self.get_ent_id(fact[2]), 
+                self.get_time_id(fact[3], fact[4], fact[5]), 
+                self._if_year(fact[3]), 
+                self.get_time_id(fact[6], fact[7], fact[8]), 
+                self._if_year(fact[6]), 
+                self.time_str_id(fact[3], fact[4], fact[5], fact[6], fact[7], fact[8]), 
+                self.interval_id(fact[3], fact[6])]
 
     def shred_fact(self, fact):
 
