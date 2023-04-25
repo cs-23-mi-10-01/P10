@@ -8,7 +8,6 @@ import torch
 from collections import defaultdict
 
 import pickle
-import pdb
 
 time_index = {"t_s": 0, "t_s_orig": 1, "t_e": 2, "t_e_orig": 3, "t_str": 4, "t_i": 5}
 
@@ -277,7 +276,7 @@ def recurring_mean_variance(facts, t_map, num_relations, min_support=10, mode='s
         data = r_diffs[r]
         r_stat[r] = (numpy.mean(data), numpy.var(data), len(data))
 
-    print("r_stats:", r_stat)
+    # print("r_stats:", r_stat)
     # pdb.set_trace()
 
     mean_r = torch.zeros(num_relations)
@@ -357,7 +356,7 @@ def recurring_relation_mean_variance(facts, t_map, num_relations, min_support=10
         # if len(data) > 10:
         r_stat[r] = (numpy.mean(data), numpy.var(data), len(data))
 
-    print("r_stats:", r_stat)
+    # print("r_stats:", r_stat)
 
     mean_r = torch.zeros(num_relations)
     var_r = torch.zeros(num_relations)

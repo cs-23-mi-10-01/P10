@@ -29,9 +29,9 @@ class Ranker:
                     print("Reading from file " + str(quads_path) + "...")
                     self.ranked_quads = json.load(in_file)
                     in_file.close()
-
+                    
                     model_path = os.path.join(self.base_directory, "models", embedding_name, dataset, "split_" + split, "Model.model")
-                    loader = Loader(self.params, model_path, embedding_name)
+                    loader = Loader(self.params, dataset, split, model_path, embedding_name)
                     model = loader.load()
                     model.eval()
 
@@ -53,7 +53,7 @@ class Ranker:
         if embedding_name in ["TFLEX"]:
             rank_calculator = TFLEX_Rank(self.params, model)
         if embedding_name in ["TimePlex"]:
-            rank_calculator = TimePlex_Rank(self.params, model)
+            rank_calculator = TimePlex_Rank(self.params, model, dataset)
 
         for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
             if i % 1000 == 0:
@@ -66,6 +66,10 @@ class Ranker:
                     continue
             if embedding_name in ['DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE']:
                 if quad["TIME_TO"] == "0":
+                    ranked_quads.append(quad)
+                    continue
+            if embedding_name in ["TimePlex"]:
+                if quad["RELATION"] == "0":
                     ranked_quads.append(quad)
                     continue
 
