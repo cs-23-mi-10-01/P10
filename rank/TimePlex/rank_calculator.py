@@ -9,17 +9,20 @@ class RankCalculator:
     def __init__(self, params, model, dataset_name, split = "original"):
         self.params = params
         self.model = model
-        self.dataset_name = dataset_name
+        self.dataset = dataset_name
         self.split = split
 
         self.dataset_resource_folder = os.path.join(self.params.base_directory, "rank", "TimePlex", "resources", dataset_name, "split_" + split)
 
-        self.dataset_handler = DatasetHandler(self.params, self.dataset_name)
-        self.year2id = read_json(os.path.join(self.dataset_resource_folder, "date_year2id.json"))
+        self.dataset_handler = DatasetHandler(self.params, self.dataset)
+        self.timestamp2id = read_json(os.path.join(self.dataset_resource_folder, "timestamp2id.json"))
         self.entity_map = read_json(os.path.join(self.dataset_resource_folder, "entity_map.json"))
         self.relation_map = read_json(os.path.join(self.dataset_resource_folder, "relation_map.json"))
-        self.interval2id = read_json(os.path.join(self.dataset_resource_folder, "date_years2interval_id.json"))
+        self.interval2id = read_json(os.path.join(self.dataset_resource_folder, "timestamp_interval2interval_id.json"))
         self.time_str2id = read_json(os.path.join(self.dataset_resource_folder, "time_str2id.json"))
+
+        if self.dataset in ["icews14"]:
+            self.id2year = read_json(os.path.join(self.dataset_resource_folder, "id2date_year.json"))
 
     def get_rank(self, scores, score_of_expected):
         return torch.sum((scores > score_of_expected).float()).item() + 1
@@ -35,23 +38,25 @@ class RankCalculator:
         return self.relation_map[self.dataset_handler.relation2id(relation)]
     
     def get_time_id(self, year, month, day):
-        if self.dataset_name in ['icews14']:
+        if self.dataset in ['icews14']:
             return self.time_str_id(year, month, day, year, month, day)
-        elif self.dataset_name in ['wikidata12k', 'yago11k']:
-            if str(year) in self.year2id.keys():
-                return self.year2id[str(year)]
+        elif self.dataset in ['wikidata12k', 'yago11k']:
+            if str(year) in self.timestamp2id.keys():
+                return self.timestamp2id[str(year)]
             else:
-                return self.year2id["UNK-TIME"]
+                return self.timestamp2id["UNK-TIME"]
     
-    def timestamp_from_date(self, year, month, day):
-        if self.dataset_name in ['wikidata12k', 'yago11k']:
-            return year
-        elif self.dataset_name in ['icews14']:
-            return self.time_str_id(year, month, day, year, month, day)
-    
-    def interval_id(self, from_year, to_year):
-        if f"({from_year}, {to_year})" in self.interval2id.keys():
-            return self.interval2id[f"({from_year}, {to_year})"]
+    def interval_id(self, from_year, from_month, from_day, to_year, to_month, to_day):
+        if self.dataset in ["icews14"]:
+            from_timestamp = self.id2year[str(self.get_time_id(from_year, from_month, from_day))]
+            to_timestamp = self.id2year[str(self.get_time_id(from_year, from_month, from_day))]
+
+        if self.dataset in ["wikidata12k"]:
+            from_timestamp = from_year
+            to_timestamp = to_year
+            
+        if f"({from_timestamp}, {to_timestamp})" in self.interval2id.keys():
+            return self.interval2id[f"({from_timestamp}, {to_timestamp})"]
         else:
             return self.interval2id["(UNK-TIME, UNK-TIME)"]
     
@@ -65,10 +70,10 @@ class RankCalculator:
         return f"{year}-{month}-{day}"
     
     def time_str_id(self, from_year, from_month, from_day, to_year, to_month, to_day):
-        if self.dataset_name in ["wikidata12k", "yago11k"]:
+        if self.dataset in ["wikidata12k", "yago11k"]:
             from_iso = self._year_to_iso_format(from_year)
             to_iso = self._year_to_iso_format(to_year)
-        elif self.dataset_name in ["icews14"]:
+        elif self.dataset in ["icews14"]:
             from_iso = self._to_iso_format(from_year, from_month, from_day)
             to_iso = self._to_iso_format(from_year, from_month, from_day)
         
@@ -84,7 +89,7 @@ class RankCalculator:
         return [self.dataset_handler.id2relation(r) for r in self.relation_map.keys()]
     
     def number_of_timestamps(self):
-        return len(self.year2id) - 1
+        return len(self.timestamp2id) - 1
     
     def _if_year(self, year):
         if year == "UNK-TIME":
@@ -94,7 +99,7 @@ class RankCalculator:
     def split_timestamp(self, element):
         if element == '-':
             return "UNK-TIME", "UNK-TIME", "UNK-TIME"
-        if self.dataset_name in ['wikidata12k', 'yago11k']:
+        if self.dataset in ['wikidata12k', 'yago11k']:
             return int(element), 0, 0
         else:
             dt = datetime.date.fromisoformat(element)
@@ -133,7 +138,7 @@ class RankCalculator:
                 self.get_time_id(fact[6], fact[7], fact[8]), 
                 self._if_year(fact[6]), 
                 self.time_str_id(fact[3], fact[4], fact[5], fact[6], fact[7], fact[8]), 
-                self.interval_id(fact[3], fact[6])]
+                self.interval_id(fact[3], fact[4], fact[5], fact[6], fact[7], fact[8])]
 
     def shred_fact(self, fact):
 
