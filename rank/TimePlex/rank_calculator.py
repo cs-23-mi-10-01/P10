@@ -1,11 +1,8 @@
 import torch
 import numpy as np
-import time
 import datetime
-import pandas as pd
 import os
-from dateutil.relativedelta import relativedelta
-from scripts import year_to_iso_format, read_json
+from scripts import read_json
 from dataset_handler.dataset_handler import DatasetHandler
 
 class RankCalculator:
@@ -28,13 +25,20 @@ class RankCalculator:
         return torch.sum((scores > scores[0]).float()).item() + 1
 
     def get_ent_id(self, entity):
-        return self.entity_map[self.dataset_handler.entity2id(entity)]
+        if self.dataset_handler.entity2id(entity) in self.entity_map.keys():
+            return self.entity_map[self.dataset_handler.entity2id(entity)]
+        else:
+            bla = self.entity_map["<OOV>"]
+            return bla
 
     def get_rel_id(self, relation):
         return self.relation_map[self.dataset_handler.relation2id(relation)]
     
     def get_time_id(self, timestamp):
-        return self.year2id[str(timestamp)]
+        if str(timestamp) in self.year2id.keys():
+            return self.year2id[str(timestamp)]
+        else:
+            return self.year2id["UNK-TIME"]
     
     def interval_id(self, from_year, to_year):
         if f"({from_year}, {to_year})" in self.interval2id.keys():
