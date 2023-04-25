@@ -60,11 +60,11 @@ class RankCalculator:
         else:
             return self.time_str2id["####-##-##\t####-##-##"]
     
-    def number_of_ents(self):
-        return len(self.entity_map) - 1
+    def all_entities(self):
+        return self.dataset_handler.all_entities()
     
-    def number_of_rels(self):
-        return len(self.relation_map)
+    def all_relations(self):
+        return self.dataset_handler.all_relations()
     
     def number_of_timestamps(self):
         return len(self.year2id) - 1
@@ -84,12 +84,6 @@ class RankCalculator:
             return dt.year, dt.month, dt.day
 
     def simulate_facts(self, head, relation, tail, time_from, time_to, target, answer):
-        if head != "0":
-            head = self.get_ent_id(head)
-        if relation != "0":
-            relation = self.get_rel_id(relation)
-        if tail != "0":
-            tail = self.get_ent_id(tail)
         if time_from != "0":
             year_from, month_from, day_from = self.split_timestamp(time_from)
         if time_to != "0":
@@ -97,34 +91,47 @@ class RankCalculator:
 
         match target:
             case "h":
-                sim_facts = [[i, relation, tail, self.get_time_id(year_from), self._if_year(year_from), self.get_time_id(year_to), self._if_year(year_to), self.time_str_id(year_from, year_to), self.interval_id(year_from, year_to)] for i in range(self.number_of_ents())]
-                sim_facts = [[self.get_ent_id(answer), relation, tail, self.get_time_id(year_from), self._if_year(year_from), self.get_time_id(year_to), self._if_year(year_to), self.time_str_id(year_from, year_to), self.interval_id(year_from, year_to)]] + sim_facts
+                sim_facts = [[entity, relation, tail, year_from, year_to] for entity in range(self.all_entities())]
+                sim_facts = [[answer, relation, tail, year_from, year_to]] + sim_facts
             case "r":
-                sim_facts = [[head, i, tail, self.get_time_id(year_from), self._if_year(year_from), self.get_time_id(year_to), self._if_year(year_to), self.time_str_id(year_from, year_to), self.interval_id(year_from, year_to)] for i in range(self.number_of_rels())]
-                sim_facts = [[head, self.get_rel_id(answer), tail, self.get_time_id(year_from), self._if_year(year_from), self.get_time_id(year_to), self._if_year(year_to), self.time_str_id(year_from, year_to), self.interval_id(year_from, year_to)]] + sim_facts
+                sim_facts = [[head, rel, tail, year_from, year_to] for rel in range(self.all_relations())]
+                sim_facts = [[head, answer, tail, year_from, year_to]] + sim_facts
             case "t":
-                sim_facts = [[head, relation, i, self.get_time_id(year_from), self._if_year(year_from), self.get_time_id(year_to), self._if_year(year_to), self.time_str_id(year_from, year_to), self.interval_id(year_from, year_to)] for i in range(self.number_of_ents())]
-                sim_facts = [[head, relation, self.get_ent_id(answer), self.get_time_id(year_from), self._if_year(year_from), self.get_time_id(year_to), self._if_year(year_to), self.time_str_id(year_from, year_to), self.interval_id(year_from, year_to)]] + sim_facts
+                sim_facts = [[head, relation, entity, year_from, year_to] for entity in range(self.all_entities())]
+                sim_facts = [[head, relation, answer, year_from, year_to]] + sim_facts
             case "Tf":
                 sim_facts = []
-                for key in self.year2id.keys():
-                    if key == "UNK-TIME":
+                for year in self.year2id.keys():
+                    if year == "UNK-TIME":
                         continue
-                    sim_facts.append([head, relation, tail, self.get_time_id(key), self._if_year(key), self.get_time_id(year_to), self._if_year(year_to), self.time_str_id(key, year_to), self.interval_id(key, year_to)])
+                    sim_facts.append([head, relation, tail, year, year_to])
                 ans_year, ans_month, ans_day = self.split_timestamp(answer)
-                sim_facts = [[head, relation, tail, self.get_time_id(ans_year), self._if_year(ans_year), self.get_time_id(year_to), self._if_year(year_to), self.time_str_id(ans_year, year_to), self.interval_id(ans_year, year_to)]] + sim_facts
+                sim_facts = [[head, relation, tail, ans_year, year_to]] + sim_facts
             case "Tt":
                 sim_facts = []
-                for key in self.year2id.keys():
-                    if key == "UNK-TIME":
+                for year in self.year2id.keys():
+                    if year == "UNK-TIME":
                         continue
-                    sim_facts.append([head, relation, tail, self.get_time_id(year_from), self._if_year(year_from), self.get_time_id(key), self._if_year(key), self.time_str_id(year_from, key), self.interval_id(year_from, key)])
+                    sim_facts.append([head, relation, tail, year_from, year])
                 ans_year, ans_month, ans_day = self.split_timestamp(answer)
-                sim_facts = [[head, relation, tail, self.get_time_id(year_from), self._if_year(year_from), self.get_time_id(ans_year), self._if_year(ans_year), self.time_str_id(year_from, ans_year), self.interval_id(year_from, ans_year)]] + sim_facts
+                sim_facts = [[head, relation, tail, year_from, ans_year]] + sim_facts
             case _:
                 raise Exception("Unknown target")
 
         return sim_facts
+    
+    def facts_as_ids(self, facts):
+        ret_facts = [[self.get_ent_id(f[0]),
+                      self.get_rel_id(f[1]), 
+                      self.get_ent_id(f[2]), 
+                      self.get_time_id(f[3]), 
+                      self._if_year(f[3]), 
+                      self.get_time_id(f[4]), 
+                      self._if_year(f[4]), 
+                      self.time_str_id(f[3], f[4]), 
+                      self.interval_id(f[3], f[4])] for f in facts]
+
+        return ret_facts
 
     def shred_facts(self, facts):
         s = np.array([f[0] for f in facts], dtype='int64')
@@ -152,7 +159,8 @@ class RankCalculator:
         elif time_to == "0":
             target = "Tt"
         
-        facts = self.simulate_facts(head, relation, tail, time_from, time_to, target, answer)
+        simulated_facts = self.simulate_facts(head, relation, tail, time_from, time_to, target, answer)
+        facts = self.facts_as_ids(simulated_facts)
         s, r, o, t = self.shred_facts(facts)
         scores = self.model.forward(s, r, o, t)
         rank = self.get_rank(scores)
