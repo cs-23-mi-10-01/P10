@@ -174,7 +174,7 @@ class TimePlex_base(torch.nn.Module):
             score = self.srt_wt * srt + self.ort_wt * ort + self.sot_wt * sot
 
             # --for inverse facts--#
-            r = r + self.relation_count / 2
+            r = r + self.relation_count // 2
             
             rs_re = self.Rs_re(r)
             rs_im = self.Rs_im(r)

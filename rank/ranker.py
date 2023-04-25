@@ -68,6 +68,10 @@ class Ranker:
                 if quad["TIME_TO"] == "0":
                     ranked_quads.append(quad)
                     continue
+            if embedding_name in ["TimePlex"]:
+                if quad["RELATION"] == "0":
+                    ranked_quads.append(quad)
+                    continue
 
             ranked_quad = quad
             if "RANK" not in ranked_quad.keys():

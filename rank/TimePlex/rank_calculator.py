@@ -21,8 +21,8 @@ class RankCalculator:
         self.interval2id = read_json(os.path.join(self.dataset_resource_folder, "date_years2interval_id.json"))
         self.time_str2id = read_json(os.path.join(self.dataset_resource_folder, "time_str2id.json"))
 
-    def get_rank(self, scores):
-        return torch.sum((scores > scores[0]).float()).item() + 1
+    def get_rank(self, scores, score_of_expected):
+        return torch.sum((scores > score_of_expected).float()).item() + 1
 
     def get_ent_id(self, entity):
         if self.dataset_handler.entity2id(entity) in self.entity_map.keys():
@@ -61,10 +61,10 @@ class RankCalculator:
             return self.time_str2id["####-##-##\t####-##-##"]
     
     def all_entities(self):
-        return self.dataset_handler.all_entities()
+        return [self.dataset_handler.id2entity(e) for e in self.entity_map.keys() if e != "<OOV>"]
     
     def all_relations(self):
-        return self.dataset_handler.all_relations()
+        return [self.dataset_handler.id2relation(r) for r in self.relation_map.keys()]
     
     def number_of_timestamps(self):
         return len(self.year2id) - 1
@@ -83,7 +83,7 @@ class RankCalculator:
             dt = datetime.date.fromisoformat(element)
             return dt.year, dt.month, dt.day
 
-    def simulate_facts(self, head, relation, tail, time_from, time_to, target, answer):
+    def simulate_fact(self, head, relation, tail, time_from, time_to, target, answer):
         if time_from != "0":
             year_from, month_from, day_from = self.split_timestamp(time_from)
         if time_to != "0":
@@ -91,53 +91,41 @@ class RankCalculator:
 
         match target:
             case "h":
-                sim_facts = [[entity, relation, tail, year_from, year_to] for entity in range(self.all_entities())]
-                sim_facts = [[answer, relation, tail, year_from, year_to]] + sim_facts
+                sim_fact = [answer, relation, tail, year_from, year_to]
             case "r":
-                sim_facts = [[head, rel, tail, year_from, year_to] for rel in range(self.all_relations())]
-                sim_facts = [[head, answer, tail, year_from, year_to]] + sim_facts
+                sim_fact = [head, answer, tail, year_from, year_to]
             case "t":
-                sim_facts = [[head, relation, entity, year_from, year_to] for entity in range(self.all_entities())]
-                sim_facts = [[head, relation, answer, year_from, year_to]] + sim_facts
+                sim_fact = [head, relation, answer, year_from, year_to]
             case "Tf":
-                sim_facts = []
-                for year in self.year2id.keys():
-                    if year == "UNK-TIME":
-                        continue
-                    sim_facts.append([head, relation, tail, year, year_to])
                 ans_year, ans_month, ans_day = self.split_timestamp(answer)
-                sim_facts = [[head, relation, tail, ans_year, year_to]] + sim_facts
+                sim_fact = [head, relation, tail, ans_year, year_to]
             case "Tt":
-                sim_facts = []
-                for year in self.year2id.keys():
-                    if year == "UNK-TIME":
-                        continue
-                    sim_facts.append([head, relation, tail, year_from, year])
                 ans_year, ans_month, ans_day = self.split_timestamp(answer)
-                sim_facts = [[head, relation, tail, year_from, ans_year]] + sim_facts
+                sim_fact = [head, relation, tail, year_from, ans_year]
             case _:
                 raise Exception("Unknown target")
 
-        return sim_facts
+        return sim_fact
     
-    def facts_as_ids(self, facts):
-        ret_facts = [[self.get_ent_id(f[0]),
-                      self.get_rel_id(f[1]), 
-                      self.get_ent_id(f[2]), 
-                      self.get_time_id(f[3]), 
-                      self._if_year(f[3]), 
-                      self.get_time_id(f[4]), 
-                      self._if_year(f[4]), 
-                      self.time_str_id(f[3], f[4]), 
-                      self.interval_id(f[3], f[4])] for f in facts]
+    def fact_as_ids(self, fact):
+        ret_fact = [self.get_ent_id(fact[0]),
+                      self.get_rel_id(fact[1]), 
+                      self.get_ent_id(fact[2]), 
+                      self.get_time_id(fact[3]), 
+                      self._if_year(fact[3]), 
+                      self.get_time_id(fact[4]), 
+                      self._if_year(fact[4]), 
+                      self.time_str_id(fact[3], fact[4]), 
+                      self.interval_id(fact[3], fact[4])]
 
-        return ret_facts
+        return ret_fact
 
-    def shred_facts(self, facts):
-        s = np.array([f[0] for f in facts], dtype='int64')
-        r = np.array([f[1] for f in facts], dtype='int64')
-        o = np.array([f[2] for f in facts], dtype='int64')
-        t = np.array([f[3:] for f in facts], dtype='int64')
+    def shred_fact(self, fact):
+
+        s = np.array([fact[0]], dtype='int64')
+        r = np.array([fact[1]], dtype='int64')
+        o = np.array([fact[2]], dtype='int64')
+        t = np.array([fact[3:]], dtype='int64')
         
         s = torch.autograd.Variable(torch.from_numpy(s).unsqueeze(1), requires_grad=False)
         r = torch.autograd.Variable(torch.from_numpy(r).unsqueeze(1), requires_grad=False)
@@ -145,6 +133,38 @@ class RankCalculator:
         t = torch.autograd.Variable(torch.from_numpy(t).unsqueeze(1), requires_grad=False)
         
         return s, r, o, t
+
+    def get_scores(self, target, s, r, o, t):
+        match target:
+            case "h":
+                scores = self.model(None, r, o, t).data
+                score_of_expected = scores.gather(1, s.data)
+            case "r":
+                scores = self.model(s, None, o, t).data
+                score_of_expected = scores.gather(1, r.data)
+            case "t":
+                scores = self.model(s, r, None, t).data
+                score_of_expected = scores.gather(1, o.data)
+            case "Tf":
+                t_s = t[:, :, 0]
+                
+                score_from_model = self.model(s, r, o, None)
+                score_of_expected = torch.zeros(score_from_model.shape[0])
+                for index in range(score_from_model.shape[0]):
+                    score_of_expected[index] = score_from_model[index, t_s[index]]
+                score_of_expected = score_of_expected.unsqueeze(-1)
+                scores = score_from_model.view((score_from_model.shape[0], -1))
+            case "Tt":
+                t_e = t[:, :, 2]
+                
+                score_from_model = self.model(s, r, o, None)
+                score_of_expected = torch.zeros(score_from_model.shape[0])
+                for index in range(score_from_model.shape[0]):
+                    score_of_expected[index] = score_from_model[index, t_e[index]]
+                score_of_expected = score_of_expected.unsqueeze(-1)
+                scores = score_from_model.view((score_from_model.shape[0], -1))
+
+        return scores, score_of_expected
 
     def get_rank_of(self, head, relation, tail, time_from, time_to, answer):
         target = "?"
@@ -159,10 +179,11 @@ class RankCalculator:
         elif time_to == "0":
             target = "Tt"
         
-        simulated_facts = self.simulate_facts(head, relation, tail, time_from, time_to, target, answer)
-        facts = self.facts_as_ids(simulated_facts)
-        s, r, o, t = self.shred_facts(facts)
-        scores = self.model.forward(s, r, o, t)
-        rank = self.get_rank(scores)
+        simulated_fact = self.simulate_fact(head, relation, tail, time_from, time_to, target, answer)
+        facts = self.fact_as_ids(simulated_fact)
+        s, r, o, t = self.shred_fact(facts)
+        scores, score_of_expected = self.get_scores(target, s, r, o, t)
+        
+        rank = self.get_rank(torch.reshape(scores, (-1,)), torch.reshape(score_of_expected, (-1,)).item())
 
         return int(rank)
