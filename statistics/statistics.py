@@ -475,7 +475,10 @@ class Statistics():
                         time_end = i['BEST_PREDICTION'][embedding]['PREDICTION'][1]
                         difference_begin = abs(answer-time_begin)
                         difference_end = abs(answer-time_end)
-                        if difference_begin < difference_end:
+                        if time_begin < answer < time_end:
+                            best_case = 0
+                            worst_case = 0
+                        elif difference_begin < difference_end:
                             best_case = difference_begin
                             worst_case = difference_end
                         else:
