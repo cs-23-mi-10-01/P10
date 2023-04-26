@@ -1385,7 +1385,7 @@ Thaksin Shinawatra	1383
 Scotland Yard	1384
 Student (Iraq)	1385
 Nasser Judeh	1386
-Separatist Militant (Xinjiang Uyghur)	1387
+Separatist Militant (Xinjiang Uyghur)	1387
 Waseda University	1388
 Kathleen Stephens	1389
 Huang Ching-tai	1390
@@ -1776,8 +1776,8 @@ Jeff Seeney	1774
 Combatant (Australia)	1775
 Police (Portugal)	1776
 Lee Myung Bak	1777
-Attacker (Xinjiang Uyghur)	1778
-Citizen (Xinjiang Uyghur)	1779
+Attacker (Xinjiang Uyghur)	1778
+Citizen (Xinjiang Uyghur)	1779
 Extremist (Lebanon)	1780
 Medical Personnel (Cyprus)	1781
 Pier Ferdinando Casini	1782
@@ -2545,7 +2545,7 @@ Lawyer/Attorney (Germany)	2543
 Maithripala Sirisena	2544
 Blogger (Australia)	2545
 Combatant (Canada)	2546
-Găgăuzia 	2547
+Găgăuzia 	2547
 Dimeji Bankole	2548
 Sadiq al-Mahdi	2549
 Eduardo Buzzi	2550
@@ -2994,7 +2994,7 @@ Industry (China)	2992
 Regulator (Canada)	2993
 Fishermen (Ghana)	2994
 Bank (Romania)	2995
-Illegal Immigrant (Xinjiang Uyghur)	2996
+Illegal Immigrant (Xinjiang Uyghur)	2996
 Jorge Mejia	2997
 Militant (International)	2998
 Farm Worker (Tanzania)	2999
@@ -3797,7 +3797,7 @@ Augusto Pinochet	3795
 Asylum Seeker (Chile)	3796
 State Duma (Ukraine)	3797
 Saleh Muhammed al-Mutlaq	3798
-Armed Separatist (Xinjiang Uyghur)	3799
+Armed Separatist (Xinjiang Uyghur)	3799
 Health Ministry (Jordan)	3800
 Attack Craft (Sudan)	3801
 Energy Department/Ministry (Turkey)	3802
@@ -4264,7 +4264,7 @@ International Energy Agency	4262
 Party President (Malawi)	4263
 Militia (Syrian Kurds)	4264
 Military Academy (North Korea)	4265
-Militant (Xinjiang Uyghur)	4266
+Militant (Xinjiang Uyghur)	4266
 Government (Madagascar)	4267
 Activist (Netherlands)	4268
 Lawmaker (Kosovo)	4269
@@ -6213,7 +6213,7 @@ Jorge Enrique Rodríguez	6211
 Envoy (Uzbekistan)	6212
 Army Personnel (Rwanda)	6213
 China Airlines	6214
-Terrorist (Xinjiang Uyghur)	6215
+Terrorist (Xinjiang Uyghur)	6215
 Claire McCaskill	6216
 Economic Community of Central African States	6217
 Civic Group (Philippines)	6218
