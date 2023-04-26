@@ -6,7 +6,7 @@
 \vspace{-3mm}
 
 \begin{tabular}{l|cc|cc|cc|cc}\hline
-Model       & $T_S$ & $T_S'$ & $T_A$ & $T_A'$ & $T_I$ & $T_I'$ & $T_R$ & $T_R'$ \\ \hline
+Model       & $T_S'$ & $T_S$ & $T_A'$ & $T_A$ & $T_I'$ & $T_I$ & $T_R'$ & $T_R$ \\ \hline
 %2 \hline
 \end{tabular}
 
