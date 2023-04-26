@@ -573,7 +573,7 @@ class Recurrent(Gadget):
         return
 
 
-    def compute_scores(self, s, r, o, t, mode='subject', positive_samples=False, eval=True, predict_time=False):
+    def compute_scores(self, s, r, o, t, mode='subject', positive_samples=False, eval=False, predict_time=False):
         """
         Computes score for each sample (s,r,o,t are expected to be of same length)
         mode='subject' means look at subjects' neighbourhood only (similar for mode='object').
@@ -619,9 +619,10 @@ class Recurrent(Gadget):
             all_nbors = len(entity_nbors) / self.eval_batch_size
 
             entity_nbors = entity_nbors[:int(all_nbors * batch_size)]
+            test = indices.tolist()
             indices = indices[:int(all_nbors * batch_size)]
 
-
+        test = indices.tolist()
         # use indices to repeat t and r appropriate number of times
         t_repeated = t[indices]  # torch.index_select(t, 0, indices)
         r_repeated = r[indices]  # torch.index_select(r, 0, indices)

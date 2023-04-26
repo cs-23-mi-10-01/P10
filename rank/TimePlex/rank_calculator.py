@@ -22,7 +22,7 @@ class RankCalculator:
         self.time_str2id = read_json(os.path.join(self.dataset_resource_folder, "time_str2id.json"))
 
         if self.dataset in ["icews14"]:
-            self.id2year = read_json(os.path.join(self.dataset_resource_folder, "id2date_year.json"))
+            self.id2year = read_json(os.path.join(self.dataset_resource_folder, "id2timestamp.json"))
 
     def _get_rank(self, scores, score_of_expected):
         return torch.sum((scores > score_of_expected).float()).item() + 1
@@ -51,7 +51,7 @@ class RankCalculator:
             from_timestamp = self.id2year[str(self._get_time_id(from_year, from_month, from_day))]
             to_timestamp = self.id2year[str(self._get_time_id(from_year, from_month, from_day))]
 
-        if self.dataset in ["wikidata12k"]:
+        if self.dataset in ["wikidata12k", "yago11k"]:
             from_timestamp = from_year
             to_timestamp = to_year
             
