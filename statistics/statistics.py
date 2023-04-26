@@ -405,8 +405,8 @@ class Statistics():
             # # self.find_common_elements(top)
             # # self.find_common_elements(top_percentage)
 
-            relation_properties_hypothesis = RelationPropertiesHypothesis(self.params, dataset, mode="timestamps")
-            relation_properties_hypothesis.run_analysis()
+            # relation_properties_hypothesis = RelationPropertiesHypothesis(self.params, dataset, mode="timestamps")
+            # relation_properties_hypothesis.run_analysis()
 
             # if dataset in ['icews14']:
             #     no_of_elements_path = os.path.join(self.params.base_directory, "datasets", dataset, "full.txt")

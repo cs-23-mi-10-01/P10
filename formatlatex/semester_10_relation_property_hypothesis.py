@@ -38,10 +38,13 @@ class FormatRelationPropertyHypothesis():
         for dataset in datasets:
             for split in splits:
                 results_dir = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_10_hypothesis_3")
+                overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")
+                overall_scores = self.read_json(overall_scores_path)
 
                 data_string = ""
                 for embedding in embeddings:
-                    data_string += f"{shorthand[embedding]} &"
+                    overall_score = overall_scores[embedding][metric]
+                    data_string += f"{shorthand[embedding]} & {overall_score:.2f}"
 
                     for property in ["symmetric", "anti-symmetric", "inverse", "reflexive"]:
                         results_path = os.path.join(results_dir, "relation_property_" + property + "_" + self.mode + ".json")
@@ -52,7 +55,9 @@ class FormatRelationPropertyHypothesis():
                             for p in [property, "not "+ property]:
                                 in_class = results[p]
                                 if embedding in in_class.keys():
-                                    data_string += f" {in_class[embedding][metric]:.2f} &"
+                                    score = in_class[embedding][metric]
+                                    percentage = (score / overall_score) * 100.0
+                                    data_string += f" {score:.2f} " + r"(\textcolor{text" + f"{'green}{$+' if percentage > 0 else 'red}{$-'}{abs(percentage):.2f}" + r"\%$}) &"
                                 else:
                                     data_string += " 0.xx &"
                     
