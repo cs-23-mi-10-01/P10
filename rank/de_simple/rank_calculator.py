@@ -99,9 +99,9 @@ class RankCalculator:
             case _:
                 raise Exception("Unknown target")
 
-        return self.shred_facts(np.array(sim_facts))
+        return sim_facts
 
-    def get_rank_of(self, head, relation, tail, time_from, time_to, answer):
+    def simulate_fact_scores(self, head, relation, tail, time_from, time_to, answer):
         target = "?"
         if head == "0":
             target = "h"
@@ -112,8 +112,28 @@ class RankCalculator:
         elif time_from == "0":
             target = "T"
 
-        heads, rels, tails, years, months, days = self.simulate_facts(head, relation, tail, time_from, target, answer)
+        facts = self.simulate_facts(head, relation, tail, time_from, target, answer)
+        heads, rels, tails, years, months, days = self.shred_facts(np.array(facts))
         sim_scores = self.model.module(heads, rels, tails, years, months, days).cpu().data.numpy()
-        rank = self.get_rank(sim_scores)
+        
+        scored_simulated_facts = []
+        for fact, score in zip(facts, sim_scores):
+            scored_simulated_facts.append([fact[0], fact[1], fact[2], fact[3], fact[4], fact[5], score])
 
-        return rank
+        return scored_simulated_facts
+    
+    def rank_of_correct_prediction(self, fact_scores):
+        return self.get_rank([fact[6] for fact in fact_scores])
+    
+    def time_granularity(self, date):
+        if self.dataset_name in ['icews14']:
+            correct_format = date.isoformat()
+        if self.dataset_name in ['wikidata12k', 'yago11k']:
+            correct_format = date.year
+        return correct_format
+
+    def best_prediction(self, fact_scores):
+        scores = [fact[6] for fact in fact_scores]
+        highest_score = max(scores)
+        pred = fact_scores[scores.index(highest_score)][0:6]
+        return self.time_granularity(date(pred[3], pred[4], pred[5]))

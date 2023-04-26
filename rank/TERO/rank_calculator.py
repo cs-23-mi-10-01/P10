@@ -2,15 +2,17 @@ import torch
 import numpy as np
 import time
 import datetime
+from datetime import date
 from scripts import remove_unwanted_symbols_from_str
 from dateutil.relativedelta import relativedelta
 
 class RankCalculator:
-    def __init__(self, params, model, dataset):
+    def __init__(self, params, model, dataset, mode = "rank"):
         self.params = params
         self.kg = model.kg
         self.model = model
         self.dataset = dataset
+        self.mode = mode
 
         if self.dataset in ['icews14']:
             self.start_sim_date = datetime.date(2014, 1, 1)
@@ -25,8 +27,8 @@ class RankCalculator:
             self.end_sim_date = datetime.date(2845, 1, 1)
             self.delta_sim_date = relativedelta(years=1)
 
-    def get_rank(self, scores):  # assuming the first fact is the correct fact
-        return torch.sum((scores < scores[0]).float()).item() + 1
+    def get_rank(self, sim_scores):  # assuming the first fact is the correct fact
+        return (sim_scores < sim_scores[0]).sum() + 1
 
     def get_ent_id(self, entity):
         return self.kg.entity_dict[remove_unwanted_symbols_from_str(entity)]
@@ -41,7 +43,7 @@ class RankCalculator:
     def get_time_id_from_timestamp(self, timestamp):
         if self.dataset in ['icews14']:
             return self.get_day_from_timestamp(timestamp)
-        
+
         if self.dataset in ['yago11k', 'wikidata12k']: 
             check_timestamp = timestamp
             if check_timestamp == '-':
@@ -63,6 +65,17 @@ class RankCalculator:
             return None
         
         return None
+    
+    def get_timestamp_from_day(self, day):
+        return (self.start_sim_date + datetime.timedelta(int(day))).isoformat()
+
+    def get_timestamp_from_time_id(self, time_id):
+        if self.dataset in ['icews14']:
+            return self.get_timestamp_from_day(time_id)
+        if self.dataset in ['wikidata12k', 'yago11k']:
+            return sorted(self.kg.year2id.items())[time_id][0]
+        return None
+
 
     def simulate_facts(self, head, relation, tail, timestamp, target, answer):
         if head != "0":
@@ -108,9 +121,9 @@ class RankCalculator:
             case _:
                 raise Exception("Unknown target")
 
-        return np.array(sim_facts, dtype='float64')
-
-    def get_rank_of(self, head, relation, tail, time_from, time_to, answer):
+        return sim_facts
+    
+    def simulate_fact_scores(self, head, relation, tail, time_from, time_to, answer):
         target = "?"
         if head == "0":
             target = "h"
@@ -123,8 +136,21 @@ class RankCalculator:
         elif time_to == "0":
             target = "Tt"
 
-        facts = self.simulate_facts(head, relation, tail, time_from, target, answer)
-        scores = self.model.forward(facts)
-        rank = self.get_rank(scores)
+        facts = np.array(self.simulate_facts(head, relation, tail, time_from, target, answer), dtype='float64')
+        sim_scores = self.model.forward(facts).cpu().data.numpy()
 
-        return int(rank)
+        scored_simulated_facts = []
+        for fact, score in zip(facts, sim_scores):
+            scored_simulated_facts.append([fact[0], fact[1], fact[2], fact[3], score])
+
+        return scored_simulated_facts
+
+    def rank_of_correct_prediction(self, fact_scores):
+        return self.get_rank([fact[4] for fact in fact_scores])
+
+    def best_prediction(self, fact_scores): #copypaste fra distmult skal fikses
+        scores = [fact[4] for fact in fact_scores]
+        highest_score = max(scores)
+        pred = fact_scores[scores.index(highest_score)][0:5]
+        return self.get_timestamp_from_time_id(int(pred[3]))
+        exit()

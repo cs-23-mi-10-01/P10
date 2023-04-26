@@ -3,13 +3,15 @@ import os
 import json
 import pandas
 
-from scripts import touch, year_to_iso_format, read_json, write_json
+from datetime import date
+from scripts import touch, year_to_iso_format, read_json, write_json, exists
 from statistics.measure import Measure
 from copy import deepcopy
 from dataset_handler.dataset_handler import DatasetHandler
 from statistics.semester_10_time_density_hypothesis import TimeDensityHypothesis
 from statistics.semester_10_relation_properties_hypothesis import RelationPropertiesHypothesis
 from statistics.semester_10_voting_hypothesis import VotingHypothesis
+from rank.ranker import Ranker
 
 
 class Statistics():
@@ -215,7 +217,7 @@ class Statistics():
         print("Testing hypothesis 3.")
 
         for quad in ranked_quads:
-            if quad["HEAD"] is "0" or quad["TAIL"] is "0":
+            if quad["HEAD"] == "0" or quad["TAIL"] == "0":
                 continue
 
             entity_n = quad["HEAD"]
@@ -247,9 +249,9 @@ class Statistics():
             other_key = entity_m+";"+entity_n
             if other_key in entity_measures.keys():
                 if entity_measures[key]["FACTS"] >= self.zeta and entity_measures[other_key]["FACTS"] >= self.zeta:
-                    entity_measures[key]["DIFFERENCE"] = {}
+                    entity_measures[key]["diff_list"] = {}
                     for embedding in embeddings:
-                        entity_measures[key]["DIFFERENCE"][embedding] = entity_measures[other_key]["RANK"].mrr[embedding] - entity_measures[key]["RANK"].mrr[embedding]
+                        entity_measures[key]["diff_list"][embedding] = entity_measures[other_key]["RANK"].mrr[embedding] - entity_measures[key]["RANK"].mrr[embedding]
                 
         json_output = []
         for i, key in enumerate(entity_measures.keys()):
@@ -267,9 +269,9 @@ class Statistics():
                 other_key = entity_m+";"+entity_n
                 if other_key in entity_measures.keys():
                     if entity_measures[key]["FACTS"] >= self.zeta and entity_measures[other_key]["FACTS"] >= self.zeta:
-                        entity_measures[key]["DIFFERENCE"] = {}
+                        entity_measures[key]["diff_list"] = {}
                         for embedding in embeddings:
-                            entity_measures[key]["DIFFERENCE"][embedding] = entity_measures[other_key]["RANK"].mrr[embedding] - entity_measures[key]["RANK"].mrr[embedding]                  
+                            entity_measures[key]["diff_list"][embedding] = entity_measures[other_key]["RANK"].mrr[embedding] - entity_measures[key]["RANK"].mrr[embedding]                  
 
                 json_output_normalized.append(deepcopy(entity_measures[key]))
                 json_output_normalized[i]["RANK"] = json_output_normalized[i]["RANK"].as_dict()
@@ -438,3 +440,82 @@ class Statistics():
                 # self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=20)
                 # self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=100)
                 # self.semester_9_hypothesis_2_top_x(embeddings, dataset, split, top_num=50, percentage=True)
+
+    def average_timestamp_precision(self):
+        for dataset in self.params.datasets:
+            for split in self.params.splits:
+                for embedding in self.params.embeddings:
+                    # file paths
+                    predictions_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
+                    avg_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "timestamp_prediction_avg.json")
+
+                    best_predictions = read_json(predictions_path)
+
+                    #get differences and average and write to files
+                    self.best_predictions_time_difference(best_predictions, predictions_path, dataset, embedding)
+                    self.best_predictions_time_difference_avg(best_predictions, avg_path, embedding)
+
+    def best_predictions_time_difference(self, best_predictions, predictions_path, dataset, embedding):
+        for i in best_predictions:
+
+            # skip predictions for which we have no answer
+            if i['ANSWER']=='-':
+                    continue
+            
+            match(dataset):
+                case 'icews14':
+                    answer = date.fromisoformat(i['ANSWER'])
+                    prediction = date.fromisoformat(i['BEST_PREDICTION'][embedding]['PREDICTION'])
+                    difference = (abs((answer-prediction).days))
+                    i['BEST_PREDICTION'][embedding]['DIFFERENCE'] = difference
+                case 'wikidata12k' | 'yago11k':
+                    if type(i['BEST_PREDICTION'][embedding]['PREDICTION']) is list:
+                        answer = int(i['ANSWER'])
+                        time_begin = i['BEST_PREDICTION'][embedding]['PREDICTION'][0]
+                        time_end = i['BEST_PREDICTION'][embedding]['PREDICTION'][1]
+                        difference_begin = abs(answer-time_begin)
+                        difference_end = abs(answer-time_end)
+                        if time_begin < answer < time_end:
+                            best_case = 0
+                            worst_case = 0
+                        elif difference_begin < difference_end:
+                            best_case = difference_begin
+                            worst_case = difference_end
+                        else:
+                            best_case = difference_end
+                            worst_case = difference_begin
+                        i['BEST_PREDICTION'][embedding]['BEST_DIFFERENCE'] = best_case
+                        i['BEST_PREDICTION'][embedding]['WORST_DIFFERENCE'] = worst_case
+                    else:
+                        answer = int(i['ANSWER'])
+                        prediction = int(i['BEST_PREDICTION'][embedding]['PREDICTION'])
+                        difference = abs(answer-prediction)
+                        i['BEST_PREDICTION'][embedding]['DIFFERENCE'] = difference
+
+        # write to file
+        write_json(predictions_path, best_predictions)
+                   
+    def best_predictions_time_difference_avg(self, best_predictions, avg_path, embedding):
+        # load avg (to not over-write)
+        avg = read_json(avg_path) if exists(avg_path) else {}
+
+        # filter predictions w no answer
+        predictions = list(filter( lambda x: 'DIFFERENCE' in x['BEST_PREDICTION'][embedding].keys(), best_predictions))
+
+        # find avg
+        if len(predictions) > 0:
+            no_predictions = len(predictions)
+            total_difference = sum(i['BEST_PREDICTION'][embedding]['DIFFERENCE'] for i in predictions)
+            avg[embedding] = total_difference/no_predictions
+        else:
+            predictions = list(filter( lambda x: 'BEST_DIFFERENCE' in x['BEST_PREDICTION'][embedding].keys(), best_predictions))
+            no_predictions = len(predictions)
+            total_best_difference = sum(i['BEST_PREDICTION'][embedding]['BEST_DIFFERENCE'] for i in predictions)
+            total_worst_difference = sum(i['BEST_PREDICTION'][embedding]['WORST_DIFFERENCE'] for i in predictions)
+            if embedding not in avg.keys():
+                avg[embedding] = {}
+            avg[embedding]['BEST'] = total_best_difference/no_predictions
+            avg[embedding]['WORST'] = total_worst_difference/no_predictions
+
+        # write to file
+        write_json(avg_path, avg)
