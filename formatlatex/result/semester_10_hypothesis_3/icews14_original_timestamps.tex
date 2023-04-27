@@ -2,21 +2,21 @@
 \centering
 \begin{minipage}{0.95\textwidth}
 \centering
-\caption{Relation properties comparison in icews14}
+\caption{Comparison of MRR scores on test sets in ICEWS14. The MRR scores of each test set with relation of the given types are compared to the MRR scores of test sets that does not have the given relation types. Green numbers denote MRR scores that are significantly higher than the compared MRR score, and red numbers denote scores that are significantly lower.}
 \vspace{-3mm}
 
-\begin{tabular}{l|cc|cc|cc|cc}\hline
-Model       & $T_S'$ & $T_S$ & $T_A'$ & $T_A$ & $T_I'$ & $T_I$ & $T_R'$ & $T_R$ \\ \hline
-DE-T & 0.24 & 0.26 (\textcolor{textgreen}{$+8\%$}) & 0.23 & 0.32 (\textcolor{textgreen}{$+42\%$}) & 0.24 & 0.34 (\textcolor{textgreen}{$+45\%$}) & 0.24 & 0.xx \\ 
-DE-D & 0.33 & 0.48 (\textcolor{textgreen}{$+46\%$}) & 0.35 & 0.38 (\textcolor{textgreen}{$+9\%$}) & 0.35 & 0.44 (\textcolor{textgreen}{$+28\%$}) & 0.35 & 0.xx \\ 
-DE-S & 0.34 & 0.48 (\textcolor{textgreen}{$+41\%$}) & 0.36 & 0.39 (\textcolor{textgreen}{$+10\%$}) & 0.36 & 0.49 (\textcolor{textgreen}{$+38\%$}) & 0.36 & 0.xx \\ 
-TeRo & 0.36 & 0.62 (\textcolor{textgreen}{$+69\%$}) & 0.40 & 0.40 (\textcolor{textred}{$-1\%$}) & 0.39 & 0.65 (\textcolor{textgreen}{$+66\%$}) & 0.40 & 0.xx \\ 
-ATiSE & 0.37 & 0.56 (\textcolor{textgreen}{$+52\%$}) & 0.39 & 0.41 (\textcolor{textgreen}{$+4\%$}) & 0.39 & 0.56 (\textcolor{textgreen}{$+44\%$}) & 0.40 & 0.xx \\ 
-TimePlex & 0.25 & 0.22 (\textcolor{textred}{$-12\%$}) & 0.23 & 0.35 (\textcolor{textgreen}{$+51\%$}) & 0.25 & 0.19 (\textcolor{textred}{$-25\%$}) & 0.25 & 0.xx \\ 
+\begin{tabular}{l|cc|cc|cc}\hline
+Model & $T_S'$ & $T_S$ & $T_A'$ & $T_A$ & $T_I'$ & $T_I$ \\ \hline
+DE-T & 0.24 & 0.26 ($+0.02$) & 0.23 & 0.32 (\textcolor{textgreen}{$+0.09$}) & 0.24 & 0.34 (\textcolor{textgreen}{$+0.11$}) \\ 
+DE-D & 0.33 & 0.48 (\textcolor{textgreen}{$+0.15$}) & 0.35 & 0.38 ($+0.03$) & 0.35 & 0.44 (\textcolor{textgreen}{$+0.10$}) \\ 
+DE-S & 0.34 & 0.48 (\textcolor{textgreen}{$+0.14$}) & 0.36 & 0.39 ($+0.03$) & 0.36 & 0.49 (\textcolor{textgreen}{$+0.13$}) \\ 
+TeRo & 0.36 & 0.62 (\textcolor{textgreen}{$+0.25$}) & 0.40 & 0.40 ($-0.00$) & 0.39 & 0.65 (\textcolor{textgreen}{$+0.26$}) \\ 
+ATiSE & 0.37 & 0.56 (\textcolor{textgreen}{$+0.19$}) & 0.39 & 0.41 ($+0.02$) & 0.39 & 0.56 (\textcolor{textgreen}{$+0.17$}) \\ 
+TimePlex & 0.25 & 0.22 (\textcolor{textred}{$-0.03$}) & 0.23 & 0.35 (\textcolor{textgreen}{$+0.12$}) & 0.25 & 0.19 (\textcolor{textred}{$-0.06$}) \\ 
  \hline
 \end{tabular}
 
-\label{fig:relation_properties_icews14_comparison}
+\label{tab:relation_properties_icews14_comparison}
 \end{minipage}
 \end{table*}
 

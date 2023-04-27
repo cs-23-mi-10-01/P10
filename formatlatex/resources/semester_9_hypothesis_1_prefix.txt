@@ -5,7 +5,7 @@
 \begin{tikzpicture}
 \begin{axis}[
     ybar,
-    bar width=8pt,
+    bar width=6pt,
     xticklabels={x,%1},
     ymin=0,
     ymax=%2,
