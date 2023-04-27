@@ -10,7 +10,7 @@ class FormatLatex():
         self.params = params
 
     def sort_methods(self, embeddings):
-        all_embeddings = ["DE_TransE", "DE_DistMult", "DE_SimplE", "ATISE", "TERO", "TFLEX"]
+        all_embeddings = ["DE_TransE", "DE_DistMult", "DE_SimplE", "ATISE", "TERO", "TFLEX", "TimePlex"]
         return [e for e in all_embeddings if e in embeddings]
     
     def read_json(self, path):
@@ -291,8 +291,8 @@ class FormatLatex():
         #self.format_hypothesis_3()
         #self.format_no_of_entities()
         # self.format_hypothesis_2_overlap()
-        # self.format_semester_9_hypothesis_1()
-        format_relation_property = FormatRelationPropertyHypothesis(self.params)
-        format_relation_property.format()
+        self.format_semester_9_hypothesis_1()
+        # format_relation_property = FormatRelationPropertyHypothesis(self.params)
+        # format_relation_property.format()
         # format_voting_hypothesis = FormatVotingHypothesis(self.params)
         # format_voting_hypothesis.format()

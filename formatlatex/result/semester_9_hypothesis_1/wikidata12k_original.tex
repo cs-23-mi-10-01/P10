@@ -6,7 +6,7 @@
 \begin{axis}[
     ybar,
     bar width=8pt,
-    xticklabels={x,DE-T,DE-D,DE-S,ATiSE,TeRo,TFLEX},
+    xticklabels={x,DE-T,DE-D,DE-S,ATiSE,TeRo,TFLEX,TimePlex},
     ymin=0,
     ymax=1.1469754572524147,
     ylabel={MRR score},
@@ -27,6 +27,7 @@
 (3, 0.2273298150215758) %ATISE
 (4, 0.24186633018673434) %TERO
 (5, 0) %TFLEX
+(6, 0.25356592005344425) %TimePlex
 } ;
 \addplot coordinates { %relation
 (0, 0.9558128810436789) %DE_TransE
@@ -35,6 +36,7 @@
 (3, 0.922117713779801) %ATISE
 (4, 0.9472559198556247) %TERO
 (5, 0) %TFLEX
+(6, 0) %TimePlex
 } ;
 \addplot coordinates { %tail
 (0, 0.235634963095345) %DE_TransE
@@ -43,6 +45,7 @@
 (3, 0.2591914088614538) %ATISE
 (4, 0.2704648943835616) %TERO
 (5, 0) %TFLEX
+(6, 0.26907789592276365) %TimePlex
 } ;
 \addplot coordinates { %time_from
 (0, 0.010488972252275434) %DE_TransE
@@ -51,6 +54,7 @@
 (3, 0.21756454450370288) %ATISE
 (4, 0.2706700220390521) %TERO
 (5, 0) %TFLEX
+(6, 0.2238530485475706) %TimePlex
 } ;
 \addplot[black,sharp plot,update limits=false,] coordinates { %DE_TransE
 (-0.5, 0.3458092977226949)
@@ -75,6 +79,10 @@
 \addplot[black,sharp plot,update limits=false,] coordinates { %TFLEX
 (4.5, 0)
 (5.5, 0)
+} ;
+\addplot[black,sharp plot,update limits=false,] coordinates { %TimePlex
+(5.5, 0.24062594606252244)
+(6.5, 0.24062594606252244)
 } ;
 \legend{Head,Relation,Tail,Time}
 \end{axis}
