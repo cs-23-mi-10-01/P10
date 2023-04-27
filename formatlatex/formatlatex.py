@@ -4,10 +4,12 @@ from scripts import write
 import os
 from formatlatex.semester_10_relation_property_hypothesis import FormatRelationPropertyHypothesis
 from formatlatex.semester_10_voting_hypothesis import FormatVotingHypothesis
+from formatlatex.textable import TEXTable
 
 class FormatLatex():
-    def __init__(self, params) -> None:
+    def __init__(self, params, task='') -> None:
         self.params = params
+        self.task = task
 
     def sort_methods(self, embeddings):
         all_embeddings = ["DE_TransE", "DE_DistMult", "DE_SimplE", "ATISE", "TERO", "TFLEX"]
@@ -291,8 +293,15 @@ class FormatLatex():
         #self.format_hypothesis_3()
         #self.format_no_of_entities()
         # self.format_hypothesis_2_overlap()
-        self.format_semester_9_hypothesis_1()
+        # self.format_semester_9_hypothesis_1()
         # format_relation_property = FormatRelationPropertyHypothesis(self.params)
         # format_relation_property.format()
         # format_voting_hypothesis = FormatVotingHypothesis(self.params)
         # format_voting_hypothesis.format()
+        match(self.task):
+            case "temporal_precision_avg_diff":
+                caption = "Results for \\autoref{subsec:temporal_precision}."\
+                    "Average distance between model best prediction and correct result in time steps."\
+                    "Where the best prediction is a timespan the average is given as '\\textsc{BEST}\u2013\\textsc{WORST}'"
+                table = TEXTable(self.params, self.task, "column", caption)
+                table.format()

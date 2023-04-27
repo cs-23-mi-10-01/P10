@@ -55,9 +55,6 @@ def remove_unwanted_symbols(dict):
         else:
             break
 
-def tex_row(self, list):
-    return str(" & ".join(list) + "\\\\\n")
-
 ######################################################      DATE ARITHMETIC       ########################################################
 
 def simulate_dates(start, end, delta):
