@@ -1,5 +1,6 @@
 
 import os
+import builtins
 import json
 from scripts import read_json, read_text, write
 
@@ -17,21 +18,22 @@ class TEXTable():
     def format(self):
         # paths
         template_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "table_template_" + self.tablewidth + ".tex")
+        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "method_shorthand.json")
         output_path = os.path.join(self.params.base_directory, "formatlatex", "result", self.task + ".tex")
 
         # table vars
         template = read_text(template_path)
+        shorthand = read_json(shorthand_path)
         rows = getattr(self, f'construct_rows_{self.task}')()
         columns = "l" + (len(rows[0][0])-1)*"c"
         label = "tab:" + self.task
 
-        print(self.find_best_results(rows, min))
+        col_best_results = self.find_best_results(rows, min)
+        rows = self.format_values(rows, shorthand)
 
         # TO DO LIST
-        # format numbers with correct precision
-        # format items with shorthands
         # highlight best result
-        # flatten nested lists of depth > 2
+        # flatten sublist items f"{item['BEST']:.2f}\u2013{item['WORST']:.2f}"
 
 #        # format content
 #        content = ""
@@ -55,9 +57,10 @@ class TEXTable():
     def tex_row(self, row):
         return str(" & ".join(row) + "\\\\\n")
 
+    # find best result for each column, append to list, return list
     def find_best_results(self, input, minmax = max):
-        rows = [row for sec in input for row in sec]
-        columns = [[row[i] for row in rows] for i in range(len(rows[0]))]
+        rows = [row for sec in input for row in sec] # flatten list for sections
+        columns = [[row[i] for row in rows] for i in range(len(rows[0]))] # get columns
         best_results = []
 
         for column in columns:
@@ -66,7 +69,6 @@ class TEXTable():
         return best_results
 
     def find_best_result_of_column(self, input, minmax = max):
-
         # return value, stays unchanged if input does not contain numbers
         best_result = False
 
@@ -84,12 +86,21 @@ class TEXTable():
 
         return best_result
 
+    # format all items in input
+    def format_values(self, input, shorthand):
+        for i, item in enumerate(input):
+            match type(item):
+                case builtins.list:
+                    input[i] = self.format_values(item, shorthand)
+                case builtins.int | builtins.float | builtins.complex:
+                    input[i] = f"{item:.2f}"
+                case builtins.str:
+                    if item in shorthand.keys():
+                        input[i] = str(shorthand[item])
+        return input
+            
 
     def construct_rows_temporal_precision_avg_diff(self):
-        # load correctly formatted names of embeddings and datasets
-        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "method_shorthand.json")
-        shorthand = read_json(shorthand_path)
-
         # read input
         input = {}
         for dataset in self.datasets:
@@ -99,7 +110,7 @@ class TEXTable():
         # construct rows (rows have sections, hline between each section)
         rows = []
 
-        firstrow = [["Methods"] + [shorthand[d] for d in self.datasets]]
+        firstrow = [["MET"] + self.datasets]
         rows.append(firstrow)
 
         avgs = []
@@ -107,7 +118,7 @@ class TEXTable():
             tmp_row = []
 
             # embedding name
-            tmp_row += [shorthand[embedding]]
+            tmp_row += [embedding]
 
             # load averages
             for item in [input[d][embedding] for d in self.datasets]:
