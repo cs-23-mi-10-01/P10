@@ -13,7 +13,7 @@ def main():
     parser = argparse.ArgumentParser()
 
     #python -task rank -dataset icews14 -embedding DE_TransE -split all
-    parser.add_argument('-task', type=str, default='rank', choices=['statistics', 'rank', 'formatlatex', 'split_dataset', 'generate_quads', 'best_predictions'])
+    parser.add_argument('-task', type=str, default='formatlatex', choices=['statistics', 'rank', 'formatlatex', 'split_dataset', 'generate_quads', 'best_predictions'])
     parser.add_argument('-dataset', type=str, default='all', choices=['all', 'icews14', 'wikidata11k', 'wikidata12k', 'yago11k'])
     parser.add_argument('-split', type=str, default='all', choices=['all', 'original', '1', '2', '3'])
     parser.add_argument('-embedding', type=str, default='all', choices=['all', 'DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE', 'TFLEX','TimePlex'])
@@ -23,7 +23,7 @@ def main():
 
     params.timer.start("main")
     if params.embeddings == ['all']:
-        params.embeddings = ['DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE', 'TFLEX', 'TimePlex']
+        params.embeddings = ['DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE', 'TimePlex']
     if params.datasets == ['all']:
         params.datasets = ['icews14', 'wikidata12k', 'yago11k']
     if params.splits == ['all']:

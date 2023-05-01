@@ -5,6 +5,7 @@ class Measure():
         self.hit10 = {}
         self.mrr = {}
         self.mr = {}
+        self.average = {}
         self.num_facts = {}
     
     def initialize_embedding(self, embedding):
@@ -35,7 +36,10 @@ class Measure():
                 self.hit10[embedding] += 1.0
 
             self.mr[embedding] += int(ranks[embedding])
-            self.mrr[embedding] += (1.0 / int(ranks[embedding]))
+            if int(ranks[embedding]) != 0:
+                self.mrr[embedding] += (1.0 / int(ranks[embedding]))
+            else:
+                self.mrr[embedding] += 1.0
 
     def normalize(self):
         for embedding in self.hit1:
@@ -80,6 +84,7 @@ class Measure():
         ret_dict = {}
         for embedding in self.hit1.keys():
             ret_dict[embedding] = {
+                "MP": self.mr[embedding],
                 "MRP": self.mrr[embedding]
             }
         return ret_dict
