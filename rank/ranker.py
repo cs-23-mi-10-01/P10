@@ -44,8 +44,8 @@ class Ranker:
                     print("Reading from file " + str(quads_path) + "...")
                     self.ranked_quads = json.load(in_file)
                     in_file.close()
-                    if self.mode == "ensemble_naive_voting" or "ensemble_decision_tree":
 
+                    if self.mode == "ensemble_naive_voting" or "ensemble_decision_tree":
                         self._ensemble_base(dataset, split)
                         break
 
@@ -146,6 +146,7 @@ class Ranker:
         for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
             #analyse
             #decision tree
+
             #voting
             self._ensemble_voting(dataset,split, quad)
             
@@ -163,13 +164,11 @@ class Ranker:
                     rank_calculator = DE_Rank(self.params, model, dataset)
                 if embedding_name in ["TERO", "ATISE"]:
                     rank_calculator = TERO_Rank(self.params, model, dataset)
-                if embedding_name in ["TFLEX"]:
-                    rank_calculator = TFLEX_Rank(self.params, model)
                 if embedding_name in ["TimePlex"]:
                     rank_calculator = TimePlex_Rank(self.params, model)
                 
                 fact_scores = rank_calculator.simulate_fact_scores(quad["HEAD"], quad["RELATION"],
                                                     quad["TAIL"], quad["TIME_FROM"],
                                                     quad["TIME_TO"], quad["ANSWER"])
-                print(fact_scores)
-
+                #print(fact_scores)
+                
