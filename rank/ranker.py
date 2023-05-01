@@ -19,7 +19,7 @@ class Ranker:
     def rank(self):
         for dataset in self.params.datasets:
             for split in self.params.splits:
-                for embedding_name in self.params.embeddings:
+                for embedding_name in self.params.embeddings: 
                     
                     # set output paths and functions for different modes
                     match(self.mode):
@@ -29,6 +29,9 @@ class Ranker:
                         case "best_predictions":
                             output_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
                             generate_function = getattr(self, '_generate_best_predictions')
+                        case "ensemble_naive_voting":
+                            output_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "ensemble_naive_voting.json")
+                            
                     
                     #set input path
                     if exists(output_path):
@@ -41,30 +44,38 @@ class Ranker:
                     print("Reading from file " + str(quads_path) + "...")
                     self.ranked_quads = json.load(in_file)
                     in_file.close()
+                    if self.mode == "ensemble_naive_voting" or "ensemble_decision_tree":
 
-                    # load model via torch
-                    model_path = os.path.join(self.base_directory, "models", embedding_name, dataset, "split_" + split, "Model.model")
-                    loader = Loader(self.params, dataset, split, model_path, embedding_name)
-                    model = loader.load()
-                    model.eval()
-                    
-                    # select rank calculator depending on method
-                    if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
-                        rank_calculator = DE_Rank(self.params, model, dataset)
-                    if embedding_name in ["TERO", "ATISE"]:
-                        rank_calculator = TERO_Rank(self.params, model, dataset)
-                    if embedding_name in ["TFLEX"]:
-                        rank_calculator = TFLEX_Rank(self.params, model)
-                    if embedding_name in ["TimePlex"]:
-                        rank_calculator = TimePlex_Rank(self.params, model)
-                    
-                    # write to file
-                    json_output = generate_function(rank_calculator, embedding_name, dataset, split)
+                        self._ensemble_base(dataset, split)
+                        break
+
+                    else:
+                        # load model via torch
+                        model_path = os.path.join(self.base_directory, "models", embedding_name, dataset, "split_" + split, "Model.model")
+                        loader = Loader(self.params, dataset, split, model_path, embedding_name)
+                        model = loader.load()
+                        model.eval()
+                        
+                        # select rank calculator depending on method
+                        if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
+                            rank_calculator = DE_Rank(self.params, model, dataset)
+                        if embedding_name in ["TERO", "ATISE"]:
+                            rank_calculator = TERO_Rank(self.params, model, dataset)
+                        if embedding_name in ["TFLEX"]:
+                            rank_calculator = TFLEX_Rank(self.params, model)
+                        if embedding_name in ["TimePlex"]:
+                            rank_calculator = TimePlex_Rank(self.params, model)
+                        
+                        # write to file
+                        json_output = generate_function(rank_calculator, embedding_name, dataset, split)
                     touch(output_path)
                     out_file = open(output_path, "w", encoding="utf8")
                     print("Writing to file " + str(output_path) + "...")
                     json.dump(json_output, out_file, indent=4)
                     out_file.close()
+
+                    #Ensemble goes through all the selected methods but only need to do it once. 
+                    
 
                             
 
@@ -127,3 +138,38 @@ class Ranker:
                 best_predictions.append(best_prediction_quad)
 
         return best_predictions
+    
+    def _ensemble_base(self, dataset, split):
+        ensemble_scores = []
+        #Goes through each model one fact at a time and the ensemble method combines all the answers into it's final answer, which is then save to ensemble_scores
+        # load model via torch
+        for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
+            #analyse
+            #decision tree
+            #voting
+            self._ensemble_voting(dataset,split, quad)
+            
+        return ensemble_scores
+    def _ensemble_voting(self,dataset,split, quad):
+        for embedding_name in self.params.embeddings:
+                model_path = os.path.join(self.base_directory, "models", embedding_name, dataset, "split_" + split, "Model.model")
+                loader = Loader(self.params, dataset, split, model_path, embedding_name)
+                model = loader.load()
+                model.eval()
+                
+                
+                # select rank calculator depending on method
+                if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
+                    rank_calculator = DE_Rank(self.params, model, dataset)
+                if embedding_name in ["TERO", "ATISE"]:
+                    rank_calculator = TERO_Rank(self.params, model, dataset)
+                if embedding_name in ["TFLEX"]:
+                    rank_calculator = TFLEX_Rank(self.params, model)
+                if embedding_name in ["TimePlex"]:
+                    rank_calculator = TimePlex_Rank(self.params, model)
+                
+                fact_scores = rank_calculator.simulate_fact_scores(quad["HEAD"], quad["RELATION"],
+                                                    quad["TAIL"], quad["TIME_FROM"],
+                                                    quad["TIME_TO"], quad["ANSWER"])
+                print(fact_scores)
+
