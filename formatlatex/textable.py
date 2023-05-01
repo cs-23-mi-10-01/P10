@@ -25,32 +25,64 @@ class TEXTable():
         columns = "l" + (len(rows[0][0])-1)*"c"
         label = "tab:" + self.task
 
-        # format content
-        content = ""
-        for sec in rows:
-            content += "\\hline\n"
-            for row in sec:
-                content += self.tex_row(row)  
-        content += "\\hline\n"
+        print(self.find_best_results(rows, min))
 
-        # replace text in template
-        output = template.replace(
-            "_caption", self.caption).replace(
-            "_label", label).replace(
-            "_columns", columns).replace(
-            "_content", content)
+        # TO DO LIST
+        # format numbers with correct precision
+        # format items with shorthands
+        # highlight best result
+        # flatten nested lists of depth > 2
+
+#        # format content
+#        content = ""
+#        for sec in rows:
+#            content += "\\hline\n"
+#            for row in sec:
+#                content += self.tex_row(row)
+#        content += "\\hline\n"
+#
+#        # replace text in template
+#        output = template.replace(
+#            "_caption", self.caption).replace(
+#            "_label", label).replace(
+#            "_columns", columns).replace(
+#            "_content", content)
         
         # write to file
-        print(output)
+        #print(output)
         #write(output_path, output)
 
-    def tex_row(self, list):
-        return str(" & ".join(list) + "\\\\\n")
+    def tex_row(self, row):
+        return str(" & ".join(row) + "\\\\\n")
 
-    def position_of_best_result(self, list):
-        position = ''
+    def find_best_results(self, input, minmax = max):
+        rows = [row for sec in input for row in sec]
+        columns = [[row[i] for row in rows] for i in range(len(rows[0]))]
+        best_results = []
 
-        print(position)
+        for column in columns:
+            best_results.append(self.find_best_result_of_column(column, minmax))
+
+        return best_results
+
+    def find_best_result_of_column(self, input, minmax = max):
+
+        # return value, stays unchanged if input does not contain numbers
+        best_result = False
+
+        # check if items in lists are lists themselves, recurses if yes
+        for i, item in enumerate(input):
+            if type(item) == list:
+                input[i] = self.find_best_result_of_column(item, minmax)
+
+        # filters non-number values (e.g. header of column)
+        filtered_column = list(filter( lambda x: type(x) in {int, float, complex}, input))
+
+        # finds best of numbers in column, best defined by minmax parameter
+        if bool(filtered_column) == True:
+            best_result = (minmax(filtered_column))
+
+        return best_result
 
 
     def construct_rows_temporal_precision_avg_diff(self):
@@ -67,23 +99,21 @@ class TEXTable():
         # construct rows (rows have sections, hline between each section)
         rows = []
 
-        rows.append([["Methods"] + [shorthand[d] for d in self.datasets]])
+        firstrow = [["Methods"] + [shorthand[d] for d in self.datasets]]
+        rows.append(firstrow)
 
         avgs = []
         for embedding in self.embeddings:
             tmp_row = []
-            emb_results = [input[d][embedding] for d in self.datasets]
 
             # embedding name
             tmp_row += [shorthand[embedding]]
 
             # load averages
-            for item in emb_results:
-                if type(item) == float:
-                    item = f"{item:.2f}"
+            for item in [input[d][embedding] for d in self.datasets]:
                 if type(item) == dict:
-                    item = f"{item['BEST']:.2f}\u2013{item['WORST']:.2f}"
-                tmp_row += [str(item)]
+                    item = list(item.values())
+                tmp_row += [item]
 
             # append line
             avgs.append(tmp_row)
