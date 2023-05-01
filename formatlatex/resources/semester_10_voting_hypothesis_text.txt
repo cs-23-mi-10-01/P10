@@ -2,7 +2,7 @@
 \centering
 \begin{minipage}{0.95\textwidth}
 \centering
-\caption{MRP of top timestamp predictions of each model, and the average timestamp result of each model's prediction.}
+\caption{Average precision of top timestamp predictions of each model, and the average timestamp result of each model's prediction.}
 \vspace{-3mm}
 
 \begin{tabular}{l|ccc}\hline
