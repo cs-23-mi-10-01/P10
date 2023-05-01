@@ -37,7 +37,7 @@ class Ranker:
                     if exists(output_path):
                         quads_path = output_path
                     else:
-                         quads_path = os.path.join(self.base_directory, "queries", dataset, "split_" + split, "test_quads.json")                  
+                        quads_path = os.path.join(self.base_directory, "queries", dataset, "split_" + split, "test_quads.json")                  
                     
                     # read from input
                     in_file = open(quads_path, "r", encoding="utf8")

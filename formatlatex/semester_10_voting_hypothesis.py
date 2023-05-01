@@ -9,10 +9,10 @@ class FormatVotingHypothesis():
         self.params = params
         
     def format(self):
-        embeddings = ["DE_TransE", "DE_DistMult", "DE_SimplE", "TERO", "ATISE", "TimePlex", "AVG"]
+        embeddings = ["DE_TransE", "DE_DistMult", "DE_SimplE", "TERO", "ATISE", "AVG"]
         datasets = ["icews14", "wikidata12k", "yago11k"]
         splits = ["original"]
-        metric = "MRP"
+        metric = "MP"
 
         static_text_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_10_voting_hypothesis_text.txt")
         shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "method_shorthand.json")
@@ -28,7 +28,7 @@ class FormatVotingHypothesis():
 
             for dataset in datasets:
                 for split in splits:
-                    results_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_mrp_scores.json")
+                    results_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_precision_scores.json")
                     if not exists(results_path):
                         data_string += f"0.xx & "
                         continue

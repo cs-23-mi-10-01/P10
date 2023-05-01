@@ -407,8 +407,8 @@ class Statistics():
             # # self.find_common_elements(top)
             # # self.find_common_elements(top_percentage)
 
-            relation_properties_hypothesis = RelationPropertiesHypothesis(self.params, dataset, mode="timestamps")
-            relation_properties_hypothesis.run_analysis()
+            # relation_properties_hypothesis = RelationPropertiesHypothesis(self.params, dataset, mode="timestamps")
+            # relation_properties_hypothesis.run_analysis()
 
             # if dataset in ['icews14']:
             #     no_of_elements_path = os.path.join(self.params.base_directory, "datasets", dataset, "full.txt")
@@ -420,8 +420,8 @@ class Statistics():
             # time_density_hypothesis = TimeDensityHypothesis(self.params, dataset)
             # time_density_hypothesis.run_analysis()
 
-            # voting_hypothesis = VotingHypothesis(self.params, dataset)
-            # voting_hypothesis.run_analysis()
+            voting_hypothesis = VotingHypothesis(self.params, dataset)
+            voting_hypothesis.run_analysis()
 
             for split in self.params.splits:
 
