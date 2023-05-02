@@ -143,16 +143,9 @@ class Ranker:
         ensemble_scores = []
         #Goes through each model one fact at a time and the ensemble method combines all the answers into it's final answer, which is then save to ensemble_scores
         # load model via torch
-        for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
-            #analyse
-            #decision tree
-
-            #voting
-            self._ensemble_voting(dataset,split, quad)
-            
-        return ensemble_scores
-    def _ensemble_voting(self,dataset,split, quad):
+        rank_calculators = {}
         for embedding_name in self.params.embeddings:
+                print(embedding_name, "loaded")
                 model_path = os.path.join(self.base_directory, "models", embedding_name, dataset, "split_" + split, "Model.model")
                 loader = Loader(self.params, dataset, split, model_path, embedding_name)
                 model = loader.load()
@@ -161,14 +154,25 @@ class Ranker:
                 
                 # select rank calculator depending on method
                 if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
-                    rank_calculator = DE_Rank(self.params, model, dataset)
+                    rank_calculators[embedding_name] = DE_Rank(self.params, model, dataset)
                 if embedding_name in ["TERO", "ATISE"]:
-                    rank_calculator = TERO_Rank(self.params, model, dataset)
+                    rank_calculators[embedding_name] = TERO_Rank(self.params, model, dataset)
                 if embedding_name in ["TimePlex"]:
-                    rank_calculator = TimePlex_Rank(self.params, model)
-                
-                fact_scores = rank_calculator.simulate_fact_scores(quad["HEAD"], quad["RELATION"],
+                    rank_calculators[embedding_name] = TimePlex_Rank(self.params, model, dataset)
+        
+        for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
+            #analyse
+            #decision tree
+
+            #voting
+            self._ensemble_voting(dataset,split, quad, rank_calculators)
+            
+        return ensemble_scores
+    def _ensemble_voting(self,dataset,split, quad, rank_calculators):
+        for embedding_name in self.params.embeddings:
+               
+                fact_scores = rank_calculators[embedding_name].simulate_fact_scores(quad["HEAD"], quad["RELATION"],
                                                     quad["TAIL"], quad["TIME_FROM"],
                                                     quad["TIME_TO"], quad["ANSWER"])
-                #print(fact_scores)
+                
                 
