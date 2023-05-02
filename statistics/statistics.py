@@ -417,11 +417,11 @@ class Statistics():
             # no_of_elements_dataset = self.read_csv(no_of_elements_path)
             # self.no_of_elements(no_of_elements_dataset, dataset)
 
-            # time_density_hypothesis = TimeDensityHypothesis(self.params, dataset)
-            # time_density_hypothesis.run_analysis()
+            time_density_hypothesis = TimeDensityHypothesis(self.params, dataset)
+            time_density_hypothesis.run_analysis()
 
-            voting_hypothesis = VotingHypothesis(self.params, dataset)
-            voting_hypothesis.run_analysis()
+            # voting_hypothesis = VotingHypothesis(self.params, dataset)
+            # voting_hypothesis.run_analysis()
 
             for split in self.params.splits:
 
