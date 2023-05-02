@@ -1,0 +1,23 @@
+\begin{table}[htb]
+\centering
+\begin{minipage}{0.95\columnwidth}
+\centering
+\caption{Results for \autoref{subsec:temporal_precision}. Average distance between model best prediction and correct result in time steps. Where the best prediction is a timespan the average is given as '\textsc{BEST}–\textsc{WORST}'}
+\vspace{-3mm}
+
+\begin{tabular}{lccc}
+\hline
+Methods & ICEWS14 & WikiData12k & YAGO11k\\
+\hline
+DE-T & 90.51 & 1003.50 & 863.69\\
+DE-S & 93.66 & 966.97 & 814.93\\
+DE-D & \textbf{87.90} & 978.24 & 791.51\\
+TeRo & 129.75 & \textbf{76.93}–102.53 & 358.14–642.29\\
+ATiSE & 137.39 & 85.39–153.25 & \textbf{94.57}–579.43\\
+\hline
+
+\end{tabular}
+
+\label{tab:temporal_precision_avg_diff}
+\end{minipage}
+\end{table}

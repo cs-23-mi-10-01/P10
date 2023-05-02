@@ -4,11 +4,27 @@ import json
 from pathlib import Path
 import copy
 
+######################################################      READ/WRITE       ########################################################
+def touch(path):
+    dir = os.path.dirname(path)
+    if not os.path.exists(dir):
+        os.makedirs(dir)
+    Path(path).touch(exist_ok=True)
+
+def exists(path):
+    return os.path.exists(path)
+
 def read_text(path):
         in_file = open(path, "r", encoding="utf8")
         text = in_file.read()
         in_file.close()
         return text
+
+def write(path, text):
+    touch(path)
+    out_file = open(path, "w", encoding="utf8")
+    out_file.write(text)
+    out_file.close()
 
 def read_json(path):
     print("Reading from file " + path + "...")
@@ -23,15 +39,6 @@ def write_json(path, dict):
     out_file = open(path, "w", encoding="utf8")
     json.dump(dict, out_file, indent=4)
     out_file.close()
-
-def simulate_dates(start, end, delta):
-    dates = []
-    sim_date = copy.copy(start)
-    while sim_date != end:
-        dates.append(copy.copy(sim_date))
-        sim_date = sim_date + delta
-    return dates + [copy.copy(end)]
-
 
 def remove_unwanted_symbols_from_str(str):
     return str.replace(' ', ' ')
@@ -48,17 +55,15 @@ def remove_unwanted_symbols(dict):
         else:
             break
 
-def touch(path):
-    dir = os.path.dirname(path)
-    if not os.path.exists(dir):
-        os.makedirs(dir)
-    Path(path).touch(exist_ok=True)
+######################################################      DATE ARITHMETIC       ########################################################
 
-def write(path, text):
-    touch(path)
-    out_file = open(path, "w", encoding="utf8")
-    out_file.write(text)
-    out_file.close()
+def simulate_dates(start, end, delta):
+    dates = []
+    sim_date = copy.copy(start)
+    while sim_date != end:
+        dates.append(copy.copy(sim_date))
+        sim_date = sim_date + delta
+    return dates + [copy.copy(end)]
 
 def year_to_iso_format(year):
     modified_year = year
@@ -67,9 +72,6 @@ def year_to_iso_format(year):
     while len(modified_year) < 4:
         modified_year = "0" + modified_year
     return modified_year + "-01-01"
-
-def exists(path):
-    return os.path.exists(path)
 
 def date_to_iso(date):
     return f"{date.year:04d}-{date.month:02d}-{date.day:02d}"
