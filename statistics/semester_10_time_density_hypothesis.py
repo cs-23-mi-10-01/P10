@@ -151,6 +151,9 @@ class TimeDensityHypothesis():
 
         sparse_measure = Measure()
         dense_measure = Measure()
+        quads_in_sparse = 0
+        quads_in_dense = 0
+        quads_in_none = 0
 
         for i, quad in enumerate(ranked_quads):
             if i % 10000 == 0:
@@ -167,14 +170,22 @@ class TimeDensityHypothesis():
                     
                     if partition["partition"] == "sparse":
                         sparse_measure.update(quad["RANK"])
-                    if partition["partition"] == "dense":
+                        quads_in_sparse += 1
+                    elif partition["partition"] == "dense":
                         dense_measure.update(quad["RANK"])
+                        quads_in_dense += 1
+                    else:
+                        quads_in_none += 1
                     break
         
         sparse_measure.normalize()
         dense_measure.normalize()
 
-        write_json(time_density_path, {"dense": dense_measure.as_dict(), "sparse": sparse_measure.as_dict()})
+        write_json(time_density_path, {"dense": dense_measure.as_dict(), 
+                                       "sparse": sparse_measure.as_dict(), 
+                                       "no_of_facts": {"dense": quads_in_dense, 
+                                                       "sparse": quads_in_sparse, 
+                                                       "none": quads_in_none}})
 
 
 
