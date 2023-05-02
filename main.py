@@ -46,10 +46,10 @@ def main():
             generate_quads = GenerateQueries(params)
             generate_quads.generate_test_quads()
         case "best_predictions":
-            #ranker = Ranker(params, "best_predictions")
-            #ranker.rank()
-            #statistics = Statistics(params)
-            #statistics.average_timestamp_precision()
+            ranker = Ranker(params, "best_predictions")
+            ranker.rank()
+            statistics = Statistics(params)
+            statistics.average_timestamp_precision()
             format_latex = FormatLatex(params, "temporal_precision_avg_diff")
             format_latex.format()
             

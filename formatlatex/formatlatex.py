@@ -300,8 +300,8 @@ class FormatLatex():
         # format_voting_hypothesis.format()
         match(self.task):
             case "temporal_precision_avg_diff":
-                caption = "Results for \\autoref{subsec:temporal_precision}."\
-                    "Average distance between model best prediction and correct result in time steps."\
+                caption = "Results for \\autoref{subsec:temporal_precision}. "\
+                    "Average distance between model best prediction and correct result in time steps. "\
                     "Where the best prediction is a timespan the average is given as '\\textsc{BEST}\u2013\\textsc{WORST}'"
                 table = TEXTable(self.params, self.task, "column", caption)
                 table.format()
