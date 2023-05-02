@@ -1,6 +1,7 @@
 
 import os
 import json
+from operator import itemgetter
 
 from rank.loader import Loader
 from scripts import touch, exists
@@ -168,6 +169,8 @@ class Ranker:
             self._ensemble_voting(dataset,split, quad, rank_calculators)
             
         return ensemble_scores
+    
+    
     def _ensemble_voting(self,dataset,split, quad, rank_calculators):
         for embedding_name in self.params.embeddings:
                
@@ -175,4 +178,8 @@ class Ranker:
                                                     quad["TAIL"], quad["TIME_FROM"],
                                                     quad["TIME_TO"], quad["ANSWER"])
                 
-                
+                if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
+                    sorted_fact_scores = sorted(fact_scores, key=itemgetter(6), reverse=True)
+                elif embedding_name in ["TERO", "ATISE"]:
+                    sorted_fact_scores = sorted(fact_scores, key=itemgetter(4), reverse=True)
+
