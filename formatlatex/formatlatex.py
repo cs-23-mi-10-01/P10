@@ -299,10 +299,9 @@ class FormatLatex():
         # format_voting_hypothesis = FormatVotingHypothesis(self.params)
         # format_voting_hypothesis.format()
         match(self.task):
-            case "temporal_precision_avg_diff":
-                caption = "Average distance between model best prediction and correct result. "\
-                            "Values are given in days for ICEWS14 and years for WikiData12k and YAGO11k,  "\
-                            "best result for each dataset is highlighted in bold. "\
-                            "Where the best prediction is a timespan the average is given as '\\textsc{BEST}\u2013\\textsc{WORST}'"
+            case "temporal_precision_mae":
+                caption = "MAE of model prediction. "\
+                            "Values are given in days for ICEWS14 and years for WikiData12k and YAGO11k. "\
+                            "Where the prediction is a timespan the average is given as '\\textsc{BEST}\u2013\\textsc{WORST}'"
                 table = TEXTable(self.params, self.task, "column", caption)
                 table.format()
