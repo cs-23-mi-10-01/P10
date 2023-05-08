@@ -154,7 +154,7 @@ class TEXTable():
             print("ERROR: Length of rows differs")
 
     # construct rows for average difference between best and correct prediction
-    def construct_rows_temporal_precision_mae(self):
+    def construct_rows_time_prediction_mae(self):
         # read input
         input = {}
         for dataset in self.datasets:

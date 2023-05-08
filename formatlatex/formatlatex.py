@@ -299,7 +299,7 @@ class FormatLatex():
         # format_voting_hypothesis = FormatVotingHypothesis(self.params)
         # format_voting_hypothesis.format()
         match(self.task):
-            case "temporal_precision_mae":
+            case "time_prediction_mae":
                 caption = "MAE of model prediction. "\
                             "Values are given in days for ICEWS14 and years for WikiData12k and YAGO11k. "\
                             "Where the prediction is a timespan the average is given as '\\textsc{BEST}\u2013\\textsc{WORST}'"
