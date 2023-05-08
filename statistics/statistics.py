@@ -448,14 +448,13 @@ class Statistics():
                     # file paths
                     predictions_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
                     avg_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "timestamp_prediction_avg.json")
-
-                    best_predictions = read_json(predictions_path)
+                    predictions = read_json(predictions_path)
 
                     #get differences and average and write to files
-                    self.best_predictions_time_difference(best_predictions, predictions_path, dataset, embedding)
-                    self.best_predictions_time_difference_avg(best_predictions, avg_path, embedding)
+                    self.predictions_error(predictions, predictions_path, dataset, embedding)
+                    self.best_predictions_time_difference_avg(predictions, avg_path, embedding)
 
-    def best_predictions_time_difference(self, best_predictions, predictions_path, dataset, embedding):
+    def predictions_error(self, best_predictions, predictions_path, dataset, embedding):
         for i in best_predictions:
 
             # skip predictions for which we have no answer
@@ -466,19 +465,19 @@ class Statistics():
                 case 'icews14':
                     answer = date.fromisoformat(i['ANSWER'])
                     prediction = date.fromisoformat(i['BEST_PREDICTION'][embedding]['PREDICTION'])
-                    difference = (abs((answer-prediction).days))
+                    difference = (prediction-answer).days
                     i['BEST_PREDICTION'][embedding]['DIFFERENCE'] = difference
                 case 'wikidata12k' | 'yago11k':
                     if type(i['BEST_PREDICTION'][embedding]['PREDICTION']) is list:
                         answer = int(i['ANSWER'])
                         time_begin = i['BEST_PREDICTION'][embedding]['PREDICTION'][0]
                         time_end = i['BEST_PREDICTION'][embedding]['PREDICTION'][1]
-                        difference_begin = abs(answer-time_begin)
-                        difference_end = abs(answer-time_end)
+                        difference_begin = time_begin-answer
+                        difference_end = time_end-answer
                         if time_begin < answer < time_end:
                             best_case = 0
                             worst_case = 0
-                        elif difference_begin < difference_end:
+                        elif abs(difference_begin) < abs(difference_end):
                             best_case = difference_begin
                             worst_case = difference_end
                         else:
@@ -489,7 +488,7 @@ class Statistics():
                     else:
                         answer = int(i['ANSWER'])
                         prediction = int(i['BEST_PREDICTION'][embedding]['PREDICTION'])
-                        difference = abs(answer-prediction)
+                        difference = prediction-answer
                         i['BEST_PREDICTION'][embedding]['DIFFERENCE'] = difference
 
         # write to file
@@ -505,13 +504,13 @@ class Statistics():
         # find avg
         if len(predictions) > 0:
             no_predictions = len(predictions)
-            total_difference = sum(i['BEST_PREDICTION'][embedding]['DIFFERENCE'] for i in predictions)
+            total_difference = sum(abs(i['BEST_PREDICTION'][embedding]['DIFFERENCE']) for i in predictions)
             avg[embedding] = total_difference/no_predictions
         else:
             predictions = list(filter( lambda x: 'BEST_DIFFERENCE' in x['BEST_PREDICTION'][embedding].keys(), best_predictions))
             no_predictions = len(predictions)
-            total_best_difference = sum(i['BEST_PREDICTION'][embedding]['BEST_DIFFERENCE'] for i in predictions)
-            total_worst_difference = sum(i['BEST_PREDICTION'][embedding]['WORST_DIFFERENCE'] for i in predictions)
+            total_best_difference = sum(abs(i['BEST_PREDICTION'][embedding]['BEST_DIFFERENCE']) for i in predictions)
+            total_worst_difference = sum(abs(i['BEST_PREDICTION'][embedding]['WORST_DIFFERENCE']) for i in predictions)
             if embedding not in avg.keys():
                 avg[embedding] = {}
             avg[embedding]['BEST'] = total_best_difference/no_predictions
