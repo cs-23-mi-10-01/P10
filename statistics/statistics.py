@@ -4,7 +4,7 @@ import json
 import pandas
 
 from datetime import date
-from scripts import touch, year_to_iso_format, read_json, write_json, exists
+from scripts import touch, year_to_iso_format, read_json, write_json, exists, write, getdctval
 from statistics.measure import Measure
 from copy import deepcopy
 from dataset_handler.dataset_handler import DatasetHandler
@@ -448,11 +448,21 @@ class Statistics():
                     # file paths
                     predictions_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
                     avg_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "timestamp_prediction_avg.json")
+                    errdist_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "error_distribution_" + embedding + "_" + dataset + "_?.dat")
                     predictions = read_json(predictions_path)
 
                     #get differences and average and write to files
                     self.predictions_error(predictions, predictions_path, dataset, embedding)
                     self.best_predictions_time_difference_avg(predictions, avg_path, embedding)
+
+                    if 'BEST_DIFFERENCE' in predictions[1]['BEST_PREDICTION'][embedding].keys():
+                        key = [['BEST_PREDICTION', embedding, 'BEST_DIFFERENCE'],['BEST_PREDICTION', embedding, 'WORST_DIFFERENCE']]
+                    else:
+                        key = [['BEST_PREDICTION', embedding, 'DIFFERENCE']]
+                    
+                    for k in key:
+                        p = errdist_path.replace("?", k[2].lower()[:4])
+                        self.count_occurences(predictions, p, k)
 
     def predictions_error(self, best_predictions, predictions_path, dataset, embedding):
         for i in best_predictions:
@@ -518,3 +528,22 @@ class Statistics():
 
         # write to file
         write_json(avg_path, avg)
+
+    def count_occurences(self, input, output_path, key):
+        occurences = {}
+        for i in input:
+            # skip predictions for which we have no answer
+            if i['ANSWER']=='-':
+                    continue
+            
+            diff = getdctval(i, key)
+            if diff not in occurences.keys():
+                occurences[diff] = 1
+            else:
+                occurences[diff] += 1
+
+        output=''
+        for x in sorted(occurences):
+            output += f"{x} {occurences[x]}\n"
+
+        write(output_path, output)

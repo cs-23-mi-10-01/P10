@@ -2,6 +2,7 @@
 import os
 import json
 from pathlib import Path
+from typing import List
 import copy
 
 ######################################################      READ/WRITE       ########################################################
@@ -71,7 +72,25 @@ def year_to_iso_format(year):
         modified_year = "0001"
     while len(modified_year) < 4:
         modified_year = "0" + modified_year
-    return modified_year + "-01-01"
+    return modified_year + "-01-01['BEST_PREDICTION']['DE_TransE']['DIFFERENCE']"
 
 def date_to_iso(date):
     return f"{date.year:04d}-{date.month:02d}-{date.day:02d}"
+
+
+######################################################      DICTIONARY ACCESS       ########################################################
+
+# adapted from https://stackoverflow.com/questions/39818669/dynamically-accessing-nested-dictionary-keys
+def getdctval(dct, keys: List):
+    data = dct
+    for k in keys:
+        data = data[k]
+    return data
+
+# also adapted
+def setval(dct, keys: List, val) -> None:
+        data = dct
+        lastkey = keys[-1]
+        for k in keys[:-1]:  # when assigning drill down to *second* last key
+            data = data[k]
+        data[lastkey] = val
