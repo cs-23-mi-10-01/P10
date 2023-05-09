@@ -1,56 +1,70 @@
 import os
 import builtins
+import re
 from scripts import read_json, read_text, write
 
 
-class TEXTable():    
-    def __init__(self, params, task, tablewidth = "column", caption = "\\missing"):
+class texobject():    
+    def __init__(self, params, task, caption = "\\missing", width = "column", type ="tab",):
         self.params = params
         self.datasets = self.params.datasets
         self.embeddings = self.params.embeddings
         self.task = task
-        self.tablewidth = tablewidth
+        self.width = width
+        self.type = type
         self.caption = caption
 
 
     def format(self):
         # paths
-        template_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "table_template.tex")
+        template_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "tex_template.tex")
         shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "method_shorthand.json")
         output_path = os.path.join(self.params.base_directory, "formatlatex", "result", self.task + ".tex")
 
-        # table vars
+        # vars
         template = self.read_template(template_path)
         shorthand = read_json(shorthand_path)
-        rows = getattr(self, f'construct_rows_{self.task}')() # func depends on task, refer to temporal_precicions_avg_diff
-        columns = "l" + (len(rows[0][0])-1)*"c" # set latex columns
-        label = "tab:" + self.task # latex label, dependent on task
-
-        col_best_results = self.find_best_results(rows, min)
+        label = self.type + ":" + self.task # latex label, dependent on task
+        rows = getattr(self, f'construct_rows_{self.task}')() # func depends on task
 
         # format content
-        content = ""
-        for sec in rows:
-            content += "\\hline\n" #each section separated by hlines
-            for row in sec:
-                row = self.format_values(row, shorthand) # decimal precision and shorthands
-                row = self.highlight_values(row, self.format_values(col_best_results, shorthand)) # highlight best results
-                row = self.flatten_row(row) # flatten rows with sublists, join values by en-dash
-                content += self.tex_row(row) # format row as row in tex table
-        content += "\\hline\n"
+        content = getattr(self, f'format_content_{self.type}')(rows, shorthand)
 
         # replace text in template
 
         output = template.replace(
             "_caption", self.caption).replace(
             "_label", label).replace(
-            "_columns", columns).replace(
             "_content", content)
         
         # write to file
         write(output_path, output)
 
 ###############################################    FORMAT TEXT FUNCTIONS     ################################################3
+
+    def format_content_tab(self, rows, shorthand):
+        content = ""
+        columns = "l" + (len(rows[0][0])-1)*"c" # set latex columns
+        highlight_results = self.find_best_results(rows, min)
+
+        content += f"\\begin{{tabular}}{{{columns}}}\n"
+
+        for sec in rows:
+            content += "\\hline\n" #each section separated by hlines
+            for row in sec:
+                row = self.format_values(row, shorthand) # decimal precision and shorthands
+                row = self.highlight_values(row, self.format_values(highlight_results, shorthand)) # highlight best results
+                row = self.flatten_row(row) # flatten rows with sublists, join values by en-dash
+                content += self.tex_row(row) # format row as row in tex table
+        content += "\\hline\n"
+        content += "\end{tabular}\n"
+
+        return content
+    
+    def format_content_fig(self, rows, shorthand):
+        content =""
+
+        return content
 
     # format list as row in tex table
     def tex_row(self, row):
@@ -103,12 +117,21 @@ class TEXTable():
     def read_template(self, path):
         template = read_text(path)
 
-        if self.tablewidth == "text":
+        if self.width == "text":
             template = template.replace(
-                "table", "table*").replace(
-                "\columnwidth", "\\textwidth"
+                "textype", "textype*").replace(
+                "columnwidth", "textwidth"
                 )
-            
+
+        match(self.type):
+            case "fig":
+                template = template.replace("_textype", "figure")
+                template = re.sub(r'(\\caption.*)\n(\\vspace.*)\n*(_content)\n*',
+                              '\n\g<3>\n\n\g<2>\n\g<1>\n', 
+                              template)
+            case "tab":
+                template = template.replace("_textype", "table")
+
         return template
 
 

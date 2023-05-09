@@ -4,7 +4,7 @@ from scripts import write
 import os
 from formatlatex.semester_10_relation_property_hypothesis import FormatRelationPropertyHypothesis
 from formatlatex.semester_10_voting_hypothesis import FormatVotingHypothesis
-from formatlatex.textable import TEXTable
+from formatlatex.texobject import texobject
 
 class FormatLatex():
     def __init__(self, params, task='') -> None:
@@ -289,6 +289,7 @@ class FormatLatex():
             write(output_path, result)
 
     def format(self):
+        tex = texobject(self.params, self.task)
         #self.format_hypothesis_2()
         #self.format_hypothesis_3()
         #self.format_no_of_entities()
@@ -300,8 +301,10 @@ class FormatLatex():
         # format_voting_hypothesis.format()
         match(self.task):
             case "time_prediction_mae":
-                caption = "MAE of model prediction. "\
+                tex.caption = "MAE of model prediction. "\
                             "Values are given in days for ICEWS14 and years for WikiData12k and YAGO11k. "\
                             "Where the prediction is a timespan the average is given as '\\textsc{BEST}\u2013\\textsc{WORST}'"
-                table = TEXTable(self.params, self.task, "column", caption)
-                table.format()
+            case "time_predictiction_distribution":
+                tex.caption = "Distribution of time prediction for method on dataset"
+                tex.type = "figure"
+        tex.format()
