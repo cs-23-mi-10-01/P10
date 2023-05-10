@@ -19,12 +19,12 @@ class texobject():
         # paths
         template_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "tex_template.tex")
         shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "method_shorthand.json")
-        output_path = os.path.join(self.params.base_directory, "formatlatex", "result", self.task + ".tex")
+        output_path = os.path.join(self.params.base_directory, "formatlatex", "result", self.task, self.task + "_" + self.embeddings + "_" + self.datasets + ".tex")
 
         # vars
         template = self.read_template(template_path)
         shorthand = read_json(shorthand_path)
-        label = self.type + ":" + self.task # latex label, dependent on task
+        label = self.type + ":" + self.task + "_" + self.embeddings + "_" + self.datasets # latex label, dependent on task
         rows = getattr(self, f'construct_rows_{self.task}')() # func depends on task
 
         # format content
@@ -35,7 +35,9 @@ class texobject():
         output = template.replace(
             "_caption", self.caption).replace(
             "_label", label).replace(
-            "_content", content)
+            "_content", content).replace(
+            "_xlabel", "Error").replace(
+            "_ylabel", "\\# Occurences")
         
         # write to file
         write(output_path, output)
@@ -63,7 +65,7 @@ class texobject():
     
     def format_content_fig(self, rows, shorthand):
         content =""
-
+        content += f"\\addplot table {{content/appendix/figures/time_prediction_distribution/error_distribution_{self.embeddings}_{self.datasets}_diff.dat}};"
         return content
 
     # format list as row in tex table
@@ -129,6 +131,8 @@ class texobject():
                 template = re.sub(r'(\\caption.*)\n(\\vspace.*)\n*(_content)\n*',
                               '\n\g<3>\n\n\g<2>\n\g<1>\n', 
                               template)
+                template = template.replace("centering\n\n", "centering\n\\begin{tikzpicture}\n\\begin{axis}[\nno markers,\nxlabel={_xlabel},\nylabel={_ylabel}]\n\n")
+                template = template.replace("\n\\vspace", "\n\\end{axis}\n\\end{tikzpicture}\n\\vspace")
             case "tab":
                 template = template.replace("_textype", "table")
 
@@ -208,3 +212,37 @@ class texobject():
         rows.append(avgs)
 
         return(rows)
+    
+    # construct rows for distribution of time prediction errors
+    def construct_rows_time_prediction_distribution(self):
+        pass
+       # # read input
+       # input = {}
+       # for dataset in self.datasets:
+       #     input_path = os.path.join(self.params.base_directory, "result", dataset, "split_original", "timestamp_prediction_avg.json")
+       #     input[dataset] = read_json(input_path)
+#
+       # # construct rows (rows have sections, hline between each section)
+       # rows = []
+#
+       # firstrow = [["Methods"] + self.datasets]
+       # rows.append(firstrow)
+#
+       # avgs = []
+       # for embedding in self.embeddings:
+       #     tmp_row = []
+#
+       #     # embedding name
+       #     tmp_row += [embedding]
+#
+       #     # load averages
+       #     for item in [input[d][embedding] for d in self.datasets]:
+       #         if type(item) == dict:
+       #             item = list(item.values())
+       #         tmp_row += [item]
+#
+       #     # append line
+       #     avgs.append(tmp_row)
+       # rows.append(avgs)
+#
+       # return(rows)

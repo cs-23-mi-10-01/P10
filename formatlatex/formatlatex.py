@@ -7,7 +7,7 @@ from formatlatex.semester_10_voting_hypothesis import FormatVotingHypothesis
 from formatlatex.texobject import texobject
 
 class FormatLatex():
-    def __init__(self, params, task='') -> None:
+    def __init__(self, params, task = []) -> None:
         self.params = params
         self.task = task
 
@@ -289,7 +289,6 @@ class FormatLatex():
             write(output_path, result)
 
     def format(self):
-        tex = texobject(self.params, self.task)
         #self.format_hypothesis_2()
         #self.format_hypothesis_3()
         #self.format_no_of_entities()
@@ -299,12 +298,21 @@ class FormatLatex():
         # format_relation_property.format()
         # format_voting_hypothesis = FormatVotingHypothesis(self.params)
         # format_voting_hypothesis.format()
-        match(self.task):
-            case "time_prediction_mae":
-                tex.caption = "MAE of model prediction. "\
-                            "Values are given in days for ICEWS14 and years for WikiData12k and YAGO11k. "\
-                            "Where the prediction is a timespan the average is given as '\\textsc{BEST}\u2013\\textsc{WORST}'"
-            case "time_predictiction_distribution":
-                tex.caption = "Distribution of time prediction for method on dataset"
-                tex.type = "figure"
-        tex.format()
+        for t in self.task:
+            tex = texobject(self.params, t)
+            match(t):
+                case "time_prediction_mae":
+                    tex.caption = "MAE of model prediction. "\
+                                "Values are given in days for ICEWS14 and years for WikiData12k and YAGO11k. "\
+                                "Where the prediction is a timespan the average is given as '\\textsc{BEST}\u2013\\textsc{WORST}'"
+                    tex.format()
+
+                case "time_prediction_distribution":
+                    for method in self.params.embeddings:
+                        for dataset in self.params.datasets:
+                            tex.caption = f"Distribution of predictions on timestamps for {method} on {dataset}"
+                            tex.type = "fig"
+                            tex.embeddings = method
+                            tex.datasets = dataset
+                            tex.format()
+            
