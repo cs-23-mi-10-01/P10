@@ -56,7 +56,7 @@ class Ranker:
                     if embedding_name in ["TFLEX"]:
                         rank_calculator = TFLEX_Rank(self.params, model)
                     if embedding_name in ["TimePlex"]:
-                        rank_calculator = TimePlex_Rank(self.params, model)
+                        rank_calculator = TimePlex_Rank(self.params, model, dataset)
                     
                     # write to file
                     json_output = generate_function(rank_calculator, embedding_name, dataset, split)
@@ -72,6 +72,8 @@ class Ranker:
         ranked_quads = []
 
         for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
+            if i > 100:
+                continue
             if i % 1000 == 0:
                 print("Ranking fact " + str(i) + "-" + str(i + 999) + " (total number: " + str(len(self.ranked_quads)) + ") " \
                       + " on dataset " + dataset + ", split " + split + " with embedding " + embedding_name)
@@ -96,11 +98,23 @@ class Ranker:
             fact_scores = rank_calculator.simulate_fact_scores(quad["HEAD"], quad["RELATION"],
                                                     quad["TAIL"], quad["TIME_FROM"],
                                                     quad["TIME_TO"], quad["ANSWER"])
-            ranked_quad["RANK"][embedding_name] = str(rank_calculator.rank_of_correct_prediction(fact_scores))
+            ranked_quad["RANK"][embedding_name] = str(rank_calculator.rank_of_correct_prediction(fact_scores, self._correct_fact(quad)))
             ranked_quads.append(ranked_quad)
 
         return ranked_quads
     
+    def _correct_fact(self, quad):
+        if quad["HEAD"] == "0":
+            return (quad["ANSWER"], quad["RELATION"], quad["TAIL"], quad["TIME_FROM"], quad["TIME_TO"])
+        if quad["RELATION"] == "0":
+            return (quad["HEAD"], quad["ANSWER"], quad["TAIL"], quad["TIME_FROM"], quad["TIME_TO"])
+        if quad["TAIL"] == "0":
+            return (quad["HEAD"], quad["RELATION"], quad["ANSWER"], quad["TIME_FROM"], quad["TIME_TO"])
+        if quad["TIME_FROM"] == "0":
+            return (quad["HEAD"], quad["RELATION"], quad["TAIL"], quad["ANSWER"], quad["TIME_TO"])
+        if quad["TIME_TO"] == "0":
+            return (quad["HEAD"], quad["RELATION"], quad["TAIL"], quad["TIME_FROM"], quad["ANSWER"])
+
     def _generate_best_predictions(self, rank_calculator, embedding_name, dataset, split):
         best_predictions = []
         for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
