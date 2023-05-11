@@ -72,8 +72,6 @@ class Ranker:
         ranked_quads = []
 
         for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
-            if i > 100:
-                continue
             if i % 1000 == 0:
                 print("Ranking fact " + str(i) + "-" + str(i + 999) + " (total number: " + str(len(self.ranked_quads)) + ") " \
                       + " on dataset " + dataset + ", split " + split + " with embedding " + embedding_name)

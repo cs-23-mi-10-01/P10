@@ -66,7 +66,11 @@ class RankCalculator:
     
     def _get_time_id(self, year, month, day):
         if self.dataset in ['icews14']:
-            return self._time_str_id(year, month, day, year, month, day)
+            interval_id = self._time_str_id(year, month, day, year, month, day)
+            timestamp_interval = self.id2interval[interval_id]
+            timestamp = timestamp_interval.split("(")[1].split(",")[0]
+            id = self.timestamp2id[timestamp]
+            return id
         elif self.dataset in ['wikidata12k', 'yago11k']:
             if str(year) in self.timestamp2id.keys():
                 return self.timestamp2id[str(year)]
@@ -301,4 +305,7 @@ class RankCalculator:
         return fact_scores
 
     def rank_of_correct_prediction(self, fact_scores, correct_fact):
+        if correct_fact not in fact_scores.keys():
+            return 10000
+
         return self._get_rank(fact_scores.values(), fact_scores[correct_fact])
