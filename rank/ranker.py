@@ -146,40 +146,104 @@ class Ranker:
         # load model via torch
         rank_calculators = {}
         for embedding_name in self.params.embeddings:
-                print(embedding_name, "loaded")
-                model_path = os.path.join(self.base_directory, "models", embedding_name, dataset, "split_" + split, "Model.model")
-                loader = Loader(self.params, dataset, split, model_path, embedding_name)
-                model = loader.load()
-                model.eval()
-                
-                
-                # select rank calculator depending on method
-                if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
-                    rank_calculators[embedding_name] = DE_Rank(self.params, model, dataset)
-                if embedding_name in ["TERO", "ATISE"]:
-                    rank_calculators[embedding_name] = TERO_Rank(self.params, model, dataset)
-                if embedding_name in ["TimePlex"]:
-                    rank_calculators[embedding_name] = TimePlex_Rank(self.params, model, dataset)
+            print(embedding_name, "loaded")
+            model_path = os.path.join(self.base_directory, "models", embedding_name, dataset, "split_" + split, "Model.model")
+            loader = Loader(self.params, dataset, split, model_path, embedding_name)
+            model = loader.load()
+            model.eval()
+            
+            
+            # load all the methods into rank calculators
+            if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
+                rank_calculators[embedding_name] = DE_Rank(self.params, model, dataset)
+            if embedding_name in ["TERO", "ATISE"]:
+                rank_calculators[embedding_name] = TERO_Rank(self.params, model, dataset)
+            if embedding_name in ["TimePlex"]:
+                rank_calculators[embedding_name] = TimePlex_Rank(self.params, model, dataset)
         
         for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
+            weight_distribution = {}
+            #finding the target
+            if i % 4 == 0:
+                target = "head"
+            elif i % 4 == 1:
+                target = "relation"
+            if i % 4 == 2:
+                target = "tail"
+            if i % 4 == 3:
+                target = "time"
             #analyse
+            if self.mode == "ensemble_decision_tree":
+                pass
             #decision tree
-
+            elif self.mode == "ensemble_naive_voting":
+                for embedding_name in self.params.embeddings:
+                    weight_distribution[embedding_name] = (1/len(self.params.embeddings))
             #voting
-            self._ensemble_voting(dataset,split, quad, rank_calculators)
+            self._ensemble_voting(dataset,split, quad, rank_calculators, weight_distribution, target)
             
         return ensemble_scores
     
     
-    def _ensemble_voting(self,dataset,split, quad, rank_calculators):
+    def _ensemble_voting(self,dataset,split, quad, rank_calculators,weight_distribution, target):
+        voting_points = {}
+        answer_Id = int
         for embedding_name in self.params.embeddings:
-               
-                fact_scores = rank_calculators[embedding_name].simulate_fact_scores(quad["HEAD"], quad["RELATION"],
-                                                    quad["TAIL"], quad["TIME_FROM"],
-                                                    quad["TIME_TO"], quad["ANSWER"])
-                
+            
+            fact_scores = rank_calculators[embedding_name].simulate_fact_scores(quad["HEAD"], quad["RELATION"],
+                                                quad["TAIL"], quad["TIME_FROM"],
+                                                quad["TIME_TO"], quad["ANSWER"])
+            #the first element of fact scores is the correct answer
+            fact_scores[0]
+            for i in range(0, len(fact_scores)):
+                #combines the date into single element in the DE models for consistency with tero and atise
                 if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
-                    sorted_fact_scores = sorted(fact_scores, key=itemgetter(6), reverse=True)
-                elif embedding_name in ["TERO", "ATISE"]:
-                    sorted_fact_scores = sorted(fact_scores, key=itemgetter(4), reverse=True)
+                    fact_scores[i][3] = f"{fact_scores[i][3]:04d}-{fact_scores[i][4]:02d}-{fact_scores[i][5]:02d}"
+                    del fact_scores[i][4:6] 
+                #creates id in each list in element 5
+                fact_scores[i].append(i)
 
+            sorted_fact_scores = sorted(fact_scores, key=itemgetter(4), reverse=True)
+
+            for i in range(0, len(sorted_fact_scores)):
+                
+                if sorted_fact_scores[i][5] not in voting_points:
+                    voting_points[sorted_fact_scores[i][5]] = 0
+                
+                voting_points[sorted_fact_scores[i][5]] += (1/(i+1)) * weight_distribution[embedding_name]
+            
+            if(embedding_name == self.params.embeddings[0]):
+                #print(embedding_name)
+                match(target):
+                    case "head":
+                        check = 0
+                        answer =rank_calculators[self.params.embeddings[0]].get_ent_id(quad["ANSWER"])
+                    case "relation":
+                        check = 1
+                        answer =rank_calculators[self.params.embeddings[0]].get_rel_id(quad["ANSWER"])
+                    case "tail":
+                        check = 2
+                        answer =rank_calculators[self.params.embeddings[0]].get_ent_id(quad["ANSWER"])
+                    case "time":
+                        check = 3
+                        #don't need conversion here as time is already in the right format
+                        answer = quad["ANSWER"]
+                for simu_fact in sorted_fact_scores:
+
+                        if simu_fact[check] == answer:
+
+                            answer_Id = simu_fact[5]
+                            break
+                            
+
+                            
+        
+        #finding rank of correct answer
+        rank = 1
+        for (k,v) in voting_points.items():
+            if v > voting_points[answer_Id]:
+                rank += 1
+
+        print(target)
+        print(rank)
+        
