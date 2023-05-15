@@ -31,7 +31,7 @@ class Ranker:
                             output_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
                             generate_function = getattr(self, '_generate_best_predictions')
                         case "ensemble_naive_voting":
-                            output_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "ensemble_naive_voting.json")
+                            output_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
                             
                     
                     #set input path
@@ -47,8 +47,8 @@ class Ranker:
                     in_file.close()
 
                     if self.mode == "ensemble_naive_voting" or "ensemble_decision_tree":
-                        self._ensemble_base(dataset, split)
-                        break
+                        json_output = self._ensemble_base(dataset, split)
+                        
 
                     else:
                         # load model via torch
@@ -76,6 +76,8 @@ class Ranker:
                     out_file.close()
 
                     #Ensemble goes through all the selected methods but only need to do it once. 
+                    if self.mode == "ensemble_naive_voting" or "ensemble_decision_tree":
+                        break
                     
 
                             
@@ -141,7 +143,7 @@ class Ranker:
         return best_predictions
     
     def _ensemble_base(self, dataset, split):
-        ensemble_scores = []
+        ranked_quads = []
         #Goes through each model one fact at a time and the ensemble method combines all the answers into it's final answer, which is then save to ensemble_scores
         # load model via torch
         rank_calculators = {}
@@ -180,9 +182,10 @@ class Ranker:
                 for embedding_name in self.params.embeddings:
                     weight_distribution[embedding_name] = (1/len(self.params.embeddings))
             #voting
-            self._ensemble_voting(dataset,split, quad, rank_calculators, weight_distribution, target)
-            
-        return ensemble_scores
+            ranked_quads.append(self._ensemble_voting(dataset,split, quad, rank_calculators, weight_distribution, target))
+            print(i + " of " + str(len(self.ranked_quads)))
+        print(ranked_quads)
+        return ranked_quads
     
     
     def _ensemble_voting(self,dataset,split, quad, rank_calculators,weight_distribution, target):
@@ -244,6 +247,10 @@ class Ranker:
             if v > voting_points[answer_Id]:
                 rank += 1
 
-        print(target)
-        print(rank)
+        ranked_quad = quad
+        if "RANK" not in ranked_quad.keys():
+            ranked_quad["RANK"] = {}
+
+        ranked_quad["RANK"][str(self.mode)] = str(rank)
+        return ranked_quad
         
