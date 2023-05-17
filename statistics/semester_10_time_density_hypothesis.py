@@ -123,16 +123,36 @@ class TimeDensityHypothesis():
                 "start_date": interval["start_date"],
                 "end_date": interval["end_date"],
                 "partition": partition,
-                "no_of_facts": interval["no_of_facts"]
+                "no_of_facts": interval["no_of_facts"],
+                "start_date_as_float": self._iso_to_float(interval["start_date"])
             })
 
+        #Merge similar partitions
         for i in range(len(partitions) -2, -1, -1):
             if partitions[i]["partition"] == partitions[i+1]["partition"]:
                 partitions[i+1]["start_date"] = partitions[i]["start_date"]
                 partitions[i+1]["no_of_facts"] += partitions[i]["no_of_facts"]
                 partitions.pop(i)
+        
+        #Remove start_date_as_float
+        for partition in partitions:
+            partition.pop("start_date_as_float")
 
         write_json(time_density_partition_path, partitions)
+
+    def _iso_to_float(self, iso):
+        split = iso.split("-")[0]
+        if split == "":
+            split = "-" + iso.split("-")[1]
+        compare_date_iso = split + "-01-01"
+        year = float(split)
+
+        date = datetime.date.fromisoformat(iso)
+        compare_date = datetime.date.fromisoformat(compare_date_iso)
+        delta = date - compare_date
+
+        return year + (delta.days / 356)
+
 
     def run_analysis(self):
         time_density_partition_path = os.path.join(self.params.base_directory, 
