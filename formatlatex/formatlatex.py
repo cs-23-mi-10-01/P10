@@ -4,6 +4,7 @@ from scripts import write
 import os
 from formatlatex.semester_10_relation_property_hypothesis import FormatRelationPropertyHypothesis
 from formatlatex.semester_10_voting_hypothesis import FormatVotingHypothesis
+from formatlatex.semester_10_time_density import FormatTimeDensity
 from formatlatex.texobject import texobject
 
 class FormatLatex():
@@ -298,6 +299,7 @@ class FormatLatex():
         # format_relation_property.format()
         # format_voting_hypothesis = FormatVotingHypothesis(self.params)
         # format_voting_hypothesis.format()
+
         for t in self.task:
             tex = texobject(self.params, t)
             match(t):
@@ -315,4 +317,3 @@ class FormatLatex():
                             tex.embeddings = method
                             tex.datasets = dataset
                             tex.format()
-            
