@@ -12,6 +12,7 @@ from statistics.semester_10_time_density_hypothesis import TimeDensityHypothesis
 from statistics.semester_10_relation_properties_hypothesis import RelationPropertiesHypothesis
 from statistics.semester_10_voting_hypothesis import VotingHypothesis
 from rank.ranker import Ranker
+from dataset_handler.dataset_handler import DatasetHandler
 
 
 class Statistics():
@@ -547,3 +548,21 @@ class Statistics():
             output += f"{x} {occurences[x]}\n"
 
         write(output_path, output)
+
+    def dataset_timestamps(self):
+        dataset = DatasetHandler(self.params, "wikidata12k")
+        dataset.read_full_dataset()
+        y = set()
+        for x in dataset._rows:
+            if x['start_timestamp'] != '-':
+                y.add(int(x['start_timestamp']))
+            if x['end_timestamp'] != '-':
+                y.add(int(x['end_timestamp']))
+        print("minimum:", min(y - {19, 25, 97, 98, 196, 229, 265, 266, 280, 285}))
+        i=0
+        for z in y:
+            if z < 1700:
+                i=i+1
+        print("count:", i)
+        print(max(y))
+        print(len(y))
