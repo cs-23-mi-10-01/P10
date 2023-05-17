@@ -36,9 +36,7 @@ class FormatTimeDensity():
                 
                 for partition in partitions:
                     if include == False:
-                        if dataset in ["yago11k"] and partition["start_date_as_float"] < 1700.0:
-                            continue
-                        if dataset in ["wikidata12k"] and partition["start_date_as_float"] < 1700.0:
+                        if dataset in ["yago11k", "wikidata12k"] and partition["start_date_as_float"] < 1700.0:
                             continue
                         if partition["no_of_facts"] == 0.0:
                             continue
@@ -123,7 +121,6 @@ class FormatTimeDensity():
                 for sparse_coordinate in sparse_coordinates:
                     sparse_text += f"""({sparse_coordinate[0]}, {sparse_coordinate[1]})""" + "\n"
                 sparse_text += f"""({sparse_coordinates[-1][0]}, -10)"""
-
 
                 text = static_text.replace(
                     "%1", str(ymin)).replace(
