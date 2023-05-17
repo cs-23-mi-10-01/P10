@@ -4,6 +4,7 @@ from scripts import write
 import os
 from formatlatex.semester_10_relation_property_hypothesis import FormatRelationPropertyHypothesis
 from formatlatex.semester_10_voting_hypothesis import FormatVotingHypothesis
+from formatlatex.semester_10_time_density import FormatTimeDensity
 from formatlatex.textable import TEXTable
 
 class FormatLatex():
@@ -298,6 +299,7 @@ class FormatLatex():
         # format_relation_property.format()
         # format_voting_hypothesis = FormatVotingHypothesis(self.params)
         # format_voting_hypothesis.format()
+        
         match(self.task):
             case "temporal_precision_avg_diff":
                 caption = "Average distance between model best prediction and correct result. "\
@@ -306,3 +308,6 @@ class FormatLatex():
                             "Where the best prediction is a timespan the average is given as '\\textsc{BEST}\u2013\\textsc{WORST}'"
                 table = TEXTable(self.params, self.task, "column", caption)
                 table.format()
+            case "time_density":
+                format_time_density = FormatTimeDensity(self.params)
+                format_time_density.format()

@@ -1,0 +1,52 @@
+\begin{figure}[htb]
+\centering
+\begin{minipage}{0.95\columnwidth}
+\centering
+
+\begin{tikzpicture}
+\begin{axis}[
+    ymin=%1,
+    ymax=%2,
+    ylabel={No. of facts},
+    xlabel={Time},
+    %height=5cm,
+    %width=5cm,
+    area style,
+    scaled y ticks=false
+    ]
+
+\addplot[
+    fill=tikzgrey,
+] coordinates {
+%3
+} ;
+
+\addplot[ %Dense
+    color=tikzdarkred,
+    pattern=north east lines,
+    pattern color=tikzlightred,
+    opacity=0.8,
+] 
+coordinates {
+%4
+} ;
+
+\addplot[ %Sparse
+    color=tikzdarkblue,
+    pattern=north west lines,
+    pattern color=tikzlightblue,
+    opacity=0.8,
+] 
+coordinates {
+%5
+} ;
+
+
+\end{axis}
+\end{tikzpicture}
+
+\vspace{-3mm}
+\caption{Dense and sparse partitions on %6. Dense partition marked in red, sparse in blue.}
+\label{fig:time_density_%7}
+\end{minipage}
+\end{figure}
