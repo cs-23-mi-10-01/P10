@@ -64,6 +64,7 @@ class TimeDensityHypothesis():
         test_quads = read_json(test_quads_path)
 
         test_quads = [quad for quad in test_quads if self._include_quad(quad)]
+        test_quads = [quad for quad in test_quads if quad["TIME_FROM"] != "0"]
 
         no_of_facts = []
         simulated_dates = simulate_dates(self.start_date, self.end_date, self.delta_date)
@@ -77,7 +78,7 @@ class TimeDensityHypothesis():
             if i % 10000 == 0:
                 print(f"Time density hypothesis, dataset {self.dataset}, counting facts: Processing test quad {i}-{i+10000}, out of {len(test_quads)}")
 
-            quad_start_date = self._parse_date(quad["TIME_FROM"])
+            quad_start_date = self._parse_date(quad)
 
             for interval in no_of_facts:
                 if interval["start_date"] <= quad_start_date and \
@@ -91,7 +92,7 @@ class TimeDensityHypothesis():
             if i % 10000 == 0:
                 print(f"Time density hypothesis, dataset {self.dataset}, processing median: Processing test quad {i}-{i+10000}, out of {len(test_quads)}")
 
-            quad_start_date = self._parse_date(quad["TIME_FROM"])
+            quad_start_date = self._parse_date(quad)
 
             for interval in no_of_facts:
                 if interval["start_date"] <= quad_start_date and \
