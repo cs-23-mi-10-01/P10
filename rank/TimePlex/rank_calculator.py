@@ -2,7 +2,7 @@ import torch
 import numpy as np
 import datetime
 import os
-from scripts import remove_unwanted_symbols_from_str, read_json
+from scripts import remove_unwanted_symbols_from_str, read_json, write_json
 from dataset_handler.dataset_handler import DatasetHandler
 
 class RankCalculator:
@@ -15,41 +15,92 @@ class RankCalculator:
         self.dataset_resource_folder = os.path.join(self.params.base_directory, "rank", "TimePlex", "resources", dataset_name, "split_" + split)
 
         self.dataset_handler = DatasetHandler(self.params, self.dataset)
-        self.timestamp2id = read_json(os.path.join(self.dataset_resource_folder, "timestamp2id.json"))
         self.entity_map = read_json(os.path.join(self.dataset_resource_folder, "entity_map.json"))
+        self.reverse_entity_map = self._create_reverse_map(self.entity_map)
         self.relation_map = read_json(os.path.join(self.dataset_resource_folder, "relation_map.json"))
+        self.timestamp2id = read_json(os.path.join(self.dataset_resource_folder, "timestamp2id.json"))
+        self.id2timestamp = self._create_reverse_map(self.timestamp2id)
         self.interval2id = read_json(os.path.join(self.dataset_resource_folder, "timestamp_interval2interval_id.json"))
+        self.id2interval = self._create_reverse_map(self.interval2id)
         self.time_str2id = read_json(os.path.join(self.dataset_resource_folder, "time_str2id.json"))
+        self.id2time_str = self._create_reverse_map(self.time_str2id)
 
-        if self.dataset in ["icews14"]:
-            self.id2year = read_json(os.path.join(self.dataset_resource_folder, "id2timestamp.json"))
+    def _create_reverse_map(self, map):
+        reverse_map = {}
+        for key in map.keys():
+            reverse_map[map[key]] = key
+        return reverse_map
 
     def _get_rank(self, scores, score_of_expected):
-        return torch.sum((scores > score_of_expected).float()).item() + 1
+        sum = 0
+
+        for score in scores:
+            if score > score_of_expected:
+                sum += 1
+        
+        return sum + 1
 
     def _get_ent_id(self, entity):
-        if self.dataset_handler.entity2id(entity) in self.entity_map.keys():
-            return self.entity_map[self.dataset_handler.entity2id(entity)]
+        entity_id = self.dataset_handler.entity2id(entity)
+
+        if entity_id in self.entity_map.keys():
+            return self.entity_map[entity_id]
         else:
-            bla = self.entity_map["<OOV>"]
-            return bla
+            return self.entity_map["<OOV>"]
+        
+    def _get_ent_from_id(self, id):
+        dataset_id = self.reverse_entity_map[id]
+        if dataset_id == "<OOV>":
+            return "-"
+        return self.dataset_handler.id2entity(dataset_id)
 
     def _get_rel_id(self, relation):
         return self.relation_map[self.dataset_handler.relation2id(relation)]
     
+    def _get_rel_from_id(self, id):
+        for key in self.relation_map.keys():
+            if self.relation_map[key] == id:
+                return self.dataset_handler.id2relation(key)
+        
+        return None
+    
     def _get_time_id(self, year, month, day):
         if self.dataset in ['icews14']:
-            return self._time_str_id(year, month, day, year, month, day)
+            interval_id = self._time_str_id(year, month, day, year, month, day)
+            timestamp_interval = self.id2interval[interval_id]
+            timestamp = timestamp_interval.split("(")[1].split(",")[0]
+            id = self.timestamp2id[timestamp]
+            return id
         elif self.dataset in ['wikidata12k', 'yago11k']:
             if str(year) in self.timestamp2id.keys():
                 return self.timestamp2id[str(year)]
             else:
                 return self.timestamp2id["UNK-TIME"]
-    
+            
+    def _get_time_from_id(self, id):
+        if self.dataset in ["icews14"]:
+            timestamp = self.id2timestamp[id]
+            if timestamp == "UNK-TIME":
+                return "-"
+
+            if timestamp in ["0", "3000"]:
+                interval_id = self.interval2id[f"(0, 3000)"]
+            else:
+                interval_id = self.interval2id[f"({timestamp}, {timestamp})"]
+
+            time_str = self.id2time_str[interval_id].split('\t')[0]
+            return time_str
+        
+        if self.dataset in ["wikidata12k", "yago11k"]:
+            timestamp = self.id2timestamp[id]
+            if timestamp == "UNK-TIME":
+                return "-"
+            return timestamp
+        
     def _interval_id(self, from_year, from_month, from_day, to_year, to_month, to_day):
         if self.dataset in ["icews14"]:
-            from_timestamp = self.id2year[str(self._get_time_id(from_year, from_month, from_day))]
-            to_timestamp = self.id2year[str(self._get_time_id(from_year, from_month, from_day))]
+            from_timestamp = self.id2timestamp[self._get_time_id(from_year, from_month, from_day)]
+            to_timestamp = self.id2timestamp[self._get_time_id(from_year, from_month, from_day)]
 
         if self.dataset in ["wikidata12k", "yago11k"]:
             from_timestamp = from_year
@@ -85,8 +136,17 @@ class RankCalculator:
     def _all_entities(self):
         return [self.dataset_handler.id2entity(e) for e in self.entity_map.keys() if e != "<OOV>"]
     
+    def _all_entity_ids(self):
+        return self.entity_map.values()
+    
     def _all_relations(self):
         return [self.dataset_handler.id2relation(r) for r in self.relation_map.keys()]
+    
+    def _all_relation_ids(self):
+        return self.relation_map.values()
+    
+    def _all_timestamp_ids(self):
+        return self.timestamp2id.values()
     
     def _number_of_timestamps(self):
         return len(self.timestamp2id) - 1
@@ -153,18 +213,35 @@ class RankCalculator:
         t = torch.autograd.Variable(torch.from_numpy(t).unsqueeze(1), requires_grad=False)
         
         return s, r, o, t
+    
+    def _assign_ids(self, scores, target = "?"):
+        ids = []
+        match(target):
+            case "h" | "t":
+                ids = self._all_entity_ids()
+            case "r":
+                ids = self._all_relation_ids()
+            case "Tf" | "Tt":
+                ids = self._all_timestamp_ids()
+        
+        id_scores = []
+
+        for id in ids:
+            id_as_tensor = torch.tensor([[id]], dtype=torch.int64)
+            score_as_float = scores.gather(1, id_as_tensor).item()
+            id_scores.append((id, score_as_float))
+
+        return id_scores
+            
 
     def _get_scores(self, target, s, r, o, t):
         match target:
             case "h":
-                scores = self.model(None, r, o, t).data
-                score_of_expected = scores.gather(1, s.data)
+                score_tensor = self.model(None, r, o, t).data
             case "r":
-                scores = self.model(s, None, o, t).data
-                score_of_expected = scores.gather(1, r.data)
+                score_tensor = self.model(s, None, o, t).data
             case "t":
-                scores = self.model(s, r, None, t).data
-                score_of_expected = scores.gather(1, o.data)
+                score_tensor = self.model(s, r, None, t).data
             case "Tf":
                 t_s = t[:, :, 0]
                 
@@ -173,7 +250,7 @@ class RankCalculator:
                 for index in range(score_from_model.shape[0]):
                     score_of_expected[index] = score_from_model[index, t_s[index]]
                 score_of_expected = score_of_expected.unsqueeze(-1)
-                scores = score_from_model.view((score_from_model.shape[0], -1))
+                score_tensor = score_from_model.view((score_from_model.shape[0], -1))
             case "Tt":
                 t_e = t[:, :, 2]
                 
@@ -182,11 +259,31 @@ class RankCalculator:
                 for index in range(score_from_model.shape[0]):
                     score_of_expected[index] = score_from_model[index, t_e[index]]
                 score_of_expected = score_of_expected.unsqueeze(-1)
-                scores = score_from_model.view((score_from_model.shape[0], -1))
+                score_tensor = score_from_model.view((score_from_model.shape[0], -1))
+               
+        id_scores = self._assign_ids(score_tensor, target)
 
-        return scores, score_of_expected
+        return id_scores
+    
+    def _construct_facts_scores(self, head, relation, tail, time_from, time_to, id_scores, target):
+        fact_scores = {}
 
-    def get_rank_of(self, head, relation, tail, time_from, time_to, answer):
+        for id, score in id_scores:
+            match target:
+                case "h":
+                    fact_scores[(self._get_ent_from_id(id), relation, tail, time_from, time_to)] = score
+                case "r":
+                    fact_scores[(head, self._get_rel_from_id(id), tail, time_from, time_to)] = score
+                case "t":
+                    fact_scores[(head, relation, self._get_ent_from_id(id), time_from, time_to)] = score
+                case "Tf":
+                    fact_scores[(head, relation, tail, self._get_time_from_id(id), time_to)] = score
+                case "Tt":
+                    fact_scores[(head, relation, tail, time_from, self._get_time_from_id(id))] = score
+
+        return fact_scores
+
+    def simulate_fact_scores(self, head, relation, tail, time_from, time_to, answer):
         target = "?"
         if head == "0":
             target = "h"
@@ -200,10 +297,15 @@ class RankCalculator:
             target = "Tt"
         
         simulated_fact = self._simulate_fact(head, relation, tail, time_from, time_to, target, answer)
-        facts = self._fact_as_ids(simulated_fact)
-        s, r, o, t = self._shred_fact(facts)
-        scores, score_of_expected = self._get_scores(target, s, r, o, t)
-        
-        rank = self._get_rank(torch.reshape(scores, (-1,)), torch.reshape(score_of_expected, (-1,)).item())
+        fact = self._fact_as_ids(simulated_fact)
+        s, r, o, t = self._shred_fact(fact)
+        id_scores = self._get_scores(target, s, r, o, t)
+        fact_scores = self._construct_facts_scores(head, relation, tail, time_from, time_to, id_scores, target)
 
-        return int(rank)
+        return fact_scores
+
+    def rank_of_correct_prediction(self, fact_scores, correct_fact):
+        if correct_fact not in fact_scores.keys():
+            return 10000
+
+        return self._get_rank(fact_scores.values(), fact_scores[correct_fact])

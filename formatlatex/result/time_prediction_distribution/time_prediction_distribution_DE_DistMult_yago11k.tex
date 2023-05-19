@@ -1,0 +1,19 @@
+\begin{figure}[htb]
+\centering
+\begin{minipage}{0.95\columnwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+no markers,
+xlabel={Error},
+ylabel={\# Occurences}]
+
+\addplot table {content/appendix/figures/time_prediction_distribution/error_distribution_DE_DistMult_yago11k_diff.dat};
+
+\end{axis}
+\end{tikzpicture}
+\vspace{-3mm}
+\caption{Distribution of predictions on timestamps for DE_DistMult on yago11k}
+\label{fig:time_prediction_distribution_DE_DistMult_yago11k}
+\end{minipage}
+\end{figure}

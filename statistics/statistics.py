@@ -4,7 +4,7 @@ import json
 import pandas
 
 from datetime import date
-from scripts import touch, year_to_iso_format, read_json, write_json, exists
+from scripts import touch, year_to_iso_format, read_json, write_json, exists, write, getdctval
 from statistics.measure import Measure
 from copy import deepcopy
 from dataset_handler.dataset_handler import DatasetHandler
@@ -12,6 +12,7 @@ from statistics.semester_10_time_density_hypothesis import TimeDensityHypothesis
 from statistics.semester_10_relation_properties_hypothesis import RelationPropertiesHypothesis
 from statistics.semester_10_voting_hypothesis import VotingHypothesis
 from rank.ranker import Ranker
+from dataset_handler.dataset_handler import DatasetHandler
 
 
 class Statistics():
@@ -417,11 +418,11 @@ class Statistics():
             # no_of_elements_dataset = self.read_csv(no_of_elements_path)
             # self.no_of_elements(no_of_elements_dataset, dataset)
 
-            # time_density_hypothesis = TimeDensityHypothesis(self.params, dataset)
-            # time_density_hypothesis.run_analysis()
+            time_density_hypothesis = TimeDensityHypothesis(self.params, dataset)
+            time_density_hypothesis.run_analysis()
 
-            voting_hypothesis = VotingHypothesis(self.params, dataset)
-            voting_hypothesis.run_analysis()
+            # voting_hypothesis = VotingHypothesis(self.params, dataset)
+            # voting_hypothesis.run_analysis()
 
             for split in self.params.splits:
 
@@ -448,14 +449,23 @@ class Statistics():
                     # file paths
                     predictions_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
                     avg_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "timestamp_prediction_avg.json")
-
-                    best_predictions = read_json(predictions_path)
+                    errdist_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "error_distribution_" + embedding + "_" + dataset + "_?.dat")
+                    predictions = read_json(predictions_path)
 
                     #get differences and average and write to files
-                    self.best_predictions_time_difference(best_predictions, predictions_path, dataset, embedding)
-                    self.best_predictions_time_difference_avg(best_predictions, avg_path, embedding)
+                    self.predictions_error(predictions, predictions_path, dataset, embedding)
+                    self.best_predictions_time_difference_avg(predictions, avg_path, embedding)
 
-    def best_predictions_time_difference(self, best_predictions, predictions_path, dataset, embedding):
+                    if 'BEST_DIFFERENCE' in predictions[1]['BEST_PREDICTION'][embedding].keys():
+                        key = [['BEST_PREDICTION', embedding, 'BEST_DIFFERENCE'],['BEST_PREDICTION', embedding, 'WORST_DIFFERENCE']]
+                    else:
+                        key = [['BEST_PREDICTION', embedding, 'DIFFERENCE']]
+                    
+                    for k in key:
+                        p = errdist_path.replace("?", k[2].lower()[:4])
+                        self.count_occurences(predictions, p, k)
+
+    def predictions_error(self, best_predictions, predictions_path, dataset, embedding):
         for i in best_predictions:
 
             # skip predictions for which we have no answer
@@ -466,19 +476,19 @@ class Statistics():
                 case 'icews14':
                     answer = date.fromisoformat(i['ANSWER'])
                     prediction = date.fromisoformat(i['BEST_PREDICTION'][embedding]['PREDICTION'])
-                    difference = (abs((answer-prediction).days))
+                    difference = (prediction-answer).days
                     i['BEST_PREDICTION'][embedding]['DIFFERENCE'] = difference
                 case 'wikidata12k' | 'yago11k':
                     if type(i['BEST_PREDICTION'][embedding]['PREDICTION']) is list:
                         answer = int(i['ANSWER'])
                         time_begin = i['BEST_PREDICTION'][embedding]['PREDICTION'][0]
                         time_end = i['BEST_PREDICTION'][embedding]['PREDICTION'][1]
-                        difference_begin = abs(answer-time_begin)
-                        difference_end = abs(answer-time_end)
+                        difference_begin = time_begin-answer
+                        difference_end = time_end-answer
                         if time_begin < answer < time_end:
                             best_case = 0
                             worst_case = 0
-                        elif difference_begin < difference_end:
+                        elif abs(difference_begin) < abs(difference_end):
                             best_case = difference_begin
                             worst_case = difference_end
                         else:
@@ -489,7 +499,7 @@ class Statistics():
                     else:
                         answer = int(i['ANSWER'])
                         prediction = int(i['BEST_PREDICTION'][embedding]['PREDICTION'])
-                        difference = abs(answer-prediction)
+                        difference = prediction-answer
                         i['BEST_PREDICTION'][embedding]['DIFFERENCE'] = difference
 
         # write to file
@@ -505,13 +515,13 @@ class Statistics():
         # find avg
         if len(predictions) > 0:
             no_predictions = len(predictions)
-            total_difference = sum(i['BEST_PREDICTION'][embedding]['DIFFERENCE'] for i in predictions)
+            total_difference = sum(abs(i['BEST_PREDICTION'][embedding]['DIFFERENCE']) for i in predictions)
             avg[embedding] = total_difference/no_predictions
         else:
             predictions = list(filter( lambda x: 'BEST_DIFFERENCE' in x['BEST_PREDICTION'][embedding].keys(), best_predictions))
             no_predictions = len(predictions)
-            total_best_difference = sum(i['BEST_PREDICTION'][embedding]['BEST_DIFFERENCE'] for i in predictions)
-            total_worst_difference = sum(i['BEST_PREDICTION'][embedding]['WORST_DIFFERENCE'] for i in predictions)
+            total_best_difference = sum(abs(i['BEST_PREDICTION'][embedding]['BEST_DIFFERENCE']) for i in predictions)
+            total_worst_difference = sum(abs(i['BEST_PREDICTION'][embedding]['WORST_DIFFERENCE']) for i in predictions)
             if embedding not in avg.keys():
                 avg[embedding] = {}
             avg[embedding]['BEST'] = total_best_difference/no_predictions
@@ -519,3 +529,40 @@ class Statistics():
 
         # write to file
         write_json(avg_path, avg)
+
+    def count_occurences(self, input, output_path, key):
+        occurences = {}
+        for i in input:
+            # skip predictions for which we have no answer
+            if i['ANSWER']=='-':
+                    continue
+            
+            diff = getdctval(i, key)
+            if diff not in occurences.keys():
+                occurences[diff] = 1
+            else:
+                occurences[diff] += 1
+
+        output=''
+        for x in sorted(occurences):
+            output += f"{x} {occurences[x]}\n"
+
+        write(output_path, output)
+
+    def dataset_timestamps(self):
+        dataset = DatasetHandler(self.params, "wikidata12k")
+        dataset.read_full_dataset()
+        y = set()
+        for x in dataset._rows:
+            if x['start_timestamp'] != '-':
+                y.add(int(x['start_timestamp']))
+            if x['end_timestamp'] != '-':
+                y.add(int(x['end_timestamp']))
+        print("minimum:", min(y - {19, 25, 97, 98, 196, 229, 265, 266, 280, 285}))
+        i=0
+        for z in y:
+            if z < 1700:
+                i=i+1
+        print("count:", i)
+        print(max(y))
+        print(len(y))

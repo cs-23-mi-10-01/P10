@@ -48,10 +48,10 @@ def main():
             generate_quads = GenerateQueries(params)
             generate_quads.generate_test_quads()
         case "best_predictions":
-            ranker = Ranker(params, "best_predictions")
-            ranker.rank()
-            statistics = Statistics(params)
-            statistics.average_timestamp_precision()
+            #ranker = Ranker(params, "best_predictions")
+            #ranker.rank()
+            #statistics = Statistics(params)
+            #statistics.average_timestamp_precision()
         case "ensemble_naive_voting":
             ranker = Ranker(params, "ensemble_naive_voting")
             ranker.rank()
@@ -59,6 +59,9 @@ def main():
             ranker = Ranker(params, "ensemble_decision_tree")
             ranker.rank()
 
+            format_latex = FormatLatex(params, ["time_prediction_mae", "time_prediction_distribution"])
+            format_latex.format()
+            
 
     params.timer.stop("main")
 
