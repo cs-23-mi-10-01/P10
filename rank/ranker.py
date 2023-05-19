@@ -4,11 +4,12 @@ import json
 from operator import itemgetter
 
 from rank.loader import Loader
-from scripts import touch, exists
+from scripts import touch, exists, read_json
 from rank.de_simple.rank_calculator import RankCalculator as DE_Rank
 from rank.TERO.rank_calculator import RankCalculator as TERO_Rank
 from rank.TFLEX.rank_calculator import RankCalculator as TFLEX_Rank
 from rank.TimePlex.rank_calculator import RankCalculator as TimePlex_Rank
+
 
 class Ranker:
     def __init__(self, params, mode = 'rank'):
@@ -30,7 +31,7 @@ class Ranker:
                         case "best_predictions":
                             output_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
                             generate_function = getattr(self, '_generate_best_predictions')
-                        case "ensemble_naive_voting":
+                        case "ensemble_naive_voting" | "ensemble_decision_tree":
                             output_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
                             
                     
@@ -144,6 +145,15 @@ class Ranker:
     
     def _ensemble_base(self, dataset, split):
         ranked_quads = []
+
+        
+        properties_path = os.path.join(self.base_directory, "statistics", "resources", dataset, "relation_classification_timestamps.json") 
+        partitions_path = os.path.join(self.base_directory, "statistics", "resources", dataset, "split_" + split, "partition.json") 
+        
+        properties = read_json(properties_path)
+        partitions = read_json(partitions_path)
+        scores = self._ensemble_dict_creator(dataset, split)
+
         #Goes through each model one fact at a time and the ensemble method combines all the answers into it's final answer, which is then save to ensemble_scores
         # load model via torch
         rank_calculators = {}
@@ -174,19 +184,158 @@ class Ranker:
                 target = "tail"
             if i % 4 == 3:
                 target = "time"
-            #analyse
+
             if self.mode == "ensemble_decision_tree":
-                pass
-            #decision tree
+                #analyse
+                query = self._ensemble_analyser(quad, target, properties, partitions,dataset)
+                #decision tree
+                weight_distribution = self._ensemble_decision_tree(query, scores, target)
             elif self.mode == "ensemble_naive_voting":
                 for embedding_name in self.params.embeddings:
                     weight_distribution[embedding_name] = (1/len(self.params.embeddings))
             #voting
             ranked_quads.append(self._ensemble_voting(dataset,split, quad, rank_calculators, weight_distribution, target))
-            print(i + " of " + str(len(self.ranked_quads)))
-        print(ranked_quads)
+            print(i," of ",len(self.ranked_quads))
+        
         return ranked_quads
     
+    def _ensemble_dict_creator(self, dataset, split):
+        scores = {}
+
+        head_path = os.path.join(self.base_directory, "result", dataset, "split_" + split,"semester_9_hypothesis_1", "head.json")
+        relation_path = os.path.join(self.base_directory, "result", dataset, "split_" + split,"semester_9_hypothesis_1", "relation.json") 
+        tail_path = os.path.join(self.base_directory, "result", dataset, "split_" + split,"semester_9_hypothesis_1", "tail.json") 
+        time_path = os.path.join(self.base_directory, "result", dataset, "split_" + split,"semester_9_hypothesis_1", "time_from.json")  
+        overall_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "overall_scores.json")
+        time_density_path = os.path.join(self.base_directory, "result", dataset, "split_" + split, "time_density.json") 
+        anti_symmetry_path = os.path.join(self.base_directory, "result", dataset, "split_" + split,"semester_10_hypothesis_3", "relation_property_anti-symmetric_timestamps.json")  
+        inverse_path = os.path.join(self.base_directory, "result", dataset, "split_" + split,"semester_10_hypothesis_3", "relation_property_inverse_timestamps.json")  
+        reflexive_path = os.path.join(self.base_directory, "result", dataset, "split_" + split,"semester_10_hypothesis_3", "relation_property_reflexive_timestamps.json")  
+        symmetry_path = os.path.join(self.base_directory, "result", dataset, "split_" + split,"semester_10_hypothesis_3", "relation_property_symmetric_timestamps.json")  
+
+        head = read_json(head_path)
+        relaition = read_json(relation_path)
+        tail = read_json(tail_path)
+        time = read_json(time_path)
+        overall = read_json(overall_path)
+        
+        
+
+        time_density = read_json(time_density_path)
+
+        symmetry = read_json(symmetry_path)
+        inverse = read_json(inverse_path)
+        anti_symmetry = read_json(anti_symmetry_path)
+        reflexive = read_json(reflexive_path)
+
+        #removing TFLEX from all datasets
+        overall.pop('TFLEX', None)
+        head.pop('TFLEX', None)
+        relaition.pop('TFLEX', None)
+        tail.pop('TFLEX', None)
+        time.pop('TFLEX', None)
+        time_density["dense"].pop('TFLEX', None)
+        time_density["sparse"].pop('TFLEX', None)
+        symmetry["symmetric"].pop('TFLEX', None)
+        symmetry["not symmetric"].pop('TFLEX', None)
+        inverse["inverse"].pop('TFLEX', None)
+        inverse["not inverse"].pop('TFLEX', None)
+        anti_symmetry["anti-symmetric"].pop('TFLEX', None)
+        anti_symmetry["not anti-symmetric"].pop('TFLEX', None)
+        reflexive["not reflexive"].pop('TFLEX', None)
+        reflexive["reflexive"].pop('TFLEX', None)
+
+        scores["head"] = head
+        scores["relation"] = relaition
+        scores["tail"] = tail
+        scores["time"] = time
+        scores["overall"] = overall
+        scores = scores | time_density | symmetry | inverse | anti_symmetry | reflexive
+
+    
+        return scores
+    
+    def _ensemble_analyser(self, quad, target, properties, partitions,dataset):
+        query = {"properties": [], "density": ''}
+        if target != "relation":   
+            for lol in properties[quad["RELATION"]]:
+                 if properties[quad["RELATION"]][lol] == True:
+                     query["properties"] += [lol]
+
+        if target != "time":
+
+            if dataset in ["wikidata12k", "yago11k"]:
+                quad_start_date = f"""{int(quad["TIME_FROM"]):04d}-01-01"""
+            else:
+                quad_start_date = quad["TIME_FROM"]
+
+            for partition in partitions:
+                if partition["start_date"] <= quad_start_date and \
+                    quad_start_date < partition["end_date"]:
+                    
+                    if partition["partition"] == "sparse":
+                        query["density"] = "sparse"
+                    if partition["partition"] == "dense":
+                        query["density"] = "dense"
+
+        return query
+
+    def _ensemble_decision_tree(self, query, scores, target):
+        weight_distribution = {}
+
+        diff =self.diff_min_max_finder(scores["overall"])
+        normalized = self.mrr_normalizer(scores["overall"])
+        for method in normalized:
+            weight_distribution[method] = normalized[method] * diff
+
+        for p in query["properties"]:
+            diff =self.diff_min_max_finder(scores[p])
+            normalized = self.mrr_normalizer(scores[p])
+            for method in normalized:
+                weight_distribution[method] += normalized[method] * diff
+
+        if query["density"] == "dense":
+            diff =self.diff_min_max_finder(scores["dense"])
+            normalized = self.mrr_normalizer(scores["dense"])
+            for method in normalized:
+                weight_distribution[method] += normalized[method] * diff
+
+        elif query["density"] == "sparse":
+            diff =self.diff_min_max_finder(scores["sparse"])
+            normalized = self.mrr_normalizer(scores["sparse"])
+            for method in normalized:
+                weight_distribution[method] += normalized[method] * diff
+            
+        match(target):
+            case("head"):
+                diff =self.diff_min_max_finder(scores["head"])
+                normalized = self.mrr_normalizer(scores["head"])
+                for method in normalized:
+                    weight_distribution[method] += normalized[method] * diff
+
+            case("relation"):
+                diff =self.diff_min_max_finder(scores["relation"])
+                normalized = self.mrr_normalizer(scores["relation"])
+                for method in normalized:
+                    weight_distribution[method] += normalized[method] * diff
+
+            case("tail"):
+                diff =self.diff_min_max_finder(scores["tail"])
+                normalized = self.mrr_normalizer(scores["tail"])
+                for method in normalized:
+                    weight_distribution[method] += normalized[method] * diff
+                    
+            case("time"):
+                diff =self.diff_min_max_finder(scores["time"])
+                normalized = self.mrr_normalizer(scores["time"])
+                for method in normalized:
+                    weight_distribution[method] += normalized[method] * diff
+
+        #normalized the final weights so the sum 1
+        factor=1.0/sum(weight_distribution.values())
+        for k in weight_distribution:
+            weight_distribution[k] = weight_distribution[k]*factor
+        return weight_distribution
     
     def _ensemble_voting(self,dataset,split, quad, rank_calculators,weight_distribution, target):
         voting_points = {}
@@ -197,7 +346,7 @@ class Ranker:
                                                 quad["TAIL"], quad["TIME_FROM"],
                                                 quad["TIME_TO"], quad["ANSWER"])
             #the first element of fact scores is the correct answer
-            fact_scores[0]
+            del(fact_scores[0])
             for i in range(0, len(fact_scores)):
                 #combines the date into single element in the DE models for consistency with tero and atise
                 if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
@@ -254,3 +403,27 @@ class Ranker:
         ranked_quad["RANK"][str(self.mode)] = str(rank)
         return ranked_quad
         
+    def diff_min_max_finder(self, dict):
+        #finds the difference between max and min in given dict
+        min = dict["DE_TransE"]["MRR"]
+        max = dict["DE_TransE"]["MRR"]
+        for methods in dict:
+            if dict[methods]["MRR"] > max:
+                max = dict[methods]["MRR"]
+            if dict[methods]["MRR"] < min:
+                min = dict[methods]["MRR"]
+        
+        return max - min
+    
+    def mrr_normalizer(self, dict):
+        #normalized the given dict so the max value = 1 and min value = 0
+        normalized_dict = {}
+        norm_list = []
+        for method in dict:
+            norm_list.append(dict[method]["MRR"])
+        norm_list = [(float(i)-min(norm_list))/(max(norm_list)-min(norm_list)) for i in norm_list]
+        for i, method in zip(range(0, len(norm_list)), dict):
+            normalized_dict[method] = norm_list[i]
+           
+
+        return normalized_dict
