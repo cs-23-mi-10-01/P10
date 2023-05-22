@@ -449,7 +449,7 @@ class Statistics():
                     # file paths
                     predictions_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
                     avg_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "timestamp_prediction_avg.json")
-                    errdist_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "error_distribution_" + embedding + "_" + dataset + ".dat")
+                    errdist_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "time_prediction_distribution", embedding + ".dat")
                     predictions = read_json(predictions_path)
 
                     #get differences and average and write to files

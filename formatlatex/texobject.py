@@ -88,7 +88,7 @@ class texobject():
             for key in properties.keys():
                 content+=f"\n{key}={properties[key]},"
             content += f"]\ntable {{{row[0]}}};\n"
-        print(content)
+
         return content
 
     # format list as row in tex table
@@ -253,9 +253,9 @@ class texobject():
         self.output_filename = f"{id}.tex"
         self.label += f"_{id}"
 
-        # edit file 
-        filename = f"error_distribution_{self.embeddings}_{self.datasets}*"
-        input_path = os.path.join(self.params.base_directory, "result", self.datasets, "split_" + self.splits, filename)
+        # edit file
+        filename = f"{self.embeddings}*"
+        input_path = os.path.join(self.params.base_directory, "result", self.datasets, "split_" + self.splits, self.task, filename)
         
         for path in glob.glob(input_path):
             id = f"{self.datasets}_{self.embeddings}"

@@ -9,17 +9,17 @@ xlabel={Error},
 ylabel={\#Occurences}]
 
 \addplot[
+COLOR=green,
+PATTERN=north east lines,
+PATTERN COLOR=tikzlightblue,
+OPACITY=0.8,]
+table {content/appendix/figures/time_prediction_distribution/wikidata12k_TERO_best.dat};
+\addplot[
 COLOR=red,
 PATTERN=north west lines,
 PATTERN COLOR=tikzlightblue,
 OPACITY=0.8,]
 table {content/appendix/figures/time_prediction_distribution/wikidata12k_TERO_wors.dat};
-\addplot[
-COLOR=green,
-PATTERN=north west lines,
-PATTERN COLOR=tikzlightblue,
-OPACITY=0.8,]
-table {content/appendix/figures/time_prediction_distribution/wikidata12k_TERO_best.dat};
 
 
 \end{axis}
