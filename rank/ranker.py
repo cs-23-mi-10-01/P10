@@ -64,9 +64,7 @@ class Ranker:
                     out_file = open(output_path, "w", encoding="utf8")
                     print("Writing to file " + str(output_path) + "...")
                     json.dump(json_output, out_file, indent=4)
-                    out_file.close()
-
-                            
+                    out_file.close()                  
 
     def _generate_ranked_quads(self, rank_calculator, embedding_name, dataset, split):
         ranked_quads = []
@@ -135,7 +133,7 @@ class Ranker:
                 fact_scores = rank_calculator.simulate_fact_scores(quad["HEAD"], quad["RELATION"],
                                                     quad["TAIL"], quad["TIME_FROM"],
                                                     quad["TIME_TO"], quad["ANSWER"])
-                best_prediction_quad["BEST_PREDICTION"][embedding_name]["PREDICTION"] = rank_calculator.best_prediction(fact_scores)
+                best_prediction_quad["BEST_PREDICTION"][embedding_name]["PREDICTION"] = rank_calculator.best_prediction(fact_scores, [1, 1])
                 best_predictions.append(best_prediction_quad)
 
         return best_predictions

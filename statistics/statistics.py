@@ -449,7 +449,7 @@ class Statistics():
                     # file paths
                     predictions_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
                     avg_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "timestamp_prediction_avg.json")
-                    errdist_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "error_distribution_" + embedding + "_" + dataset + "_?.dat")
+                    errdist_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "error_distribution_" + embedding + "_" + dataset + ".dat")
                     predictions = read_json(predictions_path)
 
                     #get differences and average and write to files
@@ -462,7 +462,9 @@ class Statistics():
                         key = [['BEST_PREDICTION', embedding, 'DIFFERENCE']]
                     
                     for k in key:
-                        p = errdist_path.replace("?", k[2].lower()[:4])
+                        p = errdist_path
+                        if k[2] != "DIFFERENCE":
+                            p = errdist_path.replace(".dat", f"_{k[2].lower()[:4]}.dat")
                         self.count_occurences(predictions, p, k)
 
     def predictions_error(self, best_predictions, predictions_path, dataset, embedding):

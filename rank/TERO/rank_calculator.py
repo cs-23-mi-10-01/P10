@@ -148,9 +148,8 @@ class RankCalculator:
     def rank_of_correct_prediction(self, fact_scores):
         return self.get_rank([fact[4] for fact in fact_scores])
 
-    def best_prediction(self, fact_scores): #copypaste fra distmult skal fikses
+    def best_prediction(self, fact_scores, range): #copypaste fra distmult skal fikses
         scores = [fact[4] for fact in fact_scores]
         highest_score = max(scores)
         pred = fact_scores[scores.index(highest_score)][0:5]
         return self.get_timestamp_from_time_id(int(pred[3]))
-        exit()

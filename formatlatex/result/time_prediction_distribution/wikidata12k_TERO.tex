@@ -1,0 +1,31 @@
+\begin{figure}[htb]
+\centering
+\begin{minipage}{0.95\columnwidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+no markers,
+xlabel={Error},
+ylabel={\#Occurences}]
+
+\addplot[
+COLOR=red,
+PATTERN=north west lines,
+PATTERN COLOR=tikzlightblue,
+OPACITY=0.8,]
+table {content/appendix/figures/time_prediction_distribution/wikidata12k_TERO_wors.dat};
+\addplot[
+COLOR=green,
+PATTERN=north west lines,
+PATTERN COLOR=tikzlightblue,
+OPACITY=0.8,]
+table {content/appendix/figures/time_prediction_distribution/wikidata12k_TERO_best.dat};
+
+
+\end{axis}
+\end{tikzpicture}
+\vspace{-3mm}
+\caption{Distribution of prediction error on timestamps for TeRo on WikiData12k.}
+\label{fig:time_prediction_distribution_wikidata12k_TERO}
+\end{minipage}
+\end{figure}
