@@ -102,21 +102,21 @@ def divide_into_buckets(coordinates, buckets=-1):
     last_time_float = float(coordinates[-1][0])
 
     if buckets != -1:
-        interval = (last_time_float - first_time_float) / (buckets + 1)
-        for i in range(buckets + 2):
+        interval = (last_time_float - first_time_float) / buckets
+        for i in range(buckets + 1):
             coordinate_indexes_in_bucket = []
             for j in range(len(coordinates)):
                 if coordinates[j][0] >= first_time_float + interval*i and \
                     coordinates[j][0] < first_time_float + interval*(i+1):
                     coordinate_indexes_in_bucket.append(j)
 
-            no_of_facts_in_bucket = 0
+            sum_of_vals_in_bucket = 0
             total_date_intervals_in_bucket = 0.0
             for index in coordinate_indexes_in_bucket:
                 total_date_intervals_in_bucket += float(coordinates[index][0])
-                no_of_facts_in_bucket += float(coordinates[index][1])
+                sum_of_vals_in_bucket += float(coordinates[index][1])
             average_date_interval = total_date_intervals_in_bucket / len(coordinate_indexes_in_bucket)
-            average_no_of_facts = no_of_facts_in_bucket / len(coordinate_indexes_in_bucket)
+            average_no_of_facts = sum_of_vals_in_bucket / len(coordinate_indexes_in_bucket)
             average_coord = [average_date_interval, average_no_of_facts]
 
             for j in range(len(coordinate_indexes_in_bucket) -1, 0, -1):

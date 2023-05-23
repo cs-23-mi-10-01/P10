@@ -1,0 +1,13 @@
+{
+    "DE_TransE": "DE-T",
+    "DE_SimplE": "DE-S",
+    "DE_DistMult": "DE-D",
+    "TERO": "TeRo",
+    "ATISE": "ATiSE",
+    "TFLEX": "TFLEX",
+    "TimePlex": "TimePlex",
+    "AVG": "Average",
+    "icews14": "ICEWS14",
+    "wikidata12k": "WikiData12k",
+    "yago11k": "YAGO11k"
+}

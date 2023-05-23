@@ -23,11 +23,11 @@ class FormatErrorDistribution():
     def format(self):
         static_text_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_10_error_distribution_text.txt")
         subfigure_text_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_10_error_distribution_subfigure.txt")
-        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "method_shorthand.json")
+        full_name_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "full_name.json")
         
         static_text = read_text(static_text_path)
         subfigure_text = read_text(subfigure_text_path)
-        shorthand = read_json(shorthand_path)
+        full_name = read_json(full_name_path)
 
         
         for dataset in self.datasets:
@@ -123,8 +123,8 @@ class FormatErrorDistribution():
                         "%1", str(ymin)).replace(
                         "%2", str(ymax)).replace(
                         "%3", subfigure).replace(
-                        "%4", shorthand[embedding]).replace(
-                        "%5", shorthand[dataset]).replace(
+                        "%4", full_name[embedding]).replace(
+                        "%5", full_name[dataset]).replace(
                         "%6", embedding.lower()).replace(
                         "%7", dataset).replace(
                         "%8", additional_caption)

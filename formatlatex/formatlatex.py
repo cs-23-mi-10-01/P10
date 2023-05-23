@@ -46,7 +46,7 @@ class FormatLatex():
 
         prefix_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_9_hypothesis_1_prefix.txt")
         suffix_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_9_hypothesis_1_suffix.txt")
-        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "method_shorthand.json")
+        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "shorthand.json")
 
         prefix_text = self.read_text(prefix_path)
         suffix_text = self.read_text(suffix_path)
