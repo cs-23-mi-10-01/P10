@@ -10,6 +10,8 @@ class FormatErrorDistribution():
         self.datasets = params.datasets
         self.splits = params.splits
 
+        self.buckets = 100
+
     def format(self):
         static_text_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_10_error_distribution_text.txt")
         subfigure_text_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_10_error_distribution_subfigure.txt")
@@ -44,7 +46,7 @@ class FormatErrorDistribution():
                         if best_difference:
                             if "BEST" not in differences[embedding].keys():
                                 differences[embedding]["BEST"] = {}
-                            if difference not in differences[embedding].keys():
+                            if difference not in differences[embedding]["BEST"].keys():
                                 differences[embedding]["BEST"][difference] = 0
                             
                             differences[embedding]["BEST"][difference] += 1
@@ -56,7 +58,7 @@ class FormatErrorDistribution():
 
                             if "WORST" not in differences[embedding].keys():
                                 differences[embedding]["WORST"] = {}
-                            if difference not in differences[embedding].keys():
+                            if difference not in differences[embedding]["WORST"].keys():
                                 differences[embedding]["WORST"][difference] = 0
 
                             differences[embedding]["WORST"][difference] += 1
@@ -75,7 +77,7 @@ class FormatErrorDistribution():
                             else:
                                 coordinate_sets[set].append([d, 0])
                         
-                        coordinate_sets[set] = divide_into_buckets(coordinate_sets[set], buckets=100)
+                        coordinate_sets[set] = divide_into_buckets(coordinate_sets[set], buckets=self.buckets)
 
                     coordinate_sets_text = {}
                     ymin = 0
@@ -92,30 +94,27 @@ class FormatErrorDistribution():
                                 ymax = coordinate[1] * 1.2
                         coordinate_sets_text[set] += f"""({last_time}, 0)"""
                                     
-                    if "WORST" not in coordinate_sets_text.keys():
-                        subfigure = subfigure_text.replace(
-                            "%1", coordinate_sets_text["BEST"]).replace(
-                            "%2", "ourdarkblue").replace(
-                            "%3", "ourlightblue").replace(
-                            "%4", "1.0")
-                    else:
+                    subfigure = subfigure_text.replace(
+                        "%1", coordinate_sets_text["BEST"]).replace(
+                        "%2", "ourdarkblue").replace(
+                        "%3", "ourlightblue").replace(
+                        "%4", "1.0")
+                    additional_caption = ""
+                    
+                    if "WORST" in coordinate_sets_text.keys():
                         subfigure = subfigure_text.replace(
                             "%1", coordinate_sets_text["WORST"]).replace(
                             "%2", "ourdarkred").replace(
                             "%3", "ourlightred").replace(
-                            "%4", "0.5") + "\n"
+                            "%4", "1.0") + "\n" + subfigure + "\n"
                         
                         subfigure += subfigure_text.replace(
-                            "%1", coordinate_sets_text["BEST"]).replace(
-                            "%2", "ourdarkblue").replace(
-                            "%3", "ourlightblue").replace(
-                            "%4", "1.0") + "\n"
+                            "%1", coordinate_sets_text["WORST"]).replace(
+                            "%2", "ourdarkred").replace(
+                            "%3", "ourlightred").replace(
+                            "%4", "0.5")
                         
-                        subfigure += subfigure_text.replace(
-                            "%1", coordinate_sets_text["BEST"]).replace(
-                            "%2", "ourdarkblue").replace(
-                            "%3", "ourlightblue").replace(
-                            "%4", "1.0")
+                        additional_caption = "Blue indicates the best timestamp in the interval prediction, red indicates the worst."
 
                     text = static_text.replace(
                         "%1", str(ymin)).replace(
@@ -124,7 +123,8 @@ class FormatErrorDistribution():
                         "%4", shorthand[embedding]).replace(
                         "%5", shorthand[dataset]).replace(
                         "%6", embedding.lower()).replace(
-                        "%7", dataset)
+                        "%7", dataset).replace(
+                        "%8", additional_caption)
                     
                     output_path = os.path.join(self.params.base_directory, "formatlatex", "result", "semester_10_time_prediction_distributon", embedding.lower()+"_"+dataset+"_"+split+".tex")
                     write(output_path, text)

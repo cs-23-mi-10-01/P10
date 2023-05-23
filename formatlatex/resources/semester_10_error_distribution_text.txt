@@ -19,7 +19,7 @@
 \end{tikzpicture}
 
 \vspace{-3mm}
-\caption{Distribution of predictions on timestamps for %4 on %5.}
+\caption{Distribution of predictions on timestamps for %4 on %5. %8}
 \label{fig:time_density_%6_%7}
 \end{minipage}
 \end{figure}
