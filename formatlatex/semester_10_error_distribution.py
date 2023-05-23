@@ -12,6 +12,14 @@ class FormatErrorDistribution():
 
         self.buckets = 100
 
+    def _increment_difference(self, differences, embedding, target, difference):        
+        if target not in differences[embedding].keys():
+            differences[embedding][target] = {}
+        if difference not in differences[embedding][target].keys():
+            differences[embedding][target][difference] = 0
+        
+        differences[embedding][target][difference] += 1
+
     def format(self):
         static_text_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_10_error_distribution_text.txt")
         subfigure_text_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_10_error_distribution_subfigure.txt")
@@ -32,43 +40,33 @@ class FormatErrorDistribution():
 
                 for quad in best_predictions:
                     for embedding in quad["BEST_PREDICTION"]:
+                        # Count differences amongst the best and worst predictions
+
                         if embedding not in differences.keys():
                             differences[embedding] = {}
                         
                         best_difference = False
-                        if "DIFFERENCE" in quad["BEST_PREDICTION"][embedding].keys():
-                            difference = quad["BEST_PREDICTION"][embedding]["DIFFERENCE"]
-                            best_difference = True
-                        if "BEST_DIFFERENCE" in quad["BEST_PREDICTION"][embedding].keys():
-                            difference = quad["BEST_PREDICTION"][embedding]["BEST_DIFFERENCE"]
-                            best_difference = True
+                        for d in ["DIFFERENCE", "BEST_DIFFERENCE"]:
+                            if d in quad["BEST_PREDICTION"][embedding].keys():
+                                difference = quad["BEST_PREDICTION"][embedding][d]
+                                best_difference = True
+                                break
 
                         if best_difference:
-                            if "BEST" not in differences[embedding].keys():
-                                differences[embedding]["BEST"] = {}
-                            if difference not in differences[embedding]["BEST"].keys():
-                                differences[embedding]["BEST"][difference] = 0
-                            
-                            differences[embedding]["BEST"][difference] += 1
+                            self._increment_difference(differences, embedding, "BEST", difference)
                         else:
                             continue
                         
                         if "WORST_DIFFERENCE" in quad["BEST_PREDICTION"][embedding].keys():
                             difference = quad["BEST_PREDICTION"][embedding]["WORST_DIFFERENCE"]
 
-                            if "WORST" not in differences[embedding].keys():
-                                differences[embedding]["WORST"] = {}
-                            if difference not in differences[embedding]["WORST"].keys():
-                                differences[embedding]["WORST"][difference] = 0
-
-                            differences[embedding]["WORST"][difference] += 1
+                            self._increment_difference(differences, embedding, "WORST", difference)
 
                 for embedding in differences.keys():
-                    coordinate_sets = {}
-                    for set in ["BEST", "WORST"]:
-                        if set not in differences[embedding].keys():
-                            continue
+                    # Create ordered coordinate sets of the differences, and add 0 count coordinates
 
+                    coordinate_sets = {}
+                    for set in differences[embedding].keys():
                         coordinate_sets[set] = []
 
                         for d in range(min(differences[embedding][set].keys()), max(differences[embedding][set].keys()) + 1):
@@ -77,6 +75,7 @@ class FormatErrorDistribution():
                             else:
                                 coordinate_sets[set].append([d, 0])
                         
+                        # Divide the coordinates into buckets, creating X amount of coordinates averaged over intervals of coordinates
                         coordinate_sets[set] = divide_into_buckets(coordinate_sets[set], buckets=self.buckets)
 
                     coordinate_sets_text = {}
@@ -84,6 +83,8 @@ class FormatErrorDistribution():
                     ymax = 0
 
                     for set in coordinate_sets.keys():
+                        # Parse the coordinate sets, and make them into a string readable by latex
+
                         first_time = coordinate_sets[set][0][0]
                         last_time = coordinate_sets[set][-1][0]
 
@@ -93,7 +94,8 @@ class FormatErrorDistribution():
                             if ymax < coordinate[1] * 1.2:
                                 ymax = coordinate[1] * 1.2
                         coordinate_sets_text[set] += f"""({last_time}, 0)"""
-                                    
+
+                    # Add the best prediction set
                     subfigure = subfigure_text.replace(
                         "%1", coordinate_sets_text["BEST"]).replace(
                         "%2", "ourdarkblue").replace(
@@ -102,6 +104,7 @@ class FormatErrorDistribution():
                     additional_caption = ""
                     
                     if "WORST" in coordinate_sets_text.keys():
+                        # Surround the best prediction set with the worst one, second one as transparent.
                         subfigure = subfigure_text.replace(
                             "%1", coordinate_sets_text["WORST"]).replace(
                             "%2", "ourdarkred").replace(
