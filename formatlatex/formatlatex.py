@@ -5,6 +5,7 @@ import os
 from formatlatex.semester_10_relation_property_hypothesis import FormatRelationPropertyHypothesis
 from formatlatex.semester_10_voting_hypothesis import FormatVotingHypothesis
 from formatlatex.semester_10_time_density import FormatTimeDensity
+from formatlatex.semester_10_error_distribution import FormatErrorDistribution
 from formatlatex.texobject import texobject
 
 class FormatLatex():
@@ -45,7 +46,7 @@ class FormatLatex():
 
         prefix_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_9_hypothesis_1_prefix.txt")
         suffix_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_9_hypothesis_1_suffix.txt")
-        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "method_shorthand.json")
+        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "shorthand.json")
 
         prefix_text = self.read_text(prefix_path)
         suffix_text = self.read_text(suffix_path)
@@ -317,3 +318,7 @@ class FormatLatex():
                             tex.embeddings = method
                             tex.datasets = dataset
                             tex.format()
+                
+                case "time_error_distibution":
+                    format_error_distribution = FormatErrorDistribution(self.params)
+                    format_error_distribution.format()

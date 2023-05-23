@@ -31,7 +31,7 @@ class FormatRelationPropertyHypothesis():
         metric = "MRR"
 
         static_text_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_10_hypothesis_3_static_text.txt")
-        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "method_shorthand.json")
+        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "shorthand.json")
 
         static_text = self.read_text(static_text_path)
         shorthand = self.read_json(shorthand_path)
