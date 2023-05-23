@@ -2,7 +2,7 @@
 import os
 import json
 from operator import itemgetter
-
+import copy
 from rank.loader import Loader
 from scripts import touch, exists, read_json
 from rank.de_simple.rank_calculator import RankCalculator as DE_Rank
@@ -164,7 +164,8 @@ class Ranker:
         properties = read_json(properties_path)
         partitions = read_json(partitions_path)
         scores = self._ensemble_dict_creator(dataset, split)
-
+        del properties_path
+        del partitions_path
         #Goes through each model one fact at a time and the ensemble method combines all the answers into it's final answer, which is then save to ensemble_scores
         # load model via torch
         rank_calculators = {}
@@ -185,15 +186,22 @@ class Ranker:
                 rank_calculators[embedding_name] = TimePlex_Rank(self.params, model, dataset)
         
         for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
+            # if i < 1500:
+            #     continue
+            if quad["TIME_TO"] == '0' or quad["ANSWER"] == '-':
+                continue
             weight_distribution = {}
             #finding the target
-            if i % 4 == 0:
+            if i % 5 == 0:
                 target = "head"
-            elif i % 4 == 1:
+            elif i % 5 == 1:
                 target = "relation"
-            if i % 4 == 2:
+                #removes timeplex cause it can't do relation prediction
+                self.params.embeddings.remove("TimePlex")
+            elif i % 5 == 2:
                 target = "tail"
-            if i % 4 == 3:
+                self.params.embeddings.append("TimePlex")
+            elif i % 5 == 3:
                 target = "time"
 
             if self.mode == "ensemble_decision_tree":
@@ -262,7 +270,8 @@ class Ranker:
         scores["time"] = time
         scores["overall"] = overall
         scores = scores | time_density | symmetry | inverse | anti_symmetry | reflexive
-
+        scores.pop("facts_in_class")
+        scores.pop("facts_not_in_class")
     
         return scores
     
@@ -293,6 +302,12 @@ class Ranker:
 
     def _ensemble_decision_tree(self, query, scores, target):
         weight_distribution = {}
+        if target == "relation":
+            relation_scores = copy.deepcopy(scores)
+            for r in scores:
+                relation_scores[r].pop("TimePlex", None)
+                scores = relation_scores
+                
 
         diff =self.diff_min_max_finder(scores["overall"])
         normalized = self.mrr_normalizer(scores["overall"])
@@ -352,12 +367,21 @@ class Ranker:
         voting_points = {}
         answer_Id = int
         for embedding_name in self.params.embeddings:
-            
-            fact_scores = rank_calculators[embedding_name].simulate_fact_scores(quad["HEAD"], quad["RELATION"],
+            if embedding_name == "TimePlex":
+                timeplex_scores = rank_calculators[embedding_name].simulate_fact_scores(quad["HEAD"], quad["RELATION"],
+                                                quad["TAIL"], quad["TIME_FROM"],
+                                                quad["TIME_TO"], quad["ANSWER"])
+                fact_scores = []
+                for key in timeplex_scores.keys():
+                    fact_scores.append([key[0],key[1],key[2],key[3],timeplex_scores[key]])
+
+            else:
+                fact_scores = rank_calculators[embedding_name].simulate_fact_scores(quad["HEAD"], quad["RELATION"],
                                                 quad["TAIL"], quad["TIME_FROM"],
                                                 quad["TIME_TO"], quad["ANSWER"])
             #the first element of fact scores is the correct answer
-            del(fact_scores[0])
+            if embedding_name != "TimePlex":
+                del(fact_scores[0])
             for i in range(0, len(fact_scores)):
                 #combines the date into single element in the DE models for consistency with tero and atise
                 if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
@@ -390,7 +414,16 @@ class Ranker:
                     case "time":
                         check = 3
                         #don't need conversion here as time is already in the right format
-                        answer = quad["ANSWER"]
+                        if dataset in ["'wikidata12k', 'yago11k'"]:
+                            if quad["ANSWER"] == "-":
+                                answer = quad["ANSWER"]
+                            elif int(quad["ANSWER"]) < 1000:
+                                answer = "0"+ quad["ANSWER"] + "-01-01"
+                            else:
+                                answer = quad["ANSWER"] + "-01-01"
+                        else:
+                            answer = quad["ANSWER"]
+                            
                 for simu_fact in sorted_fact_scores:
 
                         if simu_fact[check] == answer:

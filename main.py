@@ -14,9 +14,9 @@ def main():
 
     #python -task rank -dataset icews14 -embedding DE_TransE -split all
     parser.add_argument('-task', type=str, default='ensemble_naive_voting', choices=['statistics', 'rank', 'formatlatex', 'split_dataset', 'generate_quads', 'best_predictions', 'ensemble_naive_voting', "ensemble_decision_tree"])
-    parser.add_argument('-dataset', type=str, default='all', choices=['all', 'icews14', 'wikidata11k', 'wikidata12k', 'yago11k'])
-    parser.add_argument('-split', type=str, default='all', choices=['all', 'original', '1', '2', '3'])
-    parser.add_argument('-embedding', type=str, default='all', choices=['all','ensemble', 'DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE', 'TFLEX','TimePlex'])
+    parser.add_argument('-dataset', type=str, default='wikidata12k', choices=['all', 'icews14', 'wikidata11k', 'wikidata12k', 'yago11k'])
+    parser.add_argument('-split', type=str, default='original', choices=['all', 'original', '1', '2', '3'])
+    parser.add_argument('-embedding', type=str, default='ensemble', choices=['all','ensemble', 'DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE', 'TFLEX','TimePlex'])
 
     args = parser.parse_args()
     params = Parameters(args)
@@ -48,10 +48,12 @@ def main():
             generate_quads = GenerateQueries(params)
             generate_quads.generate_test_quads()
         case "best_predictions":
-            #ranker = Ranker(params, "best_predictions")
-            #ranker.rank()
-            #statistics = Statistics(params)
-            #statistics.average_timestamp_precision()
+            ranker = Ranker(params, "best_predictions")
+            ranker.rank()
+            statistics = Statistics(params)
+            statistics.average_timestamp_precision()
+            format_latex = FormatLatex(params, ["time_prediction_mae", "time_prediction_distribution"])
+            format_latex.format()
         case "ensemble_naive_voting":
             ranker = Ranker(params, "ensemble_naive_voting")
             ranker.rank()
@@ -59,8 +61,6 @@ def main():
             ranker = Ranker(params, "ensemble_decision_tree")
             ranker.rank()
 
-            format_latex = FormatLatex(params, ["time_prediction_mae", "time_prediction_distribution"])
-            format_latex.format()
             
 
     params.timer.stop("main")
