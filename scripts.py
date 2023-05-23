@@ -103,7 +103,7 @@ def divide_into_buckets(coordinates, buckets=-1):
 
     if buckets != -1:
         interval = (last_time_float - first_time_float) / (buckets + 1)
-        for i in range(buckets):
+        for i in range(buckets + 2):
             coordinate_indexes_in_bucket = []
             for j in range(len(coordinates)):
                 if coordinates[j][0] >= first_time_float + interval*i and \
