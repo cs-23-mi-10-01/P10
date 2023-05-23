@@ -1,0 +1,30 @@
+\begin{figure}[htb]
+\centering
+\begin{minipage}{\columnwidthcaption}
+\centering
+
+\begin{tikzpicture}
+\begin{axis}[
+    ymin=%1,
+    ymax=%2,
+    ylabel={\# Occurences},
+    xlabel={Error},
+    area style,
+    scaled y ticks=false
+    ]
+
+\addplot[
+    color=ourdarkblue,
+    fill=ourlightblue
+] coordinates {
+%3
+} ;
+
+\end{axis}
+\end{tikzpicture}
+
+\vspace{-3mm}
+\caption{Distribution of predictions on timestamps for %4 on %5.}
+\label{fig:time_density_%6_%7}
+\end{minipage}
+\end{figure}

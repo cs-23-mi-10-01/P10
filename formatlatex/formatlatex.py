@@ -5,6 +5,7 @@ import os
 from formatlatex.semester_10_relation_property_hypothesis import FormatRelationPropertyHypothesis
 from formatlatex.semester_10_voting_hypothesis import FormatVotingHypothesis
 from formatlatex.semester_10_time_density import FormatTimeDensity
+from formatlatex.semester_10_error_distribution import FormatErrorDistribution
 from formatlatex.texobject import texobject
 
 class FormatLatex():
@@ -317,3 +318,7 @@ class FormatLatex():
                             tex.embeddings = method
                             tex.datasets = dataset
                             tex.format()
+                
+                case "time_error_distibution":
+                    format_error_distribution = FormatErrorDistribution(self.params)
+                    format_error_distribution.format()
