@@ -13,12 +13,7 @@
     scaled y ticks=false
     ]
 
-\addplot[
-    color=ourdarkblue,
-    fill=ourlightblue
-] coordinates {
 %3
-} ;
 
 \end{axis}
 \end{tikzpicture}
