@@ -145,7 +145,7 @@ class RankCalculator:
 
         return scored_simulated_facts
 
-    def rank_of_correct_prediction(self, fact_scores):
+    def rank_of_correct_prediction(self, fact_scores, correct_fact):
         return self.get_rank([fact[4] for fact in fact_scores])
 
     def best_prediction(self, fact_scores, range): #copypaste fra distmult skal fikses
