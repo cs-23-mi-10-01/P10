@@ -31,6 +31,7 @@ class Statistics():
     def calculate_overall_scores(self, ranked_quads, embeddings, dataset, split):
         print("Rank of all question tuples:")
         
+        
         measure = Measure()
 
         for quad in ranked_quads:
@@ -418,8 +419,8 @@ class Statistics():
             # no_of_elements_dataset = self.read_csv(no_of_elements_path)
             # self.no_of_elements(no_of_elements_dataset, dataset)
 
-            time_density_hypothesis = TimeDensityHypothesis(self.params, dataset)
-            time_density_hypothesis.run_analysis()
+            # time_density_hypothesis = TimeDensityHypothesis(self.params, dataset)
+            # time_density_hypothesis.run_analysis()
 
             # voting_hypothesis = VotingHypothesis(self.params, dataset)
             # voting_hypothesis.run_analysis()
@@ -427,9 +428,9 @@ class Statistics():
             for split in self.params.splits:
 
                 ranks_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
-                # ranked_quads = read_json(ranks_path)
+                ranked_quads = read_json(ranks_path)
 
-                # self.calculate_overall_scores(ranked_quads, embeddings, dataset, split)
+                self.calculate_overall_scores(ranked_quads, embeddings, dataset, split)
 
                 # overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")        
                 # overall_scores = read_json(overall_scores_path)

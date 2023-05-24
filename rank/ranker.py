@@ -192,16 +192,16 @@ class Ranker:
                 continue
             weight_distribution = {}
             #finding the target
-            if i % 5 == 0:
+            if quad["HEAD"] == '0':
                 target = "head"
-            elif i % 5 == 1:
+            elif quad["RELATION"] == '0':
                 target = "relation"
                 #removes timeplex cause it can't do relation prediction
                 self.params.embeddings.remove("TimePlex")
-            elif i % 5 == 2:
+            elif quad["TAIL"] == '0':
                 target = "tail"
                 self.params.embeddings.append("TimePlex")
-            elif i % 5 == 3:
+            elif quad["TIME_FROM"] == '0':
                 target = "time"
 
             if self.mode == "ensemble_decision_tree":
@@ -282,7 +282,7 @@ class Ranker:
                  if properties[quad["RELATION"]][lol] == True:
                      query["properties"] += [lol]
 
-        if target != "time":
+        if target != "time" and quad["TIME_FROM"] != "-":
 
             if dataset in ["wikidata12k", "yago11k"]:
                 quad_start_date = f"""{int(quad["TIME_FROM"]):04d}-01-01"""
@@ -414,7 +414,7 @@ class Ranker:
                     case "time":
                         check = 3
                         #don't need conversion here as time is already in the right format
-                        if dataset in ["'wikidata12k', 'yago11k'"]:
+                        if dataset in ['wikidata12k', 'yago11k']:
                             if quad["ANSWER"] == "-":
                                 answer = quad["ANSWER"]
                             elif int(quad["ANSWER"]) < 1000:
@@ -423,7 +423,7 @@ class Ranker:
                                 answer = quad["ANSWER"] + "-01-01"
                         else:
                             answer = quad["ANSWER"]
-                            
+
                 for simu_fact in sorted_fact_scores:
 
                         if simu_fact[check] == answer:
