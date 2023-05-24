@@ -13,10 +13,10 @@ def main():
     parser = argparse.ArgumentParser()
 
     #python -task rank -dataset icews14 -embedding DE_TransE -split all
-    parser.add_argument('-task', type=str, default='ensemble_naive_voting', choices=['statistics', 'rank', 'formatlatex', 'split_dataset', 'generate_quads', 'best_predictions', 'ensemble_naive_voting', "ensemble_decision_tree"])
+    parser.add_argument('-task', type=str, default='ensemble_decision_tree', choices=['statistics', 'rank', 'formatlatex', 'split_dataset', 'generate_quads', 'best_predictions', 'ensemble_naive_voting', "ensemble_decision_tree"])
     parser.add_argument('-dataset', type=str, default='wikidata12k', choices=['all', 'icews14', 'wikidata11k', 'wikidata12k', 'yago11k'])
     parser.add_argument('-split', type=str, default='original', choices=['all', 'original', '1', '2', '3'])
-    parser.add_argument('-embedding', type=str, default='ensemble', choices=['all','ensemble', 'DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE', 'TFLEX','TimePlex'])
+    parser.add_argument('-embedding', type=str, default='ensemble', choices=['all','ensemble', 'DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE', 'TFLEX','TimePlex', 'overall_scores'])
 
     args = parser.parse_args()
     params = Parameters(args)
@@ -26,6 +26,8 @@ def main():
         params.embeddings = ['DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE','TFLEX', 'TimePlex']
     elif params.embeddings == ['ensemble']:
         params.embeddings = ['DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE',  'TimePlex']
+    elif params.embeddings == ['overall_scores']:
+        params.embeddings = ['DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE',  'TimePlex','ensemble_naive_voting', 'ensemble_decision_tree']
     if params.datasets == ['all']:
         params.datasets = ['icews14', 'wikidata12k', 'yago11k']
     if params.splits == ['all']:
