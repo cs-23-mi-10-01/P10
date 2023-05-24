@@ -308,9 +308,10 @@ class FormatLatex():
             match(t):
                 case "time_prediction_mae":
                     tex.caption = "MAE of model prediction. "\
-                                "Values are given in days for ICEWS14 and years for WikiData12k and YAGO11k. "\
+                                "Values are given in days for ICEWS14-7k and years for WikiData12k and YAGO11k. "\
                                 "Where the prediction is a timespan the average is given as '\\textsc{BEST}\u2013\\textsc{WORST}'."
 
+                # this is the same as time_error_distribution
                 case "time_prediction_distribution":
                     tex.caption = f"Distribution of prediction error on timestamps for _method on _dataset."
                     tex.type = "fig"
@@ -318,9 +319,12 @@ class FormatLatex():
                     tex.xlabel = "Error"
                     tex.ylabel = "\\#Occurences"
 
-                case "time_error_distibution": # this is the same as time_prediction_distribution
+                # this is the same as time_prediction_distribution
+                case "time_error_distibution":
                     format_error_distribution = FormatErrorDistribution(self.params)
                     format_error_distribution.format()
+
+            print(f"Generating latex file(s) for {t}")
 
             if tex.foreach:
                 for embedding, dataset, split in itertools.product(self.params.embeddings, self.params.datasets, self.params.splits):

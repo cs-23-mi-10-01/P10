@@ -445,12 +445,13 @@ class Statistics():
     def average_timestamp_precision(self):
         for dataset in self.params.datasets:
             for split in self.params.splits:
+                print(f"Calculating degree of error per prediction  and MAE on {dataset} ({split})")
                 for embedding in self.params.embeddings:
                     # file paths
                     predictions_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
                     avg_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "timestamp_prediction_avg.json")
                     errdist_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "time_prediction_distribution", embedding + ".dat")
-                    predictions = read_json(predictions_path)
+                    predictions = read_json(predictions_path, self.params.verbose)
 
                     #get differences and average and write to files
                     self.predictions_error(predictions, predictions_path, dataset, embedding)
@@ -505,11 +506,11 @@ class Statistics():
                         i['BEST_PREDICTION'][embedding]['DIFFERENCE'] = difference
 
         # write to file
-        write_json(predictions_path, best_predictions)
+        write_json(predictions_path, best_predictions, self.params.verbose)
                    
     def best_predictions_time_difference_avg(self, best_predictions, avg_path, embedding):
         # load avg (to not over-write)
-        avg = read_json(avg_path) if exists(avg_path) else {}
+        avg = read_json(avg_path, self.params.verbose) if exists(avg_path) else {}
 
         # filter predictions w no answer
         predictions = list(filter( lambda x: 'DIFFERENCE' in x['BEST_PREDICTION'][embedding].keys(), best_predictions))
@@ -530,7 +531,7 @@ class Statistics():
             avg[embedding]['WORST'] = total_worst_difference/no_predictions
 
         # write to file
-        write_json(avg_path, avg)
+        write_json(avg_path, avg, self.params.verbose)
 
     def count_occurences(self, input, output_path, key):
         occurences = {}

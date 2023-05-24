@@ -21,7 +21,8 @@ def read_text(path):
         in_file.close()
         return text
 
-def write(path, text):
+def write(path, text, write=False):
+    if write: print(f"Writing to file {path}...")
     touch(path)
     out_file = open(path, "w", encoding="utf8")
     out_file.write(text)

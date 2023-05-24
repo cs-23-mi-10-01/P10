@@ -26,7 +26,7 @@ class texobject():
 
         # vars
         template = self.read_template(template_path)
-        self.shorthand = read_json(shorthand_path)
+        self.shorthand = read_json(shorthand_path, False)
         self.output_filename = self.task + ".tex" # can be edited in construct_rows
         self.label = self.type + ":" + self.task # read label or default to type:task, append to in construct_rows
         self.rows = getattr(self, f'construct_rows_{self.task}')() # func depends on task
@@ -217,7 +217,7 @@ class texobject():
         input = {}
         for dataset in self.datasets:
             input_path = os.path.join(self.params.base_directory, "result", dataset, "split_original", "timestamp_prediction_avg.json")
-            input[dataset] = read_json(input_path)
+            input[dataset] = read_json(input_path, False)
 
         # construct rows (rows have sections, hline between each section)
         rows = []
