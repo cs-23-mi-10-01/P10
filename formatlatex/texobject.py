@@ -20,7 +20,7 @@ class texobject():
     def format(self):
         # paths
         template_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "tex_template.tex")
-        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "method_shorthand.json")
+        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "shorthand.json")
         output_path = os.path.join(self.params.base_directory, "formatlatex", "result")
         if self.foreach: output_path = os.path.join(output_path, self.task)
 

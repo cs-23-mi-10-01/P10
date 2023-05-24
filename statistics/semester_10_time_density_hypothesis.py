@@ -31,19 +31,22 @@ class TimeDensityHypothesis():
         if self.dataset in ["wikidata12k", "yago11k"]:
             if quad["TIME_FROM"] == "-":
                 return False
+            
+            if quad["TIME_FROM"] == "0":
+                if quad["ANSWER"] == "-":
+                    return False
         
         return True
-
-    def _include_ranked_quad(self, quad):
-        if quad["TIME_FROM"] == "0":
-            return False
-        
-        return self._include_quad(quad)
     
     def _compare_iso(self, x, y):
         return x <= y
     
-    def _parse_start_date(self, date):
+    def _parse_date(self, quad):
+        if quad["TIME_FROM"] != "0":
+            date = quad["TIME_FROM"]
+        else:
+            date = quad["ANSWER"]            
+
         if self.dataset in ["wikidata12k", "yago11k"]:
             return f"""{int(date):04d}-01-01"""
         else:
@@ -61,6 +64,7 @@ class TimeDensityHypothesis():
         test_quads = read_json(test_quads_path)
 
         test_quads = [quad for quad in test_quads if self._include_quad(quad)]
+        test_quads = [quad for quad in test_quads if quad["TIME_FROM"] != "0"]
 
         no_of_facts = []
         simulated_dates = simulate_dates(self.start_date, self.end_date, self.delta_date)
@@ -74,7 +78,7 @@ class TimeDensityHypothesis():
             if i % 10000 == 0:
                 print(f"Time density hypothesis, dataset {self.dataset}, counting facts: Processing test quad {i}-{i+10000}, out of {len(test_quads)}")
 
-            quad_start_date = self._parse_start_date(quad["TIME_FROM"])
+            quad_start_date = self._parse_date(quad)
 
             for interval in no_of_facts:
                 if interval["start_date"] <= quad_start_date and \
@@ -88,7 +92,7 @@ class TimeDensityHypothesis():
             if i % 10000 == 0:
                 print(f"Time density hypothesis, dataset {self.dataset}, processing median: Processing test quad {i}-{i+10000}, out of {len(test_quads)}")
 
-            quad_start_date = self._parse_start_date(quad["TIME_FROM"])
+            quad_start_date = self._parse_date(quad)
 
             for interval in no_of_facts:
                 if interval["start_date"] <= quad_start_date and \
@@ -167,10 +171,14 @@ class TimeDensityHypothesis():
         partitions = read_json(time_density_partition_path)
         ranked_quads = read_json(ranks_path)
 
-        ranked_quads = [quad for quad in ranked_quads if self._include_ranked_quad(quad)]
+        ranked_quads = [quad for quad in ranked_quads if self._include_quad(quad)]
 
         sparse_measure = Measure()
+        sparse_time_predictions = Measure()
+        sparse_head_relation_tail_predictions = Measure()
         dense_measure = Measure()
+        dense_time_predictions = Measure()
+        dense_head_relation_tail_predictions = Measure()
 
         for i, quad in enumerate(ranked_quads):
             if i % 10000 == 0:
@@ -179,22 +187,44 @@ class TimeDensityHypothesis():
             if "RANK" not in quad.keys():
                 continue
 
-            quad_start_date = self._parse_start_date(quad["TIME_FROM"])
+            quad_date = self._parse_date(quad)
 
             for partition in partitions:
-                if partition["start_date"] <= quad_start_date and \
-                    quad_start_date < partition["end_date"]:
-                    
+                if partition["start_date"] <= quad_date and quad_date < partition["end_date"]:
+
                     if partition["partition"] == "sparse":
-                        sparse_measure.update(quad["RANK"])
-                    if partition["partition"] == "dense":
-                        dense_measure.update(quad["RANK"])
+                        if quad["TIME_FROM"] != "0":
+                            sparse_measure.update(quad["RANK"])
+
+                        if quad["TIME_FROM"] == "0" or quad["TIME_TO"] == "0":
+                            sparse_time_predictions.update(quad["RANK"])
+                        else:
+                            sparse_head_relation_tail_predictions.update(quad["RANK"])
+                    
+                    elif partition["partition"] == "dense":
+                        if quad["TIME_FROM"] != "0":
+                            dense_measure.update(quad["RANK"])
+
+                        if quad["TIME_FROM"] == "0" or quad["TIME_TO"] == "0":
+                            dense_time_predictions.update(quad["RANK"])
+                        else:
+                            dense_head_relation_tail_predictions.update(quad["RANK"])
+                    
                     break
         
         sparse_measure.normalize()
+        sparse_time_predictions.normalize()
+        sparse_head_relation_tail_predictions.normalize()
         dense_measure.normalize()
+        dense_time_predictions.normalize()
+        dense_head_relation_tail_predictions.normalize()
 
-        write_json(time_density_path, {"dense": dense_measure.as_dict(), "sparse": sparse_measure.as_dict()})
+        write_json(time_density_path, {"dense": dense_measure.as_dict(),
+                                       "dense_time_predictions": dense_time_predictions.as_dict(),
+                                       "dense_head_relation_tail_predictions": dense_head_relation_tail_predictions.as_dict(),
+                                       "sparse": sparse_measure.as_dict(),
+                                       "sparse_time_predictions": sparse_time_predictions.as_dict(),
+                                       "sparse_head_relation_tail_predictions": sparse_head_relation_tail_predictions.as_dict()})
 
 
 
