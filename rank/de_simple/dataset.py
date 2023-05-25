@@ -88,7 +88,6 @@ class Dataset:
         return self.rel2id[rel_name]
     
     def getEntFromID(self, id):
-<<<<<<< HEAD
         if not hasattr(self, 'id2ent'):
             self.id2ent = {}
             for key in self.ent2id.keys():
@@ -102,25 +101,6 @@ class Dataset:
             for key in self.rel2id.keys():
                 self.id2rel[self.rel2id[key]] = key
 
-=======
-        if "self.id2ent" not in locals():
-            self.id2ent = {}
-
-        if id not in self.id2ent.keys():
-            for key in self.ent2id.keys():
-                if self.ent2id[key] == id:
-                    self.id2ent[id] = key
-        return self.id2ent[id]
-    
-    def getRelFromID(self, id):
-        if "self.id2rel" not in locals():
-            self.id2rel = {}
-
-        if id not in self.id2rel.keys():
-            for key in self.rel2id.keys():
-                if self.rel2id[key] == id:
-                    self.id2rel[id] = key
->>>>>>> 3bf9247 (Changes to rankers)
         return self.id2rel[id]
 
     def nextPosBatch(self, batch_size):
