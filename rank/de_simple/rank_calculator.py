@@ -154,5 +154,5 @@ class RankCalculator:
 
     def best_prediction(self, fact_scores):
         highest_scoring_fact = max(fact_scores, key = lambda pair: pair[1])
-        fact = highest_scoring_fact[1]
+        fact = highest_scoring_fact[0]
         return fact[3]
