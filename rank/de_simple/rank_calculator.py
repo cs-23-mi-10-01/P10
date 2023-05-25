@@ -33,7 +33,12 @@ class RankCalculator:
     def get_rank(self, scores, score_of_expected=None):  # assuming the test fact is the first one
         if score_of_expected is None:
             score_of_expected = scores[0]
-        return (scores > score_of_expected).sum() + 1
+
+        rank = 1
+        for score in scores:
+            if score > score_of_expected:
+                rank += 1
+        return rank
 
     def split_timestamp(self, element):
         if self.dataset_name in ['wikidata12k', 'yago11k']:
