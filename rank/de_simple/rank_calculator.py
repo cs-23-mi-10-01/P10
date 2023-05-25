@@ -127,7 +127,7 @@ class RankCalculator:
                 case "t":
                     fact_scores[(head, relation, self.get_ent_from_id(fact[2]), time_from, time_to)] = score
                 case "T":
-                    fact_scores[(head, relation, tail, self.get_time_from_ints(fact[3], fact[4], fact[4]), time_to)] = score
+                    fact_scores[(head, relation, tail, self.get_time_from_ints(fact[3], fact[4], fact[5]), time_to)] = score
 
         return fact_scores
 
