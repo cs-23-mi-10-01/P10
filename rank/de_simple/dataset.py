@@ -23,6 +23,8 @@ class Dataset:
         self.ds_path = os.path.join(params.base_directory, "../../Docker/diachronic-embedding/de-simple/datasets", ds_name.lower())
         self.ent2id = {}
         self.rel2id = {}
+        self.id2ent = {}
+        self.id2rel = {}
         self.data = {"train": self.readFile(os.path.join(self.ds_path, "train.txt")),
                      "valid": self.readFile(os.path.join(self.ds_path, "valid.txt")),
                      "test": self.readFile(os.path.join(self.ds_path, "test.txt"))}
@@ -68,26 +70,42 @@ class Dataset:
                 self.data[split][i] += date
 
     def numEnt(self):
-
         return len(self.ent2id)
 
     def numRel(self):
-
         return len(self.rel2id)
 
-    def getEntID(self,
-                 ent_name):
-
-        if ent_name in self.ent2id:
+    def getEntID(self, ent_name):
+        if ent_name in self.ent2id.keys():
             return self.ent2id[ent_name]
         self.ent2id[ent_name] = len(self.ent2id)
         return self.ent2id[ent_name]
 
     def getRelID(self, rel_name):
-        if rel_name in self.rel2id:
+        if rel_name in self.rel2id.keys():
             return self.rel2id[rel_name]
         self.rel2id[rel_name] = len(self.rel2id)
         return self.rel2id[rel_name]
+    
+    def getEntFromID(self, id):
+        if "self.id2ent" not in locals():
+            self.id2ent = {}
+
+        if id not in self.id2ent.keys():
+            for key in self.ent2id.keys():
+                if self.ent2id[key] == id:
+                    self.id2ent[id] = key
+        return self.id2ent[id]
+    
+    def getRelFromID(self, id):
+        if "self.id2rel" not in locals():
+            self.id2rel = {}
+
+        if id not in self.id2rel.keys():
+            for key in self.rel2id.keys():
+                if self.rel2id[key] == id:
+                    self.id2rel[id] = key
+        return self.id2rel[id]
 
     def nextPosBatch(self, batch_size):
         if self.start_batch + batch_size > len(self.data["train"]):

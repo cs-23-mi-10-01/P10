@@ -47,7 +47,7 @@ class Ranker:
                     self.ranked_quads = json.load(in_file)
                     in_file.close()
 
-                    if self.mode == "ensemble_naive_voting" or "ensemble_decision_tree":
+                    if self.mode == "ensemble_naive_voting" or self.mode == "ensemble_decision_tree":
                         json_output = self._ensemble_base(dataset, split)
                         
 
