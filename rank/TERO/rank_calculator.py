@@ -7,11 +7,12 @@ from scripts import remove_unwanted_symbols_from_str
 from dateutil.relativedelta import relativedelta
 
 class RankCalculator:
-    def __init__(self, params, model, dataset, mode = "rank"):
+    def __init__(self, params, model, dataset, embedding, mode = "rank"):
         self.params = params
         self.kg = model.kg
         self.model = model
         self.dataset = dataset
+        self.embedding = embedding
         self.mode = mode
 
         if self.dataset in ['icews14']:
@@ -27,14 +28,38 @@ class RankCalculator:
             self.end_sim_date = datetime.date(2845, 1, 1)
             self.delta_sim_date = relativedelta(years=1)
 
-    def get_rank(self, sim_scores):  # assuming the first fact is the correct fact
-        return (sim_scores < sim_scores[0]).sum() + 1
+    def get_rank(self, scores, score_of_expected=None):  # assuming the first fact is the correct fact
+        score_of_expected = scores[0]
+
+        rank = 0.0
+        for score in scores:
+            if score < score_of_expected:
+                rank += 1.0
+            elif score == score_of_expected:
+                rank += 0.5
+        return max([int(rank), 1])
 
     def get_ent_id(self, entity):
         return self.kg.entity_dict[remove_unwanted_symbols_from_str(entity)]
+    
+    def get_ent_from_id(self, id):
+        if not hasattr(self, 'id2entity_dict'):
+            self.id2entity_dict = {}
+            for key in self.kg.entity_dict.keys():
+                self.id2entity_dict[self.kg.entity_dict[key]] = key
+
+        return self.id2entity_dict[id]
 
     def get_rel_id(self, relation):
         return self.kg.relation_dict[relation]
+    
+    def get_rel_from_id(self, id):
+        if not hasattr(self, 'id2relation_dict'):
+            self.id2relation_dict = {}
+            for key in self.kg.relation_dict.keys():
+                self.id2relation_dict[self.kg.relation_dict[key]] = key
+
+        return self.id2relation_dict[id]
     
     def get_day_from_timestamp(self, timestamp):
         end_sec = time.mktime(time.strptime(timestamp, '%Y-%m-%d'))
@@ -67,15 +92,24 @@ class RankCalculator:
         return None
     
     def get_timestamp_from_day(self, day):
-        return (self.start_sim_date + datetime.timedelta(int(day))).isoformat()
+        return (self.start_sim_date + datetime.timedelta(days = int(day))).isoformat()
+
+    def cache_timestamps(self):
+        if not hasattr(self, "id2year_interval"):
+            self.id2year_interval = {}
+
+            for key in self.kg.year2id.keys():
+                self.id2year_interval[self.kg.year2id[key]] = key
 
     def get_timestamp_from_time_id(self, time_id):
         if self.dataset in ['icews14']:
             return self.get_timestamp_from_day(time_id)
         if self.dataset in ['wikidata12k', 'yago11k']:
-            return sorted(self.kg.year2id.items())[time_id][0]
-        return None
+            self.cache_timestamps()
 
+            year_from, year_to = self.id2year_interval[time_id]
+            return (year_from, year_to)
+        return None
 
     def simulate_facts(self, head, relation, tail, timestamp, target, answer):
         if head != "0":
@@ -123,6 +157,34 @@ class RankCalculator:
 
         return sim_facts
     
+    def _construct_fact_scores(self, head, relation, tail, time_from, time_to, facts, scores, target):
+        fact_scores = {}
+
+        for fact, score in zip(facts, scores):
+            match target:
+                case "h":
+                    fact_scores[(self.get_ent_from_id(int(fact[0])), relation, tail, time_from, time_to)] = score
+                case "r":
+                    if int(fact[2]) < self.kg.n_relation / 2:
+                        fact_scores[(head, self.get_rel_from_id(int(fact[2])), tail, time_from, time_to)] = score
+                case "t":
+                    fact_scores[(head, relation, self.get_ent_from_id(int(fact[1])), time_from, time_to)] = score
+                case "Tf":
+                    if self.embedding in ["ATISE"] and self.dataset in ["icews14"]:
+                        # Account for a granularity of 3
+                        modified_id = int(fact[3]) * 3
+                        for i in [0, 1, 2]:
+                            if modified_id + i < self.kg.n_time:
+                                fact_scores[(head, relation, tail, self.get_timestamp_from_time_id(modified_id + i), time_to)] = score
+                    elif self.dataset in ["wikidata12k", "yago11k"]:
+                        year_from, year_to = self.get_timestamp_from_time_id(int(fact[3]))
+                        for year in range(year_from, year_to):
+                            fact_scores[(head, relation, tail, str(year), time_to)] = score
+                    else:
+                        fact_scores[(head, relation, tail, self.get_timestamp_from_time_id(int(fact[3])), time_to)] = score
+        
+        return fact_scores
+    
     def simulate_fact_scores(self, head, relation, tail, time_from, time_to, answer):
         target = "?"
         if head == "0":
@@ -133,24 +195,19 @@ class RankCalculator:
             target = "t"
         elif time_from == "0":
             target = "Tf"
-        elif time_to == "0":
-            target = "Tt"
 
         facts = np.array(self.simulate_facts(head, relation, tail, time_from, target, answer), dtype='float64')
         sim_scores = self.model.forward(facts).cpu().data.numpy()
+        facts = facts.tolist()
+        sim_scores = sim_scores.tolist()
+        fact_scores = self._construct_fact_scores(head, relation, tail, time_from, time_to, facts, sim_scores, target)
 
-        scored_simulated_facts = []
-        for fact, score in zip(facts, sim_scores):
-            scored_simulated_facts.append([fact[0], fact[1], fact[2], fact[3], score])
+        return fact_scores
 
-        return scored_simulated_facts
+    def rank_of_correct_prediction(self, fact_scores, correct_fact):
+        return self.get_rank(list(fact_scores.values()))
 
-    def rank_of_correct_prediction(self, fact_scores):
-        return self.get_rank([fact[4] for fact in fact_scores])
-
-    def best_prediction(self, fact_scores): #copypaste fra distmult skal fikses
-        scores = [fact[4] for fact in fact_scores]
-        highest_score = max(scores)
-        pred = fact_scores[scores.index(highest_score)][0:5]
-        return self.get_timestamp_from_time_id(int(pred[3]))
-        exit()
+    def best_prediction(self, fact_scores):
+        highest_scoring_fact = max(fact_scores, key = lambda pair: pair[1])
+        fact = highest_scoring_fact[0]
+        return fact[3]
