@@ -397,8 +397,10 @@ class Ranker:
                     del fact_scores[i][4:6] 
                 #creates id in each list in element 5
                 fact_scores[i].append(i)
-
-            sorted_fact_scores = sorted(fact_scores, key=itemgetter(4), reverse=True)
+            if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]: 
+                sorted_fact_scores = sorted(fact_scores, key=itemgetter(4), reverse=False)
+            else:
+                sorted_fact_scores = sorted(fact_scores, key=itemgetter(4), reverse=True)
 
             for i in range(0, len(sorted_fact_scores)):
                 
