@@ -276,11 +276,13 @@ class Ranker:
         return scores
     
     def _ensemble_analyser(self, quad, target, properties, partitions,dataset):
-        query = {"properties": [], "density": ''}
+        query = {"properties": [], "false-properties": [], "density": ''}
         if target != "relation":   
             for lol in properties[quad["RELATION"]]:
-                 if properties[quad["RELATION"]][lol] == True:
-                     query["properties"] += [lol]
+                if properties[quad["RELATION"]][lol] == True:
+                    query["properties"] += [lol]
+                else:
+                    query["false-properties"] += ["not " +lol]
 
         if target != "time" and quad["TIME_FROM"] != "-":
 
@@ -315,6 +317,12 @@ class Ranker:
             weight_distribution[method] = normalized[method] * diff
 
         for p in query["properties"]:
+            diff =self.diff_min_max_finder(scores[p])
+            normalized = self.mrr_normalizer(scores[p])
+            for method in normalized:
+                weight_distribution[method] += normalized[method] * diff
+        
+        for p in query["false-properties"]:
             diff =self.diff_min_max_finder(scores[p])
             normalized = self.mrr_normalizer(scores[p])
             for method in normalized:
