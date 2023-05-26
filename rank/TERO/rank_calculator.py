@@ -31,13 +31,13 @@ class RankCalculator:
     def get_rank(self, scores, score_of_expected=None):  # assuming the first fact is the correct fact
         score_of_expected = scores[0]
 
-        rank = 0.0
+        rank = 1.0
         for score in scores:
             if score < score_of_expected:
                 rank += 1.0
             elif score == score_of_expected:
                 rank += 0.5
-        return max([int(rank), 1])
+        return int(rank)
 
     def get_ent_id(self, entity):
         return self.kg.entity_dict[remove_unwanted_symbols_from_str(entity)]
@@ -160,6 +160,9 @@ class RankCalculator:
     def _construct_fact_scores(self, head, relation, tail, time_from, time_to, facts, scores, target):
         fact_scores = {}
 
+        if target == "Tf" and self.dataset in ["wikidata12k", "yago11k"]:
+            covered_time_ids = []
+
         for fact, score in zip(facts, scores):
             match target:
                 case "h":
@@ -177,9 +180,11 @@ class RankCalculator:
                             if modified_id + i < self.kg.n_time:
                                 fact_scores[(head, relation, tail, self.get_timestamp_from_time_id(modified_id + i), time_to)] = score
                     elif self.dataset in ["wikidata12k", "yago11k"]:
-                        year_from, year_to = self.get_timestamp_from_time_id(int(fact[3]))
-                        for year in range(year_from, year_to):
-                            fact_scores[(head, relation, tail, str(year), time_to)] = score
+                        if fact[3] not in covered_time_ids:
+                            year_from, year_to = self.get_timestamp_from_time_id(int(fact[3]))
+                            for year in range(year_from, year_to + 1):
+                                fact_scores[(head, relation, tail, str(year), time_to)] = score
+                            covered_time_ids.append(fact[3])
                     else:
                         fact_scores[(head, relation, tail, self.get_timestamp_from_time_id(int(fact[3])), time_to)] = score
         
