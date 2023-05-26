@@ -100,7 +100,7 @@ class Dataset:
             self.id2rel = {}            
             for key in self.rel2id.keys():
                 self.id2rel[self.rel2id[key]] = key
-                
+
         return self.id2rel[id]
 
     def nextPosBatch(self, batch_size):
