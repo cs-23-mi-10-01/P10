@@ -2,12 +2,12 @@
     "DE_TransE": "DE-T",
     "DE_SimplE": "DE-S",
     "DE_DistMult": "DE-D",
-    "TERO": "TeRo",
-    "ATISE": "ATiSE",
-    "TFLEX": "TFLEX",
-    "TimePlex": "TimePlex",
-    "AVG": "Average",
-    "icews14": "ICEWS14-7k",
-    "wikidata12k": "WikiData12k",
-    "yago11k": "YAGO11k"
+    "TERO": "TR",
+    "ATISE": "AT",
+    "TFLEX": "TF",
+    "TimePlex": "TP",
+    "AVG": "Avg",
+    "icews14": "I14-7",
+    "wikidata12k": "WD12",
+    "yago11k": "Y11"
 }
