@@ -23,8 +23,6 @@ class Dataset:
         self.ds_path = os.path.join(params.base_directory, "../../Docker/diachronic-embedding/de-simple/datasets", ds_name.lower())
         self.ent2id = {}
         self.rel2id = {}
-        self.id2ent = {}
-        self.id2rel = {}
         self.data = {"train": self.readFile(os.path.join(self.ds_path, "train.txt")),
                      "valid": self.readFile(os.path.join(self.ds_path, "valid.txt")),
                      "test": self.readFile(os.path.join(self.ds_path, "test.txt"))}
