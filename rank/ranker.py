@@ -47,7 +47,7 @@ class Ranker:
                     self.ranked_quads = json.load(in_file)
                     in_file.close()
 
-                    if self.mode == "ensemble_naive_voting" or "ensemble_decision_tree":
+                    if self.mode == "ensemble_naive_voting" or self.mode == "ensemble_decision_tree":
                         json_output = self._ensemble_base(dataset, split)
                         
 
@@ -62,7 +62,7 @@ class Ranker:
                         if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
                             rank_calculator = DE_Rank(self.params, model, dataset)
                         if embedding_name in ["TERO", "ATISE"]:
-                            rank_calculator = TERO_Rank(self.params, model, dataset)
+                            rank_calculator = TERO_Rank(self.params, model, dataset, embedding_name)
                         if embedding_name in ["TFLEX"]:
                             rank_calculator = TFLEX_Rank(self.params, model)
                         if embedding_name in ["TimePlex"]:
@@ -77,7 +77,7 @@ class Ranker:
                     out_file.close()
 
                     #Ensemble goes through all the selected methods but only need to do it once. 
-                    if self.mode == "ensemble_naive_voting" or "ensemble_decision_tree":
+                    if self.mode == "ensemble_naive_voting" or self.mode == "ensemble_decision_tree":
                         break
                     
 
