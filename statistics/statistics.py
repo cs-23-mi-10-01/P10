@@ -462,11 +462,15 @@ class Statistics():
                     else:
                         key = [['BEST_PREDICTION', embedding, 'DIFFERENCE']]
                     
-                    for k in key:
-                        p = errdist_path
-                        if k[2] != "DIFFERENCE":
-                            p = errdist_path.replace(".dat", f"_{k[2].lower()[:4]}.dat")
-                        self.count_occurences(predictions, p, k)
+                    #for k in key:
+                        # kept because i think i might end up needing it later -astrid
+                        #p = errdist_path
+                        #if k[2] != "DIFFERENCE":
+                        #    p = errdist_path.replace(".dat", f"_{k[2].lower()[:4]}.dat")
+                        #self.count_occurences(predictions, p, k)
+
+                        # Removed, as the diff.dat files are not necessary anymore
+                        #self.count_occurences(predictions, p, k)
 
     def predictions_error(self, best_predictions, predictions_path, dataset, embedding):
         if self.params.verbose: print("Calculating error for time predictions on {dataset:12} for {embedding:12}")
@@ -479,6 +483,9 @@ class Statistics():
             
             match(dataset):
                 case 'icews14':
+                    if i['BEST_PREDICTION'][embedding]['PREDICTION'] in ["####-##-##", "-"]:
+                        continue
+
                     answer = date.fromisoformat(i['ANSWER'])
                     prediction = date.fromisoformat(i['BEST_PREDICTION'][embedding]['PREDICTION'])
                     difference = (prediction-answer).days
@@ -502,6 +509,9 @@ class Statistics():
                         i['BEST_PREDICTION'][embedding]['BEST_DIFFERENCE'] = best_case
                         i['BEST_PREDICTION'][embedding]['WORST_DIFFERENCE'] = worst_case
                     else:
+                        if i['BEST_PREDICTION'][embedding]['PREDICTION'] == "-":
+                            continue
+
                         answer = int(i['ANSWER'])
                         prediction = int(i['BEST_PREDICTION'][embedding]['PREDICTION'])
                         difference = prediction-answer

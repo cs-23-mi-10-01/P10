@@ -311,10 +311,5 @@ class RankCalculator:
         return self._get_rank(fact_scores.values(), fact_scores[correct_fact])
     
     def best_prediction(self, fact_scores, range):
-        fact_scores = {k: v for k, v in fact_scores.items() if k[3] not in ('-', '####-##-##')} # filter
-        fact_scores = sorted(fact_scores.items(), key= lambda item: item[1], reverse=True) # sort
-        #result = [] # this part is for range
-        #for i, j in enumerate(fact_scores):
-        #    if i+1 >= range[0] and i+1 <= range[1]:
-        #        result.append(j[0][3])
-        return fact_scores[0][0][3]
+        highest_scoring_fact_key = max(fact_scores, key = lambda key: fact_scores[key])
+        return highest_scoring_fact_key[3]
