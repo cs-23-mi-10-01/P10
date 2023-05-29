@@ -445,7 +445,7 @@ class Statistics():
     def average_timestamp_precision(self):
         for dataset in self.params.datasets:
             for split in self.params.splits:
-                print(f"Calculating degree of error per prediction  and MAE on {dataset} ({split})")
+                print(f"Calculating degree of error per prediction and MAE on {dataset} ({split})")
                 for embedding in self.params.embeddings:
                     # file paths
                     predictions_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
@@ -469,6 +469,8 @@ class Statistics():
                         self.count_occurences(predictions, p, k)
 
     def predictions_error(self, best_predictions, predictions_path, dataset, embedding):
+        if self.params.verbose: print("Calculating error for time predictions on {dataset:12} for {embedding:12}")
+
         for i in best_predictions:
 
             # skip predictions for which we have no answer
@@ -509,6 +511,8 @@ class Statistics():
         write_json(predictions_path, best_predictions, self.params.verbose)
                    
     def best_predictions_time_difference_avg(self, best_predictions, avg_path, embedding):
+        if self.params.verbose: print("Calculating MAE of time predictions for {embedding:12}")
+
         # load avg (to not over-write)
         avg = read_json(avg_path, self.params.verbose) if exists(avg_path) else {}
 

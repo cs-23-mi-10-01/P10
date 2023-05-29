@@ -51,7 +51,7 @@ def main():
             ranker.rank()
             statistics = Statistics(params)
             statistics.average_timestamp_precision()
-            format_latex = FormatLatex(params, ["time_prediction_mae", "time_prediction_distribution"])
+            format_latex = FormatLatex(params, ["time_prediction_mae"])
             format_latex.format()
             
 

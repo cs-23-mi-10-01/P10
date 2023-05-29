@@ -315,9 +315,10 @@ class FormatLatex():
                 case "time_prediction_distribution":
                     tex.caption = f"Distribution of prediction error on timestamps for _method on _dataset."
                     tex.type = "fig"
+                    tex.tikz = True                    
+                    tex.axisproperty.append({"xlabel": "Error"})
+                    tex.axisproperty.append({"ylabel": "\\#Occurences"})
                     tex.foreach = True # for each method and dataset
-                    tex.xlabel = "Error"
-                    tex.ylabel = "\\#Occurences"
 
                 # this is the same as time_prediction_distribution
                 case "time_error_distibution":

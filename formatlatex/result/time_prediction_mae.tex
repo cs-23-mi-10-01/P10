@@ -2,16 +2,17 @@
 \centering
 \begin{minipage}{0.95\columnwidth}
 \centering
+
 \caption{MAE of model prediction. Values are given in days for ICEWS14-7k and years for WikiData12k and YAGO11k. Where the prediction is a timespan the average is given as '\textsc{BEST}–\textsc{WORST}'.}
 \vspace{-3mm}
 
-\begin{tabular}{lccc}
+\begin{tabular}{r|ccc}
 \hline
 Methods & ICEWS14-7k & WikiData12k & YAGO11k\\
 \hline
-DE-T & 90.51 & 1003.50 & 863.69\\
-DE-S & 93.66 & 966.97 & 814.93\\
-DE-D & \textbf{87.90} & 978.24 & 791.51\\
+DE-TransE & 90.51 & 1003.50 & 863.69\\
+DE-SimplE & 93.66 & 966.97 & 814.93\\
+DE-DistMult & \textbf{87.90} & 978.24 & 791.51\\
 TeRo & 129.75 & \textbf{76.93}–102.53 & 358.14–642.29\\
 ATiSE & 137.39 & 85.39–153.25 & \textbf{94.57}–579.43\\
 TimePlex & 117.62 & 343.09 & 479.63\\

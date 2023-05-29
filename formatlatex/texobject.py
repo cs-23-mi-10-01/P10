@@ -12,15 +12,22 @@ class texobject():
         self.embeddings = self.params.embeddings
         self.splits = self.params.splits
         self.task = task
+        self.namelength = "full_name"
         self.type = "tab"
         self.width = "column"
-        self.caption = self.xlabel = self.ylabel = "\\missing"
+        self.caption = "\\missing"
         self.foreach = False
+        self.tikz = False
+        self.axisproperty = [{"xlabel": "\\missing"}, 
+                             {"ylabel": "\\missing"}, 
+                             {"scaled y ticks": "false"}, 
+                             "area style", 
+                             "no markers"]
 
     def format(self):
         # paths
         template_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "tex_template.tex")
-        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "shorthand.json")
+        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", self.namelength + ".json")
         output_path = os.path.join(self.params.base_directory, "formatlatex", "result")
         if self.foreach: output_path = os.path.join(output_path, self.task)
 
@@ -41,8 +48,6 @@ class texobject():
             ("_content", content),
             ("_method", self.mkstr(self.embeddings)),
             ("_dataset", self.mkstr(self.datasets)),
-            ("_xlabel", self.xlabel),
-            ("_ylabel",  self.ylabel),
         ):
             template = re.sub(pair[0], repr(pair[1])[1:-1], template)
         output = template
@@ -55,7 +60,7 @@ class texobject():
 
     def format_content_tab(self, rows):
         content = ""
-        columns = "l" + (len(rows[0][0])-1)*"c" # set latex columns
+        columns = "r|" + (len(rows[0][0])-1)*"c" # set latex columns
         highlight_results = self.find_best_results(rows, min)
 
         content += f"\\begin{{tabular}}{{{columns}}}\n"
@@ -149,24 +154,31 @@ class texobject():
     # read template, adjust if tablewidth is "text"
     def read_template(self, path):
         template = read_text(path)
+        replacements = []
 
+        # replacements to make object page sized instead of column
         if self.width == "text":
-            template = template.replace(
-                "textype", "textype*").replace(
-                "columnwidth", "textwidth"
-                )
+            replacements.extend([
+                ("textype", "textype*"),
+                ("columnwidth", "textwidth"),
+            ])
 
-        match(self.type):
-            case "fig":
-                template = template.replace("_textype", "figure")
-                template = re.sub(r'(\\caption.*)\n(\\vspace.*)\n*(_content)\n*',
-                              '\n\g<3>\n\n\g<2>\n\g<1>\n', 
-                              template)
-                template = template.replace("centering\n\n", "centering\n\\begin{tikzpicture}\n\\begin{axis}[\nno markers,\nxlabel={_xlabel},\nylabel={_ylabel}]\n\n")
-                template = template.replace("\n\\vspace", "\n\\end{axis}\n\\end{tikzpicture}\n\\vspace")
-            case "tab":
-                template = template.replace("_textype", "table")
+        if self.tikz:
+            replacements.extend([(f"\n_tikz", "")]) # remove _tikz
+        else:
+            replacements.extend([(f"\n_tikz(\n.*){{3}}", "")]) # remove _tikz AND following two lines
 
+        # replacements always applied
+        textype_long = {"fig": "figure", "tab": "table"}
+        replacements.extend([
+            ("_textype", f'{{{self.type}}}'.format_map(textype_long)), # replace fig/tab with figure/table for begin[figure/table]
+            (f"\n_(?!{self.type})" + ".*_caption(\n.*){3}", ""), # remove caption for other textype
+            (f"\n_({self.type})" + ".*_caption", ""), # keep caption for this textype
+        ])
+
+        for pair in replacements:
+            template = re.sub(pair[0], repr(pair[1])[1:-1], template)
+    
         return template
 
 

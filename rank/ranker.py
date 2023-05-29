@@ -40,7 +40,7 @@ class Ranker:
                     # read from input
                     self.ranked_quads = read_json(quads_path, self.params.verbose)
                     if self.fastpass and self.prediction_exists(embedding_name):
-                        print(f"Predictions already generated for {embedding_name} on {dataset} (split={split}): Skipping (checked last fact only)")
+                        print(f"Predictions on {dataset:12}{'({0})'.format(split)} already exist for {embedding_name:12} => Skipping")
                         continue
 
                     # load model via torch
