@@ -309,3 +309,7 @@ class RankCalculator:
             return 10000
 
         return self._get_rank(fact_scores.values(), fact_scores[correct_fact])
+    
+    def best_prediction(self, fact_scores):
+        highest_scoring_fact_key = max(fact_scores, key = lambda key: fact_scores[key])
+        return highest_scoring_fact_key[3]
