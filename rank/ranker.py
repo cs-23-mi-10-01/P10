@@ -181,7 +181,7 @@ class Ranker:
             if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
                 rank_calculators[embedding_name] = DE_Rank(self.params, model, dataset)
             if embedding_name in ["TERO", "ATISE"]:
-                rank_calculators[embedding_name] = TERO_Rank(self.params, model, dataset)
+                rank_calculators[embedding_name] = TERO_Rank(self.params, model, dataset, embedding_name)
             if embedding_name in ["TimePlex"]:
                 rank_calculators[embedding_name] = TimePlex_Rank(self.params, model, dataset)
         
@@ -248,21 +248,22 @@ class Ranker:
         reflexive = read_json(reflexive_path)
 
         #removing TFLEX from all datasets
-        overall.pop('TFLEX', None)
-        head.pop('TFLEX', None)
-        relaition.pop('TFLEX', None)
-        tail.pop('TFLEX', None)
-        time.pop('TFLEX', None)
-        time_density["dense"].pop('TFLEX', None)
-        time_density["sparse"].pop('TFLEX', None)
-        symmetry["symmetric"].pop('TFLEX', None)
-        symmetry["not symmetric"].pop('TFLEX', None)
-        inverse["inverse"].pop('TFLEX', None)
-        inverse["not inverse"].pop('TFLEX', None)
-        anti_symmetry["anti-symmetric"].pop('TFLEX', None)
-        anti_symmetry["not anti-symmetric"].pop('TFLEX', None)
-        reflexive["not reflexive"].pop('TFLEX', None)
-        reflexive["reflexive"].pop('TFLEX', None)
+        for name in ["TFLEX","ensemble_naive_voting","ensemble_decision_tree"]:
+            overall.pop(name, None)
+            head.pop(name, None)
+            relaition.pop(name, None)
+            tail.pop(name, None)
+            time.pop(name, None)
+            time_density["dense"].pop(name, None)
+            time_density["sparse"].pop(name, None)
+            symmetry["symmetric"].pop(name, None)
+            symmetry["not symmetric"].pop(name, None)
+            inverse["inverse"].pop(name, None)
+            inverse["not inverse"].pop(name, None)
+            anti_symmetry["anti-symmetric"].pop(name, None)
+            anti_symmetry["not anti-symmetric"].pop(name, None)
+            reflexive["not reflexive"].pop(name, None)
+            reflexive["reflexive"].pop(name, None)
 
         scores["head"] = head
         scores["relation"] = relaition
@@ -373,81 +374,40 @@ class Ranker:
     
     def _ensemble_voting(self,dataset,split, quad, rank_calculators,weight_distribution, target):
         voting_points = {}
-        answer_Id = int
+        answer_key = ()
+        match(target):
+            case "head":
+                answer_key =(quad["ANSWER"],quad["RELATION"],quad["TAIL"],quad["TIME_FROM"],quad["TIME_TO"])
+            case "relation":
+                answer_key =(quad["HEAD"],quad["ANSWER"],quad["TAIL"],quad["TIME_FROM"],quad["TIME_TO"])
+            case "tail":
+                answer_key =(quad["HEAD"],quad["RELATION"],quad["ANSWER"],quad["TIME_FROM"],quad["TIME_TO"])
+            case "time":
+                answer_key =(quad["HEAD"],quad["RELATION"],quad["TAIL"],quad["ANSWER"],quad["TIME_TO"])
+
         for embedding_name in self.params.embeddings:
-            if embedding_name == "TimePlex":
-                timeplex_scores = rank_calculators[embedding_name].simulate_fact_scores(quad["HEAD"], quad["RELATION"],
-                                                quad["TAIL"], quad["TIME_FROM"],
-                                                quad["TIME_TO"], quad["ANSWER"])
-                fact_scores = []
-                for key in timeplex_scores.keys():
-                    fact_scores.append([key[0],key[1],key[2],key[3],timeplex_scores[key]])
-
-            else:
-                fact_scores = rank_calculators[embedding_name].simulate_fact_scores(quad["HEAD"], quad["RELATION"],
-                                                quad["TAIL"], quad["TIME_FROM"],
-                                                quad["TIME_TO"], quad["ANSWER"])
-            #the first element of fact scores is the correct answer
-            if embedding_name != "TimePlex":
-                del(fact_scores[0])
-            for i in range(0, len(fact_scores)):
-                #combines the date into single element in the DE models for consistency with tero and atise
-                if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
-                    fact_scores[i][3] = f"{fact_scores[i][3]:04d}-{fact_scores[i][4]:02d}-{fact_scores[i][5]:02d}"
-                    del fact_scores[i][4:6] 
-                #creates id in each list in element 5
-                fact_scores[i].append(i)
-            if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]: 
-                sorted_fact_scores = sorted(fact_scores, key=itemgetter(4), reverse=False)
-            else:
-                sorted_fact_scores = sorted(fact_scores, key=itemgetter(4), reverse=True)
-
-            for i in range(0, len(sorted_fact_scores)):
-                
-                if sorted_fact_scores[i][5] not in voting_points:
-                    voting_points[sorted_fact_scores[i][5]] = 0
-                
-                voting_points[sorted_fact_scores[i][5]] += (1/(i+1)) * weight_distribution[embedding_name]
             
-            if(embedding_name == self.params.embeddings[0]):
-                #print(embedding_name)
-                match(target):
-                    case "head":
-                        check = 0
-                        answer =rank_calculators[self.params.embeddings[0]].get_ent_id(quad["ANSWER"])
-                    case "relation":
-                        check = 1
-                        answer =rank_calculators[self.params.embeddings[0]].get_rel_id(quad["ANSWER"])
-                    case "tail":
-                        check = 2
-                        answer =rank_calculators[self.params.embeddings[0]].get_ent_id(quad["ANSWER"])
-                    case "time":
-                        check = 3
-                        #don't need conversion here as time is already in the right format
-                        if dataset in ['wikidata12k', 'yago11k']:
-                            if quad["ANSWER"] == "-":
-                                answer = quad["ANSWER"]
-                            elif int(quad["ANSWER"]) < 1000:
-                                answer = "0"+ quad["ANSWER"] + "-01-01"
-                            else:
-                                answer = quad["ANSWER"] + "-01-01"
-                        else:
-                            answer = quad["ANSWER"]
+            fact_scores = rank_calculators[embedding_name].simulate_fact_scores(quad["HEAD"], quad["RELATION"],
+                                                quad["TAIL"], quad["TIME_FROM"],
+                                                quad["TIME_TO"], quad["ANSWER"])
+            
+            if embedding_name in ["TERO", "ATISE"]: 
+                sorted_fact_scores = {k: v for k, v in sorted(fact_scores.items(), key=lambda item: item[1],reverse=False)}
+            else:
+                sorted_fact_scores = {k: v for k, v in sorted(fact_scores.items(), key=lambda item: item[1], reverse=True)}
 
-                for simu_fact in sorted_fact_scores:
-
-                        if simu_fact[check] == answer:
-
-                            answer_Id = simu_fact[5]
-                            break
+            for k, i in zip(sorted_fact_scores.keys(), range(0,len(sorted_fact_scores))):
+                
+                if k not in voting_points.keys():
+                    voting_points[k] = 0
+                voting_points[k] += (1/(i+1)) * weight_distribution[embedding_name]
                             
 
-                            
-        
         #finding rank of correct answer
         rank = 1
-        for (k,v) in voting_points.items():
-            if v > voting_points[answer_Id]:
+        scores_answer = voting_points[answer_key]
+        for v in voting_points.values():
+            if v > scores_answer:
                 rank += 1
 
         ranked_quad = quad
