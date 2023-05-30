@@ -4,7 +4,7 @@ import json
 from operator import itemgetter
 import copy
 from rank.loader import Loader
-from scripts import touch, exists, read_json
+from scripts import touch, exists, read_json, write_json
 from rank.de_simple.rank_calculator import RankCalculator as DE_Rank
 from rank.TERO.rank_calculator import RankCalculator as TERO_Rank
 from rank.TFLEX.rank_calculator import RankCalculator as TFLEX_Rank
@@ -12,11 +12,12 @@ from rank.TimePlex.rank_calculator import RankCalculator as TimePlex_Rank
 
 
 class Ranker:
-    def __init__(self, params, mode = 'rank'):
+    def __init__(self, params, mode = 'rank', fastpass = False):
         self.params = params
         self.ranked_quads = []
         self.base_directory = params.base_directory
         self.mode = mode
+        self.fastpass = fastpass
 
     def rank(self):
         for dataset in self.params.datasets:
@@ -42,46 +43,51 @@ class Ranker:
                         quads_path = os.path.join(self.base_directory, "queries", dataset, "split_" + split, "test_quads.json")                  
                     
                     # read from input
-                    in_file = open(quads_path, "r", encoding="utf8")
-                    print("Reading from file " + str(quads_path) + "...")
-                    self.ranked_quads = json.load(in_file)
-                    in_file.close()
-
+                    self.ranked_quads = read_json(quads_path, self.params.verbose)
+                    if self.fastpass and self.prediction_exists(embedding_name):
+                        print(f"Predictions on {dataset:12}{'({0})'.format(split)} already exist for {embedding_name:12} => Skipping")
+                        continue
+                    
                     if self.mode == "ensemble_naive_voting" or self.mode == "ensemble_decision_tree":
                         json_output = self._ensemble_base(dataset, split)
-                        
-
                     else:
                         # load model via torch
                         model_path = os.path.join(self.base_directory, "models", embedding_name, dataset, "split_" + split, "Model.model")
                         loader = Loader(self.params, dataset, split, model_path, embedding_name)
                         model = loader.load()
                         model.eval()
-                        
+
                         # select rank calculator depending on method
                         if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
                             rank_calculator = DE_Rank(self.params, model, dataset)
                         if embedding_name in ["TERO", "ATISE"]:
-                            rank_calculator = TERO_Rank(self.params, model, dataset, embedding_name)
+                            rank_calculator = TERO_Rank(self.params, model, dataset)
                         if embedding_name in ["TFLEX"]:
                             rank_calculator = TFLEX_Rank(self.params, model)
                         if embedding_name in ["TimePlex"]:
                             rank_calculator = TimePlex_Rank(self.params, model, dataset)
-                        
+                            
                         # write to file
                         json_output = generate_function(rank_calculator, embedding_name, dataset, split)
-                    touch(output_path)
-                    out_file = open(output_path, "w", encoding="utf8")
-                    print("Writing to file " + str(output_path) + "...")
-                    json.dump(json_output, out_file, indent=4)
-                    out_file.close()
+                    write_json(output_path, json_output, self.params.verbose)
 
                     #Ensemble goes through all the selected methods but only need to do it once. 
                     if self.mode == "ensemble_naive_voting" or self.mode == "ensemble_decision_tree":
                         break
-                    
 
-                            
+    def prediction_exists(self, embedding, last_fact=-1):
+        existence = False
+        key = "RANK" if self.mode == 'rank' else "BEST_PREDICTION"
+
+        if key in self.ranked_quads[last_fact].keys():
+            if (
+                (self.ranked_quads[last_fact]["TIME_TO"] == '0' and embedding != "TimePlex") or
+                (self.ranked_quads[last_fact]["RELATION"] == '0' and embedding == "TimePlex")):
+                existence = self.prediction_exists(embedding, last_fact-1)
+            if embedding in self.ranked_quads[last_fact][key].keys():
+                existence = True
+
+        return existence
 
     def _generate_ranked_quads(self, rank_calculator, embedding_name, dataset, split):
         ranked_quads = []
@@ -130,8 +136,10 @@ class Ranker:
 
     def _generate_best_predictions(self, rank_calculator, embedding_name, dataset, split):
         best_predictions = []
+        newchanges = False
+
         for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
-            if i % 1000 == 0:
+            if self.params.verbose and i % 1000 == 0:
                 print("Generating predictions for fact " + str(i) + "-" + str(i + 999) + " (total number: " + str(len(self.ranked_quads)) + ") " \
                       + " on dataset " + dataset + ", split " + split + " with embedding " + embedding_name)
 
@@ -145,12 +153,15 @@ class Ranker:
                     best_prediction_quad["BEST_PREDICTION"][embedding_name] = {}
                 else:
                     best_predictions.append(quad)
+                    if not newchanges and i+1 == len(self.ranked_quads):
+                        print(f"Predictions already generated for {embedding_name} on {dataset} (split={split}): Skipping")
                     continue
-                
+
+                newchanges = True
                 fact_scores = rank_calculator.simulate_fact_scores(quad["HEAD"], quad["RELATION"],
                                                     quad["TAIL"], quad["TIME_FROM"],
                                                     quad["TIME_TO"], quad["ANSWER"])
-                best_prediction_quad["BEST_PREDICTION"][embedding_name]["PREDICTION"] = rank_calculator.best_prediction(fact_scores)
+                best_prediction_quad["BEST_PREDICTION"][embedding_name]["PREDICTION"] = rank_calculator.best_prediction(fact_scores, [1, 1])
                 best_predictions.append(best_prediction_quad)
 
     
