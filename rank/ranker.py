@@ -436,7 +436,7 @@ class Ranker:
         if "RANK" not in ranked_quad.keys():
             ranked_quad["RANK"] = {}
 
-        ranked_quad["RANK"][str(self.mode)] = str(rank)
+        ranked_quad["RANK"][str(self.params.task)] = str(rank)
         return ranked_quad
         
     def diff_min_max_finder(self, dict):
