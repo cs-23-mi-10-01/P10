@@ -295,8 +295,15 @@ class RankCalculator:
             target = "Tf"
         elif time_to == "0":
             target = "Tt"
+
+        time_to_not_blank = time_to
+        if self.dataset in ["icews14"]:
+            if target == "Tf":
+                time_to_not_blank = answer
+            else:
+                time_to_not_blank = time_from
         
-        simulated_fact = self._simulate_fact(head, relation, tail, time_from, time_to, target, answer)
+        simulated_fact = self._simulate_fact(head, relation, tail, time_from, time_to_not_blank, target, answer)
         fact = self._fact_as_ids(simulated_fact)
         s, r, o, t = self._shred_fact(fact)
         id_scores = self._get_scores(target, s, r, o, t)

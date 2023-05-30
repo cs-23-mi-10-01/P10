@@ -66,7 +66,7 @@ class Ranker:
                         if embedding_name in ["TFLEX"]:
                             rank_calculator = TFLEX_Rank(self.params, model)
                         if embedding_name in ["TimePlex"]:
-                            rank_calculator = TimePlex_Rank(self.params, model)
+                            rank_calculator = TimePlex_Rank(self.params, model, dataset)
                         
                         # write to file
                         json_output = generate_function(rank_calculator, embedding_name, dataset, split)

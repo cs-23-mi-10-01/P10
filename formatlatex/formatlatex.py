@@ -6,16 +6,13 @@ from formatlatex.semester_10_relation_property_hypothesis import FormatRelationP
 from formatlatex.semester_10_voting_hypothesis import FormatVotingHypothesis
 from formatlatex.semester_10_time_density import FormatTimeDensity
 from formatlatex.semester_10_error_distribution import FormatErrorDistribution
+from formatlatex.semester_9_prediction_targets import FormatPredictionTargets
 from formatlatex.texobject import texobject
 
 class FormatLatex():
     def __init__(self, params, task = []) -> None:
         self.params = params
         self.task = task
-
-    def sort_methods(self, embeddings):
-        all_embeddings = ["DE_TransE", "DE_DistMult", "DE_SimplE", "ATISE", "TERO", "TFLEX", "TimePlex"]
-        return [e for e in all_embeddings if e in embeddings]
     
     def read_json(self, path):
         in_file = open(path, "r", encoding="utf8")
@@ -39,64 +36,6 @@ class FormatLatex():
     
     def round(self, val):
         return round(val, 1)
-    
-    def format_semester_9_hypothesis_1(self):
-        embeddings = self.sort_methods(self.params.embeddings)
-        metric = "MRR"
-
-        prefix_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_9_hypothesis_1_prefix.txt")
-        suffix_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_9_hypothesis_1_suffix.txt")
-        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "shorthand.json")
-
-        prefix_text = self.read_text(prefix_path)
-        suffix_text = self.read_text(suffix_path)
-        shorthand = self.read_json(shorthand_path)
-
-        for dataset in self.params.datasets:
-            for split in self.params.splits:
-                overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")
-
-                overall_scores = self.read_json(overall_scores_path)
-
-                for normalized in ["", "_normalized"]:
-                    if normalized == "_normalized":
-                        continue
-
-                    text = ""
-                    highest_score = 0
-
-                    for prediction_target in ["head", "relation", "tail", "time_from"]:
-                        scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_1", prediction_target + normalized + ".json")
-
-                        scores = self.read_json(scores_path)
-
-                        text += r"\addplot coordinates { %" + prediction_target + "\n"
-                        for i, embedding in enumerate(embeddings):
-                            score = scores[embedding][metric] if embedding in scores.keys() else 0
-                            text += f"({i}, {score}) %{embedding}" + "\n"
-                            if score > highest_score:
-                                highest_score = score
-                        text += r"} ;" + "\n"
-                    
-                    for i, embedding in enumerate(embeddings):
-                        overall_score = overall_scores[embedding][metric] if embedding in overall_scores.keys() else 0
-                        text += r"\addplot[black,sharp plot,update limits=false,] coordinates { %" + embedding + "\n" + \
-                        f"({float(i) - 0.5}, {overall_score})" + "\n" + \
-                        f"({float(i) + 0.5}, {overall_score})" + "\n" + \
-                        r"} ;" + "\n"
-
-                    #max_y = min(highest_score*1.2, 1.0)
-                    max_y = highest_score*1.2
-                    
-                    mod_prefix_text = prefix_text.replace(
-                        "%1", f"""{",".join([shorthand[e] for e in embeddings])}""").replace(
-                        "%2", str(max_y))
-                    mod_suffix_text = suffix_text.replace(
-                        "%1", f"{dataset}, split {split}").replace(
-                        "%2", f"{dataset}_{split}")
-
-                    output_path = os.path.join(self.params.base_directory, "formatlatex", "result", "semester_9_hypothesis_1", dataset+"_"+split+normalized+".tex")
-                    write(output_path, mod_prefix_text + text + mod_suffix_text)
 
     def format_hypothesis_2(self):
         for normalized in ["", "_normalized"]:
@@ -322,3 +261,8 @@ class FormatLatex():
                 case "time_error_distibution":
                     format_error_distribution = FormatErrorDistribution(self.params)
                     format_error_distribution.format()
+
+                case "prediction_target_scores":
+                    format_pred_target = FormatPredictionTargets(self.params)
+                    format_pred_target.format()
+

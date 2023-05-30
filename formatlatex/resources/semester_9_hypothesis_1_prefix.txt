@@ -1,6 +1,7 @@
-\begin{figure*}[ht]
+\begin{figure}[htb]
 \centering
-\begin{minipage}{0.9\textwidth}
+\begin{minipage}{\columnwidthcaption}
+\resizebox{\columnwidthcaption}{!}{
 \centering
 \begin{tikzpicture}
 \begin{axis}[
