@@ -21,21 +21,22 @@ def read_text(path):
         in_file.close()
         return text
 
-def write(path, text):
+def write(path, text, write=False):
+    if write: print(f"Writing to file {path}...")
     touch(path)
     out_file = open(path, "w", encoding="utf8")
     out_file.write(text)
     out_file.close()
 
-def read_json(path):
-    print("Reading from file " + path + "...")
+def read_json(path, write=True):
+    if write: print("Reading from file " + path + "...")
     in_file = open(path, "r", encoding="utf8")
     dict = json.load(in_file)
     in_file.close()
     return dict
 
-def write_json(path, dict):
-    print("Writing to file " + path + "...")
+def write_json(path, dict, write=True):
+    if write: print("Writing to file " + path + "...")
     touch(path)
     out_file = open(path, "w", encoding="utf8")
     json.dump(dict, out_file, indent=4)

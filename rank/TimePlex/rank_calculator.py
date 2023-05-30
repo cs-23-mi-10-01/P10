@@ -15,14 +15,14 @@ class RankCalculator:
         self.dataset_resource_folder = os.path.join(self.params.base_directory, "rank", "TimePlex", "resources", dataset_name, "split_" + split)
 
         self.dataset_handler = DatasetHandler(self.params, self.dataset)
-        self.entity_map = read_json(os.path.join(self.dataset_resource_folder, "entity_map.json"))
+        self.entity_map = read_json(os.path.join(self.dataset_resource_folder, "entity_map.json"), self.params.verbose)
         self.reverse_entity_map = self._create_reverse_map(self.entity_map)
-        self.relation_map = read_json(os.path.join(self.dataset_resource_folder, "relation_map.json"))
-        self.timestamp2id = read_json(os.path.join(self.dataset_resource_folder, "timestamp2id.json"))
+        self.relation_map = read_json(os.path.join(self.dataset_resource_folder, "relation_map.json"), self.params.verbose)
+        self.timestamp2id = read_json(os.path.join(self.dataset_resource_folder, "timestamp2id.json"), self.params.verbose)
         self.id2timestamp = self._create_reverse_map(self.timestamp2id)
-        self.interval2id = read_json(os.path.join(self.dataset_resource_folder, "timestamp_interval2interval_id.json"))
+        self.interval2id = read_json(os.path.join(self.dataset_resource_folder, "timestamp_interval2interval_id.json"), self.params.verbose)
         self.id2interval = self._create_reverse_map(self.interval2id)
-        self.time_str2id = read_json(os.path.join(self.dataset_resource_folder, "time_str2id.json"))
+        self.time_str2id = read_json(os.path.join(self.dataset_resource_folder, "time_str2id.json"), self.params.verbose)
         self.id2time_str = self._create_reverse_map(self.time_str2id)
 
     def _create_reverse_map(self, map):
@@ -310,6 +310,6 @@ class RankCalculator:
 
         return self._get_rank(fact_scores.values(), fact_scores[correct_fact])
     
-    def best_prediction(self, fact_scores):
+    def best_prediction(self, fact_scores, range):
         highest_scoring_fact_key = max(fact_scores, key = lambda key: fact_scores[key])
         return highest_scoring_fact_key[3]

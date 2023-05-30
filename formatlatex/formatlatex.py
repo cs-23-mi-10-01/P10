@@ -2,6 +2,7 @@
 import json
 from scripts import write
 import os
+import itertools
 from formatlatex.semester_10_relation_property_hypothesis import FormatRelationPropertyHypothesis
 from formatlatex.semester_10_voting_hypothesis import FormatVotingHypothesis
 from formatlatex.semester_10_time_density import FormatTimeDensity
@@ -303,22 +304,34 @@ class FormatLatex():
 
         for t in self.task:
             tex = texobject(self.params, t)
+
             match(t):
                 case "time_prediction_mae":
                     tex.caption = "MAE of model prediction. "\
-                                "Values are given in days for ICEWS14 and years for WikiData12k and YAGO11k. "\
-                                "Where the prediction is a timespan the average is given as '\\textsc{BEST}\u2013\\textsc{WORST}'"
-                    tex.format()
+                                "Values are given in days for ICEWS14-7k and years for WikiData12k and YAGO11k. "\
+                                "Where the prediction is a timespan the average is given as '\\textsc{BEST}\u2013\\textsc{WORST}'."
 
+                # this is the same as time_error_distribution
                 case "time_prediction_distribution":
-                    for method in self.params.embeddings:
-                        for dataset in self.params.datasets:
-                            tex.caption = f"Distribution of predictions on timestamps for {method} on {dataset}"
-                            tex.type = "fig"
-                            tex.embeddings = method
-                            tex.datasets = dataset
-                            tex.format()
-                
+                    tex.caption = f"Distribution of prediction error on timestamps for _method on _dataset."
+                    tex.type = "fig"
+                    tex.tikz = True                    
+                    tex.axisproperty.append({"xlabel": "Error"})
+                    tex.axisproperty.append({"ylabel": "\\#Occurences"})
+                    tex.foreach = True # for each method and dataset
+
+                # this is the same as time_prediction_distribution
                 case "time_error_distibution":
                     format_error_distribution = FormatErrorDistribution(self.params)
                     format_error_distribution.format()
+
+            print(f"Generating latex file(s) for {t}")
+
+            if tex.foreach:
+                for embedding, dataset, split in itertools.product(self.params.embeddings, self.params.datasets, self.params.splits):
+                    tex.embeddings = embedding
+                    tex.datasets = dataset
+                    tex.splits = split
+                    tex.format()
+            else:
+                tex.format()

@@ -446,12 +446,13 @@ class Statistics():
     def average_timestamp_precision(self):
         for dataset in self.params.datasets:
             for split in self.params.splits:
+                print(f"Calculating degree of error per prediction and MAE on {dataset} ({split})")
                 for embedding in self.params.embeddings:
                     # file paths
                     predictions_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "best_predictions.json")
                     avg_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "timestamp_prediction_avg.json")
-                    errdist_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "error_distribution_" + embedding + "_" + dataset + "_?.dat")
-                    predictions = read_json(predictions_path)
+                    errdist_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "time_prediction_distribution", embedding + ".dat")
+                    predictions = read_json(predictions_path, self.params.verbose)
 
                     #get differences and average and write to files
                     self.predictions_error(predictions, predictions_path, dataset, embedding)
@@ -462,12 +463,19 @@ class Statistics():
                     else:
                         key = [['BEST_PREDICTION', embedding, 'DIFFERENCE']]
                     
-                    for k in key:
-                        p = errdist_path.replace("?", k[2].lower()[:4])
+                    #for k in key:
+                        # kept because i think i might end up needing it later -astrid
+                        #p = errdist_path
+                        #if k[2] != "DIFFERENCE":
+                        #    p = errdist_path.replace(".dat", f"_{k[2].lower()[:4]}.dat")
+                        #self.count_occurences(predictions, p, k)
+
                         # Removed, as the diff.dat files are not necessary anymore
                         #self.count_occurences(predictions, p, k)
 
     def predictions_error(self, best_predictions, predictions_path, dataset, embedding):
+        if self.params.verbose: print("Calculating error for time predictions on {dataset:12} for {embedding:12}")
+
         for i in best_predictions:
 
             # skip predictions for which we have no answer
@@ -511,11 +519,13 @@ class Statistics():
                         i['BEST_PREDICTION'][embedding]['DIFFERENCE'] = difference
 
         # write to file
-        write_json(predictions_path, best_predictions)
+        write_json(predictions_path, best_predictions, self.params.verbose)
                    
     def best_predictions_time_difference_avg(self, best_predictions, avg_path, embedding):
+        if self.params.verbose: print("Calculating MAE of time predictions for {embedding:12}")
+
         # load avg (to not over-write)
-        avg = read_json(avg_path) if exists(avg_path) else {}
+        avg = read_json(avg_path, self.params.verbose) if exists(avg_path) else {}
 
         # filter predictions w no answer
         predictions = list(filter( lambda x: 'DIFFERENCE' in x['BEST_PREDICTION'][embedding].keys(), best_predictions))
@@ -536,7 +546,7 @@ class Statistics():
             avg[embedding]['WORST'] = total_worst_difference/no_predictions
 
         # write to file
-        write_json(avg_path, avg)
+        write_json(avg_path, avg, self.params.verbose)
 
     def count_occurences(self, input, output_path, key):
         occurences = {}
