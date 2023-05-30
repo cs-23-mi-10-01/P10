@@ -72,7 +72,7 @@ def year_to_iso_format(year):
         modified_year = "0001"
     while len(modified_year) < 4:
         modified_year = "0" + modified_year
-    return modified_year + "-01-01['BEST_PREDICTION']['DE_TransE']['DIFFERENCE']"
+    return modified_year + "-01-01"
 
 def date_to_iso(date):
     return f"{date.year:04d}-{date.month:02d}-{date.day:02d}"
