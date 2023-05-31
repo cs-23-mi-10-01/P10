@@ -8,6 +8,7 @@ from formatlatex.semester_10_voting_hypothesis import FormatVotingHypothesis
 from formatlatex.semester_10_time_density import FormatTimeDensity
 from formatlatex.semester_10_error_distribution import FormatErrorDistribution
 from formatlatex.semester_9_prediction_targets import FormatPredictionTargets
+from formatlatex.semester_10_overall_scores import FormatOverallScores
 from formatlatex.texobject import texobject
 
 class FormatLatex():
@@ -268,6 +269,11 @@ class FormatLatex():
                 case "prediction_target_scores":
                     format_pred_target = FormatPredictionTargets(self.params)
                     format_pred_target.format()
+                    return
+
+                case "overall_scores":
+                    format_overall_scores = FormatOverallScores(self.params)
+                    format_overall_scores.format()
                     return
 
             print(f"Generating latex file(s) for {t}")

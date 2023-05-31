@@ -9,5 +9,7 @@
     "AVG": "Avg",
     "icews14": "I14-7",
     "wikidata12k": "WD12",
-    "yago11k": "Y11"
+    "yago11k": "Y11",
+    "ensemble_naive_voting": "NV-E",
+    "ensemble_decision_tree": "RBV-E"
 }
