@@ -7,7 +7,8 @@
 \begin{axis}[
     ybar,
     bar width=6pt,
-    xticklabels={x,DE-T,DE-D,DE-S,TR,AT,TP},
+    xtick={0,1,2,3,4,5},
+    xticklabels={DE-T,DE-D,DE-S,AT,TR,TP},
     ymin=0,
     ymax=0.6431143840837479,
     ylabel={MRR score},
@@ -25,31 +26,31 @@
 (0, 0.3005249890740837) %DE_TransE
 (1, 0.4595339060848753) %DE_DistMult
 (2, 0.48168727741357964) %DE_SimplE
-(3, 0.5000763020862025) %TERO
-(4, 0.5054803286086862) %ATISE
+(3, 0.5054803286086862) %ATISE
+(4, 0.5000763020862025) %TERO
 (5, 0.34477488263223893) %TimePlex
 } ;
 \addplot[color=ourdarkred, fill=ourlightred] coordinates { %relation
 (0, 0.204748279197774) %DE_TransE
 (1, 0.18564274192135086) %DE_DistMult
 (2, 0.26905439575244017) %DE_SimplE
-(3, 0.4477805566313134) %TERO
-(4, 0.34965468404275624) %ATISE
+(3, 0.34965468404275624) %ATISE
+(4, 0.4477805566313134) %TERO
 } ;
 \addplot[color=ourdarkyellow, fill=ourlightyellow] coordinates { %tail
 (0, 0.3235768065354983) %DE_TransE
 (1, 0.5041639225422816) %DE_DistMult
 (2, 0.5215051513802474) %DE_SimplE
-(3, 0.530214637024888) %TERO
-(4, 0.5359286534031232) %ATISE
+(3, 0.5359286534031232) %ATISE
+(4, 0.530214637024888) %TERO
 (5, 0.3911951078716362) %TimePlex
 } ;
 \addplot[color=ourdarkgreen, fill=ourlightgreen] coordinates { %time_from
 (0, 0.09877310207544412) %DE_TransE
 (1, 0.0861250207110118) %DE_DistMult
 (2, 0.08222193019657349) %DE_SimplE
-(3, 0.1763083747660751) %TERO
-(4, 0.09295908244005585) %ATISE
+(3, 0.09295908244005585) %ATISE
+(4, 0.1763083747660751) %TERO
 (5, 0.018690815019566067) %TimePlex
 } ;
 \addplot[ourblack,sharp plot,update limits=false,] coordinates { %DE_TransE
@@ -64,13 +65,13 @@
 (1.5, 0.33861718868573143)
 (2.5, 0.33861718868573143)
 } ;
-\addplot[ourblack,sharp plot,update limits=false,] coordinates { %TERO
-(2.5, 0.4135949676271478)
-(3.5, 0.4135949676271478)
-} ;
 \addplot[ourblack,sharp plot,update limits=false,] coordinates { %ATISE
+(2.5, 0.37100568712368637)
 (3.5, 0.37100568712368637)
-(4.5, 0.37100568712368637)
+} ;
+\addplot[ourblack,sharp plot,update limits=false,] coordinates { %TERO
+(3.5, 0.4135949676271478)
+(4.5, 0.4135949676271478)
 } ;
 \addplot[ourblack,sharp plot,update limits=false,] coordinates { %TimePlex
 (4.5, 0.251553601841141)
@@ -83,4 +84,4 @@
 \caption{ICEWS14-7k, split original}
 \label{fig:compare_icews14_original}
 \end{minipage}
-\end{figure*}
+\end{figure}

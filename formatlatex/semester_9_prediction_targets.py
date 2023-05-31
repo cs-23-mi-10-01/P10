@@ -27,7 +27,7 @@ class FormatPredictionTargets():
                 return "color=ourdarkgreen, fill=ourlightgreen"
     
     def format(self):
-        embeddings = ["DE_TransE", "DE_DistMult", "DE_SimplE", "TERO", "ATISE", "TimePlex"]
+        embeddings = ["DE_TransE", "DE_DistMult", "DE_SimplE", "ATISE", "TERO", "TimePlex"]
         metric = "MRR"
 
         prefix_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_9_hypothesis_1_prefix.txt")
@@ -52,6 +52,8 @@ class FormatPredictionTargets():
 
                     text = ""
                     highest_score = 0
+                    included_embeddings = []
+                    included_tick_intervals = set()
 
                     for prediction_target in ["head", "relation", "tail", "time_from"]:
                         scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "semester_9_hypothesis_1", prediction_target + normalized + ".json")
@@ -59,7 +61,8 @@ class FormatPredictionTargets():
                         scores = read_json(scores_path)
 
                         text += r"\addplot[" + self._get_colors(prediction_target) + r"] coordinates { %" + prediction_target + "\n"
-                        for i, embedding in enumerate(embeddings):
+                        i = 0
+                        for embedding in embeddings:
                             if embedding not in scores.keys():
                                 continue
 
@@ -67,9 +70,15 @@ class FormatPredictionTargets():
                             text += f"({i}, {score}) %{embedding}" + "\n"
                             if score > highest_score:
                                 highest_score = score
+                            
+                            if embedding not in included_embeddings:
+                                included_embeddings.append(embedding)
+                            included_tick_intervals.add(i)
+                            i += 1
                         text += r"} ;" + "\n"
                     
-                    for i, embedding in enumerate(embeddings):
+                    i = 0
+                    for embedding in embeddings:
                         if embedding not in overall_scores.keys():
                             continue
 
@@ -79,11 +88,18 @@ class FormatPredictionTargets():
                         f"({float(i) + 0.5}, {overall_score})" + "\n" + \
                         r"} ;" + "\n"
 
+                        if embedding not in included_embeddings:
+                            included_embeddings.append(embedding)
+                        included_tick_intervals.add(i)
+                        i += 1
+
+                    tick_interval_text = ",".join([str(i) for i in included_tick_intervals])
                     max_y = highest_score*1.2
                     
                     mod_prefix_text = prefix_text.replace(
-                        "%1", f"""{",".join([shorthand[e] for e in embeddings])}""").replace(
-                        "%2", str(max_y))
+                        "%1", tick_interval_text).replace(
+                        "%2", f"""{",".join([shorthand[e] for e in included_embeddings])}""").replace(
+                        "%3", str(max_y))
                     mod_suffix_text = suffix_text.replace(
                         "%1", f"{full_name[dataset]}, split {split}").replace(
                         "%2", f"{dataset}_{split}")
