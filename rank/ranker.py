@@ -61,7 +61,7 @@ class Ranker:
                         if embedding_name in ["DE_TransE", "DE_SimplE", "DE_DistMult"]:
                             rank_calculator = DE_Rank(self.params, model, dataset)
                         if embedding_name in ["TERO", "ATISE"]:
-                            rank_calculator = TERO_Rank(self.params, model, dataset)
+                            rank_calculator = TERO_Rank(self.params, model, dataset, embedding_name)
                         if embedding_name in ["TFLEX"]:
                             rank_calculator = TFLEX_Rank(self.params, model)
                         if embedding_name in ["TimePlex"]:
