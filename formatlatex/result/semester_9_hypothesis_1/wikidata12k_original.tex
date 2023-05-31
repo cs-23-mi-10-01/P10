@@ -1,12 +1,13 @@
-\begin{figure*}[ht]
+\begin{figure}[htb]
 \centering
-\begin{minipage}{0.9\textwidth}
+\begin{minipage}{\columnwidthcaption}
+\resizebox{\columnwidthcaption}{!}{
 \centering
 \begin{tikzpicture}
 \begin{axis}[
     ybar,
     bar width=6pt,
-    xticklabels={x,DE-T,DE-D,DE-S,ATiSE,TeRo,TFLEX,TimePlex},
+    xticklabels={x,DE-T,DE-D,DE-S,TR,AT,TP},
     ymin=0,
     ymax=1.1469754572524147,
     ylabel={MRR score},
@@ -20,74 +21,66 @@
     legend image code/.code={
         \draw [#1] (0cm,-0.1cm) rectangle (0.2cm,0.25cm); },
     ]
-\addplot coordinates { %head
+\addplot[color=ourdarkblue, fill=ourlightblue] coordinates { %head
 (0, 0.18130037449949188) %DE_TransE
 (1, 0.17282233690181947) %DE_DistMult
 (2, 0.1780547872213373) %DE_SimplE
-(3, 0.2273298150215758) %ATISE
-(4, 0.24186633018673434) %TERO
-(5, 0) %TFLEX
-(6, 0.25356592005344425) %TimePlex
+(3, 0.24186632669990496) %TERO
+(4, 0.22731905356334148) %ATISE
+(5, 0.25356592005344425) %TimePlex
 } ;
-\addplot coordinates { %relation
+\addplot[color=ourdarkred, fill=ourlightred] coordinates { %relation
 (0, 0.9558128810436789) %DE_TransE
 (1, 0.8572876609776997) %DE_DistMult
 (2, 0.8880839024104603) %DE_SimplE
-(3, 0.922117713779801) %ATISE
-(4, 0.9472559198556247) %TERO
-(5, 0) %TFLEX
-(6, 0) %TimePlex
+(3, 0.9523960058487384) %TERO
+(4, 0.9337886992972144) %ATISE
 } ;
-\addplot coordinates { %tail
+\addplot[color=ourdarkyellow, fill=ourlightyellow] coordinates { %tail
 (0, 0.235634963095345) %DE_TransE
 (1, 0.23166552322567083) %DE_DistMult
 (2, 0.24154788434002833) %DE_SimplE
-(3, 0.2591914088614538) %ATISE
-(4, 0.2704648943835616) %TERO
-(5, 0) %TFLEX
-(6, 0.26907789592276365) %TimePlex
+(3, 0.27046489368417) %TERO
+(4, 0.25919140831221765) %ATISE
+(5, 0.2690778814236474) %TimePlex
 } ;
-\addplot coordinates { %time_from
-(0, 0.010488972252275434) %DE_TransE
-(1, 0.004897539365177376) %DE_DistMult
-(2, 0.004360166639279628) %DE_SimplE
-(3, 0.21756454450370288) %ATISE
-(4, 0.2706700220390521) %TERO
-(5, 0) %TFLEX
-(6, 0.2238530485475706) %TimePlex
+\addplot[color=ourdarkgreen, fill=ourlightgreen] coordinates { %time_from
+(0, 0.004296036941501959) %DE_TransE
+(1, 0.004352955133924508) %DE_DistMult
+(2, 0.004405349869809032) %DE_SimplE
+(3, 0.2388710667566164) %TERO
+(4, 0.1999533558010218) %ATISE
+(5, 0.22695121806852814) %TimePlex
 } ;
-\addplot[black,sharp plot,update limits=false,] coordinates { %DE_TransE
-(-0.5, 0.3458092977226949)
-(0.5, 0.3458092977226949)
+\addplot[ourblack,sharp plot,update limits=false,] coordinates { %DE_TransE
+(-0.5, 0.3454368322688525)
+(0.5, 0.3454368322688525)
 } ;
-\addplot[black,sharp plot,update limits=false,] coordinates { %DE_DistMult
-(0.5, 0.31666826511758944)
-(1.5, 0.31666826511758944)
+\addplot[ourblack,sharp plot,update limits=false,] coordinates { %DE_DistMult
+(0.5, 0.31761179008125884)
+(1.5, 0.31761179008125884)
 } ;
-\addplot[black,sharp plot,update limits=false,] coordinates { %DE_SimplE
-(1.5, 0.3280116851527744)
-(2.5, 0.3280116851527744)
+\addplot[ourblack,sharp plot,update limits=false,] coordinates { %DE_SimplE
+(1.5, 0.32914221189797305)
+(2.5, 0.32914221189797305)
 } ;
-\addplot[black,sharp plot,update limits=false,] coordinates { %ATISE
-(2.5, 0.40655087054162753)
-(3.5, 0.40655087054162753)
+\addplot[ourblack,sharp plot,update limits=false,] coordinates { %TERO
+(2.5, 0.4265464109674305)
+(3.5, 0.4265464109674305)
 } ;
-\addplot[black,sharp plot,update limits=false,] coordinates { %TERO
-(3.5, 0.43256429161623894)
-(4.5, 0.43256429161623894)
+\addplot[ourblack,sharp plot,update limits=false,] coordinates { %ATISE
+(3.5, 0.405772500989539)
+(4.5, 0.405772500989539)
 } ;
-\addplot[black,sharp plot,update limits=false,] coordinates { %TFLEX
-(4.5, 0)
-(5.5, 0)
-} ;
-\addplot[black,sharp plot,update limits=false,] coordinates { %TimePlex
-(5.5, 0.24062594606252244)
-(6.5, 0.24062594606252244)
+\addplot[ourblack,sharp plot,update limits=false,] coordinates { %TimePlex
+(4.5, 0.2499707915236977)
+(5.5, 0.2499707915236977)
 } ;
 \legend{Head,Relation,Tail,Time}
 \end{axis}
 \end{tikzpicture}
-\caption{wikidata12k, split original}
+}
+\caption{WikiData12k, split original}
 \label{fig:compare_wikidata12k_original}
 \end{minipage}
-\end{figure*}
+\end{figure}
