@@ -13,7 +13,7 @@ def main():
     parser = argparse.ArgumentParser()
 
     #python -task rank -dataset icews14 -embedding DE_TransE -split all
-    parser.add_argument('-task', type=str, default='ablation_overall', choices=['statistics', 'rank', 'formatlatex', 'split_dataset', 'generate_quads', 'best_predictions', 'ensemble_naive_voting', "ensemble_decision_tree", "ablation_overall", "ablation_property", "ablation_false_property", "ablation_time_density", "ablation_target"])
+    parser.add_argument('-task', type=str, default='ablation_no_property', choices=['statistics', 'rank', 'formatlatex', 'split_dataset', 'generate_quads', 'best_predictions', 'ensemble_naive_voting', "ensemble_decision_tree", "ablation_overall", "ablation_property", "ablation_false_property", "ablation_time_density", "ablation_target", "ablation_no_property", "ablation_one_forth_property"])
     parser.add_argument('-dataset', type=str, default='icews14', choices=['all', 'icews14', 'wikidata11k', 'wikidata12k', 'yago11k'])
     parser.add_argument('-split', type=str, default='original', choices=['all', 'original', '1', '2', '3'])
     parser.add_argument('-embedding', type=str, default='ensemble', choices=['all','ensemble', 'DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE', 'TFLEX','TimePlex', 'overall_scores'])
@@ -59,7 +59,7 @@ def main():
         case "ensemble_naive_voting":
             ranker = Ranker(params, "ensemble_naive_voting")
             ranker.rank()
-        case task if task in ["ensemble_decision_tree", "ablation_overall", "ablation_property", "ablation_false_property", "ablation_time_density", "ablation_target"]:
+        case task if task in ["ensemble_decision_tree", "ablation_overall", "ablation_property", "ablation_false_property", "ablation_time_density", "ablation_target", "ablation_no_property", "ablation_one_forth_property"]:
             ranker = Ranker(params, "ensemble_decision_tree")
             ranker.rank()
 

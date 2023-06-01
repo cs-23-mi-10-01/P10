@@ -202,6 +202,12 @@ class Ranker:
                     hyper_timedensity = 0
                 case "ablation_target":
                     hyper_target = 0
+                case "ablation_no_property":
+                    hyper_false_properties = 0
+                    hyper_properties = 0
+                case "ablation_one_forth_property":
+                    yper_false_properties = 0.25
+                    hyper_properties = 0.25
         
         for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
             # if i < 1500:
