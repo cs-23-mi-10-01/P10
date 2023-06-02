@@ -20,7 +20,10 @@ def main():
         if "RANK" not in quad_2.keys():
             continue
 
-        quad_1["RANK"] = quad_1["RANK"] | quad_2["RANK"]
+        if args.override_method == '':
+            quad_1["RANK"] = quad_1["RANK"] | quad_2["RANK"]
+        else:
+            quad_1["RANK"][args.override_method] = quad_2["RANK"][args.override_method]
 
     write_json(args.output_path, source_1)
 

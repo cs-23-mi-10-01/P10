@@ -190,6 +190,7 @@ class Ranker:
         hyper_false_properties = 1
         hyper_timedensity = 1
         hyper_target = 1
+        no_reflexion = False
         
         match(params.task):
             case "ablation_overall":
@@ -208,6 +209,8 @@ class Ranker:
             case "ablation_one_forth_property":
                 hyper_false_properties = 0.25
                 hyper_properties = 0.25
+            case "ablation_no_reflexion":
+                no_reflexion = True
         
         for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
             # if i < 1500:
@@ -232,7 +235,7 @@ class Ranker:
                 #analyse
                 query = self._ensemble_analyser(quad, target, properties, partitions,dataset)
                 #decision tree
-                weight_distribution = self._ensemble_decision_tree(query, scores, target, hyper_overall, hyper_properties, hyper_false_properties,hyper_timedensity,hyper_target)
+                weight_distribution = self._ensemble_decision_tree(query, scores, target, hyper_overall, hyper_properties, hyper_false_properties,hyper_timedensity,hyper_target,no_reflexion)
             elif self.mode == "ensemble_naive_voting":
                 for embedding_name in self.params.embeddings:
                     weight_distribution[embedding_name] = (1/len(self.params.embeddings))
@@ -329,7 +332,7 @@ class Ranker:
 
         return query
 
-    def _ensemble_decision_tree(self, query, scores, target, hyper_overall, hyper_properties, hyper_false_properties,hyper_timedensity,hyper_target):
+    def _ensemble_decision_tree(self, query, scores, target, hyper_overall, hyper_properties, hyper_false_properties,hyper_timedensity,hyper_target,no_reflexion):
         weight_distribution = {}
         
 
@@ -346,12 +349,18 @@ class Ranker:
             weight_distribution[method] = normalized[method] * diff * hyper_overall
 
         for p in query["properties"]:
+            if no_reflexion and p == 'reflexive':
+                continue
+
             diff =self.diff_min_max_finder(scores[p])
             normalized = self.mrr_normalizer(scores[p])
             for method in normalized:
                 weight_distribution[method] += normalized[method] * diff * hyper_properties
         
         for p in query["false-properties"]:
+            if no_reflexion and p == 'not reflexive':
+                continue
+            
             diff =self.diff_min_max_finder(scores[p])
             normalized = self.mrr_normalizer(scores[p])
             for method in normalized:
