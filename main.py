@@ -59,7 +59,7 @@ def main():
         case "ensemble_naive_voting":
             ranker = Ranker(params, "ensemble_naive_voting")
             ranker.rank()
-        case task if task in ["ensemble_decision_tree", "ablation_overall", "ablation_property", "ablation_false_property", "ablation_time_density", "ablation_target", "ablation_no_property", "ablation_one_forth_property"]:
+        case task if task in ["ensemble_decision_tree", "ablation_overall", "ablation_property", "ablation_false_property", "ablation_time_density", "ablation_target", "ablation_no_property", "ablation_one_forth_property", "ablation_no_reflexion"]:
             ranker = Ranker(params, "ensemble_decision_tree")
             ranker.rank()
 
