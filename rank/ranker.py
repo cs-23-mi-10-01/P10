@@ -190,7 +190,7 @@ class Ranker:
         hyper_false_properties = 1
         hyper_timedensity = 1
         hyper_target = 1
-        no_reflexion = False
+        no_reflexion = True
         
         match(params.task):
             case "ablation_overall":
@@ -209,8 +209,30 @@ class Ranker:
             case "ablation_one_forth_property":
                 hyper_false_properties = 0.25
                 hyper_properties = 0.25
-            case "ablation_no_reflexion":
-                no_reflexion = True
+            case "ablation_only_property":
+                hyper_overall = 0
+                hyper_timedensity = 0
+                hyper_target = 0
+            case "ablation_only_target":
+                hyper_overall = 0
+                hyper_timedensity = 0
+                hyper_properties = 0
+                hyper_false_properties = 0
+                hyper_target = 1
+            case "ablation_only_overall":
+                hyper_overall = 1
+                hyper_timedensity = 0
+                hyper_target = 0
+                hyper_false_properties = 0
+                hyper_properties = 0
+            case "ablation_only_time_density":
+                hyper_overall = 0
+                hyper_timedensity = 1
+                hyper_target = 0
+                hyper_properties = 0
+                hyper_false_properties = 0
+
+                
         
         for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
             # if i < 1500:
@@ -277,7 +299,7 @@ class Ranker:
         reflexive = read_json(reflexive_path)
 
         #removing TFLEX from all datasets
-        for name in ["TFLEX","ensemble_naive_voting","ensemble_decision_tree"]:
+        for name in ["TFLEX","ensemble_naive_voting","ensemble_decision_tree", "ablation_overall", "ablation_property", "ablation_false_property", "ablation_time_density", "ablation_target" ,"ablation_no_property", "ablation_one_forth_property", "ablation_only_property", "ablation_only_target", "ablation_only_overall", "ablation_only_time_density"]:
             overall.pop(name, None)
             head.pop(name, None)
             relaition.pop(name, None)
@@ -402,7 +424,12 @@ class Ranker:
                 normalized = self.mrr_normalizer(scores["time"])
                 for method in normalized:
                     weight_distribution[method] += normalized[method] * diff * hyper_target
-
+        
+        if weight_distribution['DE_TransE'] == 0 and weight_distribution['DE_SimplE'] == 0 and weight_distribution['DE_DistMult'] == 0 and weight_distribution['TERO'] == 0 and weight_distribution['ATISE'] == 0:
+            for method in ['DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE',  'TimePlex']:
+                if method == 'TimePlex' and target == "relation":
+                    continue
+                weight_distribution[method] += 1
         #normalized the final weights so the sum 1
         factor=1.0/sum(weight_distribution.values())
         for k in weight_distribution:
