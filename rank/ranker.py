@@ -190,24 +190,24 @@ class Ranker:
         hyper_false_properties = 1
         hyper_timedensity = 1
         hyper_target = 1
-        if params.task in ["ablation_overall", "ablation_property", "ablation_false_property", "ablation_time_density", "ablation_target"]:
-            match(params.task):
-                case "ablation_overall":
-                    hyper_overall = 0
-                case "ablation_property":
-                    hyper_properties = 0
-                case "ablation_false_property":
-                    hyper_false_properties = 0
-                case "ablation_time_density":
-                    hyper_timedensity = 0
-                case "ablation_target":
-                    hyper_target = 0
-                case "ablation_no_property":
-                    hyper_false_properties = 0
-                    hyper_properties = 0
-                case "ablation_one_forth_property":
-                    yper_false_properties = 0.25
-                    hyper_properties = 0.25
+        
+        match(params.task):
+            case "ablation_overall":
+                hyper_overall = 0
+            case "ablation_property":
+                hyper_properties = 0
+            case "ablation_false_property":
+                hyper_false_properties = 0
+            case "ablation_time_density":
+                hyper_timedensity = 0
+            case "ablation_target":
+                hyper_target = 0
+            case "ablation_no_property":
+                hyper_false_properties = 0
+                hyper_properties = 0
+            case "ablation_one_forth_property":
+                hyper_false_properties = 0.25
+                hyper_properties = 0.25
         
         for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
             # if i < 1500:
