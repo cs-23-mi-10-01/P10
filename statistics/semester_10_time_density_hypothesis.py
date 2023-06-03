@@ -234,7 +234,8 @@ class TimeDensityHypothesis():
                                        "sparse_head_relation_tail_predictions": sparse_head_relation_tail_predictions.as_dict(), 
                                        "no_of_facts": {"dense": quads_in_dense, 
                                                        "sparse": quads_in_sparse, 
-                                                       "none": quads_in_none}}})
+                                                       "none": quads_in_none}
+                                        })
 
 
 
