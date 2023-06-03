@@ -41,6 +41,11 @@ class VotingHypothesis():
         if self.dataset in ["wikidata12k", "yago11k"]:
             delta_date = relativedelta(years=1)
 
+        if a[:4] == "0000":
+            a = "0001" + a[4:]
+        if b[:4] == "0000":
+            b = "0001" + b[4:]
+
         first, last = self._first_last(datetime.date.fromisoformat(a), datetime.date.fromisoformat(b))
 
         counter = 0
@@ -93,8 +98,11 @@ class VotingHypothesis():
                 best_answers = []
 
                 for embedding in prediction_quad["BEST_PREDICTION"]:
+                    if prediction_quad["BEST_PREDICTION"][embedding]["PREDICTION"] == '-':
+                        continue
+
                     best_iso = self._from_embedding_specific_format_to_iso(prediction_quad["BEST_PREDICTION"][embedding]["PREDICTION"], embedding)
-                    if best_iso[0] == '-':
+                    if best_iso[0] == '-' or best_iso[0] == '#':
                         continue                    
 
                     rankings[embedding] = self._abs(self._difference(best_iso, answer_iso))

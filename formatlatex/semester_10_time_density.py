@@ -12,7 +12,7 @@ class FormatTimeDensity():
         datasets = ['icews14', 'wikidata12k', 'yago11k']
         splits = ['original']
         static_text_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_10_time_density_text.txt")
-        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "method_shorthand.json")
+        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "shorthand.json")
 
         static_text = read_text(static_text_path)
         shorthand = read_json(shorthand_path)
