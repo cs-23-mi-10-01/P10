@@ -1,7 +1,8 @@
 \legend{Head,Relation,Tail,Time}
 \end{axis}
 \end{tikzpicture}
+}
 \caption{%1}
 \label{fig:compare_%2}
 \end{minipage}
-\end{figure*}
+\end{figure}
