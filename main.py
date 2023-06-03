@@ -23,9 +23,9 @@ def main():
 
     params.timer.start("main")
     if params.embeddings == ['all']:
-        params.embeddings = ['DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE','TFLEX', 'TimePlex']
+        params.embeddings = ['DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE', 'TimePlex']
     elif params.embeddings == ['ensemble']:
-        params.embeddings = ['DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE',  'TimePlex']
+        params.embeddings = ['DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE', 'TimePlex']
     elif params.embeddings == ['overall_scores']:
         params.embeddings = ['DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE',  'TimePlex','ensemble_naive_voting', 'ensemble_decision_tree', "ablation_overall", "ablation_property", "ablation_false_property", "ablation_time_density", "ablation_target" ,"ablation_no_property", "ablation_one_forth_property", "ablation_only_property", "ablation_only_target", "ablation_only_overall", "ablation_only_time_density"]
     if params.datasets == ['all']:
@@ -50,11 +50,11 @@ def main():
             generate_quads = GenerateQueries(params)
             generate_quads.generate_test_quads()
         case "best_predictions":
-            ranker = Ranker(params, "best_predictions")
+            ranker = Ranker(params, "best_predictions", True)
             ranker.rank()
             statistics = Statistics(params)
             statistics.average_timestamp_precision()
-            format_latex = FormatLatex(params, ["time_prediction_mae", "time_prediction_distribution"])
+            format_latex = FormatLatex(params, ["time_prediction_mae"])
             format_latex.format()
         case "ensemble_naive_voting":
             ranker = Ranker(params, "ensemble_naive_voting")

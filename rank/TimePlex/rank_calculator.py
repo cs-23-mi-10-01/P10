@@ -15,14 +15,14 @@ class RankCalculator:
         self.dataset_resource_folder = os.path.join(self.params.base_directory, "rank", "TimePlex", "resources", dataset_name, "split_" + split)
 
         self.dataset_handler = DatasetHandler(self.params, self.dataset)
-        self.entity_map = read_json(os.path.join(self.dataset_resource_folder, "entity_map.json"))
+        self.entity_map = read_json(os.path.join(self.dataset_resource_folder, "entity_map.json"), self.params.verbose)
         self.reverse_entity_map = self._create_reverse_map(self.entity_map)
-        self.relation_map = read_json(os.path.join(self.dataset_resource_folder, "relation_map.json"))
-        self.timestamp2id = read_json(os.path.join(self.dataset_resource_folder, "timestamp2id.json"))
+        self.relation_map = read_json(os.path.join(self.dataset_resource_folder, "relation_map.json"), self.params.verbose)
+        self.timestamp2id = read_json(os.path.join(self.dataset_resource_folder, "timestamp2id.json"), self.params.verbose)
         self.id2timestamp = self._create_reverse_map(self.timestamp2id)
-        self.interval2id = read_json(os.path.join(self.dataset_resource_folder, "timestamp_interval2interval_id.json"))
+        self.interval2id = read_json(os.path.join(self.dataset_resource_folder, "timestamp_interval2interval_id.json"), self.params.verbose)
         self.id2interval = self._create_reverse_map(self.interval2id)
-        self.time_str2id = read_json(os.path.join(self.dataset_resource_folder, "time_str2id.json"))
+        self.time_str2id = read_json(os.path.join(self.dataset_resource_folder, "time_str2id.json"), self.params.verbose)
         self.id2time_str = self._create_reverse_map(self.time_str2id)
 
     def _create_reverse_map(self, map):
@@ -295,8 +295,15 @@ class RankCalculator:
             target = "Tf"
         elif time_to == "0":
             target = "Tt"
+
+        time_to_not_blank = time_to
+        if self.dataset in ["icews14"]:
+            if target == "Tf":
+                time_to_not_blank = answer
+            else:
+                time_to_not_blank = time_from
         
-        simulated_fact = self._simulate_fact(head, relation, tail, time_from, time_to, target, answer)
+        simulated_fact = self._simulate_fact(head, relation, tail, time_from, time_to_not_blank, target, answer)
         fact = self._fact_as_ids(simulated_fact)
         s, r, o, t = self._shred_fact(fact)
         id_scores = self._get_scores(target, s, r, o, t)
@@ -309,3 +316,7 @@ class RankCalculator:
             return 10000
 
         return self._get_rank(fact_scores.values(), fact_scores[correct_fact])
+    
+    def best_prediction(self, fact_scores, range):
+        highest_scoring_fact_key = max(fact_scores, key = lambda key: fact_scores[key])
+        return highest_scoring_fact_key[3]

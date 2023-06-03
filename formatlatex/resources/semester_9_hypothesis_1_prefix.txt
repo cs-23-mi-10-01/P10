@@ -1,14 +1,16 @@
-\begin{figure*}[ht]
+\begin{figure}[htb]
 \centering
-\begin{minipage}{0.9\textwidth}
+\begin{minipage}{\columnwidthcaption}
+\resizebox{\columnwidthcaption}{!}{
 \centering
 \begin{tikzpicture}
 \begin{axis}[
     ybar,
     bar width=6pt,
-    xticklabels={x,%1},
+    xtick={%1},
+    xticklabels={%2},
     ymin=0,
-    ymax=%2,
+    ymax=%3,
     ylabel={MRR score},
     height=8cm,
     width=12cm,
