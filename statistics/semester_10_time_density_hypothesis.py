@@ -177,6 +177,9 @@ class TimeDensityHypothesis():
         sparse_time_predictions = Measure()
         sparse_head_relation_tail_predictions = Measure()
         dense_measure = Measure()
+        quads_in_sparse = 0
+        quads_in_dense = 0
+        quads_in_none = 0
         dense_time_predictions = Measure()
         dense_head_relation_tail_predictions = Measure()
 
@@ -200,6 +203,7 @@ class TimeDensityHypothesis():
                             sparse_time_predictions.update(quad["RANK"])
                         else:
                             sparse_head_relation_tail_predictions.update(quad["RANK"])
+                        quads_in_sparse += 1
                     
                     elif partition["partition"] == "dense":
                         if quad["TIME_FROM"] != "0":
@@ -209,13 +213,16 @@ class TimeDensityHypothesis():
                             dense_time_predictions.update(quad["RANK"])
                         else:
                             dense_head_relation_tail_predictions.update(quad["RANK"])
-                    
+                        quads_in_dense += 1
+                    else:
+                        quads_in_none += 1
                     break
         
         sparse_measure.normalize()
         sparse_time_predictions.normalize()
         sparse_head_relation_tail_predictions.normalize()
         dense_measure.normalize()
+        
         dense_time_predictions.normalize()
         dense_head_relation_tail_predictions.normalize()
 
@@ -224,7 +231,10 @@ class TimeDensityHypothesis():
                                        "dense_head_relation_tail_predictions": dense_head_relation_tail_predictions.as_dict(),
                                        "sparse": sparse_measure.as_dict(),
                                        "sparse_time_predictions": sparse_time_predictions.as_dict(),
-                                       "sparse_head_relation_tail_predictions": sparse_head_relation_tail_predictions.as_dict()})
+                                       "sparse_head_relation_tail_predictions": sparse_head_relation_tail_predictions.as_dict(), 
+                                       "no_of_facts": {"dense": quads_in_dense, 
+                                                       "sparse": quads_in_sparse, 
+                                                       "none": quads_in_none}}})
 
 
 
