@@ -15,7 +15,7 @@ class FormatOverallScores():
         return float(f"{val:.2f}")
     
     def format(self):
-        embeddings = ["DE_TransE", "DE_DistMult", "DE_SimplE", "ATISE", "TERO", "TimePlex", "ensemble_naive_voting", "ensemble_decision_tree"]
+        embeddings = ["ensemble_naive_voting", "ensemble_decision_tree","ablation_overall", "ablation_property", "ablation_false_property", "ablation_time_density", "ablation_target" ,"ablation_no_property", "ablation_one_forth_property", "ablation_only_property", "ablation_only_target", "ablation_only_overall", "ablation_only_time_density"]
         metric = "MRR"
 
         prefix_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_10_overall_scores_text.txt")

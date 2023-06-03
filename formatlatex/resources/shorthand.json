@@ -11,5 +11,16 @@
     "wikidata12k": "WD12",
     "yago11k": "Y11",
     "ensemble_naive_voting": "NV-E",
-    "ensemble_decision_tree": "RBV-E"
+    "ensemble_decision_tree": "RBV-E",
+    "ablation_overall": "A_overall",
+    "ablation_property": "A_property",
+    "ablation_false_property": "A_false_property",
+    "ablation_time_density": "A_time_density",
+    "ablation_target": "A_Target",
+    "ablation_no_property": "A_no_property",
+    "ablation_one_forth_property": "A_one_fourth_property",
+    "ablation_only_property": "A_only_property",
+    "ablation_only_target": "A_only_target",
+    "ablation_only_overall": "A_only_overall",
+    "ablation_only_time_density": "A_only_time_densitty"
 }
