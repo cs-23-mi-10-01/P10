@@ -5,8 +5,8 @@
 \caption{Overall scores}
 \vspace{-3mm}
 
-\begin{tabular}{r|ccc} \hline
-Method & \mbox{ICEWS14-7k} & WikiData12k & YAGO11k \\ \hline
+\begin{tabular}{r|SSS} \hline
+Method & {\mbox{ICEWS14-7k}} & {WikiData12k} & {YAGO11k} \\ \hline
 _content\hline
 \end{tabular}
 
