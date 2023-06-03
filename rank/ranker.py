@@ -49,7 +49,9 @@ class Ranker:
                         continue
                     
                     if self.mode == "ensemble_naive_voting" or self.mode == "ensemble_decision_tree":
-                        json_output = self._ensemble_base(dataset, split)
+
+                        json_output = self._ensemble_base(dataset, split, self.params)
+
                     else:
                         # load model via torch
                         model_path = os.path.join(self.base_directory, "models", embedding_name, dataset, "split_" + split, "Model.model")
@@ -165,7 +167,7 @@ class Ranker:
                 best_predictions.append(best_prediction_quad)
 
     
-    def _ensemble_base(self, dataset, split):
+    def _ensemble_base(self, dataset, split, params):
         ranked_quads = []
 
         
@@ -195,6 +197,55 @@ class Ranker:
                 rank_calculators[embedding_name] = TERO_Rank(self.params, model, dataset, embedding_name)
             if embedding_name in ["TimePlex"]:
                 rank_calculators[embedding_name] = TimePlex_Rank(self.params, model, dataset)
+            
+        hyper_overall = 1
+        hyper_properties = 1
+        hyper_false_properties = 1
+        hyper_timedensity = 1
+        hyper_target = 1
+        no_reflexion = True
+        
+        match(params.task):
+            case "ablation_overall":
+                hyper_overall = 0
+            case "ablation_property":
+                hyper_properties = 0
+            case "ablation_false_property":
+                hyper_false_properties = 0
+            case "ablation_time_density":
+                hyper_timedensity = 0
+            case "ablation_target":
+                hyper_target = 0
+            case "ablation_no_property":
+                hyper_false_properties = 0
+                hyper_properties = 0
+            case "ablation_one_forth_property":
+                hyper_false_properties = 0.25
+                hyper_properties = 0.25
+            case "ablation_only_property":
+                hyper_overall = 0
+                hyper_timedensity = 0
+                hyper_target = 0
+            case "ablation_only_target":
+                hyper_overall = 0
+                hyper_timedensity = 0
+                hyper_properties = 0
+                hyper_false_properties = 0
+                hyper_target = 1
+            case "ablation_only_overall":
+                hyper_overall = 1
+                hyper_timedensity = 0
+                hyper_target = 0
+                hyper_false_properties = 0
+                hyper_properties = 0
+            case "ablation_only_time_density":
+                hyper_overall = 0
+                hyper_timedensity = 1
+                hyper_target = 0
+                hyper_properties = 0
+                hyper_false_properties = 0
+
+                
         
         for i, quad in zip(range(0, len(self.ranked_quads)), self.ranked_quads):
             # if i < 1500:
@@ -219,12 +270,14 @@ class Ranker:
                 #analyse
                 query = self._ensemble_analyser(quad, target, properties, partitions,dataset)
                 #decision tree
-                weight_distribution = self._ensemble_decision_tree(query, scores, target)
+                weight_distribution = self._ensemble_decision_tree(query, scores, target, hyper_overall, hyper_properties, hyper_false_properties,hyper_timedensity,hyper_target,no_reflexion)
             elif self.mode == "ensemble_naive_voting":
                 for embedding_name in self.params.embeddings:
                     weight_distribution[embedding_name] = (1/len(self.params.embeddings))
             #voting
+
             ranked_quads.append(self._ensemble_voting(dataset,split, quad, rank_calculators, weight_distribution, target))
+
             print(i," of ",len(self.ranked_quads))
         
         return ranked_quads
@@ -259,7 +312,7 @@ class Ranker:
         reflexive = read_json(reflexive_path)
 
         #removing TFLEX from all datasets
-        for name in ["TFLEX","ensemble_naive_voting","ensemble_decision_tree"]:
+        for name in ["TFLEX","ensemble_naive_voting","ensemble_decision_tree", "ablation_overall", "ablation_property", "ablation_false_property", "ablation_time_density", "ablation_target" ,"ablation_no_property", "ablation_one_forth_property", "ablation_only_property", "ablation_only_target", "ablation_only_overall", "ablation_only_time_density"]:
             overall.pop(name, None)
             head.pop(name, None)
             relaition.pop(name, None)
@@ -314,69 +367,82 @@ class Ranker:
 
         return query
 
-    def _ensemble_decision_tree(self, query, scores, target):
+    def _ensemble_decision_tree(self, query, scores, target, hyper_overall, hyper_properties, hyper_false_properties,hyper_timedensity,hyper_target,no_reflexion):
         weight_distribution = {}
+        
+
         if target == "relation":
             relation_scores = copy.deepcopy(scores)
             for r in scores:
                 relation_scores[r].pop("TimePlex", None)
                 scores = relation_scores
-                
+        
 
         diff =self.diff_min_max_finder(scores["overall"])
         normalized = self.mrr_normalizer(scores["overall"])
         for method in normalized:
-            weight_distribution[method] = normalized[method] * diff
+            weight_distribution[method] = normalized[method] * diff * hyper_overall
 
         for p in query["properties"]:
+            if no_reflexion and p == 'reflexive':
+                continue
+
             diff =self.diff_min_max_finder(scores[p])
             normalized = self.mrr_normalizer(scores[p])
             for method in normalized:
-                weight_distribution[method] += normalized[method] * diff
+                weight_distribution[method] += normalized[method] * diff * hyper_properties
         
         for p in query["false-properties"]:
+            if no_reflexion and p == 'not reflexive':
+                continue
+            
             diff =self.diff_min_max_finder(scores[p])
             normalized = self.mrr_normalizer(scores[p])
             for method in normalized:
-                weight_distribution[method] += normalized[method] * diff
+                weight_distribution[method] += normalized[method] * diff * hyper_false_properties
 
         if query["density"] == "dense":
             diff =self.diff_min_max_finder(scores["dense"])
             normalized = self.mrr_normalizer(scores["dense"])
             for method in normalized:
-                weight_distribution[method] += normalized[method] * diff
+                weight_distribution[method] += normalized[method] * diff * hyper_timedensity
 
         elif query["density"] == "sparse":
             diff =self.diff_min_max_finder(scores["sparse"])
             normalized = self.mrr_normalizer(scores["sparse"])
             for method in normalized:
-                weight_distribution[method] += normalized[method] * diff
+                weight_distribution[method] += normalized[method] * diff * hyper_timedensity
             
         match(target):
             case("head"):
                 diff =self.diff_min_max_finder(scores["head"])
                 normalized = self.mrr_normalizer(scores["head"])
                 for method in normalized:
-                    weight_distribution[method] += normalized[method] * diff
+                    weight_distribution[method] += normalized[method] * diff * hyper_target
 
             case("relation"):
                 diff =self.diff_min_max_finder(scores["relation"])
                 normalized = self.mrr_normalizer(scores["relation"])
                 for method in normalized:
-                    weight_distribution[method] += normalized[method] * diff
+                    weight_distribution[method] += normalized[method] * diff * hyper_target
 
             case("tail"):
                 diff =self.diff_min_max_finder(scores["tail"])
                 normalized = self.mrr_normalizer(scores["tail"])
                 for method in normalized:
-                    weight_distribution[method] += normalized[method] * diff
+                    weight_distribution[method] += normalized[method] * diff * hyper_target
                     
             case("time"):
                 diff =self.diff_min_max_finder(scores["time"])
                 normalized = self.mrr_normalizer(scores["time"])
                 for method in normalized:
-                    weight_distribution[method] += normalized[method] * diff
-
+                    weight_distribution[method] += normalized[method] * diff * hyper_target
+        
+        if weight_distribution['DE_TransE'] == 0 and weight_distribution['DE_SimplE'] == 0 and weight_distribution['DE_DistMult'] == 0 and weight_distribution['TERO'] == 0 and weight_distribution['ATISE'] == 0:
+            for method in ['DE_TransE', 'DE_SimplE', 'DE_DistMult', 'TERO', 'ATISE',  'TimePlex']:
+                if method == 'TimePlex' and target == "relation":
+                    continue
+                weight_distribution[method] += 1
         #normalized the final weights so the sum 1
         factor=1.0/sum(weight_distribution.values())
         for k in weight_distribution:
@@ -425,7 +491,7 @@ class Ranker:
         if "RANK" not in ranked_quad.keys():
             ranked_quad["RANK"] = {}
 
-        ranked_quad["RANK"][str(self.mode)] = str(rank)
+        ranked_quad["RANK"][str(self.params.task)] = str(rank)
         return ranked_quad
         
     def diff_min_max_finder(self, dict):
