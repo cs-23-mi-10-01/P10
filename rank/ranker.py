@@ -220,8 +220,8 @@ class Ranker:
                 hyper_false_properties = 0
                 hyper_properties = 0
             case "ablation_one_forth_property":
-                hyper_false_properties = 0.25
-                hyper_properties = 0.25
+                hyper_false_properties = 1/3
+                hyper_properties = 1/3
             case "ablation_only_property":
                 hyper_overall = 0
                 hyper_timedensity = 0
