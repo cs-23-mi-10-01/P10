@@ -422,15 +422,15 @@ class Statistics():
             # time_density_hypothesis = TimeDensityHypothesis(self.params, dataset)
             # time_density_hypothesis.run_analysis()
 
-            voting_hypothesis = VotingHypothesis(self.params, dataset)
-            voting_hypothesis.run_analysis()
+            # voting_hypothesis = VotingHypothesis(self.params, dataset)
+            # voting_hypothesis.run_analysis()
 
             for split in self.params.splits:
 
                 ranks_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "ranked_quads.json")
-                # ranked_quads = read_json(ranks_path)
+                ranked_quads = read_json(ranks_path)
 
-                # self.calculate_overall_scores(ranked_quads, embeddings, dataset, split)
+                self.calculate_overall_scores(ranked_quads, embeddings, dataset, split)
 
                 # overall_scores_path = os.path.join(self.params.base_directory, "result", dataset, "split_" + split, "overall_scores.json")        
                 # overall_scores = read_json(overall_scores_path)

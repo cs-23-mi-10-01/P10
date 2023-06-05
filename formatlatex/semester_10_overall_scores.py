@@ -12,7 +12,7 @@ class FormatOverallScores():
         self.splits = params.splits
 
     def _round(self, val):
-        return float(f"{val:.2f}")
+        return float(f"{val:.3f}")
     
     def format(self):
         embeddings = ["ensemble_naive_voting", "ensemble_decision_tree","ablation_overall", "ablation_property", "ablation_false_property", "ablation_time_density", "ablation_target" ,"ablation_no_property", "ablation_one_forth_property", "ablation_only_property", "ablation_only_target", "ablation_only_overall", "ablation_only_time_density"]
@@ -57,9 +57,9 @@ class FormatOverallScores():
                 y = 1
                 for element in row[1:]:
                     if y in highest_vals[x]:
-                        rows[x][y] = r"\textbf{" + f"{element:.2f}" + r"}"
+                        rows[x][y] = r"\textbf{" + f"{element:.3f}" + r"}"
                     else:
-                        rows[x][y] = f"{element:.2f}"
+                        rows[x][y] = f"{element:.3f}"
                     y += 1
             
             rows_text = ""
