@@ -1,0 +1,8 @@
+
+\addplot[
+    color=%2,
+    fill=%3,
+    opacity=%4
+] coordinates {
+%1
+} ;

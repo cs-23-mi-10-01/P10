@@ -1,12 +1,14 @@
-\begin{figure*}[ht]
+\begin{figure}[htb]
 \centering
-\begin{minipage}{0.9\textwidth}
+\begin{minipage}{\columnwidthcaption}
+\resizebox{\columnwidthcaption}{!}{
 \centering
 \begin{tikzpicture}
 \begin{axis}[
     ybar,
     bar width=6pt,
-    xticklabels={x,DE-T,DE-D,DE-S,ATiSE,TeRo,TFLEX,TimePlex},
+    xtick={0,1,2,3},
+    xticklabels={DE-T,DE-S,AT,TR},
     ymin=0,
     ymax=1.143125360701143,
     ylabel={MRR score},
@@ -20,74 +22,51 @@
     legend image code/.code={
         \draw [#1] (0cm,-0.1cm) rectangle (0.2cm,0.25cm); },
     ]
-\addplot coordinates { %head
+\addplot[color=ourdarkblue, fill=ourlightblue] coordinates { %head
 (0, 0.1637073478821412) %DE_TransE
-(1, 0) %DE_DistMult
-(2, 0.15541381170193883) %DE_SimplE
-(3, 0.5275712264361427) %ATISE
-(4, 0.5983506476939411) %TERO
-(5, 0) %TFLEX
-(6, 0) %TimePlex
+(1, 0.15541381170193883) %DE_SimplE
+(2, 0.5275712264361427) %ATISE
+(3, 0.5983506476939411) %TERO
 } ;
-\addplot coordinates { %relation
+\addplot[color=ourdarkred, fill=ourlightred] coordinates { %relation
 (0, 0.9230200501431489) %DE_TransE
-(1, 0) %DE_DistMult
-(2, 0.8116771918053982) %DE_SimplE
-(3, 0.9345564000620602) %ATISE
-(4, 0.9526044672509525) %TERO
-(5, 0) %TFLEX
-(6, 0) %TimePlex
+(1, 0.8116771918053982) %DE_SimplE
+(2, 0.9345564000620602) %ATISE
+(3, 0.9526044672509525) %TERO
 } ;
-\addplot coordinates { %tail
+\addplot[color=ourdarkyellow, fill=ourlightyellow] coordinates { %tail
 (0, 0.24924584013892864) %DE_TransE
-(1, 0) %DE_DistMult
-(2, 0.2414293939480342) %DE_SimplE
-(3, 0.6148980855055178) %ATISE
-(4, 0.6696166224463463) %TERO
-(5, 0) %TFLEX
-(6, 0) %TimePlex
+(1, 0.2414293939480342) %DE_SimplE
+(2, 0.6148980855055178) %ATISE
+(3, 0.6696166224463463) %TERO
 } ;
-\addplot coordinates { %time_from
+\addplot[color=ourdarkgreen, fill=ourlightgreen] coordinates { %time_from
 (0, 0.024055630464001724) %DE_TransE
-(1, 0) %DE_DistMult
-(2, 0.0048056877918240416) %DE_SimplE
-(3, 0.4657178150077794) %ATISE
-(4, 0.6348767483602489) %TERO
-(5, 0) %TFLEX
-(6, 0) %TimePlex
+(1, 0.0048056877918240416) %DE_SimplE
+(2, 0.4657178150077794) %ATISE
+(3, 0.6348767483602489) %TERO
 } ;
-\addplot[black,sharp plot,update limits=false,] coordinates { %DE_TransE
+\addplot[ourblack,sharp plot,update limits=false,] coordinates { %DE_TransE
 (-0.5, 0.34000721715705284)
 (0.5, 0.34000721715705284)
 } ;
-\addplot[black,sharp plot,update limits=false,] coordinates { %DE_DistMult
-(0.5, 0)
-(1.5, 0)
-} ;
-\addplot[black,sharp plot,update limits=false,] coordinates { %DE_SimplE
+\addplot[ourblack,sharp plot,update limits=false,] coordinates { %DE_SimplE
+(0.5, 0.30333152131179775)
 (1.5, 0.30333152131179775)
-(2.5, 0.30333152131179775)
 } ;
-\addplot[black,sharp plot,update limits=false,] coordinates { %ATISE
+\addplot[ourblack,sharp plot,update limits=false,] coordinates { %ATISE
+(1.5, 0.6356858817528941)
 (2.5, 0.6356858817528941)
-(3.5, 0.6356858817528941)
 } ;
-\addplot[black,sharp plot,update limits=false,] coordinates { %TERO
+\addplot[ourblack,sharp plot,update limits=false,] coordinates { %TERO
+(2.5, 0.7138621214378867)
 (3.5, 0.7138621214378867)
-(4.5, 0.7138621214378867)
-} ;
-\addplot[black,sharp plot,update limits=false,] coordinates { %TFLEX
-(4.5, 0)
-(5.5, 0)
-} ;
-\addplot[black,sharp plot,update limits=false,] coordinates { %TimePlex
-(5.5, 0)
-(6.5, 0)
 } ;
 \legend{Head,Relation,Tail,Time}
 \end{axis}
 \end{tikzpicture}
-\caption{wikidata12k, split 2}
+}
+\caption{WikiData12k, split 2}
 \label{fig:compare_wikidata12k_2}
 \end{minipage}
-\end{figure*}
+\end{figure}

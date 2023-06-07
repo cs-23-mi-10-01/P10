@@ -1,0 +1,16 @@
+\begin{table}[htb]
+\centering
+\begin{minipage}{\columnwidthcaption}
+\centering
+\caption{Overall scores}
+\vspace{-3mm}
+
+\begin{tabular}{r|SSS} \hline
+Method & {\mbox{ICEWS14-7k}} & {WikiData12k} & {YAGO11k} \\ \hline
+_content\hline
+\end{tabular}
+
+\label{tab:overall_scores}
+\end{minipage}
+\end{table}
+

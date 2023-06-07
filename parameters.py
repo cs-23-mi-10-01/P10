@@ -8,6 +8,7 @@ class Parameters:
         self.datasets = [args.dataset]
         self.embeddings = [args.embedding]
         self.splits = [args.split]
+        self.verbose = True
 
         self.base_directory = os.path.abspath(os.path.dirname(__file__))
         self.timer = Timer()
