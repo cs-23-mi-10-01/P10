@@ -1,6 +1,6 @@
 \begin{figure}[htb]
 \centering
-\begin{minipage}{0.95\columnwidth}
+\begin{minipage}{\columnwidthcaption}
 \centering
 
 \begin{tikzpicture}
@@ -9,14 +9,12 @@
     ymax=758.4,
     ylabel={No. of facts},
     xlabel={Time},
-    %height=5cm,
-    %width=5cm,
     area style,
     scaled y ticks=false
     ]
 
 \addplot[
-    fill=tikzgrey,
+    fill=ourgrey,
 ] coordinates {
 (1705.0, 0)
 (1706.5, 2.0)
@@ -127,9 +125,9 @@
 } ;
 
 \addplot[ %Dense
-    color=tikzdarkred,
+    color=ourdarkyellow,
     pattern=north east lines,
-    pattern color=tikzlightred,
+    pattern color=ourlightyellow,
     opacity=0.8,
 ] 
 coordinates {
@@ -145,9 +143,9 @@ coordinates {
 } ;
 
 \addplot[ %Sparse
-    color=tikzdarkblue,
+    color=ourdarkblue,
     pattern=north west lines,
-    pattern color=tikzlightblue,
+    pattern color=ourlightblue,
     opacity=0.8,
 ] 
 coordinates {
@@ -167,7 +165,7 @@ coordinates {
 \end{tikzpicture}
 
 \vspace{-3mm}
-\caption{Dense and sparse partitions on WikiData12k. Dense partition marked in red, sparse in blue.}
+\caption{Dense and sparse partitions on WD12. Dense partition marked in red, sparse in blue.}
 \label{fig:time_density_wikidata12k}
 \end{minipage}
 \end{figure}

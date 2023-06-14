@@ -275,6 +275,12 @@ class FormatLatex():
                     format_overall_scores = FormatOverallScores(self.params)
                     format_overall_scores.format()
                     return
+                
+                case "time_density":
+                    format_time_density = FormatTimeDensity(self.params)
+                    format_time_density.format()
+                    return
+                    
 
             print(f"Generating latex file(s) for {t}")
 
