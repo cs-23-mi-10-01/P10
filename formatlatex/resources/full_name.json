@@ -7,7 +7,7 @@
     "TFLEX": "TFLEX",
     "TimePlex": "TimePlex",
     "AVG": "Average",
-    "icews14": "ICEWS14-7k",
-    "wikidata12k": "WikiData12k",
-    "yago11k": "YAGO11k"
+    "icews14": "ICEWS",
+    "wikidata12k": "WikiData",
+    "yago11k": "YAGO"
 }
