@@ -12,10 +12,10 @@ class FormatTimeDensity():
         datasets = ['icews14', 'wikidata12k', 'yago11k']
         splits = ['original']
         static_text_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "semester_10_time_density_text.txt")
-        shorthand_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "shorthand.json")
+        full_name_path = os.path.join(self.params.base_directory, "formatlatex", "resources", "full_name.json")
 
         static_text = read_text(static_text_path)
-        shorthand = read_json(shorthand_path)
+        full_name = read_json(full_name_path)
 
         for mode in ["small", "full"]:
             for dataset in datasets:
@@ -38,6 +38,8 @@ class FormatTimeDensity():
                     for partition in partitions:
                         if include == False:
                             if mode == "small":
+                                if dataset in ["icews14"]:
+                                    continue
                                 if dataset in ["yago11k", "wikidata12k"] and partition["start_date_as_float"] < 1700.0:
                                     continue
                             
@@ -51,6 +53,9 @@ class FormatTimeDensity():
                         if partition["no_of_facts"] > 0:
                             coordinates += append_coordinates
                             append_coordinates = []
+
+                    if len(coordinates) == 0:
+                        continue
 
                     buckets = 100
                     divide_into_buckets(coordinates, buckets=buckets)
@@ -117,7 +122,7 @@ class FormatTimeDensity():
                         "%3", coordinates_text).replace(
                         "%4", dense_text).replace(
                         "%5", sparse_text).replace(
-                        "%6", shorthand[dataset]).replace(
+                        "%6", full_name[dataset]).replace(
                         "%7", dataset)
 
                     output_path = os.path.join(self.params.base_directory, "formatlatex", "result", "semester_10_time_density", dataset+"_"+split+"_"+mode+".tex")
